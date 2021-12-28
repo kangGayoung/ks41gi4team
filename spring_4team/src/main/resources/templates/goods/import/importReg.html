@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+ 	 layout:decorate="@{layout/default}">
+  <th:block layout:fragment="customContent" >
+  	<title th:text="${title}"></title>
+  </th:block>
+
+	<th:block layout:fragment="customContents" >
+	
+		<div class="wrapper">
+
+		<!-- Preloader -->
+		<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+		</div>
+		
+		
+		<section class="content">
+			<div class="container-fluid">
+				<div class="card">
+					<div class=" clearfix">
+						<table class="">
+							<colgroup>
+								<col width="20%">
+								<col width="20%">
+								<col width="20%">
+								<col width="20%">
+								<col width="20%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
+									<td>
+										<div class="search-types">
+											<select name="search_type" class="form-control">
+												<option value="">상품명</option>
+												<option value="">상품코드</option>
+												<option value="">제조사</option>
+												<option value="">구역명</option>
+											</select>
+										</div>
+									</td>
+									<td colspan="2">
+										<input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." style="width:386px;">										
+									</td>
+									<td>
+										<a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
+									</td>
+								</tr>
+								<tr>
+									<th class="card-footer text-center">즉시 검색</th>
+									<td>
+										<div class="">
+											<select class="form-control">
+												<option value="">재고상태</option>
+												<option value="">재고부족</option>
+												<option value="">재고충분</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<select class="form-control" >
+											<option value="">브랜드</option>
+											<option value="">기본</option>
+										</select>							
+									</div>
+									</td>
+									<td>
+										<select class="form-control">
+											<option value="">1차 카테고리</option>
+										</select>										
+									</td>
+									<td>
+										<select class="form-control">
+											<option value="">2차 카테고리</option>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+		
+		   <div>
+		    <button style="float:left; font-weight: 600;height: 50px; letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">상품 대량 등록 <i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+		    <button style="float:right;font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">프로그램 상품 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+		   </div>
+		
+		
+		   <div style="margin-top:20px; padding: 0 12px 0 1px;clear:both; float:left" >
+		    <p style="display: inline-block; padding-right: 5px;">전체 10건</p>
+		    <button type="button" class="btn btn-outline-secondary btn-sm"><strong>판매중</strong></button>
+		    <button type="button" class="btn btn-outline-secondary btn-sm"><strong>판매중지</strong></button>  
+		    </div>
+		 
+		   <div style="margin-top:20px;float:right" >
+		    <button type="button" class="btn btn-info btn-sm">상품 수정</button>
+		    <button type="button" class="btn btn-info btn-sm">상품 삭제</button>
+		   </div>
+		
+		   <div class="card col-md-12">
+		    <table style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
+		     <thead>
+		      <tr>
+		       <th>No.</th>
+		       <th>상품코드</th>
+		       <th>상품명</th>
+		       <th>매입단가</th>
+		       <th>수량</th>
+		       <th>카테고리</th>
+		      </tr>
+		     </thead>
+		     <tbody>
+		      <tr>
+		       <td>1</td>
+		       <td>P000001</td>
+		       <td>탄산수</td>
+		       <td>1000</td>
+		       <td>30</td>
+		       <td>음료</td>
+		      </tr>
+		      <tr>
+		       <td>2</td>
+		       <td>P000002</td>
+		       <td>마우스</td>
+		       <td>10000</td>
+		       <td>10</td>
+		       <td>컴퓨터 기타</td>
+		      </tr>
+		      <tr>
+		       <td>3</td>
+		       <td>P000003</td>
+		       <td>탄산수</td>
+		       <td>1000</td>
+		       <td>30</td>
+		       <td>음료</td>
+		      </tr>
+		      <tr>
+		       <td>4</td>
+		       <td>P000004</td>
+		       <td>커피</td>
+		       <td>1500</td>
+		       <td>30</td>
+		       <td>음료</td>
+		      </tr>
+		      <tr>
+		       <td>5</td>
+		       <td>P000005</td>
+		       <td>펜</td>
+		       <td>1000</td>
+		       <td>60</td>
+		       <td>필기구</td>
+		      </tr>
+		     </tbody>
+		    </table>
+		    <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+		     <ul class="pagination">
+		      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Prev</a></li>
+		      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+		      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+		      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
+		      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+		     </ul>
+		    </div>
+		   </div>  
+		      
+		  </div>
+		 </section>
+		  
+		</div>
+
+
+</th:block>
+
