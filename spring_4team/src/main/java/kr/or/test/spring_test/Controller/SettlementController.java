@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class settlementManagement{
+public class SettlementController{
 	
 	@GetMapping("/purchaseLookup")
 	public String purchaseLookup() {
@@ -22,24 +22,6 @@ public class settlementManagement{
 		return "yh/settlementManagement/salesLookup";
 	}
 	
-	@GetMapping("/taxBill")
-	public String taxBill() {
 		
-		return "yh/bill/taxBfffffill";
-	}
-	
-	@GetMapping("/accounts")
-	public String accounts() {
-		
-		return "yh/bill/accounts";
-	}
-	
-	@GetMapping("/purchaseInvoice")
-	public String purchaseInvoice() {
-		
-		return "yh/bill/purchaseInvoice";
-		
-	}
-	
 
 }
