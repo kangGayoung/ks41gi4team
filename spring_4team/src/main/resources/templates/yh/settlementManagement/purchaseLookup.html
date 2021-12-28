@@ -6,33 +6,15 @@
   <th:block layout:fragment="customContent" >
   	<title th:text="${title}"></title>
   </th:block>
-
 	<th:block layout:fragment="customContents" >
+	
+		<div class="wrapper">
 
-
-
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
-
-  <!-- Navbar -->
-  <jsp:include page="/include/header.jsp"/>
-  
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <jsp:include page="/include/sidebar.jsp"/>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="wrapper">
-    <!-- Content Header (Page header) -->
-    <jsp:include page="/include/location.jsp">
-    	<jsp:param name="pageTitle" value="매입 거래처별 조회"/>
-    	<jsp:param name="pageLocation" value="구매관리>매입관리>거래조회"/>
-    </jsp:include>
-    <!-- /.content-header -->
-
+		<!-- Preloader -->
+		<div class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake" src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+		</div>
+		
     <!-- Main content -->
 
 
