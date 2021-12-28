@@ -1,0 +1,199 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+ 	 layout:decorate="@{layout/default}">
+  <th:block layout:fragment="customContent" >
+  	<title th:text="${title}"></title>
+  </th:block>
+	<th:block layout:fragment="customContents" >
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="wrapper">
+  
+    <!-- Content Header (Page header) -->
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+      <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">상품입고</h3>
+              </div>
+              <!-- /.card-header -->
+              
+              
+              <div class="card-body">
+              
+              
+              
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th >상품 카테고리</th>
+                      <th class="col-sm-4">상품명</th>
+                      
+                      <th class="col-sm-2">상품수량</th>
+						<th >
+						<button type="button" class="btn btn-block btn-secondary btn-sm ">추가</button>
+						</th>
+						<th >
+						<button type="button" class="btn btn-block btn-secondary btn-sm ">제거</button>
+						</th>
+          
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+						<td>1.</td>
+						<td >
+							<div class="form-group " >
+	   
+	                        <select class="form-control">
+	                          <option>카테고리1</option>
+	                          <option>카테고리2</option>
+	                          <option>카테고리3</option>
+	                          <option>카테고리4</option>
+	                          <option>카테고리5</option>
+	                        </select>
+							</div>
+						</td>
+						<td >
+							<div class="form-group " >
+	   
+	                        <select class="form-control">
+	                          <option>상품명1</option>
+	                          <option>상품명2</option>
+	                          <option>상품명3</option>
+	                          <option>상품명4</option>
+	                          <option>상품명5</option>
+	                        </select>
+							</div>
+						</td>
+						<td >
+							<input type="text" class="form-control rounded-0 " id="exampleInputRounded0" placeholder="수량 입력">
+						</td>
+						<td></td>
+						<td></td>
+                     
+                    </tr>
+                    
+                    <tr>
+                      <td>2.</td>
+                      <td >
+							<div class="form-group " >
+	   
+	                        <select class="form-control">
+	                          <option>카테고리1</option>
+	                          <option>카테고리2</option>
+	                          <option>카테고리3</option>
+	                          <option>카테고리4</option>
+	                          <option>카테고리5</option>
+	                        </select>
+							</div>
+						</td>
+						<td>
+							<div class="form-group" >
+	   
+	                        <select class="form-control">
+	                          <option>상품명1</option>
+	                          <option>상품명2</option>
+	                          <option>상품명3</option>
+	                          <option>상품명4</option>
+	                          <option>상품명5</option>
+	                        </select>
+							</div>
+						</td>
+						<td >
+							<input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="수량 입력">
+						</td>
+						<td></td>
+						<td></td>
+                   
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td >
+							<div class="form-group " >
+	                        <select class="form-control">
+	                          <option>카테고리1</option>
+	                          <option>카테고리2</option>
+	                          <option>카테고리3</option>
+	                          <option>카테고리4</option>
+	                          <option>카테고리5</option>
+	                        </select>
+							</div>
+						</td>
+                       <td>
+							<div class="form-group" >
+	                        <select class="form-control">
+	                          <option>상품명1</option>
+	                          <option>상품명2</option>
+	                          <option>상품명3</option>
+	                          <option>상품명4</option>
+	                          <option>상품명5</option>
+	                        </select>
+							</div>
+						</td>
+						<td >
+							<input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="수량 입력">
+						</td>
+						<td></td>
+						<td></td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td >
+							<div class="form-group " >
+	   
+	                        <select class="form-control">
+	                          <option>카테고리1</option>
+	                          <option>카테고리2</option>
+	                          <option>카테고리3</option>
+	                          <option>카테고리4</option>
+	                          <option>카테고리5</option>
+	                        </select>
+							</div>
+						</td>
+                 	   <td>
+							<div class="form-group">
+	                        <select class="form-control">
+	                          <option>상품명1</option>
+	                          <option>상품명2</option>
+	                          <option>상품명3</option>
+	                          <option>상품명4</option>
+	                          <option>상품명5</option>
+	                        </select>
+							</div>
+						</td>
+						<td >
+							<input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="수량 입력">
+						</td>
+						<td></td>
+						<td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              <table class="row justify-content-end">
+              	<tbody>
+              		<tr>
+              			<td style="padding: 10px">
+              				<button type="button" class="btn btn-block btn-default">등록 취소</button>
+              			</td>
+              			<td style="padding: 10px">
+              				<button type="button" class="btn btn-block btn-primary">등록 완료</button>
+              			</td>
+              		</tr>
+              	</tbody>
+              </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+      </div>
+    </section>    
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+	</th:block>	
+</html>

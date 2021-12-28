@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "org.springframework.boot",
+    "type": "java.lang.String",
+    "description": "A description for 'org.springframework.boot'"
+  },
+  {
+    "name": "org.mybatis.spring.boot",
+    "type": "java.lang.String",
+    "description": "A description for 'org.mybatis.spring.boot'"
+  }
+]}
