@@ -25,7 +25,7 @@ public class settlementManagement{
 	@GetMapping("/taxBill")
 	public String taxBill() {
 		
-		return "yh/bill/taxBill";
+		return "yh/bill/taxBfffffill";
 	}
 	
 	@GetMapping("/accounts")
