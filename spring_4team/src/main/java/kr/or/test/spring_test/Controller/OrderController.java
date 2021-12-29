@@ -1,6 +1,7 @@
 package kr.or.test.spring_test.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,7 +11,8 @@ public class OrderController {
 	
 	
 	@GetMapping("/orderMG")
-	public String orderMG() {
+	public String orderMG(Model model) {
+		model.addAttribute("title", "주문관리");
 		return "order/orderMG/orderMG";
 	}
 	
