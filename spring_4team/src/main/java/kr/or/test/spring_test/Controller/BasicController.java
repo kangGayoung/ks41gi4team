@@ -1,12 +1,22 @@
 package kr.or.test.spring_test.Controller;
 
+
+
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.test.spring_test.dto.StaffInfo;
+import kr.or.test.spring_test.service.MainService;
 
 @Controller
 @RequestMapping("/basic")
 public class BasicController {
+	
+	private MainService mainService;
 
 	@GetMapping("/staffInsert")
 	public String staffInsert() {
@@ -15,7 +25,13 @@ public class BasicController {
 	
 	
 	@GetMapping("/staffList")
-	public String staffList() {
+	public String staffList(Model model) {
+		
+		List<StaffInfo> staffList = mainService.staffInfoPrint();
+		
+		model.addAttribute("title","사원목록");
+		model.addAttribute("staffList", staffList);
+		
 		return "contents/basicMG/staffList/staffList";
 	}
 	

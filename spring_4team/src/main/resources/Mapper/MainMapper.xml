@@ -19,7 +19,7 @@
 		<result column="authoriser" property="authoriser"/>
 	</resultMap>
 	
-	<select id="getStaffList" parameterType="String" resultType="StaffInfo">
+	<select id="getStaffList" resultType="StaffInfo">
 		select
 			s.staffId
 			,s.mainBusinessCode
