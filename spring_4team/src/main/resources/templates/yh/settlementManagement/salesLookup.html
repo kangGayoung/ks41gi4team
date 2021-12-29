@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+ 	 layout:decorate="@{layout/default}">
+  <th:block layout:fragment="customContent" >
+  	<title th:text="${title}"></title>
+  </th:block>
+
+	<th:block layout:fragment="customContents" >
+
+
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <jsp:include page="/include/header.jsp"/>
+  
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <jsp:include page="/include/sidebar.jsp"/>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="wrapper">
+    <!-- Content Header (Page header) -->
+    <jsp:include page="/include/location.jsp">
+    	<jsp:param name="pageTitle" value="매출거래처별 조회"/>
+    	<jsp:param name="pageLocation" value="매입/매출>매출거래처별조회"/>
+    </jsp:include>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+
+
+	<section class="content">
+		<div class="container-fluid">
+	
+	<!-- searchOption-card -->
+			<div class="card" style="margin-top: 30px; padding-bottom: 40px; padding-top: 40px;">
+				<div class="card-header">
+					<form class="form-inline" style="padding-bottom:10px; padding-left:95px;">
+						<div class="btn-group btn-group-toggle" style= "padding-bottom: 20px;" data-toggle="buttons">
+							<label class="btn btn-danger active"> 
+								<input style="font-size:13px;" type="radio" name="salesOption" id="option_a1" autocomplete="off"> 매출구분
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="orderDate" id="option_t1" autocomplete="off"> 주문일시
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="deliveryRequestDate" id="option_t2" autocomplete="off"> 배송요청일
+							</label>
+						</div>
+					</form>
+					<form class="form-inline" style="padding-bottom: 30px; padding-left:95px;">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-danger active"> 
+								<input style="font-size:13px" type="radio" name="dateOption" id="option_a1" autocomplete="off"> 기간옵션
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="totalDate" id="option_a2" autocomplete="off"> 전체
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="lastMonth" id="option_a3" autocomplete="off"> 전월
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="thisMonth" id="option_a4" autocomplete="off"> 금월
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="today" id="option_a5" autocomplete="off"> 당일
+							</label>
+						 </div>
+					
+						<div class="form-inline" style="padding-left:120px;">
+							<label  class="btn btn-danger active" >기간검색</label>
+								<div style="padding-left:30px;">
+									<input type="date" style="padding:5px 10px 5px 10px;" placeholder="시작일자">
+										<i class="fas fa-minus" style="padding:5px;"></i>
+									<input type="date" style="padding:5px 10px 5px 10px;" placeholder="마감일자">
+								</div>
+						</div>
+					</form>
+					<form class="form-inline" style="padding-bottom: 30px; padding-left:95px;">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+							<label class="btn btn-danger active"> 
+								<input style="font-size:13px" type="radio" name="dateOption" id="option_a1" autocomplete="off"> 즉시검색옵션
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="totalDate" id="option_a2" autocomplete="off"> 배송담당자
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="lastMonth" id="option_a3" autocomplete="off"> 영업담당자
+							</label> 
+							<label class="btn btn-danger"> 
+								<input type="radio" name="thisMonth" id="option_a4" autocomplete="off"> 출고상태
+							</label> 
+						 </div>
+					
+					</form>
+				</div>
+	
+	
+				<!-- /.card-header -->
+				<div class="card-searchCard" >
+					<form class="form-inline" style="padding-top : 30px; padding-bottom: 4px; padding-left:95px;">
+						<!-- 매출처 검색 -->
+						<div class="btn-group btn-group-toggle form-inline" data-toggle="buttons">
+							<label class="btn btn-danger active" > 
+								<input type="radio" name="orderStoreName" id="option_1" autocomplete="off"> 매  출  처
+							</label>
+				        	<input type="text" name="table_search" class="form-control float-right" style=" padding:0px 30px 0px 80px; width:850px;"  placeholder="상 호 명 을  입 력 하 세 요">
+						</div>
+							<div style="padding-left:240px;">
+								<button type="button" class="btn btn-block btn-danger btn-lg"  style="width:150px; ">조 회</button>	                       	
+							</div>                   
+	                   </form>
+	                </div>
+
+	                <!-- /.card-body -->
+			 </div>        
+				  
+			
+		
+		
+		<!-- 테이블  시작-->
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+					<div class="card-header">
+						<h6 class="card-title">
+							매출 거래 날짜는 <code>매출 확정일을 </code>기준으로 합니다.</h6>
+			
+						<div class="card-tools">
+							<div class="input-group input-group-sm" >
+								<div class="input-group-append ">
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<div class="dt-buttons btn-group flex-wrap">               
+								<button class="btn btn-danger buttons-copy buttons-html5" tabindex="0" aria-controls="example1" type="button">
+									<span>Copy</span>
+								</button> 
+								<button class="btn btn-danger buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button">
+									<span>CSV</span>
+								</button> 
+								<button class="btn btn-danger buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button">
+								<span>Excel</span>
+								</button> 
+								<button class="btn btn-danger buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button">
+									<span>PDF</span>
+								</button> 
+								<button class="btn btn-danger buttons-print" tabindex="0" aria-controls="example1" type="button">
+									<span>Print</span>
+								</button> 
+								<div class="btn-group">
+									<button class="btn btn-danger buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="example1" type="button" aria-haspopup="true" aria-expanded="false">
+										<span>Column visibility</span>
+									</button>
+								</div> 
+							</div>
+						</div>
+					</div>
+					<!-- /.card-header -->
+					
+					<div class="card-body table-responsive p-0">
+						<table class="table p-0 table-hover">
+							<thead style = "font-size:1.5em; ">
+								<tr>
+									<th>No.</th>
+									<th>거래처<small>(공급받는 자)</small></th>
+									<th>이전잔액</th>
+									<th>매출금액</th>
+									<th>반품금액</th>
+									<th>입금금액</th>
+									<th>수정금액</th>
+									<th>잔여금액</th>
+									<th>담당자</th>
+									<th>최종거래일</th>
+								</tr>
+							</thead>
+							<tbody style="font-size:1.2em; font-variant:normal; text-align:justify;">
+								<tr>
+									<th>1</th>
+									<th>가나산업</th>
+									<th>1,000,000</th>
+									<th>3,000,000</th>
+									<th>300,000</th>
+									<th>3,300,000</th>
+									<th>3,300,000</th>
+									<th>0</th>
+									<th>오가나</th>
+									<th>2021-11-01</th>
+								</tr>
+								<tr>
+									<th>2</th>
+									<th>약성기계</th>
+									<th>0</th>
+									<th>1,000,000</th>
+									<th>100,000</th>
+									<th>1,100,000</th>
+									<th>0</th>
+									<th>0</th>
+									<th>갱스터</th>
+									<th>2021-11-05</th>
+								</tr>
+								<tr>
+									<th>3</th>
+									<th>한아람곡류</th>
+									<th>540,000</th>
+									<th>298,000</th>
+									<th>0</th>
+									<th>298,000</th>
+									<th>0</th>
+									<th>0</th>
+									<th>팔삼이</th>
+									<th>2021-11-04</th>
+								</tr>
+								<tr>
+									<th>4</th>
+									<th>(주)이천</th>
+									<th>190,800</th>
+									<th>990,000</th>
+									<th>99,000</th>
+									<th>1,089,000</th>
+									<th>1,000,000</th>
+									<th>0</th>
+									<th>이칠구</th>
+									<th>2021-11-04</th>
+								</tr>
+								<tr>
+									<th>5</th>
+									<th>(주)트랜스</th>
+									<th>390,000</th>
+									<th>245,455</th>
+									<th>24,545</th>
+									<th>270,000</th>
+									<th>0</th>
+									<th>0</th>
+									<th>육유기</th>
+									<th>2021-11-10</th>
+								</tr>
+								<tr>
+									<th>6</th>
+									<th>(주)3팀소프트</th>
+									<th>360,000</th>
+									<th>472,727</th>
+									<th>47,273</th>
+									<th>520,000</th>
+									<th>0</th>
+									<th>0</th>
+									<th>팔오기</th>
+									<th>2021-11-14</th>
+								</tr>
+								<tr>
+									<th>7</th>
+									<th>동화나라(주)</th>
+									<th>0</th>
+									<th>1,181,818</th>
+									<th>118,182</th>
+									<th>1,300,000</th>
+									<th>0</th>
+									<th>0</th>
+									<th>백삼백</th>
+									<th>2021-11-21</th>
+								</tr>
+							
+							</tbody>
+						</table>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+			</div>
+			
+			<div class="dataTables_paginate paging_simple_numbers mx-auto" id="example1_paginate">
+				<ul class="pagination">
+					<li class="paginate_button page-item previous disabled" id="example1_previous">
+						<a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+					</li>
+					<li class="paginate_button page-item active">
+						<a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+					</li>
+					<li class="paginate_button page-item ">
+						<a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+					</li>
+					<li class="paginate_button page-item ">
+						<a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0" class="page-link">3</a>
+					</li>
+					<li class="paginate_button page-item next" id="example1_next">
+						<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+					</li>
+				</ul>
+			</div>
+					
+			 	     
+	 	</div>
+	</section>
+      
+    <!-- /.content -->
+ </div>
+  <!-- /.content-wrapper -->
+</div>
+<!-- ./wrapper -->
+
+
+    
+
+  </th:block>
+
+    
