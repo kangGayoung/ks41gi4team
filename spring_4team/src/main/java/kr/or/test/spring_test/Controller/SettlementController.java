@@ -7,8 +7,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.or.test.spring_test.service.MainService;
+
 @Controller
 public class SettlementController{
+	
+	private MainService mainService;
+	
+	
 	
 	@GetMapping("/purchaseLookup")
 	public String purchaseLookup() {
