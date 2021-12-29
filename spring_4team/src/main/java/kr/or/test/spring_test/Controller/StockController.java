@@ -10,30 +10,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/stock")
-public class stockController {
+public class StockController {
    
-   @GetMapping("/useStock")
-   public String useStock() {
+   @GetMapping("/inoutport")
+   public String inoutport() {
 
-      return "goods/stock/useStock/useStock";
+      return "stock/inoutport/inoutport";
    }
    
-   @GetMapping("/moveStock")
-   public String moveStock() {
+   @GetMapping("/inoutportList")
+   public String inoutportList() {
       
-      return "goods/stock/moveStock/moveStock";
+      return "stock/inoutportList/inoutportList";
    }
    
    @GetMapping("/errorStock")
    public String errorStock() {
       
-      return "goods/stock/errorStock/errorStock";
+      return "stock/errorStock/errorStock";
    }
    
    @GetMapping("/realStock")
    public String realStock() {
       
-      return "goods/stock/realStock/realStock";
+      return "stock/realStock/realStock";
+   }
+   
+   @GetMapping("/stCurrent")
+   public String stCurrent() {
+	   
+	   return "stock/stCurrent/stCurrent";
    }
    
 }

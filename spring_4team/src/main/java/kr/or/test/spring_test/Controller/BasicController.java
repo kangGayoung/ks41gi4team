@@ -49,10 +49,6 @@ public class BasicController {
 		return "contents/basicMG/displayInfo/displayInfo";
 	}
 
-	@GetMapping("/product/input")
-	public String productInputOrder() {
-		
-		return "contents/product/productInput";
-	}
+	
 	
 }
