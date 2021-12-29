@@ -3,10 +3,35 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.test.spring_test.mapper.MainMapper">
-	<select id="getStaff" parameterType="String" resultType="int">
+	<resultMap type="StaffInfo" id="staffResultMap">
+		<result column="staffId" property="staffId"/>
+		<result column="mainBusinessCode" property="mainBusinessCode"/>
+		<result column="staffState" property="staffState"/>
+		<result column="staffPw" property="staffPw"/>
+		<result column="staffName" property="staffName"/>
+		<result column="staffBirth" property="staffBirth"/>
+		<result column="staffLevel" property="staffLevel"/>
+		<result column="systemLevel" property="systemLevel"/>
+		<result column="staffEmail" property="staffEmail"/>
+		<result column="staffRegDate" property="staffRegDate"/>
+		<result column="staffPhone" property="staffPhone"/>
+		<result column="staffAddr" property="staffAddr"/>
+		<result column="authoriser" property="authoriser"/>
+	</resultMap>
+	
+	<select id="getStaffList" parameterType="String" resultType="StaffInfo">
 		select
-			*
+			s.staffId
+			,s.mainBusinessCode
+			,s.staffPw
+			,s.staffName
+			,s.staffBirth
+			,s.staffLevel
+			,s.staffEmail
+			,s.staffRegDate
+			,s.staffPhone
+			,s.staffAddr
 		from
-			`k4_tb_staff` 
+			k4_tb_staff as s;
 	</select>
 </mapper>
