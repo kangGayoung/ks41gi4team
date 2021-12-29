@@ -216,7 +216,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a th:href="@{/importReg}" class="nav-link">
+                    <a th:href="@{/goods/importReg}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>입고 등록</p>
                     </a>
@@ -233,7 +233,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a th:href="@{/outportReg}" class="nav-link">
+                    <a th:href="@{/goods/outportReg}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>출고 등록</p>
                     </a>
@@ -248,19 +248,19 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/goods/dailyReceipt}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>일일 매입/매출원장</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/goods/returnList}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>반품 리스트</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/goods/businessPort}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>거래처별 입/출고</p>
                     </a>
@@ -279,26 +279,26 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/stock/useStock}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>가용재고관리</p>
                 </a>
               </li>
               
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/stock/moveStock}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>재고이동관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/stock/errorStock}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>불량재고관리</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/stock/realStock}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>재고실사관리</p>
                 </a>
