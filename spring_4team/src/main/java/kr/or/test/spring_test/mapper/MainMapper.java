@@ -6,11 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 import kr.or.test.spring_test.dto.StaffInfo;
 
+
+
 @Mapper
 public interface MainMapper {
 
-	
 	//직원 조회
-	public List<StaffInfo> staffInfoPrint();
+	public List<StaffInfo> getStaffInfo();
 	
 }

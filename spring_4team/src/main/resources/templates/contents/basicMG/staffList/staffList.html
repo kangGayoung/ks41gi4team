@@ -6,7 +6,16 @@
   	<title th:text="${title}"></title>
   </th:block>
 	<th:block layout:fragment="customContents" >
-	<h1>main</h1>
+	
+		<table>
+			<tbody>
+				<tr th:if="${not #lists.isEmpty(staffList)}" th:each="l: ${staffList}">
+					<td th:text="${l.staffId}"></td>
+				
+				</tr>
+				
+			</tbody>
+		</table>
 			
 	</th:block>	
 </html>

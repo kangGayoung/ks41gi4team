@@ -16,7 +16,7 @@ import kr.or.test.spring_test.service.MainService;
 @RequestMapping("/basic")
 public class BasicController {
 	
-	private MainService mainService;
+	private MainService MainService;
 
 	@GetMapping("/staffInsert")
 	public String staffInsert() {
@@ -27,11 +27,12 @@ public class BasicController {
 	@GetMapping("/staffList")
 	public String staffList(Model model) {
 		
-		List<StaffInfo> staffList = mainService.staffInfoPrint();
 		
-		model.addAttribute("title","사원목록");
-		model.addAttribute("staffList", staffList);
-		
+		 List<StaffInfo> staffList = MainService.staffInfoPrint();
+		  
+		 model.addAttribute("title","사원목록"); 
+		 model.addAttribute("staffList",staffList);
+		 
 		return "contents/basicMG/staffList/staffList";
 	}
 	
