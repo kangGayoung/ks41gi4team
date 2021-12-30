@@ -21,7 +21,11 @@ public class SettlementController{
 		
 		return "yh/settlementManagement/salesLookup";
 	}
-	
+	@GetMapping("/orderInvoice")
+	public String orderInvoice(){
 		
-
+		return "yh/settlementManagement/orderInvoice";
+	}
+	
+	
 }

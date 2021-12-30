@@ -315,28 +315,28 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/settlementManagment}" class="nav-link"> 
                   <i class="far fa-circle nav-icon"></i>
                   <p>매입/매출</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/settlementManagment/purchaseLookup}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>매입/매출원장</p>
+                      <p>매입원장(거래내역)</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/settlementManagment/salesLookup}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>매입/매출 분석</p>
+                      <p>매출원장(거래내역)</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/settlementManagment/orderInvoice}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>월별 집계</p>
+                      <p>거래 집계</p>
                     </a>
                   </li>
                 </ul>
@@ -351,17 +351,12 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/bill/accounts}"class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>미수금 명세서</p>
+                      <p>정산서</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>미지급금 명세서</p>
-                    </a>
-                  </li>
+                
                 </ul>
               </li>
             </ul>
@@ -376,49 +371,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/bill}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>계산서</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/bill/taxBill}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>계산서발행</p>
+                      <p>(세금)계산서발행</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>(전자)세금계산서 발행</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a th:href="@{/bill/purchaseInvoice}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>매입계산서</p>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-					발행 리스트
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>계산서발행 리스트</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              
             </ul>
           </li>
          
