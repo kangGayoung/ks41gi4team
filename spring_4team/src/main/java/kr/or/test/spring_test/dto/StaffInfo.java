@@ -16,6 +16,7 @@ public class StaffInfo {
 	private String staffAddr;
 	private String staffEditDate;
 	private String authoriser;
+	
 	public String getStaffId() {
 		return staffId;
 	}

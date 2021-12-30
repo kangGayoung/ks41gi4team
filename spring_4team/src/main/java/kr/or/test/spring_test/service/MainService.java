@@ -24,13 +24,19 @@ public class MainService {
 	//사원조회
 	public List<StaffInfo> staffInfoPrint() {
 		
-		List<StaffInfo> staffList = mainMapper.staffInfoPrint(); 
+		List<StaffInfo> staffList = mainMapper.getStaffInfo()
+				; 
 		
 		/*
-		 * if(staffList != null) { for(StaffInfo staff : staffList) {
-		 * 
-		 * } }
-		 */
+		if(staffList != null) { 
+			
+			for(StaffInfo staff : staffList) {
+				
+			} 
+		} 
+		
+		*/
+		 
 		return staffList;
 		
 	}
