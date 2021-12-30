@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	<script src="/js/jquery-3.6.0.min.js" th:src="@{/js/jquery-3.6.0.min.js}"></script>
+   <script src="/js/jquery-3.6.0.min.js" th:src="@{/js/jquery-3.6.0.min.js}"></script>
 
 
 <div th:fragment="sidebar">
@@ -27,9 +27,9 @@
       <div class="form-inline">
         
         <div class="sidebar-search-results">
-        	<div class="list-group"><a href="#" class="list-group-item">
-        		<div class="search-title">
-        		<strong class="text-light"></strong>N<strong class="text-light"></strong>o<strong class="text-light"></strong> <strong class="text-light"></strong>e<strong class="text-light"></strong>l<strong class="text-light"></strong>e<strong class="text-light"></strong>m<strong class="text-light"></strong>e<strong class="text-light"></strong>n<strong class="text-light"></strong>t<strong class="text-light"></strong> <strong class="text-light"></strong>f<strong class="text-light"></strong>o<strong class="text-light"></strong>u<strong class="text-light"></strong>n<strong class="text-light"></strong>d<strong class="text-light"></strong>!<strong class="text-light"></strong></div><div class="search-path"></div></a></div></div>
+           <div class="list-group"><a href="#" class="list-group-item">
+              <div class="search-title">
+              <strong class="text-light"></strong>N<strong class="text-light"></strong>o<strong class="text-light"></strong> <strong class="text-light"></strong>e<strong class="text-light"></strong>l<strong class="text-light"></strong>e<strong class="text-light"></strong>m<strong class="text-light"></strong>e<strong class="text-light"></strong>n<strong class="text-light"></strong>t<strong class="text-light"></strong> <strong class="text-light"></strong>f<strong class="text-light"></strong>o<strong class="text-light"></strong>u<strong class="text-light"></strong>n<strong class="text-light"></strong>d<strong class="text-light"></strong>!<strong class="text-light"></strong></div><div class="search-path"></div></a></div></div>
       </div>
 
       <!-- Sidebar Menu -->
@@ -42,103 +42,112 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>
-                                기본정보관리
+            사원관리
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a  class="nav-link">
+                <a th:href="@{/basic/staffInsert}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                                        사원관리
-                    <i class="right fas fa-angle-left"></i>
+               사원기본등록
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a th:href="@{/basic/staffInsert}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>사원기본등록</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a th:href="@{/basic/staffList}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>사원목록</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a th:href="@{/basic/staffPay}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>사원급여</p>
-                    </a>
-                  </li>
-                  
-                </ul>
+                
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/basic/staffList}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                                        거래처관리
-                    <i class="right fas fa-angle-left"></i>
+               사원 목록
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a th:href="@{/basic/businessInsert}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>거래처등록</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a th:href="@{/basic/businessInfo}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>거래처정보</p>
-                    </a>
-                  </li>
-                  
-                </ul>
+                
+              </li>              
+              <li class="nav-item">
+                <a th:href="@{/basic/staffPay}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+               사원 급여
+                  </p>
+                </a>
+                
+              </li>              
+            </ul>            
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+            거래처 관리
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a th:href="@{/basic/businessInsert}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+               거래처 등록
+                  </p>
+                </a>
+                
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a th:href="@{/basic/businessInfo}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-                                        시설물관리
-                    <i class="right fas fa-angle-left"></i>
+               거래처 정보
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a th:href="@{/basic/storageInfo}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>창고 & 진열대 현황</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a th:href="@{/basic/storageInsert}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>창고 관리</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a th:href="@{/basic/displayInfo}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>진열대 관리</p>
-                    </a>
-                  </li>
-                  
-                </ul>
-              </li>
-            </ul>
-            
+                
+              </li>              
+            </ul>            
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>
-				주문 관리
+            시설물 관리
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a th:href="@{/basic/storageInfo}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+               창고/진열대 현황
+                  </p>
+                </a>
+                
+              </li>
+              <li class="nav-item">
+                <a th:href="@{/basic/storageInsert}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+               창고 관리
+                  </p>
+                </a>
+                
+              </li>              
+              <li class="nav-item">
+                <a th:href="@{/basic/displayInfo}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>
+               진열대 관리
+                  </p>
+                </a>
+                
+              </li>              
+            </ul>            
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+            주문 관리
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -188,19 +197,19 @@
                                    입/출고 내역
                   </p>
                 </a>
-                <a th:href="@{/stock/errorStock}" class="nav-link">
+                <a th:href=@{/stock/stCurrent} class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                                    재고 현황
                   </p>
                 </a>
-                <a th:href="@{/stock/realStock}" class="nav-link">
+                <a th:href="@{/stock/errorStock}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                                    불량 관리
                   </p>
                 </a>
-                <a th:href="@{/stock/stCurrent}" class="nav-link">
+                <a th:href="@{/stock/realStock}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
                                    실사 관리
@@ -252,7 +261,7 @@
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-					명세서
+               명세서
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -313,7 +322,7 @@
                 <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>
-					발행 리스트
+               발행 리스트
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -335,4 +344,4 @@
     </div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden"><div class="os-scrollbar-track"><div class="os-scrollbar-handle" style="height: 51.2877%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div></div>
     <!-- /.sidebar -->
   </aside>
-	</html>
+</html>
