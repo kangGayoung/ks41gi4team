@@ -13,17 +13,17 @@ public class OrderController {
 	@GetMapping("/orderMG")
 	public String orderMG(Model model) {
 		model.addAttribute("title", "주문관리");
-		return "order/orderMG/orderMG";
+		return "goods/order/orderMG/orderMG";
 	}
 	
 	@GetMapping("/preOrder")
 	public String preOrder() {
-		return "order/preOrder/preOrder";
+		return "goods/order/preOrder/preOrder";
 	}
 	
 	@GetMapping("/returnList")
 	public String returnList() {
-		return "order/returnList/returnList";
+		return "goods/order/returnList/returnList";
 	}
 	
 	
