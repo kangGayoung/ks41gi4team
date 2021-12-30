@@ -23,12 +23,13 @@
 					<div class=" clearfix">
 						<table class="col-md-12">
 							<colgroup>
-								<col width="20%">
-								<col width="20%">
-								<col width="20%">
-								<col width="20%">
-								<col width="20%">
-							</colgroup>
+		                        <col width="13%">
+		                        <col width="21%">
+		                        <col width="18%">
+		                        <col width="18%">
+		                        <col width="18%">
+		                        <col width="13%">
+		                     </colgroup>
 							<tbody>
 								<tr>
 									<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
@@ -90,15 +91,19 @@
 				</div>
 			
 				
-				<div style="margin-top:20px; padding: 0 12px 0 1px;clear:both; float:left" >
-					<p style="display: inline-block; padding-right: 5px;">전체 10건</p>
-					<button type="button" class="btn btn-outline-secondary btn-sm"><strong>판매중</strong></button>
-					<button type="button" class="btn btn-outline-secondary btn-sm"><strong>판매중지</strong></button>  
-				</div>
+				<div class="mb-2"style="display: inline-flex; margin-top:20px; margin-left:3%; padding: 0 12px 0 1px;clear:both; float:left" >
+	               <p style="width:135px; padding-right: 7px;">전체 10건</p>               
+	               <select style="margin-top: -6px;" name="search_type" class="form-control">
+	                  <option value="">50개씩 보기</option>
+	                  <option value="">100개씩 보기</option>
+	                  <option value="">150개씩 보기</option>
+	               </select>
+	              
+	            </div>
 			 
-				<div style="margin-top:20px;float:right" >
-					<button type="button" class="btn btn-info btn-sm">상품 수정</button>
-					<button type="button" class="btn btn-info btn-sm">상품 삭제</button>
+				<div style="margin-top:20px; margin-right:3%; float:right" >
+					<button type="button" class="btn btn-info btn-sm">입고 상품 수정</button>
+					<button type="button" class="btn btn-info btn-sm">입고 상품 삭제</button>
 				</div>
 			
 				<div class="card col-md-12">

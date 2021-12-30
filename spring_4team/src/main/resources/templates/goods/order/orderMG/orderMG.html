@@ -23,26 +23,29 @@
                <div class=" clearfix">
                   <table class="col-md-12">
                      <colgroup>
-                        <col width="20%">
+                        <col width="13%">
                         <col width="21%">
-                        <col width="19%">
-                        <col width="20%">
-                        <col width="20%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="13%">
                      </colgroup>
                      <tbody>
                               <tr class="first">
                                   <th class="card-footer text-center">매출 구분</th>
-                                  <td class="pr-2 pl-2 pt-2">
+                                  <td class="pr-2 pl-2 pt-3">
                                         <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
                                         <label for="period-type1">발주등록일</label>
                                    </td>
-                                   <td class="pr-2 pl-2 pt-2">
+                                   <td class="pr-2 pl-2 pt-3">
                                         <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
                                         <label for="period-type2">납기요청일</label>
                                    </td>
-                                   <td class="pr-2 pl-2 pt-2">
+                                   <td class="pr-2 pl-2 pt-3">
                                         <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
                                         <label for="period-type3">입고완료일</label>
+                                  </td>
+                                  <td colspan="4">
                                   </td>
                               </tr>
                         <tr>
@@ -60,7 +63,7 @@
                                  <div class="input-group">
                                     <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
                                     <span class="input-group-addon" id="basic-addon2">
-                                       <a onclick="calendarAdmin('sdate');" role="button"><img src="https://content.marketbom.com/vendor-assets/vendor_pc/img/ico-calendar2.png"></a>
+                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
                                     </span>
                                     <span style="padding-top: 7px;"> ~ </span>
                                  </div>
@@ -72,7 +75,7 @@
                                  <div class="input-group mr0">
                                     <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
                                     <span class="input-group-addon" id="basic-addon2">
-                                       <a onclick="calendarAdmin('edate');" role="button"><img src="https://content.marketbom.com/vendor-assets/vendor_pc/img/ico-calendar2.png"></a>
+                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
                                     </span>
                                  </div>
                               </div>
@@ -85,9 +88,8 @@
                               <div class="search-types">
                                  <select name="search_type" class="form-control">
                                     <option value="">상품명</option>
-                                    <option value="">상품코드</option>
-                                    <option value="">제조사</option>
-                                    <option value="">구역명</option>
+                                    <option value="">거래처</option>
+                                    <option value="">발주번호</option>
                                  </select>
                               </div>
                            </td>
@@ -103,27 +105,34 @@
                            <td class="pr-2 pl-2 pb-2">
                               <div class="">
                                  <select class="form-control">
-                                    <option value="">재고상태</option>
-                                    <option value="">재고부족</option>
-                                    <option value="">재고충분</option>
+                                    <option value="">발주 상태</option>
+                                    <option value="">발주 요청</option>
+                                    <option value="">발주 대기</option>
+                                    <option value="">발주 완료</option>
+                                    <option value="">발주 취소</option>
                                  </select>
                               </div>
                            </td>
                            <td class="pr-2 pb-2">
                               <select class="form-control" >
-                                 <option value="">브랜드</option>
-                                 <option value="">기본</option>
+                                 <option value="">매입처 출고 상태</option>
+                                 <option value="">출고 대기</option>
+                                 <option value="">출고 완료</option>
                               </select>                     
                            
                            </td>
                            <td class="pr-2 pb-2">
                               <select class="form-control">
-                                 <option value="">1차 카테고리</option>
+                                 <option value="">입고 상태</option>
+                                 <option value="">입고 대기</option>
+                                 <option value="">입고 완료</option>
+                                 <option value="">반품 완료</option>
                               </select>                              
                            </td>
                            <td class="pr-2 pb-2">
                               <select class="form-control">
-                                 <option value="">2차 카테고리</option>
+                                 <option value="">등록 구분</option>
+                                 <option value="">일반 등록</option>
                               </select>
                            </td>
                         </tr>
@@ -133,22 +142,21 @@
             </div>
             
       
-            <div>
-               <button style="float:left; font-weight: 600;height: 50px; letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">입고 상품 대량 등록 <i style="padding-left: 7px;" class="fas fa-archive"></i></button>
-               <button style="float:right;font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">프로그램 입고 상품 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
-            </div>
-         
             
-            <div style="margin-top:20px; padding: 0 12px 0 1px;clear:both; float:left" >
-               <p style="display: inline-block; padding-right: 5px;">전체 10건</p>
-               <button type="button" class="btn btn-outline-secondary btn-sm"><strong>판매중</strong></button>
-               <button type="button" class="btn btn-outline-secondary btn-sm"><strong>판매중지</strong></button>  
+            <button style="float: left; font-weight: 600;height: 50px; letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">발주서 출력<i style="padding-left: 7px;" class="fas fa-archive"></i></button>            
+         
+         
+            <button style="margin-left: 10px; float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">매입 반품 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+            <button style="float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">신규 발주 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+		
+      
+            
+            <div style="margin-top:20px;margin-left:3%; padding: 0 12px 0 1px;clear:both; float:left" >
+               <p style="display: inline-block; padding-right: 7px;">전체 10건</p>
+               <button type="button" class="btn btn-outline-secondary btn-sm"><strong>발주 완료</strong></button>
+               <button type="button" class="btn btn-outline-secondary btn-sm"><strong>입고 완료</strong></button>  
             </div>
           
-            <div style="margin-top:20px;float:right" >
-               <button type="button" class="btn btn-info btn-sm">상품 수정</button>
-               <button type="button" class="btn btn-info btn-sm">상품 삭제</button>
-            </div>
          
             <div class="card col-md-12">
                <table style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
