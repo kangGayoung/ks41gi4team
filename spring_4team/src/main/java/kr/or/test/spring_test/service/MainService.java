@@ -21,21 +21,19 @@ public class MainService {
 	}
 	
 	
+	//중복체크
+	public int getStaffCheck(String staffId) {
+		int result= 0;
+		result += mainMapper.getStaffCheck(staffId);
+		return result;
+	}
+	
 	//사원조회
 	public List<StaffInfo> staffInfoPrint() {
 		
-		List<StaffInfo> staffList = mainMapper.getStaffInfo()
-				; 
+		List<StaffInfo> staffList = mainMapper.getStaffInfo(); 
 		
-		/*
-		if(staffList != null) { 
-			
-			for(StaffInfo staff : staffList) {
-				
-			} 
-		} 
-		
-		*/
+		System.out.println(staffList);
 		 
 		return staffList;
 		

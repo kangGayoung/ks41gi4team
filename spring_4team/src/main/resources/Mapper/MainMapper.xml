@@ -20,7 +20,16 @@
 		<result column="authoriser" property="authoriser"/>
 	</resultMap> 
 	
-	<select id="getStaffInfo" resultMap="staffResultMap">
+	<select id="getStaffCheck" parameterType="String" resultType="int">
+		SELECT
+			COUNT(1)
+		FROM
+			k4_tb_staff AS s
+		WHERE
+			s.staffId = #{staffId};
+	</select>
+	
+	<select id="getStaffInfo" resultType="StaffInfo">
 		select
 			s.staffId
 			,s.mainBusinessCode

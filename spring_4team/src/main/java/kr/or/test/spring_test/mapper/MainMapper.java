@@ -14,4 +14,7 @@ public interface MainMapper {
 	//직원 조회
 	public List<StaffInfo> getStaffInfo();
 	
+	//직원 아이디 중복
+	public int getStaffCheck(String staffId);
+	
 }

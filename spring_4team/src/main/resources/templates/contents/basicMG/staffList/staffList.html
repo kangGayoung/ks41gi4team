@@ -7,15 +7,52 @@
   </th:block>
 	<th:block layout:fragment="customContents" >
 	
-		<table>
-			<tbody>
-				<tr th:if="${not #lists.isEmpty(staffList)}" th:each="l: ${staffList}">
-					<td th:text="${l.staffId}"> </td>
-				
-				</tr>
-				
-			</tbody>
-		</table>
+	
+		<div class="wrapper">
+			
+			    <!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="card card-warning">
+						<div class="card-header">
+							<h3 class="card-title">사원 목록 조회</h3>
+						</div>
+						<!-- /.card-header -->
+						            
+						<div class="card-body table-responsive p-0">
+							<table class="table text-center table-head-fixed text-nowrap">
+								<thead>
+									<th>사원 아이디</th>
+									<th>사원 이름</th>
+									<th>사원 등급</th>
+									<th>사원 생년월일</th>
+									<th>사원 입사일</th>
+									<th>사원 연락처</th>
+									<th>사원 주소</th>
+								</thead>
+								<tbody>
+									<tr th:if="${not #lists.isEmpty(staffList)}" th:each="l: ${staffList}">
+										<td th:text="${l.staffId}"></td>
+										<td th:text="${l.staffName}"></td>
+										<td th:text="${l.staffLevel}"></td>
+										<td th:text="${l.staffBirth}"></td>
+										<td th:text="${l.staffRegDate}"></td>
+										<td th:text="${l.staffPhone}"></td>
+										<td th:text="${l.staffAddr}"></td>
+									</tr>
+									<tr th:unless="${not #lists.isEmpty(staffList)}"></tr>
+									
+								</tbody>
+							</table>
+						           
+						           
+						</div>
+						<!-- /.card-body -->
+					</div>
+				</div>
+			</section>    
+		    <!-- /.content -->
+		</div>
 			
 	</th:block>	
 </html>
