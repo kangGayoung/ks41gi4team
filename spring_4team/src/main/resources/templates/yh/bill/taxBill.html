@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="@{layout/default}">
@@ -9,325 +8,436 @@
 <th:block layout:fragment="customContents">
 
 	<!-- Preloader -->
-	<div class="preloader flex-column justify-content-center align-items-center">
-		<img class="animation__shake" src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+	<div
+		class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake"
+			src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png"
+			alt="AdminLTELogo" height="60" width="60">
 	</div>
 
 	<div class="wrapper">
-			<!-- Content Header (Page header) -->
-			<!-- /.content-header -->
-	
-			<!-- Main content -->
+		<!-- Content Header (Page header) -->
+		<!-- /.content-header -->
 
+		<!-- Main content -->
+v.20211230_1540
 #계산서 관리 - > 목록을 조회 하고 (세금)계산서 발행 
-	<section class="content">
-		<div class="container-fluid">
-			
-			<!-- searchOption-card -->
-				<div class="card" style="margin-top: 30px; padding-bottom: 40px; padding-top: 40px;">
+
+		<section class="content">
+			<div class="container-fluid">
+
+				<!-- searchOption-card -->
+				<div class="card"
+					style="margin-top: 30px; padding-bottom: 40px; padding-top: 40px;">
 					<div class="card-body">
-				
-						
-							<!--seacrhOptionTable시작  -->
-									
-								
-											<table class="searchOptionTable" >
-												<colgroup>
-													<col width="20%">
-													<col width="20%">
-													<col width="20%">
-													<col width="20%">
-													<col width="20%">
-												</colgroup>
-												<tbody>
-													<tr class="text-left">
-														<th class="text-left">
-															<label class="btn btn-danger active" name="dateOption" id="dateOptionName" > 
-																	기간옵션
-															</label>
-														</th>
-														<td colspan='3'>
-															<form class="form-inline">
-																<div class="btn-group btn-group-toggle" data-toggle="buttons">
-																	<label class="btn btn-danger active"> 
-																		 <input type="radio" name="optionsRadios" id="optionsRadios1" value="dateOption" checked>기간옵션
-																	</label> 
-																	<label class="btn btn-danger"> 
-																		  <input type="radio" name="optionsRadios" id="optionsRadios1" value="dateOption" checked> 전체
-																	</label> 
-																	<label class="btn btn-danger"> 
-																		  <input type="radio" name="optionsRadios" id="optionsRadios1" value="dateOption" checked> 전월
-																	</label> 
-																	<label class="btn btn-danger"> 
-																		  <input type="radio" name="optionsRadios" id="optionsRadios1" value="dateOption" checked>금월
-																	</label> 
-																	<label class="btn btn-danger"> 
-																		  <input type="radio" name="optionsRadios" id="optionsRadios1" value="dateOption" checked> 당일
-																	</label>
-																 </div>
-															</form>
-														</td>
-													</tr>
-													<!--1번째 줄 끝  -->
-													<!--2번째 줄 시작  -->
-													
-													<tr>
-														<th class="text-left">
-															<label class="btn btn-danger active" name="dateOption" id="dateOptionName" > 
-																	유 형
-															</label>
-														</th>
-														<td>
-															<div>
-																<select class="form-control">
-																	<option value="">:::유      형:::</option>
-																	<option value="">::세금 계산서::</option>
-																	<option value="">:::면      세:::</option>
-																</select>
-															</div>
-														</td>
-														<td>
-														</td>
-														<td>
-														</td>
-														<td>
-														</td>
-
-													</tr>
-														<!--2번째 줄 끝  -->
-														<!--3번째 줄 시작 -->
-													<tr>
-														<th class="text-left">
-															<label class="btn btn-danger active" name="dateOption" id="dateOptionName" > 
-																	검색 옵션
-															</label>
-														</th>
-														<td>
-															<div class="search-types text-center">
-																<select name="search_type" class="form-control">
-																	<div class="form-check">
-																		<option value="">거래처 명</option>
-																		<option value="">거래처등록번호</option>
-																</select>
-															</div> </select>
-															</div>
-														</td>
-														<td colspan="2">
-															<input type="text" class="form-control float-right" style="padding: 0px 30px 0px 80px; width: 850px;" placeholder="상 호 명 을  입 력 하 세 요">
-														</td>
-														<td>
-															<div style="padding-left: 240px;">
-																<button type="button" class="btn btn-block btn-danger btn-lg" style="width: 150px;">조 회</button>
-															</div>
-														</td>
-													</tr>
-													<!-- 3번째 줄 끝 -->
-												</tbody>
-											</table>
-									
-										<!--seacrhOptionTable끝 -->
-								
-									</div>
-								</div>
-						</div>
-	                <!-- /.card-body -->
-			 	</div> 
 
 
-			
+						<!--seacrhOptionTable시작  -->
 
+						<table class="searchOptionTable">
+							<colgroup>
+								<col width="20%">
+								<col width="20%">
+								<col width="20%">
+								<col width="20%">
+								<col width="20%">
+							</colgroup>
+							<tbody>
+								<tr class="text-left">
+									<th class="text-right pr-4">
+										<label class="btn btn-danger active mt-2 " name="dateOption" id="dateOptionName" style="font-size: 1.2em;"> 기간옵션 </label>
+									</th>
+									<td colspan='3'>
+										<form class="form-inline">
 
+											<div class="form-check">
 
+												<label class="form-check-label"
+													style="padding-right: 40px; font-size: 1.2em;"> <input
+													type="radio" name="optionsRadios" id="optionsRadios1"
+													value="dateOption">
+													<p class="pl-2 pt-4">전체</p>
+												</label> <label class="form-check-label"
+													style="padding-right: 40px; font-size: 1.2em;"> <input
+													type="radio" name="optionsRadiosLastMonth"
+													id="optionsRadios1" value="dateOption">
+													<p class="pl-2 pt-4">전월</p>
+												</label> <label class="form-check-label"
+													style="padding-right: 40px; font-size: 1.2em;"> <input
+													type="radio" name="optionsRadiosThisMonth"
+													id="optionsRadios1" value="dateOption">
+													<p class="pl-2 pt-4">당월</p>
+												</label> <label class="form-check-label"
+													style="padding-right: 40px; font-size: 1.2em;"> <input
+													type="radio" name="optionsRadiosToday" id="optionsRadios1"
+													value="dateOption">
+													<p class="pl-2 pt-4">금일</p>
+												</label>
 
-					<!-- 테이블  시작-->
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-header">
-									<h6 class="card-title">
-										매출 거래 날짜는
-										<code>매출 확정일을 </code>
-										기준으로 합니다.
-									</h6>
-
-									<div class="card-tools">
-										<div class="input-group input-group-sm">
-											<div class="input-group-append "></div>
-										</div>
-									</div>
-									<div class="col-sm-push-12 col-md-push-6" style="text-align: right;">
-										<div class="dt-buttons btn-group flex-wrap">               
-											<button class="btn btn-danger buttons-copy buttons-html5" tabindex="0" aria-controls="example1" type="button">
-												<span>Copy</span>
-											</button>
-											<button class="btn btn-danger buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button">
-												<span>CSV</span>
-											</button>
-											<button class="btn btn-danger buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button">
-												<span>Excel</span>
-											</button>
-											<button class="btn btn-danger buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button">
-												<span>PDF</span>
-											</button>
-											<button class="btn btn-danger buttons-print" tabindex="0" aria-controls="example1" type="button">
-												<span>Print</span>
-											</button>
-											<div class="btn-group">
-												<button
-													class="btn btn-danger buttons-collection dropdown-toggle buttons-colvis"
-													tabindex="0" aria-controls="example1" type="button"
-													aria-haspopup="true" aria-expanded="false">
-													<span>Column visibility</span>
-												</button>
 											</div>
+
+										</form>
+									</td>
+								</tr>
+								<!--1번째 줄 끝  -->
+								<!--2번째 줄 시작  -->
+
+								<tr>
+									<th class="text-center"><label
+										class="btn btn-danger active" name="dateOption"
+										id="dateOptionName" style="font-size: 1.2em;"> 유 형 </label></th>
+									<td>
+										<div>
+											<select class="form-control">
+												<option value="">:::유 형:::</option>
+												<option value="">:::세금 계산서:::</option>
+												<option value="">:::계산서(면세):::</option>
+											</select>
 										</div>
-									</div>
-								</div>
-								<!-- /.card-header -->
-								
-								<!-- card-hody Start -->
+									</td>
+									<td></td>
+									<td></td>
+									<td></td>
 
-								<div class="card-body table-responsive p-0">
-									<table class="table p-0 table-hover">
-										<thead style="font-size: 1.5em;">
-											<tr>
-												<th>No.</th>
-												<th>거래처<small>(공급받는 자)</small></th>
-												<th>이전잔액</th>
-												<th>매출금액</th>
-												<th>반품금액</th>
-												<th>입금금액</th>
-												<th>수정금액</th>
-												<th>잔여금액</th>
-												<th>담당자</th>
-												<th>최종거래일</th>
-											</tr>
-										</thead>
-										<tbody
-											style="font-size: 1.2em; font-variant: normal; text-align: justify;">
-											<tr>
-												<th>1</th>
-												<th>가나산업</th>
-												<th>1,000,000</th>
-												<th>3,000,000</th>
-												<th>300,000</th>
-												<th>3,300,000</th>
-												<th>3,300,000</th>
-												<th>0</th>
-												<th>오가나</th>
-												<th>2021-11-01</th>
-											</tr>
-											<tr>
-												<th>2</th>
-												<th>약성기계</th>
-												<th>0</th>
-												<th>1,000,000</th>
-												<th>100,000</th>
-												<th>1,100,000</th>
-												<th>0</th>
-												<th>0</th>
-												<th>갱스터</th>
-												<th>2021-11-05</th>
-											</tr>
-											<tr>
-												<th>3</th>
-												<th>한아람곡류</th>
-												<th>540,000</th>
-												<th>298,000</th>
-												<th>0</th>
-												<th>298,000</th>
-												<th>0</th>
-												<th>0</th>
-												<th>팔삼이</th>
-												<th>2021-11-04</th>
-											</tr>
-											<tr>
-												<th>4</th>
-												<th>(주)이천</th>
-												<th>190,800</th>
-												<th>990,000</th>
-												<th>99,000</th>
-												<th>1,089,000</th>
-												<th>1,000,000</th>
-												<th>0</th>
-												<th>이칠구</th>
-												<th>2021-11-04</th>
-											</tr>
-											<tr>
-												<th>5</th>
-												<th>(주)트랜스</th>
-												<th>390,000</th>
-												<th>245,455</th>
-												<th>24,545</th>
-												<th>270,000</th>
-												<th>0</th>
-												<th>0</th>
-												<th>육유기</th>
-												<th>2021-11-10</th>
-											</tr>
-											<tr>
-												<th>6</th>
-												<th>(주)3팀소프트</th>
-												<th>360,000</th>
-												<th>472,727</th>
-												<th>47,273</th>
-												<th>520,000</th>
-												<th>0</th>
-												<th>0</th>
-												<th>팔오기</th>
-												<th>2021-11-14</th>
-											</tr>
-											<tr>
-												<th>7</th>
-												<th>동화나라(주)</th>
-												<th>0</th>
-												<th>1,181,818</th>
-												<th>118,182</th>
-												<th>1,300,000</th>
-												<th>0</th>
-												<th>0</th>
-												<th>백삼백</th>
-												<th>2021-11-21</th>
-											</tr>
+								</tr>
+								<!--2번째 줄 끝  -->
+								<!--3번째 줄 시작 -->
+								<tr>
+									<th class="text-right pr-4"><label
+										class="btn btn-danger active" name="dateOption"
+										id="dateOptionName" style="font-size: 1.2em;"> 검색 옵션 </label>
+									</th>
+									<td>
+										<div class="search-types text-center">
+											<select name="search_type" class="form-control">
+												<div class="form-check">
+													<option value="">거래처 명</option>
+													<option value="">거래처등록번호</option>
+											</select>
+										</div> </select>
+										</div>
+									</td>
+									<td colspan="2"><input type="text"
+										class="form-control float-right"
+										style="padding: 0px 30px 0px 80px; width: 850px;"
+										placeholder="상 호 명 을  입 력 하 세 요"></td>
+									<td>
+										<div style="padding-left: 240px;">
+											<button type="button" class="btn btn-block btn-danger btn-lg"
+												style="width: 150px;">조 회</button>
+										</div>
+									</td>
+								</tr>
+								<!-- 3번째 줄 끝 -->
+							</tbody>
+						</table>
 
-										</tbody>
-									</table>
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-						</div>
-
-						<div class="dataTables_paginate paging_simple_numbers mx-auto"
-							id="example1_paginate">
-							<ul class="pagination">
-								<li class="paginate_button page-item previous disabled"
-									id="example1_previous"><a href="#"
-									aria-controls="example1" data-dt-idx="0" tabindex="0"
-									class="page-link">Previous</a></li>
-								<li class="paginate_button page-item active"><a href="#"
-									aria-controls="example1" data-dt-idx="1" tabindex="0"
-									class="page-link">1</a></li>
-								<li class="paginate_button page-item "><a href="#"
-									aria-controls="example1" data-dt-idx="2" tabindex="0"
-									class="page-link">2</a></li>
-								<li class="paginate_button page-item "><a href="#"
-									aria-controls="example1" data-dt-idx="3" tabindex="0"
-									class="page-link">3</a></li>
-								<li class="paginate_button page-item next" id="example1_next">
-									<a href="#" aria-controls="example1" data-dt-idx="7"
-									tabindex="0" class="page-link">Next</a>
-								</li>
-							</ul>
-						</div>
-
+						<!--seacrhOptionTable끝 -->
 
 					</div>
-			
+				</div>
 			</div>
-		</section>
-		<!-- /.content -->
+			<!-- /.card-body -->
 	</div>
+
+	<br />
+	<br />
+	<!--balance_sum_table시작  -->
+
+	<div class="container">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="balance_sum_table">
+							<table class="balanceSumTable float-center">
+								<!-- <colgroup>
+									<col width="33%">
+									<col width="34%">
+									<col width="33%">
+								</colgroup> -->
+								<tbody style="font-size:2.8em; text-align:center;">
+								<tr>
+									<td>
+										<div class="balace_sum_item_td pr-2 pl-2" >
+											<div class="balance_sum_item_title">세금계산서</div>
+										
+										</div>
+									</td>
+									<td>
+										<div class="balace_sum_item_td pr-2 pl-2 ">
+											<div class="balance_sum_item_title">계산서(면세)</div>
+										</div>
+									</td>
+									<td>
+										<div class="balace_sum_result_td pr-2 pl-2 ">
+											<div class="balance_sum_result_title">합계</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+								<td>
+								<div class="balace_sum_item_td pr-2 pl-2 text-center" >
+									<div class="balance_sum_item_result">0건 | 0원</div>
+									</div>
+									</td>
+									<td>
+									<div class="balace_sum_item_td pr-4 pl-4 ">
+										<div class="balance_sum_item_result">0건 | 0원</div>
+										</div>
+										</td>
+										<td>
+										<div class="balace_sum_result_td pr-2 pl-2 ">
+											<div class="balance_sum_result_result">0건 | 0원</div>
+										</div>
+									</td>
+										
+								
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--balance_sum_table끝  -->
+	<br />
+	<br />
+	<br />
+
+	<!-- 테이블  시작-->
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<h6 class="card-title">
+						결제 확정 날짜는
+						<code>계산서 발행일을</code>
+						기준으로 합니다.
+					</h6>
+
+					<div class="card-tools">
+						<div class="input-group input-group-sm">
+							<div class="input-group-append "></div>
+						</div>
+					</div>
+					<div class="col-sm-push-12 col-md-push-6"
+						style="text-align: right;">
+						<div class="dt-buttons btn-group flex-wrap">
+							<button class="btn btn-danger buttons-copy buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>Copy</span>
+							</button>
+							<button class="btn btn-danger buttons-csv buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>CSV</span>
+							</button>
+							<button class="btn btn-danger buttons-excel buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>Excel</span>
+							</button>
+							<button class="btn btn-danger buttons-pdf buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>PDF</span>
+							</button>
+							<button class="btn btn-danger buttons-print" tabindex="0"
+								aria-controls="example1" type="button">
+								<span>Print</span>
+							</button>
+							<div class="btn-group">
+								<button
+									class="btn btn-danger buttons-collection dropdown-toggle buttons-colvis"
+									tabindex="0" aria-controls="example1" type="button"
+									aria-haspopup="true" aria-expanded="false">
+									<span>Column visibility</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.card-header -->
+
+				<!-- card-hody Start -->
+				<br /> <br />
+
+				<div class="card-body table-responsive p-0">
+					<table class="table p-0 table-hover">
+						<thead style="font-size: 1.5em;">
+							<tr>
+								<th>선 택</th>
+								<th>No.</th>
+								<th>작 성 일</th>
+								<th>등 록 일</th>
+								<th>유 형</th>
+								<th>거 래 처<small>거래인성명</small></th>
+								<th>등록번호</th>
+								<th>합 계</th>
+								<th>다운로드횟수</th>
+								<th>수정/삭제</th>
+							</tr>
+						</thead>
+						<tbody
+							style="font-size: 1.2em; font-variant: normal; text-align: justify;">
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check1"> <label
+											for="check1"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check2"> <label
+											for="check2"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check3"> <label
+											for="check3"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check4"> <label
+											for="check4"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check5"> <label
+											for="check5"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check6"> <label
+											for="check6"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check7"> <label
+											for="check7"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+
+
+						</tbody>
+					</table>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+
+		<div class="dataTables_paginate paging_simple_numbers mx-auto"
+			id="example1_paginate">
+			<ul class="pagination">
+				<li class="paginate_button page-item previous disabled"
+					id="example1_previous"><a href="#" aria-controls="example1"
+					data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+				<li class="paginate_button page-item active"><a href="#"
+					aria-controls="example1" data-dt-idx="1" tabindex="0"
+					class="page-link">1</a></li>
+				<li class="paginate_button page-item "><a href="#"
+					aria-controls="example1" data-dt-idx="2" tabindex="0"
+					class="page-link">2</a></li>
+				<li class="paginate_button page-item "><a href="#"
+					aria-controls="example1" data-dt-idx="3" tabindex="0"
+					class="page-link">3</a></li>
+				<li class="paginate_button page-item next" id="example1_next">
+					<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+					class="page-link">Next</a>
+				</li>
+			</ul>
+		</div>
+
+
+	</div>
+
+
+	</section>
+	<!-- /.content -->
+
 	<!-- /.content-wrapper -->
 	<!-- ./wrapper -->
 
