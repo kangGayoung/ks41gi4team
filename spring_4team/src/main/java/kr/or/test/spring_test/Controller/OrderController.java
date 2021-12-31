@@ -1,6 +1,7 @@
 package kr.or.test.spring_test.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -8,25 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/order")
 public class OrderController {
 	
-	@GetMapping("/dailyOrder")
-	public String dailyOrder() {
-		return "contents/order/dailyOrder/dailyOrder";
-	}
-	@GetMapping("/deliMG")
-	public String deliMG() {
-		return "contents/order/deliMG/deliMG";
-	}
-	@GetMapping("/orderByStore")
-	public String orderByStore() {
-		return "contents/order/orderByStore/orderByStore";
-	}
+	
 	@GetMapping("/orderMG")
-	public String orderMG() {
-		return "contents/order/orderMG/orderMG";
+	public String orderMG(Model model) {
+		model.addAttribute("title", "주문관리");
+		return "goods/order/orderMG/orderMG";
 	}
+	
 	@GetMapping("/preOrder")
 	public String preOrder() {
-		return "contents/order/preOrder/preOrder";
+		return "goods/order/preOrder/preOrder";
+	}
+	
+	@GetMapping("/returnList")
+	public String returnList() {
+		return "goods/order/returnList/returnList";
 	}
 	
 	

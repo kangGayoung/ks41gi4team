@@ -1,0 +1,94 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+ 	 layout:decorate="@{layout/default}">
+  <th:block layout:fragment="customContent" >
+  	<title th:text="${title}"></title>
+  </th:block>
+	<th:block layout:fragment="customContents" >
+	
+		<div class="wrapper">
+			
+			    <!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="card card-warning">
+						<div class="card-header">
+		                	<h3 class="card-title">사원 등록</h3>
+						</div>
+			              <!-- /.card-header -->
+			              
+					<div class="card-body">
+						<div class="form-group row">
+	                    	<label for="inputEmail3" class="col-sm-2 col-form-label">아이디</label>
+		                    <div class="col-sm-10">
+		                      <input type="email" class="form-control" id="staffId" placeholder="ID">
+		                    </div>
+						</div>
+						<div class="form-group row">
+							<label for="inputPassword3" class="col-sm-2 col-form-label">비밀번호</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="staffPW" placeholder="Password">
+		                    </div>
+						</div>
+						<div class="form-group row">
+	                    	<label for="inputEmail3" class="col-sm-2 col-form-label">이름</label>
+		                    <div class="col-sm-10">
+		                      <input type="email" class="form-control" id="staffName" placeholder="Name">
+		                    </div>
+						</div>
+						<div class="form-group row">
+	                    	<label for="inputEmail3" class="col-sm-2 col-form-label">생년월일</label>
+		                    <div class="input-group">
+                    			<div class="input-group-prepend">
+                      				<span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+								</div>
+								<input type="text" class="form-control" id="staffBirth" data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy" data-mask="" inputmode="numeric">
+							</div>
+						</div>
+						<div class="form-group row">
+	                    	<label for="inputEmail3" class="col-sm-2 col-form-label">입사일</label>
+		                    <div class="input-group">
+                    			<div class="input-group-prepend">
+                      				<span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+								</div>
+								<input type="text" class="form-control" id="staffRegDate" data-inputmask-alias="datetime" data-inputmask-inputformat="mm/dd/yyyy" data-mask="" inputmode="numeric">
+							</div>
+						</div>
+						<div class="form-group row">
+	                    	<label for="inputEmail3" class="col-sm-2 col-form-label">연락처</label>
+		                    <div class="col-sm-10">
+		                      <input type="email" class="form-control" id="staffPhone" placeholder="phone">
+		                    </div>
+						</div>
+						<div class="form-group row">
+	                    	<label for="inputEmail3" class="col-sm-2 col-form-label">주소</label>
+		                    <div class="col-sm-10">
+		                      <input type="email" class="form-control" id="staffAddr" placeholder="address">
+		                    </div>
+						</div>
+						
+			             
+						<table class="row justify-content-end">
+							<tbody>
+			              		<tr>
+			              			<td style="padding: 10px">
+			              				<button type="button" class="btn btn-block btn-default">등록 취소</button>
+			              			</td>
+			              			<td style="padding: 10px">
+			              				<button type="button" class="btn btn-block btn-primary">등록 완료</button>
+			              			</td>
+			              		</tr>
+			              	</tbody>
+						</table>
+					</div>
+			              <!-- /.card-body -->
+					</div>
+				</div>
+			</section>    
+		    <!-- /.content -->
+		</div>
+			
+	
+	</th:block>	
+</html>
