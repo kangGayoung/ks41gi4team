@@ -40,11 +40,25 @@ public class BasicController {
 		
 	}
 	
-	
+	//post매핑으로 바꿀것
 	@GetMapping("/staffInsert")
 	public String staffInsert() {
 		return "contents/basicMG/staffInsert/staffInsert";
 	}
+	@GetMapping("/staffUpdate")
+	public String staffUpdate() {
+		return "contents/basicMG/staffInsert/staffUpdate";
+	}
+	@GetMapping("/staffDelete")
+	public String staffDelete() {
+		return "contents/basicMG/staffInsert/staffDelete";
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	@GetMapping("/staffList")
@@ -64,7 +78,7 @@ public class BasicController {
 		return "contents/basicMG/staffPay/staffPay";
 	}
 	
-	@GetMapping("/businessInsert")
+	@PostMapping("/businessInsert")
 	public String businessInsert() {
 		return "contents/basicMG/businessInsert/businessInsert";
 	}
