@@ -7,30 +7,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.or.test.spring_test.service.MainService;
-
 @Controller
+@RequestMapping("/settlement")
 public class SettlementController{
-	
-	private MainService mainService;
-	
-	
 	
 	@GetMapping("/purchaseLookup")
 	public String purchaseLookup() {
 
-		return "yh/settlementManagement/purchaseLookup";
+		return "settlement/purchaseLookup";
 	}
 	
 	@GetMapping("/salesLookup")
 	public String salesLookup(){
 		
-		return "yh/settlementManagement/salesLookup";
+		return "settlement/salesLookup";
 	}
 	@GetMapping("/orderInvoice")
 	public String orderInvoice(){
 		
-		return "yh/settlementManagement/orderInvoice";
+		return "settlement/orderInvoice";
 	}
 	
 	
