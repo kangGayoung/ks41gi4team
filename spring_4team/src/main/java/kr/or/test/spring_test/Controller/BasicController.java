@@ -73,12 +73,9 @@ public class BasicController {
 		return "contents/basicMG/staffList/staffList";
 	}
 	
-	@GetMapping("/staffPay")
-	public String staffPay() {
-		return "contents/basicMG/staffPay/staffPay";
-	}
 	
-	@PostMapping("/businessInsert")
+	//post로
+	@GetMapping("/businessInsert")
 	public String businessInsert() {
 		return "contents/basicMG/businessInsert/businessInsert";
 	}
