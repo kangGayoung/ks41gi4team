@@ -90,15 +90,7 @@ public class BasicController {
 	public String storageInfo() {
 		return "contents/basicMG/storageInfo/storageInfo";
 	}
-	@GetMapping("/storageInsert")
-	public String storageInsert() {
-		return "contents/basicMG/storageInfo/storageInsert";
-	}
 	
-	@GetMapping("/displayInfo")
-	public String displayInfo() {
-		return "contents/basicMG/displayInfo/displayInfo";
-	}
 
 	
 	
