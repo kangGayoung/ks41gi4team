@@ -6,8 +6,8 @@
   	<title th:text="${title}"></title>
   </th:block>
 	<th:block layout:fragment="customContents" >
-
-v.220102_1342
+v.220101_0550
+v.220102_
 <div class="wrapper">
 
 		<!-- Preloader -->
@@ -15,29 +15,35 @@ v.220102_1342
 		<img class="animation__shake" src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
 		</div>
 		
-
-
     <!-- Main content -->
+
+
 
 	<section class="content">
 		<div class="container-fluid">
 			<!-- searchOption-card -->
-					
-				<div class="title-row clearfix">
-					<div class="page-header">
-						<h2>일자 별 거래현황</h2>
-					</div>
-				</div>
-				<div class="card" style="padding-bottom: 5px;">
-					<div class="card-body">
-						<form class="form-inline" style="padding-bottom: 4px; padding-left:95px;">
-							<form id="listFrm" method="get" action="/vendor/ledger/daily_order_goods_list">
-							<input type="hidden" name="shop_id" value="">
-							<input type="hidden" name="shop_name" value="">
-							<input type="hidden" name="action" value="">
-							<input type="hidden" name="page" value="1">
-							<input type="hidden" id="order_by1" name="order_by1" value="desc">
+			<div class="card" style="padding-bottom: 5px;">
+				<div class="card-body">
+					<form class="form-inline" style="padding-bottom: 4px; padding-left:95px;">
+		
+			<div id="wrap" class="goods-list clearfix">
+	<div class="title-row clearfix">
+		<div class="page-header">
+			<h2>일자 별 거래현황</h2>
+		</div>
+		<ul class="breadcrumb">
+			<li><a href="/vendor/dashboard">홈</a></li>
+			<li><a href="/vendor/ledger/daily_order_goods_list">원장 관리</a></li>
+			<li class="active"><a href="/vendor/ledger/daily_order_goods_list">일자 별 거래현황</a></li>
+		</ul>
+	</div>
 
+	<form id="listFrm" method="get" action="/vendor/ledger/daily_order_goods_list">
+	<input type="hidden" name="shop_id" value="">
+	<input type="hidden" name="shop_name" value="">
+	<input type="hidden" name="action" value="">
+	<input type="hidden" name="page" value="1">
+	<input type="hidden" id="order_by1" name="order_by1" value="desc">
 
 	<div class="search-box clearfix">
 		<div class="search-wrap clearfix">
