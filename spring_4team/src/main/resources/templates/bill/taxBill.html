@@ -17,129 +17,128 @@
 
 	<div class="wrapper">
 		<!-- Content Header (Page header) -->
+		
+		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  v_0103_1700</h2>
 		<!-- /.content-header -->
 
 		<!-- Main content -->
-v.20211230_1540
-#계산서 관리 - > 목록을 조회 하고 (세금)계산서 발행 
 
-		<section class="content">
-			<div class="container-fluid">
-
-				<!-- searchOption-card -->
-				<div class="card"
-					style="margin-top: 30px; padding-bottom: 40px; padding-top: 40px;">
-					<div class="card-body">
-
-
-						<!--seacrhOptionTable시작  -->
-
-						<table class="searchOptionTable">
-							<colgroup>
-								<col width="20%">
-								<col width="20%">
-								<col width="20%">
-								<col width="20%">
-								<col width="20%">
-							</colgroup>
-							<tbody>
-								<tr class="text-left">
-									<th class="text-right pr-4">
-										<label class="btn btn-danger active mt-2 " name="dateOption" id="dateOptionName" style="font-size: 1.2em;"> 기간옵션 </label>
-									</th>
-									<td colspan='3'>
-										<form class="form-inline">
-
-											<div class="form-check">
-
-												<label class="form-check-label"
-													style="padding-right: 40px; font-size: 1.2em;"> <input
-													type="radio" name="optionsRadios" id="optionsRadios1"
-													value="dateOption">
-													<p class="pl-2 pt-4">전체</p>
-												</label> <label class="form-check-label"
-													style="padding-right: 40px; font-size: 1.2em;"> <input
-													type="radio" name="optionsRadiosLastMonth"
-													id="optionsRadios1" value="dateOption">
-													<p class="pl-2 pt-4">전월</p>
-												</label> <label class="form-check-label"
-													style="padding-right: 40px; font-size: 1.2em;"> <input
-													type="radio" name="optionsRadiosThisMonth"
-													id="optionsRadios1" value="dateOption">
-													<p class="pl-2 pt-4">당월</p>
-												</label> <label class="form-check-label"
-													style="padding-right: 40px; font-size: 1.2em;"> <input
-													type="radio" name="optionsRadiosToday" id="optionsRadios1"
-													value="dateOption">
-													<p class="pl-2 pt-4">금일</p>
-												</label>
-
-											</div>
-
-										</form>
-									</td>
-								</tr>
-								<!--1번째 줄 끝  -->
-								<!--2번째 줄 시작  -->
-
-								<tr>
-									<th class="text-center"><label
-										class="btn btn-danger active" name="dateOption"
-										id="dateOptionName" style="font-size: 1.2em;"> 유 형 </label></th>
-									<td>
-										<div>
-											<select class="form-control">
-												<option value="">:::유 형:::</option>
-												<option value="">:::세금 계산서:::</option>
-												<option value="">:::계산서(면세):::</option>
-											</select>
-										</div>
-									</td>
-									<td></td>
-									<td></td>
-									<td></td>
-
-								</tr>
-								<!--2번째 줄 끝  -->
-								<!--3번째 줄 시작 -->
-								<tr>
-									<th class="text-right pr-4"><label
-										class="btn btn-danger active" name="dateOption"
-										id="dateOptionName" style="font-size: 1.2em;"> 검색 옵션 </label>
-									</th>
-									<td>
-										<div class="search-types text-center">
-											<select name="search_type" class="form-control">
-												<div class="form-check">
-													<option value="">거래처 명</option>
-													<option value="">거래처등록번호</option>
-											</select>
-										</div> </select>
-										</div>
-									</td>
-									<td colspan="2"><input type="text"
-										class="form-control float-right"
-										style="padding: 0px 30px 0px 80px; width: 850px;"
-										placeholder="상 호 명 을  입 력 하 세 요"></td>
-									<td>
-										<div style="padding-left: 240px;">
-											<button type="button" class="btn btn-block btn-danger btn-lg"
-												style="width: 150px;">조 회</button>
-										</div>
-									</td>
-								</tr>
-								<!-- 3번째 줄 끝 -->
-							</tbody>
-						</table>
-
-						<!--seacrhOptionTable끝 -->
-
-					</div>
-				</div>
-			</div>
-			<!-- /.card-body -->
-	</div>
-
+<section class="content">
+         <div class="container-fluid">
+            <div class="card">
+               <div class=" clearfix">
+                  <table class="col-md-12">
+                     <colgroup>
+                        <col width="13%">
+                        <col width="21%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="13%">
+                     </colgroup>
+                     <tbody>
+                              <tr class="first">
+                                  <th class="card-footer text-center">매출 구분</th>
+                                  <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+                                        <label for="period-type1">등록일</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
+                                        <label for="period-type2">작성일</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
+                                        <label for="period-type3">수정작성일</label>
+                                  </td>
+                                  <td colspan="4">
+                                  </td>
+                              </tr>
+                        <tr>
+                           <th class="card-footer text-center">기간</th>
+                           <td>
+                              <div class="search-buttons pl-2">
+                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="search-dates">
+                                 <div class="input-group">
+                                    <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                    <span style="padding-top: 7px;"> ~ </span>
+                                 </div>
+                              </div>
+                           </td>
+                           
+                           <td>
+                              <div class="search-dates mr0">
+                                 <div class="input-group mr0">
+                                    <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                     
+                        <tr>
+                           <th class="card-footer text-center" style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
+                           <td class="pr-2 pl-2 pt-2 pb-2">
+                              <div class="search-types">
+                                 <select name="search_type" class="form-control">
+                                    <option value="">::구분::</option>
+                                    <option value="">거래처명</option>
+                                    <option value="">등록번호</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td colspan="2" class="pr-2 pt-2 pb-2">
+                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
+                           </td>
+                           <td class="pr-2 pt-2 pb-2">
+                              <a class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th class="card-footer text-center">즉시 검색</th>
+                           <td class="pr-2 pl-2 pb-2">
+                              <div class="">
+                                 <select class="form-control">
+                                    <option value="">::유형::</option>
+                                    <option value="">세금계산서</option>
+                                    <option value="">계산서</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td class="pr-2 pb-2">
+                          <!--     <select class="form-control">
+                              </select>                     
+                           --> 
+                           </td>
+                           <td class="pr-2 pb-2">
+                           <!--    <select class="form-control">
+                              </select> -->                              
+                           </td>
+                           <td class="pr-2 pb-2">
+                              <!-- <select class="form-control">
+                              </select> -->
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            
+            
+          </div>
+      </section>
 	<br />
 	<br />
 	<!--balance_sum_table시작  -->
@@ -155,7 +154,7 @@ v.20211230_1540
 		<div class="col-12">
 			<div class="card">
 				<div class="card-header">
-					<h6 class="card-title">
+					<h6 class="card-title mt-2">
 						결제 확정 날짜는
 						<code>계산서 발행일을</code>
 						기준으로 합니다.
@@ -207,7 +206,7 @@ v.20211230_1540
 
 				<div class="card-body table-responsive p-0">
 					<table class="table p-0 table-hover">
-						<thead style="font-size: 1.5em;">
+						<thead style="font-size: 1.0em; text-align:center;">
 							<tr>
 								<th>선 택</th>
 								<th>No.</th>
@@ -222,7 +221,7 @@ v.20211230_1540
 							</tr>
 						</thead>
 						<tbody
-							style="font-size: 1.2em; font-variant: normal; text-align: justify;">
+							style="font-size: 1.0em; font-variant: normal; text-align: center;">
 							<tr>
 								<td>
 									<div class="icheck-danger">

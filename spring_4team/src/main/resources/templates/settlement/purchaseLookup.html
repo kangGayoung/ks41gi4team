@@ -1,241 +1,393 @@
 <!DOCTYPE html>
-
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
- 	 layout:decorate="@{layout/default}">
-  <th:block layout:fragment="customContent" >
-  	<title th:text="${title}"></title>
-  </th:block>
-	<th:block layout:fragment="customContents" >
-	
-		<div class="wrapper">
+	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="@{layout/default}">
+<th:block layout:fragment="customContent">
+	<title th:text="${title}"></title>
+</th:block>
+<th:block layout:fragment="customContents">
 
-		<!-- Preloader -->
-		<div class="preloader flex-column justify-content-center align-items-center">
-		<img class="animation__shake" src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-		</div>
+	<!-- Preloader -->
+	<div
+		class="preloader flex-column justify-content-center align-items-center">
+		<img class="animation__shake"
+			src="${pageContext.request.contextPath}/resources/adminLTE/dist/img/AdminLTELogo.png"
+			alt="AdminLTELogo" height="60" width="60">
+	</div>
+
+	<div class="wrapper">
+		<!-- Content Header (Page header) -->
 		
-    <!-- Main content -->
+		<h2 class= "padding : 2 0 10 5px;"> 매입 원장 조회 v.0103_17_31 </h2>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+
+<section class="content">
+         <div class="container-fluid">
+            <div class="card">
+               <div class=" clearfix">
+                  <table class="col-md-12">
+                     <colgroup>
+                        <col width="13%">
+                        <col width="21%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="13%">
+                     </colgroup>
+                     <tbody>
+                              <tr class="first">
+                                  <th class="card-footer text-center">매입 구분</th>
+                                  <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+                                        <label for="period-type1">매입원장등록일</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
+                                        <label for="period-type2">매입결제일</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
+                                        <label for="period-type3">입고확정일</label>
+                                  </td>
+                                  <td colspan="4">
+                                  </td>
+                              </tr>
+                        <tr>
+                           <th class="card-footer text-center">기간</th>
+                           <td>
+                              <div class="search-buttons pl-2">
+                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="search-dates">
+                                 <div class="input-group">
+                                    <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                    <span style="padding-top: 7px;"> ~ </span>
+                                 </div>
+                              </div>
+                           </td>
+                           
+                           <td>
+                              <div class="search-dates mr0">
+                                 <div class="input-group mr0">
+                                    <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                     
+                        <tr>
+                           <th class="card-footer text-center" style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
+                           <td class="pr-2 pl-2 pt-2 pb-2">
+                              <div class="search-types">
+                                 <select name="search_type" class="form-control">
+                                    <option value="">::구분::</option>
+                                    <option value="">거래처명</option>
+                                    <option value="">등록번호</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td colspan="2" class="pr-2 pt-2 pb-2">
+                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
+                           </td>
+                           <td class="pr-2 pt-2 pb-2">
+                              <a class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th class="card-footer text-center">즉시 검색</th>
+                           <td class="pr-2 pl-2 pb-2">
+                              <div class="">
+                                 <select class="form-control">
+                                    <option value="">::유형::</option>
+                                    <option value="">과세매입</option>
+                                    <option value="">면세매입</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td class="pr-2 pb-2">
+                          <!--     <select class="form-control">
+                              </select>                     
+                           --> 
+                           </td>
+                           <td class="pr-2 pb-2">
+                           <!--    <select class="form-control">
+                              </select> -->                              
+                           </td>
+                           <td class="pr-2 pb-2">
+                              <!-- <select class="form-control">
+                              </select> -->
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            
+            
+          </div>
+      </section>
+	<br />
+	<br />
+	<!--balance_sum_table시작  -->
 
 
-	<section class="content">
-		<div class="container-fluid">
-	
-	<!-- searchOption-card -->
-			<div class="card" style="padding-bottom: 5px;">
+	<!--balance_sum_table끝  -->
+	<br />
+	<br />
+	<br />
+
+	<!-- 테이블  시작-->
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
 				<div class="card-header">
-					<form class="form-inline" style="padding-bottom: 4px; padding-left:95px;">
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
-							<label class="btn btn-danger active"> <input style="font-size:13px"
-								type="radio" name="dateOption" id="option_a1" autocomplete="off"> 기간옵션
-							</label> 
-							<label class="btn btn-danger"> <input type="radio"
-								name="totalDate" id="option_a2" autocomplete="off"> 전체
-							</label> 
-							<label class="btn btn-danger"> <input type="radio"
-								name="lastMonth" id="option_a3" autocomplete="off"> 전월
-							</label> 
-							<label class="btn btn-danger"> <input type="radio"
-								name="thisMonth" id="option_a4" autocomplete="off"> 금월
-							</label> 
-							<label class="btn btn-danger"> <input type="radio"
-								name="today" id="option_a5" autocomplete="off"> 당일
-							</label>
-						 </div>
-						<div class="form-inline" style="padding-left: 120px;">
-							<label  class="btn btn-danger active" >기간검색</label>
-							<div style="padding-left:30px;">
-							<input type="date" style="padding:5px 10px 5px 10px;" placeholder="시작일자">
-							<i class="fas fa-minus" style="padding:5px;"></i>
-							<input type="date" style="padding:5px 10px 5px 10px;" placeholder="마감일자">
+					<h6 class="card-title mt-2">
+						매입 거래 날짜는
+						<code>입고 확정일을</code>
+						기준으로 합니다.
+					</h6>
+
+					<div class="card-tools">
+						<div class="input-group input-group-sm">
+							<div class="input-group-append "></div>
+						</div>
+					</div>
+					<div class="col-sm-push-12 col-md-push-6"
+						style="text-align: right;">
+						<div class="dt-buttons btn-group flex-wrap">
+							<button class="btn btn-danger buttons-copy buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>Copy</span>
+							</button>
+							<button class="btn btn-danger buttons-csv buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>CSV</span>
+							</button>
+							<button class="btn btn-danger buttons-excel buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>Excel</span>
+							</button>
+							<button class="btn btn-danger buttons-pdf buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>PDF</span>
+							</button>
+							<button class="btn btn-danger buttons-print" tabindex="0"
+								aria-controls="example1" type="button">
+								<span>Print</span>
+							</button>
+							<div class="btn-group">
+								<button
+									class="btn btn-danger buttons-collection dropdown-toggle buttons-colvis"
+									tabindex="0" aria-controls="example1" type="button"
+									aria-haspopup="true" aria-expanded="false">
+									<span>Column visibility</span>
+								</button>
 							</div>
 						</div>
-					</form>
+					</div>
 				</div>
-	
-	
 				<!-- /.card-header -->
-				<div class="card-body">
-					<form class="form-inline" style="padding-bottom: 4px; padding-left:95px;">
-						<!-- 매입처 검색 -->
-						<div class="btn-group btn-group-toggle form-inline" data-toggle="buttons">
-							<label class="btn btn-danger active" > 
-								<input type="radio" name="orderStoreName" id="option_1" autocomplete="off"> 매  입  처
-							</label>
-				        	<input type="text" name="table_search" class="form-control float-right" style=" padding:0px 30px 0px 80px; width:850px;"  placeholder="상 호 명 을  입 력 하 세 요">
-						</div>
-							<div style="padding-left:240px;">
-								<button type="button" class="btn btn-block btn-danger btn-lg"  style="width:150px; ">조 회</button>	                       	
-							</div>                   
-	                   </form>
-	                                                     
-	                </div>
-	                <!-- /.card-body -->
-			 </div>        
-				  
-			
-		
-		
-		<!-- 테이블  시작-->
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-					<div class="card-header">
-						<h6 class="card-title">
-							매입 거래 날짜는 <code>입고 확정일을</code>기준으로 합니다.</h6>
-			
-						<div class="card-tools">
-							<div class="input-group input-group-sm" >
-								<div class="input-group-append ">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /.card-header -->
-					<div class="card-body table-responsive p-0">
-						<table class="table p-0 table-hover">
-							<thead style = "font-size:1.5em; ">
-								<tr>
-									<th>No.</th>
-									<th>상호<small>(공급하는 자)</small></th>
-									<th>이전금액</th>
-									<th>공급가액</th>
-									<th>부가세</th>
-									<th>합계액</th>
-									<th>지급금액</th>
-									<th>수정금액</th>
-									<th>잔여지급금액</th>
-									<th>최종거래일</th>
-								</tr>
-							</thead>
-							<tbody style="font-size:1.2em; font-variant:normal; text-align:justify;">
-								<tr>
-									<th>1</th>
-									<th>가나산업</th>
-									<th>1,000,000</th>
-									<th>3,000,000</th>
-									<th>300,000</th>
-									<th>3,300,000</th>
-									<th>3,300,000</th>
-									<th>0</th>
-									<th>1,000,000</th>
-									<th>2021-11-01</th>
-								</tr>
-								<tr>
-									<th>2</th>
-									<th>약성기계</th>
-									<th>0</th>
-									<th>1,000,000</th>
-									<th>100,000</th>
-									<th>1,100,000</th>
-									<th>0</th>
-									<th>0</th>
-									<th>1,100,000</th>
-									<th>2021-11-05</th>
-								</tr>
-								<tr>
-									<th>3</th>
-									<th>한아람곡류</th>
-									<th>540,000</th>
-									<th>298,000</th>
-									<th>0</th>
-									<th>298,000</th>
-									<th>0</th>
-									<th>0</th>
-									<th>838,000</th>
-									<th>2021-11-04</th>
-								</tr>
-								<tr>
-									<th>4</th>
-									<th>(주)이천</th>
-									<th>190,800</th>
-									<th>990,000</th>
-									<th>99,000</th>
-									<th>1,089,000</th>
-									<th>1,000,000</th>
-									<th>0</th>
-									<th>279,000</th>
-									<th>2021-11-04</th>
-								</tr>
-								<tr>
-									<th>5</th>
-									<th>(주)트랜스</th>
-									<th>390,000</th>
-									<th>245,455</th>
-									<th>24,545</th>
-									<th>270,000</th>
-									<th>0</th>
-									<th>0</th>
-									<th>660,000</th>
-									<th>2021-11-10</th>
-								</tr>
-								<tr>
-									<th>6</th>
-									<th>(주)3팀소프트</th>
-									<th>360,000</th>
-									<th>472,727</th>
-									<th>47,273</th>
-									<th>520,000</th>
-									<th>0</th>
-									<th>0</th>
-									<th>880,000</th>
-									<th>2021-11-14</th>
-								</tr>
-								<tr>
-									<th>7</th>
-									<th>동화나라(주)</th>
-									<th>0</th>
-									<th>1,181,818</th>
-									<th>118,182</th>
-									<th>1,300,000</th>
-									<th>0</th>
-									<th>0</th>
-									<th>1,300,000</th>
-									<th>2021-11-21</th>
-								</tr>
-							
-							</tbody>
-						</table>
-					</div>
-					<!-- /.card-body -->
+
+				<!-- card-hody Start -->
+				<br /> <br />
+
+				<div class="card-body table-responsive p-0">
+					<table class="table p-0 table-hover">
+						<thead style="font-size: 1.0em; text-align:center;">
+							<tr>
+							<th>선택</th>
+							<th>No.</th>
+							<th>상호<small>(공급하는 자)</small></th>
+							<th>이전금액</th>
+							<th>공급가액</th>
+							<th>부가세</th>
+							<th>합계액</th>
+							<th>지급금액</th>
+							<th>수정금액</th>
+							<th>잔여지급금액</th>
+							<th>최종거래일</th>
+							</tr>
+						</thead>
+						<tbody
+							style="font-size: 1.0em; font-variant: normal; text-align: center;">
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check1"> <label
+											for="check1"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check2"> <label
+											for="check2"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check3"> <label
+											for="check3"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check4"> <label
+											for="check4"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check5"> <label
+											for="check5"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check6"> <label
+											for="check6"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check7"> <label
+											for="check7"></label>
+									</div>
+								</td>
+								<td>1</td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
+							</tr>
+
+
+						</tbody>
+					</table>
 				</div>
-				<!-- /.card -->
+				<!-- /.card-body -->
 			</div>
-			
-			<div class="dataTables_paginate paging_simple_numbers mx-auto" id="example1_paginate">
-				<ul class="pagination">
-					<li class="paginate_button page-item previous disabled" id="example1_previous">
-						<a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-					</li>
-					<li class="paginate_button page-item active">
-						<a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-					</li>
-					<li class="paginate_button page-item ">
-						<a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-					</li>
-					<li class="paginate_button page-item ">
-						<a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-					</li>
-					<li class="paginate_button page-item next" id="example1_next">
-						<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-					</li>
-				</ul>
-			</div>
-					
-			 	     
-	 	</div>
+			<!-- /.card -->
+		</div>
+
+		<div class="dataTables_paginate paging_simple_numbers mx-auto"
+			id="example1_paginate">
+			<ul class="pagination">
+				<li class="paginate_button page-item previous disabled"
+					id="example1_previous"><a href="#" aria-controls="example1"
+					data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+				<li class="paginate_button page-item active"><a href="#"
+					aria-controls="example1" data-dt-idx="1" tabindex="0"
+					class="page-link">1</a></li>
+				<li class="paginate_button page-item "><a href="#"
+					aria-controls="example1" data-dt-idx="2" tabindex="0"
+					class="page-link">2</a></li>
+				<li class="paginate_button page-item "><a href="#"
+					aria-controls="example1" data-dt-idx="3" tabindex="0"
+					class="page-link">3</a></li>
+				<li class="paginate_button page-item next" id="example1_next">
+					<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+					class="page-link">Next</a>
+				</li>
+			</ul>
+		</div>
+
+
+	</div>
+
+
 	</section>
-      
-    <!-- /.content -->
- </div>
-  <!-- /.content-wrapper -->
-</div>
-<!-- ./wrapper -->
+	<!-- /.content -->
+
+	<!-- /.content-wrapper -->
+	<!-- ./wrapper -->
 
 
-    
 
-  </th:block>
+</th:block>
 
-    
+
+</body>
+</html>
