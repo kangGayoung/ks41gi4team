@@ -23,7 +23,7 @@
 
 		<!-- Main content -->
 
-<section class="content">
+	<section class="content">
          <div class="container-fluid">
             <div class="card">
                <div class=" clearfix">
@@ -135,7 +135,7 @@
                                     <option value="">::매출처::</option>
                                     <option value="">::매입처::</option>
                            
-                              </select> -->                              
+                              </select>                           
                            </td>
                            <td class="pr-2 pb-2">
                            		<select class="form-control">
@@ -156,23 +156,84 @@
 	<br />
 	<br />
 	<!--balance_sum_table시작  -->
-
-
+<section class="content">
+   	 <div class="container-fluid">
+            <div class="card">
+	             <div class="balance_sum_table">
+			        <table class="table text-center">
+			            <colgroup>
+			                <col width="10%">
+			                <col width="15%">
+			                <col width="15%">
+			                <col width="15%">
+			                <col width="15%">
+			                <col width="15%">
+			                <col width="15%">
+			            </colgroup>
+			            <thead>
+				            <tr>
+				                <th>거래현황</th>
+				                <th>매출금액</th>
+				                <th>매출반품금액</th>
+				                <th>총 매출금액</th>
+				                <th>매입금액</th>
+				                <th>매입반품금액</th>
+				                <th>총 매입금액</th>
+				            </tr>
+			            </thead>
+			            <tbody>
+			                  <tr>
+			                    <td class="">공급가액</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                </tr>
+			                   <tr>
+			                    <td class="">세액</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                </tr>
+			                   <tr class="total">
+			                    <td class="">총 합계</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                    <td>0</td>
+			                </tr>
+			             </tbody>
+			        </table>
+	    </div>
+             
+             
+	 	</div>    
+	</div>
+</section>
+	
 	<!--balance_sum_table끝  -->
 	<br />
 	<br />
 	<br />
 
 	<!-- 테이블  시작-->
+	<section class="content">
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-header">
-					<!-- <h6 class="card-title mt-2">
-						전체
-						<code> </code>
+					<h6 class="card-title mt-2">
+						매출확정일은
+						<code>결제 확정일을</code>
 						기준으로 합니다.
-					</h6> -->
+					</h6>
 
 					<div class="card-tools">
 						<div class="input-group input-group-sm">
@@ -182,10 +243,17 @@
 					<div class="col-sm-push-12 col-md-push-6"
 						style="text-align: right;">
 						<div class="dt-buttons btn-group flex-wrap">
-							
+							<button class="btn btn-danger buttons-copy buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>Copy</span>
+							</button>
+							<button class="btn btn-danger buttons-csv buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>CSV</span>
+							</button>
 							<button class="btn btn-danger buttons-excel buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
-								<span>Excel다운로드</span>
+								<span>Excel</span>
 							</button>
 							<button class="btn btn-danger buttons-pdf buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
@@ -193,7 +261,7 @@
 							</button>
 							<button class="btn btn-danger buttons-print" tabindex="0"
 								aria-controls="example1" type="button">
-								<span>거래현황출력</span>
+								<span>Print</span>
 							</button>
 							<div class="btn-group">
 								<button
@@ -208,49 +276,53 @@
 				</div>
 				<!-- /.card-header -->
 
-				<!-- card-hody Start -->
+				<!-- card-body Start -->
 				<br /> <br />
 
 				<div class="card-body table-responsive p-0">
 					<table class="table p-0 table-hover">
 						<thead style="font-size: 1.0em; text-align:center;">
 							<tr>
-							<th>선택</th>
-							<th>No.</th>
-							<th>주문일시</th>
-							<th>거래구분</th>
-							<th>거래처</th>
-							<th>결제구분</th>
-							<th>과세구분</th>
-							<th>상품명</th>
-							<th>규격(단위)</th>
-							<th>수량</th>
-							<th>단가</th>
-							<th>공급가액</th>
-							<th>세액</th>
-							<th>합계</th>
-							<th>세액</th>
+							<th>선택</th> <!--1 선택  -->
+							<th>No.</th> <!--2 No.  -->
+							<th>주문일시</th> <!--3 주문일시  -->
+							<th>거래구분</th> <!--4 거래구분  -->
+							<th>거래처</th> <!--5 거래처  -->
+							<th>결제구분</th> <!--6 결제구분 : 신용카드 / 계좌이체  -->
+							<th>과세구분</th> <!-- 7 과세구분 -->
+							<th>상품명</th> <!-- 8상품명 -->
+							<th>규격(단위)</th> <!--9 규격(단위)  -->
+							<th>수량</th> <!-- 10 수량 -->
+							<th>단가</th> <!-- 11 단가 -->
+							<th>공급가액</th> <!--12 공급가액 -->
+							<th>세액</th> <!--13 세액 -->
+							<th>합계</th> <!--14 합계 -->
+							<th>비고</th> <!--15 세액  -->
 							</tr>
 						</thead>
-						<tbody
-							style="font-size: 1.0em; font-variant: normal; text-align: center;">
+						<tbody style="font-size: 1.0em; font-variant: normal; text-align: center;">
 							<tr>
 								<td>
 									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check1"> <label
-											for="check1"></label>
+										<input type="checkbox" value="" id="check1"> 
+										<label for="check1"></label>
 									</div>
-								</td>
-								<th>1</th>
-									<th>가나산업</th>
-									<th>1,000,000</th>
-									<th>3,000,000</th>
-									<th>300,000</th>
-									<th>3,300,000</th>
-									<th>3,300,000</th>
-									<th>0</th>
-									<th>오가나</th>
-									<th>2021-11-01</th>
+								</td><!--1 선택  -->
+								<td>1</td>
+						        <td>0원</td>
+						        <td>0</td>
+						        <td>300원(건)</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td> </td>
 							</tr>
 							<tr>
 								<td>
@@ -259,16 +331,22 @@
 											for="check2"></label>
 									</div>
 								</td>
-								<th>2</th>
-									<th>약성기계</th>
-									<th>0</th>
-									<th>1,000,000</th>
-									<th>100,000</th>
-									<th>1,100,000</th>
-									<th>0</th>
-									<th>0</th>
-									<th>갱스터</th>
-									<th>2021-11-05</th>
+								<td>1</td>
+						        <td>0원</td>
+						        <td>0</td>
+						        <td>300원(건)</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td> </td>
+							</tr>
 							</tr>
 							<tr>
 								<td>
@@ -278,14 +356,20 @@
 									</div>
 								</td>
 								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>수정/삭제</td>
+						        <td>0원</td>
+						        <td>0</td>
+						        <td>300원(건)</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td> </td>
 							</tr>
 							<tr>
 								<td>
@@ -295,14 +379,20 @@
 									</div>
 								</td>
 								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>수정/삭제</td>
+						        <td>0원</td>
+						        <td>0</td>
+						        <td>300원(건)</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td> </td>
 							</tr>
 							<tr>
 								<td>
@@ -312,14 +402,20 @@
 									</div>
 								</td>
 								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>수정/삭제</td>
+						        <td>0원</td>
+						        <td>0</td>
+						        <td>300원(건)</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td> </td>
 							</tr>
 							<tr>
 								<td>
@@ -329,14 +425,20 @@
 									</div>
 								</td>
 								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>수정/삭제</td>
+						        <td>0원</td>
+						        <td>0</td>
+						        <td>300원(건)</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td> </td>
 							</tr>
 							<tr>
 								<td>
@@ -346,14 +448,20 @@
 									</div>
 								</td>
 								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>수정/삭제</td>
+						        <td>0원</td>
+						        <td>0</td>
+						        <td>300원(건)</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td>0원</td>
+						        <td> </td>
 							</tr>
 
 
@@ -391,16 +499,13 @@
 	</div>
 
 
-	</section>
 	<!-- /.content -->
 
 	<!-- /.content-wrapper -->
 	<!-- ./wrapper -->
 
-
-
+	</section>
+	</div>
 </th:block>
-
-
 </body>
 </html>

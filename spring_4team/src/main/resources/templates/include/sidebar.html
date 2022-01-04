@@ -224,7 +224,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle"></i>
               <p>
-                                정산 관리!김연희
+                               원장 관리!김연희
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -256,24 +256,6 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-               명세서
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a th:href="@{/bill/accounts}"class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
-                      <p>정산서</p>
-                    </a>
-                  </li>
-                
-                </ul>
-              </li>
             </ul>
           </li>
           <li class="nav-item">
@@ -293,17 +275,24 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a th:href="@{/bill/taxBill}" class="nav-link">
+                    <a th:href="@{/bill/accounts}"class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>(세금)계산서 조회</p>
+                      <p>정산서</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a th:href="@{/bill/purchaseInvoice}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>매입계산서 </p>
+                      <p>거래명세서 </p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a th:href="@{/bill/taxBill}" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>(세금)계산서 조회</p>
+                    </a>
+                  </li>
+                </ul>
                 </ul>
               </li>
               
