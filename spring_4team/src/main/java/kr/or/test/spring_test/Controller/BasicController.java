@@ -73,12 +73,9 @@ public class BasicController {
 		return "contents/basicMG/staffList/staffList";
 	}
 	
-	@GetMapping("/staffPay")
-	public String staffPay() {
-		return "contents/basicMG/staffPay/staffPay";
-	}
 	
-	@PostMapping("/businessInsert")
+	//post로
+	@GetMapping("/businessInsert")
 	public String businessInsert() {
 		return "contents/basicMG/businessInsert/businessInsert";
 	}
@@ -93,15 +90,7 @@ public class BasicController {
 	public String storageInfo() {
 		return "contents/basicMG/storageInfo/storageInfo";
 	}
-	@GetMapping("/storageInsert")
-	public String storageInsert() {
-		return "contents/basicMG/storageInfo/storageInsert";
-	}
 	
-	@GetMapping("/displayInfo")
-	public String displayInfo() {
-		return "contents/basicMG/displayInfo/displayInfo";
-	}
 
 	
 	
