@@ -240,8 +240,7 @@
 							<div class="input-group-append "></div>
 						</div>
 					</div>
-					<div class="col-sm-push-12 col-md-push-6"
-						style="text-align: right;">
+					<div class="col-sm-push-12 col-md-push-6" style="text-align: right;">
 						<div class="dt-buttons btn-group flex-wrap">
 							<button class="btn btn-danger buttons-copy buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
@@ -463,146 +462,13 @@
 						        <td>0원</td>
 						        <td> </td>
 							</tr>
-
-
-<<<<<<< HEAD
 						</tbody>
 					</table>
 				</div>
 				<!-- /.card-body -->
 			</div>
 			<!-- /.card -->
-=======
-	<div class="search-box clearfix">
-		<div class="search-wrap clearfix">
-			<table class="search_table">
-				<colgroup>
-					<col width="100">
-					<col width="570">
-					<col width="*">
-				</colgroup>
-				<tbody>
-					<tr class="first">
-						<th>매출 구분</th>
-						<td style="border-right:1px dotted #d9d9d9; line-height:18px;">
-							<div style="margin-top:10px;">
-								<div class="radio radio-inline">
-									<input type="radio" name="period_type" id="period-type1" value="1" checked="">
-									<label for="period-type1">주문일시(발주등록일)</label>
-								</div>
-								<div class="radio radio-inline">
-									<input type="radio" name="period_type" id="period-type2" value="2">
-									<label for="period-type2">배송요청일(입고완료일)</label>
-								</div>
-							</div>
-						</td>
-						<td rowspan="3">
-							<a class="btn btn-search" role="button" onclick="searchList()" style="width:100px;">검색</a>
-						</td>
-					</tr>
-					<tr>
-						<th>기간</th>
-						<td style="border-right:1px dotted #d9d9d9;">
-							<div class="search-buttons">
-								<a class="btn btn-info" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-								<a class="btn btn-info" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-								<a class="btn btn-info" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-								<a class="btn btn-info" role="button" chk_type="n" onclick="setDate('n')">당일</a>
-							</div>
-							<div class="search-dates">
-								<div class="input-group">
-									<input id="sdate" name="sdate" type="text" value="2016-01-01" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
-									<span class="input-group-addon" id="basic-addon2">
-										<a onclick="calendarAdmin('sdate');" role="button">
-										<img src="https://content.marketbom.com/vendor-assets/vendor_pc/img/ico-calendar2.png"></a>
-									</span>
-								</div>
-							</div>
-							<div class="search-label" style="width:10px;">
-								<label> ~ </label>
-							</div>
-							<div class="search-dates mr0">
-								<div class="input-group mr0">
-									<input id="edate" name="edate" type="text" value="2021-12-30" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
-									<span class="input-group-addon" id="basic-addon2">
-										<a onclick="calendarAdmin('edate');" role="button"><img src="https://content.marketbom.com/vendor-assets/vendor_pc/img/ico-calendar2.png"></a>
-									</span>
-								</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th>키워드 검색</th>
-						<td style="border-right:1px dotted #d9d9d9;">
-							<div class="search-types" style="min-width:130px;">
-								<select name="search_type" class="form-control">
-									<option value="cvs.shop_name" selected="selected">거래처명</option>
-									<option value="cg.goods_name">상품명</option>
-								</select>
-							</div>
-							<div class="search-input">
-								<input type="text" id="search_text" name="search_text" value="" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." style="width:386px;">
-							</div>
-						</td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>즉시 검색</th>
-						<td colspan="2">
-							<div class="search-types" style="min-width:130px;">
-								<select class="form-control" name="pay_type" id="pay_type">
-									<option value="">거래 구분</option>
-                                                                            <option value="1">매출</option>
-                                                                            <option value="2">매출반품</option>
-                                                                            <option value="3">매입</option>
-                                                                            <option value="4">매입반품</option>
-                                                                            <option value="5">매출+반품</option>
-                                                                            <option value="6">매입+반품</option>
-                                    								</select>
-							</div>
-                            <div class="search-types" style="min-width:130px;">
-                                <select class="form-control" name="pay_method" id="pay_method">
-                                    <option value="">결제 구분</option>
-                                                                            <option value="PM003">외상거래</option>
-                                                                            <option value="PM006">예치금</option>
-                                                                            <option value="PM005">신용카드</option>
-                                                                    </select>
-                            </div>
-							<div class="search-types" style="min-width:130px;">
-								<select class="form-control" name="shop_type" id="shop_type">
-									<option value="">업체 구분</option>
-									<option value="1">매입처</option>
-									<option value="2">거래처</option>
-								</select>
-							</div>
-							<div class="search-types" style="min-width:130px;">
-								<select class="form-control" name="duty_free_yn" id="duty_free_yn">
-									<option value="">과세 구분</option>
-									<option value="n">과세</option>
-									<option value="y">면세</option>
-								</select>
-							</div>
-							<div class="search-types" style="min-width:130px;">
-								<select class="form-control" name="delivery_vendor_user_id" id="delivery_vendor_user_id" data-id="delivery_vendor_user_id"><option value="">배송 담당자</option>
-<option value="6544" person_hp="01077410410">김연희</option>
-</select>							</div>
-							<div class="search-types" style="min-width:130px;">
-								<select class="form-control" name="vendor_user_id" id="vendor_user_id" data-id="vendor_user_id"><option value="">영업 담당자</option>
-<option value="6544" person_hp="01077410410">김연희</option>
-</select>							</div>
-							<div class="search-types" style="min-width:130px;">
-								<select class="form-control" name="delivery_status" id="delivery_status">
-									<option value="">출고상태</option>
-									<option value="before_delivery">출고전</option>
-									<option value="after_delivery">출고완료</option>
-								</select>
-						</div>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
->>>>>>> refs/heads/develop
+
 		</div>
 
 		<div class="dataTables_paginate paging_simple_numbers mx-auto"
