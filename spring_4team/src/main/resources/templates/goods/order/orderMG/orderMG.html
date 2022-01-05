@@ -6,6 +6,7 @@
   <th:block layout:fragment="customContent" >
      <title th:text="${title}"></title>
   </th:block>
+  
 
    <th:block layout:fragment="customContents" >
    
@@ -162,66 +163,36 @@
                <table style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
                   <thead>
                      <tr>
-                        <th>No.</th>
-                        <th>상품코드</th>
-                        <th>상품명</th>
-                        <th>매입단가</th>
+                        <!-- <th>No.</th> -->
+                        <th>발주요청코드</th>
+                        <th>발주요청시각</th>
+                        <th>품목명</th>
+                        <th>품목규격</th>
+                        <th>품목단위</th>
+                        <th>판매원</th>
+                        <th>매입단가(VAT포함)</th>
                         <th>수량</th>
-                        <th>카테고리</th>
+                        <th>상태</th>
+                        <th>거래처 등록자</th>
                      </tr>
                   </thead>
                   <tbody>
-                     <tr>
-                        <td>1</td>
-                        <td>P000001</td>
-                        <td>탄산수2</td>
-                        <td>1000</td>
-                        <td>30</td>
-                        <td>음료</td>
-                     </tr>
-                     <tr>
-                        <td>2</td>
-                        <td>P000002</td>
-                        <td>마우스</td>
-                        <td>10000</td>
-                        <td>10</td>
-                        <td>컴퓨터 기타</td>
-                     </tr>
-                     <tr>
-                        <td>3</td>
-                        <td>P000003</td>
-                        <td>탄산수</td>
-                        <td>1000</td>
-                        <td>30</td>
-                        <td>음료</td>
-                     </tr>
-                     <tr>
-                        <td>4</td>
-                        <td>P000004</td>
-                        <td>커피</td>
-                        <td>1500</td>
-                        <td>30</td>
-                        <td>음료</td>
-                     </tr>
-                     <tr>
-                        <td>5</td>
-                        <td>P000005</td>
-                        <td>펜</td>
-                        <td>1000</td>
-                        <td>60</td>
-                        <td>필기구</td>
-                     </tr>
-                  </tbody>
+					<tr th:if="${not #lists.isEmpty(orderList)}" th:each="l : ${orderList}">
+						<td th:text="${l.orderCode}"></td>
+						<td th:text="${l.orderRegTime}"></td>
+						<td th:text="${l.goodsName}"></td>
+						<td th:text="${l.goodsWeight}"></td>
+						<td th:text="${l.goodsUnit}"></td>
+						<td th:text="${l.salesperson}"></td>
+						<td th:text="${l.purchasePrice}"></td>
+						<td th:text="${l.goodsQuantity}"></td>
+						<td th:text="${l.situation}"></td>
+						<td th:text="${l.staffId2}"></td>
+					</tr>
+				</tbody>
+                  
                </table>
-               <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                  <ul class="pagination">
-                     <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Prev</a></li>
-                     <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                     <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                     <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                     <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                  </ul>
-               </div>
+               
             </div>  
             
           </div>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.test.spring_test.mapper.OrderMapper">
+	<resultMap type="OrderList" id="OrderResultMap">
+		<result column="orderCode" property="orderCode"/>
+		<result column="orderRegTime" property="orderRegTime"/>
+		<result column="goodsName" property="goodsName"/>
+		<result column="goodsWeight" property="goodsWeight"/>
+		<result column="goodsUnit" property="goodsUnit"/>
+		<result column="salesperson" property="salesperson"/>
+		<result column="purchasePrice" property="purchasePrice"/>
+		<result column="goodsQuantity" property="goodsQuantity"/>
+		<result column="situation" property="situation"/>
+		<result column="staffId2" property="staffId2"/>
+	</resultMap>
+	
+	<select id="getorderList" parameterType="OrderList" resultType="OrderList">
+		SELECT 
+			o.orderCode
+			,o.orderRegTime
+			,o.goodsName
+			,o.goodsWeight
+			,o.goodsUnit
+			,o.salesperson
+			,o.purchasePrice
+			,o.goodsQuantity
+			,o.situation
+			,o.staffId2
+					
+		FROM 
+			k4_tb_order AS o
+	</select>
+</mapper>
