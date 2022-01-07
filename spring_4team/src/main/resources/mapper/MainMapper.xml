@@ -19,6 +19,31 @@
 		<result column="staffEditDate" property="staffEditDate"/>
 		<result column="authoriser" property="authoriser"/>
 	</resultMap> 
+	<select id="getStaffInfoListCount" resultType="int" fetchSize="1000">
+		SELECT
+			COUNT(1)
+		FROM
+			k4_tb_staff;
+	</select>
+	
+	
+	<select id="getStaffInfo" parameterType="map" resultType="map">
+		select
+			s.staffId 				AS staffId
+			,s.staffName			AS staffName
+			,s.staffLevel			AS staffLevel
+			,s.staffBirth			AS staffBirth
+			,s.staffEmail			AS staffEmail
+			,s.staffRegDate			AS staffRegDate
+			,s.staffPhone			AS staffPhone
+			,s.staffAddr			AS staffAddr
+		from
+			k4_tb_staff AS s
+		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};
+		</if>
+	
+	</select>
 	
 	<select id="getStaffCheck" parameterType="String" resultType="int">
 		SELECT
@@ -29,19 +54,5 @@
 			s.staffId = #{staffId};
 	</select>
 	
-	<select id="getStaffInfo" resultType="StaffInfo">
-		select
-			s.staffId
-			,s.mainBusinessCode
-			,s.staffPw
-			,s.staffName
-			,s.staffBirth
-			,s.staffLevel
-			,s.staffEmail
-			,s.staffRegDate
-			,s.staffPhone
-			,s.staffAddr
-		from
-			k4_tb_staff as s;
-	</select>
+	
 </mapper>

@@ -3,6 +3,8 @@ package kr.or.test.spring_test.Controller;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,8 @@ public class OrderController {
 	
 private OrderService orderService;
 	
+	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
+
 	//의존성 주입
 	public OrderController(OrderService orderService) {
 		this.orderService= orderService;
@@ -27,9 +31,11 @@ private OrderService orderService;
 	@GetMapping("/orderMG")
 	public String orderMG(Model model) {
 		
+		
 		List<OrderList> orderList = orderService.orderListPrint();
 		model.addAttribute("title", "주문관리");
 		model.addAttribute("orderList", orderList);
+		log.info("orderList : {}",orderList);
 		return "goods/order/orderMG/orderMG";
 	}
 	/*
