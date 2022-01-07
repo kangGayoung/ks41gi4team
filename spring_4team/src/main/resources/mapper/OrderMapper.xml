@@ -32,4 +32,30 @@
 		FROM 
 			k4_tb_order AS o
 	</select>
+	
+	<select id="getOrderCount" resultType="int" fetchSize="1000">
+		SELECT 
+			COUNT(1)
+		FROM 
+			k4_tb_order AS o;
+	</select>
+	<select id="getOrderList" parameterType="map" resultType="map">
+		SELECT 
+			o.orderCode
+			,o.orderRegTime
+			,o.goodsName
+			,o.goodsWeight
+			,o.goodsUnit
+			,o.salesperson
+			,o.purchasePrice
+			,o.goodsQuantity
+			,o.situation
+			,o.staffId2
+					
+		FROM  
+			k4_tb_order AS o
+		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};		
+		</if>	
+	</select>
 </mapper>

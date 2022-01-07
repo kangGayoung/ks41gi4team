@@ -276,10 +276,28 @@
 						<td th:text="${l.situation}"></td>
 						<td th:text="${l.staffId2}"></td>
 					</tr>
+					<tr th:unless="${not #lists.isEmpty(orderList)}">
+						<td colspan="4">
+							로그인 이력이 없습니다.
+						</td>
+					</tr>
 				</tbody>
-                  
+				
                </table>
-               
+               <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                  <ul class="pagination">
+                     <li class="paginate_button page-item previous " id="example2_previous"><a  th:if="${currentPage > 1}" th:href="@{/order/orderMG(currentPage=${currentPage - 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Prev</a></li>
+                     <th:block th:each="num : ${#numbers.sequence(startPageNum, endPageNum)}">
+                    	 <li class="paginate_button page-item">
+                    	 	<a th:if="${num != currentPage}" th:href="@{/order/orderMG(currentPage=${num})}" th:text="${num}" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link"></a>
+                    	 </li>
+                    	 <li class="paginate_button page-item active">
+                    	 	<a th:unless="${num != currentPage}" th:text="${num}" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link"></a>
+                    	 </li>
+                     </th:block>
+                     <li class="paginate_button page-item next" id="example2_next"><a th:if="${currentPage < lastPage}" th:href="@{/order/orderMG(currentPage=${currentPage + 1})}" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                  </ul>
+               </div>
             </div>  
             
           </div>
