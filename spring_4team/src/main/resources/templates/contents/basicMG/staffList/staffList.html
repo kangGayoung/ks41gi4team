@@ -5,57 +5,101 @@
   <th:block layout:fragment="customContent" >
   	<title th:text="${title}"></title>
   </th:block>
-	<th:block layout:fragment="customContents" >
-	
-	
-		<div class="wrapper">
-	
+	<th:block layout:fragment="custmJs">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+		<link rel="stylesheet" type="text/css" th:herf="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+		<script type="text/javascript">
 
-
-   
-         <div class="container-fluid">
-            <div class="card">
-               <div class=" clearfix">
-                  <table class="col-md-12">
-	                     <colgroup>
-	                        <col width="13%">
-	                        <col width="21%">
-	                        <col width="18%">
-	                        <col width="18%">
-	                        <col width="18%">
-	                        <col width="13%">
-	                     </colgroup>
-						<tbody>
-	                     
-							<tr>
-	                           <th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">사원 검색</th>
-	                           <td class="pr-2 pl-2 pt-2 pb-2">
-	                              <div class="search-types">
-	                                 <select name="search_type" class="form-control">
-	                                    <option value="">사원이름</option>
-	                                    <option value="">사원직급</option>
-	                                    <option value="">아이디</option>
-	                                 </select>
-	                              </div>
-	                           </td>
-	                           <td colspan="2" class="pr-2 pt-2 pb-2">
-	                              <input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
-	                           </td>
-	                           <td class="pr-2 pt-2 pb-2">
-	                              <a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
-	                           </td>
-	                        </tr>
-	                        
-	                     </tbody>
-	                  </table>
-	               </div>
-	            </div>
-	            
-	          </div>
-	     
-
+				
+			$(function(){
+				
+				$('#staffListTable').DataTable(
+					
+						var request = $.ajax({
+							url: "/basic/staffList",
+							method: "POST",
+							dataType: "JSON",
+							data: [
+								{staffId:staffId},
+								{staffName:staffName},
+								{staffLevel:staffLevel},
+								{staffBirth:staffBirth},
+								{staffEmail:staffEmail},
+								{staffRegDate:taffRegDate},
+								{staffPhone:staffPhone},
+								{staffAddr:staffAddr}
+							]
+							  
+						});
+							
+						request.done(function( msg ) {
+							console.log(msg);
+						});
+							
+						request.fail(function( jqXHR, textStatus ) {
+							  alert( "Request failed: " + textStatus );
+						});
+						
+				);
+				
+	
+				
+				 
+		
 			
-			    <!-- Main content -->
+				
+				
+				
+				
+
+				
+			});
+		
+		</script>
+	</th:block>
+	<th:block layout:fragment="customContents" >
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="card">
+					<div class=" clearfix">
+						<table class="col-md-12">
+							<colgroup>
+			                   <col width="13%">
+			                   <col width="21%">
+			                   <col width="18%">
+			                   <col width="18%">
+			                   <col width="18%">
+			                   <col width="13%">
+			                </colgroup>
+							<tbody>
+			                
+								<tr>
+									<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">사원 검색</th>
+										<td class="pr-2 pl-2 pt-2 pb-2">
+											<div class="search-types">
+												<select name="search_type" class="form-control">
+												   <option value="">사원이름</option>
+												   <option value="">사원직급</option>
+												   <option value="">아이디</option>
+												</select>
+											</div>
+										</td>
+										<td colspan="2" class="pr-2 pt-2 pb-2">
+											<input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+										</td>
+										<td class="pr-2 pt-2 pb-2">
+			   								<a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
+			                 			</td>
+			             			 </tr>
+				              
+	          					 </tbody>
+							</table>
+			     		</div>
+			  		</div>
+			  
+				</div>
+		
+		<!-- Main content -->
 			<section class="content">
 				<div class="container-fluid">
 					<div class="card card-warning">
@@ -63,49 +107,63 @@
 							<h3 class="card-title">사원 목록 조회</h3>
 						</div>
 						<!-- /.card-header -->
-						            
+			            
 						<div class="card-body table-responsive p-0">
-							<table class="table text-center table-head-fixed text-nowrap">
+							<table id="staffListTable" class="dataTable table text-center table-head-fixed text-nowrap">
 								<thead>
-									<th>사원 아이디</th>
-									<th>사원 이름</th>
-									<th>사원 등급</th>
-									<th>사원 생년월일</th>
-									<th>사원 입사일</th>
-									<th>사원 연락처</th>
-									<th>사원 주소</th>
-									<th>수정하기</th>
-									<th>삭제하기</th>
+									<tr>
+										<th>사원 아이디</th>
+										<th>사원 이름</th>
+										<th>사원 등급</th>
+										<th>사원 생년월일</th>
+										<th>사원 이메일</th>
+										<th>사원 입사일</th>
+										<th>사원 연락처</th>
+										<th>사원 주소</th>
+										<th>수정하기</th>
+										<th>삭제하기</th>
+									</tr>
 								</thead>
 								<tbody>
-									 <tr th:if="${not #lists.isEmpty(staffList)}" th:each="l: ${staffList}">
+									<tr th:if="not ${#lists.isEmpty(staffList)}" th:each="l : ${staffList}">
 										<td th:text="${l.staffId}"></td>
 										<td th:text="${l.staffName}"></td>
 										<td th:text="${l.staffLevel}"></td>
 										<td th:text="${l.staffBirth}"></td>
+										<td th:text="${l.staffEmail}"></td>
 										<td th:text="${l.staffRegDate}"></td>
 										<td th:text="${l.staffPhone}"></td>
 										<td th:text="${l.staffAddr}"></td>
-										<td>
-											<button type="button" >수정</button>
-										</td> 
-										<td>
-											<button type="button">삭제</button>
-										</td> 
 									</tr>
-									<tr th:unless="${not #lists.isEmpty(staffList)}">
+									<tr th:unless="not ${#lists.isEmpty(staffList)}">
+										<td>
+											<h3>검색결과가 없습니다.</h3>
+										</td>
 									</tr>
-									
 								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="4">
+											<a th:href="@{/basic/staffList}">처음</a>
+											<a th:if="${currentPage > 1}" th:href="@{/basic/staffList(currentPage=${currentPage - 1})}">이전</a>
+												<th:block th:each="num: ${#numbers.sequence(startPageNum, endPageNum)}">
+													<a th:if="${currentPage != num}" th:href="@{/basic/staffList(currentPage=${num})}" th:text="${num}"></a>
+													<span th:unless="${num != currentPage}"></span>
+												</th:block>
+											<a th:if="${currentPage < lastPage}" th:href="@{/basic/staffList(currentPage=${currentPage + 1})}">다음</a>
+											<a th:href="@{/basic/staffList(currentPage=${lastPage})}">마지막</a>
+										</td>
+									</tr>				
+								</tfoot>
 							</table>
 						           
 						           
 						</div>
-						<!-- /.card-body -->
+			<!-- /.card-body -->
 					</div>
 				</div>
 			</section>    
-		    <!-- /.content -->
+		   <!-- /.content -->
 		</div>
 			
 	</th:block>	
