@@ -60,7 +60,7 @@
 	<th:block layout:fragment="customContents" >
 		<div class="wrapper">
 			<div class="container-fluid">
-				<div class="card">
+				<div class="card col-md-12">
 					<div class=" clearfix">
 						<table class="col-md-12">
 							<colgroup>
@@ -109,7 +109,7 @@
 						<!-- /.card-header -->
 			            
 						<div class="card-body table-responsive p-0">
-							<table id="staffListTable" class="dataTable table text-center table-head-fixed text-nowrap">
+							<table id="staffListTable" class="table table-bordered table-hover dtr-inline">
 								<thead>
 									<tr>
 										<th>사원 아이디</th>
@@ -141,22 +141,27 @@
 										</td>
 									</tr>
 								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="4">
-											<a th:href="@{/basic/staffList}">처음</a>
-											<a th:if="${currentPage > 1}" th:href="@{/basic/staffList(currentPage=${currentPage - 1})}">이전</a>
-												<th:block th:each="num: ${#numbers.sequence(startPageNum, endPageNum)}">
-													<a th:if="${currentPage != num}" th:href="@{/basic/staffList(currentPage=${num})}" th:text="${num}"></a>
-													<span th:unless="${num != currentPage}"></span>
-												</th:block>
-											<a th:if="${currentPage < lastPage}" th:href="@{/basic/staffList(currentPage=${currentPage + 1})}">다음</a>
-											<a th:href="@{/basic/staffList(currentPage=${lastPage})}">마지막</a>
-										</td>
-									</tr>				
-								</tfoot>
 							</table>
-						           
+							<div class="dataTables_paginate paging_simple_numbers" style="margin:0 auto;">
+									<ul class="pagination"  >
+										<li class="paginate_button page-item previous" id="moveFirstPage">
+											<a th:if="${currentPage > 1}" th:href="@{/basic/staffList(currentPage=${currentPage - 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">이전</a>
+										</li>
+												<th:block th:each="num: ${#numbers.sequence(startPageNum, endPageNum)}">
+														<li class="paginate_button page-item ">	
+															<a th:if="${currentPage != num}" th:href="@{/basic/staffList(currentPage=${num})}" th:text="${num}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link"></a>
+														</li>	
+														<li class="paginate_button page-item previous" id="example2_previous" >
+															<span th:unless="${num != currentPage}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link" th:text="${num}"></span>
+														</li>
+												</th:block>
+										<li class="paginate_button page-item previous" id="example2_previous">
+											<a th:if="${currentPage < lastPage}" th:href="@{/basic/staffList(currentPage=${currentPage + 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">다음</a>
+										</li>	
+											
+									</ul>
+						
+							</div>
 						           
 						</div>
 			<!-- /.card-body -->
