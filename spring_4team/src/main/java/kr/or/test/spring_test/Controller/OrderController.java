@@ -21,7 +21,7 @@ public class OrderController {
 private OrderService orderService;
 	
 	//의존성 주입
-	public OrderController(OrderService orderService) {
+public OrderController(OrderService orderService) {
 		this.orderService= orderService;
 	}
 	/*
