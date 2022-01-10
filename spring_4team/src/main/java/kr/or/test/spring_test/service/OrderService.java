@@ -23,12 +23,18 @@ public class OrderService {
 	}
 	
 	
+	// 주문 검색
+	public List<OrderList> getOrderListBySearch01(String orderSearch01, String orderSearchVal) {
+		List<OrderList> orderList = orderMapper.getOrderListBySearch01(orderSearch01, orderSearchVal);
+		
+		return orderList;
+	}
+	
 
 	//주문 조회
 	public List<OrderList> orderListPrint() {
 		
-		List<OrderList> orderList = orderMapper.getorderList(); 
-		
+		List<OrderList> orderList = orderMapper.getorderList(); 		
 		System.out.println(orderList);
 		 
 		return orderList;
@@ -80,4 +86,7 @@ public class OrderService {
 		
 		return paramMap;
 	}
+
+
+
 }

@@ -38,123 +38,126 @@
          <div class="container-fluid">
             <div class="card">
                <div class=" clearfix">
-                  <table class="col-md-12">
-                     <colgroup>
-                        <col width="13%">
-                        <col width="21%">
-                        <col width="18%">
-                        <col width="18%">
-                        <col width="18%">
-                        <col width="13%">
-                     </colgroup>
-                     <tbody>
-                              <tr class="first">
-                                  <th class="card-footer text-center">매출 구분</th>
-                                  <td class="pr-2 pl-2 pt-3">
-                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
-                                        <label for="period-type1">발주등록일</label>
-                                   </td>
-                                   <td class="pr-2 pl-2 pt-3">
-                                        <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
-                                        <label for="period-type2">납기요청일</label>
-                                   </td>
-                                   <td class="pr-2 pl-2 pt-3">
-                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
-                                        <label for="period-type3">입고완료일</label>
-                                  </td>
-                                  <td colspan="4">
-                                  </td>
-                              </tr>
-                        <tr>
-                           <th class="card-footer text-center">기간</th>
-                           <td>
-                              <div class="search-buttons pl-2">
-                                          <a class="btn btn-info" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-                                          <a class="btn btn-info" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-                                          <a class="btn btn-info" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-                                          <a class="btn btn-info" role="button" chk_type="n" onclick="setDate('n')">당일</a>
-                              </div>
-                           </td>
-                           <td>
-                              <div class="search-dates">
-                                 <div class="input-group">
-                                    <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
-                                    <span class="input-group-addon" id="basic-addon2">
-                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
-                                    </span>
-                                    <span style="padding-top: 7px;"> ~ </span>
-                                 </div>
-                              </div>
-                           </td>
-                           
-                           <td>
-                              <div class="search-dates mr0">
-                                 <div class="input-group mr0">
-                                    <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
-                                    <span class="input-group-addon" id="basic-addon2">
-                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
-                                    </span>
-                                 </div>
-                              </div>
-                           </td>
-                        </tr>
-                     
-                        <tr>
-                           <th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
-                           <td class="pr-2 pl-2 pt-2 pb-2">
-                              <div class="search-types">
-                                 <select name="search_type" class="form-control">
-                                    <option value="">상품명</option>
-                                    <option value="">거래처</option>
-                                    <option value="">발주번호</option>
-                                 </select>
-                              </div>
-                           </td>
-                           <td colspan="2" class="pr-2 pt-2 pb-2">
-                              <input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
-                           </td>
-                           <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
-                           </td>
-                        </tr>
-                        <tr>
-                           <th class="card-footer text-center">즉시 검색</th>
-                           <td class="pr-2 pl-2 pb-2">
-                              <div class="">
-                                 <select class="form-control">
-                                    <option value="">발주 상태</option>
-                                    <option value="">발주 요청</option>
-                                    <option value="">발주 대기</option>
-                                    <option value="">발주 완료</option>
-                                    <option value="">발주 취소</option>
-                                 </select>
-                              </div>
-                           </td>
-                           <td class="pr-2 pb-2">
-                              <select class="form-control" >
-                                 <option value="">매입처 출고 상태</option>
-                                 <option value="">출고 대기</option>
-                                 <option value="">출고 완료</option>
-                              </select>                     
-                           
-                           </td>
-                           <td class="pr-2 pb-2">
-                              <select class="form-control">
-                                 <option value="">입고 상태</option>
-                                 <option value="">입고 대기</option>
-                                 <option value="">입고 완료</option>
-                                 <option value="">반품 완료</option>
-                              </select>                              
-                           </td>
-                           <td class="pr-2 pb-2">
-                              <select class="form-control">
-                                 <option value="">등록 구분</option>
-                                 <option value="">일반 등록</option>
-                              </select>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
+               		<form th:action="@{/order/orderMG}" method="post">
+	                  <table class="col-md-12">
+	                     <colgroup>
+	                        <col width="13%">
+	                        <col width="21%">
+	                        <col width="18%">
+	                        <col width="18%">
+	                        <col width="18%">
+	                        <col width="13%">
+	                     </colgroup>
+	                     <tbody>
+	                              <tr class="first">
+	                                  <th class="card-footer text-center">매출 구분</th>
+	                                  <td class="pr-2 pl-2 pt-3">
+	                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+	                                        <label for="period-type1">발주등록일</label>
+	                                   </td>
+	                                   <td class="pr-2 pl-2 pt-3">
+	                                        <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
+	                                        <label for="period-type2">납기요청일</label>
+	                                   </td>
+	                                   <td class="pr-2 pl-2 pt-3">
+	                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
+	                                        <label for="period-type3">입고완료일</label>
+	                                  </td>
+	                                  <td colspan="4">
+	                                  </td>
+	                              </tr>
+	                        <tr>
+	                           <th class="card-footer text-center">기간</th>
+	                           <td>
+	                              <div class="search-buttons pl-2">
+	                                          <a class="btn btn-info" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+	                                          <a class="btn btn-info" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+	                                          <a class="btn btn-info" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+	                                          <a class="btn btn-info" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+	                              </div>
+	                           </td>
+	                           <td>
+	                              <div class="search-dates">
+	                                 <div class="input-group">
+	                                    <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
+	                                    <span class="input-group-addon" id="basic-addon2">
+	                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+	                                    </span>
+	                                    <span style="padding-top: 7px;"> ~ </span>
+	                                 </div>
+	                              </div>
+	                           </td>
+	                           
+	                           <td>
+	                              <div class="search-dates mr0">
+	                                 <div class="input-group mr0">
+	                                    <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
+	                                    <span class="input-group-addon" id="basic-addon2">
+	                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+	                                    </span>
+	                                 </div>
+	                              </div>
+	                           </td>
+	                        </tr>
+	                     
+	                        <tr>
+	                           <th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
+	                           <td class="pr-2 pl-2 pt-2 pb-2">
+	                              <div class="search-types">
+		                                 <select name="orderSearch01" class="form-control">
+		                                    <option value="goodsName">상품명</option>
+		                                    <!-- <option value="">거래처</option> -->
+		                                    <option value="orderNum">발주번호</option>
+		                                 </select>
+	                              </div>
+	                           </td>
+	                           <td colspan="2" class="pr-2 pt-2 pb-2">
+	                              <input type="text" name="orderSearchVal" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." />                              
+	                           </td>
+	                           <td class="pr-2 pt-2 pb-2">
+	                              <button class="btn btn-search btn-info " type="submit" style="width:100%;">검색</button>
+	                           </td>
+		                             
+	                        </tr>
+	                        <tr>
+	                           <th class="card-footer text-center">즉시 검색</th>
+	                           <td class="pr-2 pl-2 pb-2">
+	                              <div class="">
+	                                 <select class="form-control">
+	                                    <option value="">발주 상태</option>
+	                                    <option value="">발주 요청</option>
+	                                    <option value="">발주 대기</option>
+	                                    <option value="">발주 완료</option>
+	                                    <option value="">발주 취소</option>
+	                                 </select>
+	                              </div>
+	                           </td>
+	                           <td class="pr-2 pb-2">
+	                              <select class="form-control" >
+	                                 <option value="">매입처 출고 상태</option>
+	                                 <option value="">출고 대기</option>
+	                                 <option value="">출고 완료</option>
+	                              </select>                     
+	                           
+	                           </td>
+	                           <td class="pr-2 pb-2">
+	                              <select class="form-control">
+	                                 <option value="">입고 상태</option>
+	                                 <option value="">입고 대기</option>
+	                                 <option value="">입고 완료</option>
+	                                 <option value="">반품 완료</option>
+	                              </select>                              
+	                           </td>
+	                           <td class="pr-2 pb-2">
+	                              <select class="form-control">
+	                                 <option value="">등록 구분</option>
+	                                 <option value="">일반 등록</option>
+	                              </select>
+	                           </td>
+	                        </tr>
+	                     </tbody>
+	                  </table>
+                  </form>
                </div>
             </div>
             
