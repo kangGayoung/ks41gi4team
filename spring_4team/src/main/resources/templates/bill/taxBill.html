@@ -2,17 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="@{layout/default}">
+	<!-- jQuery -->
 <th:block layout:fragment="customContent">
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-
-	
+<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
+ 	<script type="text/javascript">
+		$(function(){
+			$('.billReg').click(function(){
+				location.href= 'billReg';
+			});
+		});		
+			</script>
+ 	
+<!--  	$(document).ready(function() {
+					$('.billReg').click(function() {
+							$(location).attr('href','bill/billResult/billReg');
+					});
+				}); 
+			 -->
 
 		<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		
-		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  v_0103_1700</h2>
+		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  v_0110</h2>
 		<!-- /.content-header -->
 
 		<!-- Main content -->
@@ -97,7 +112,7 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
+                              <a class="btn btn-search btn-danger " role="button"  style="width:100%;">검색</a>
                            </td>
                         </tr>
                         <tr>
@@ -121,8 +136,11 @@
                               </select> -->                              
                            </td>
                            <td class="pr-2 pb-2">
-                              <!-- <select class="form-control">
-                              </select> -->
+                          				<div class="filter-btns">
+								                <a class="btn btn-add js-chk_new_vendor" role="button" href="" data-name="billReg">등록</a>
+								                <a class="btn btn-add js-chk_new_vendor" role="button" href="javascript:goBatchInvoiceReg(&quot;Y&quot;)">일괄 등록</a>
+										</div>
+
                            </td>
                         </tr>
                      </tbody>

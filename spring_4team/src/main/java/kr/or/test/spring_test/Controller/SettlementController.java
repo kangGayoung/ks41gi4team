@@ -4,27 +4,24 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.or.test.spring_test.dto.PurchaseLookupList;
-import kr.or.test.spring_test.service.OrderService;
 import kr.or.test.spring_test.service.SettlementService;
 
-
 @Controller
-@RequestMapping("/settlement")
+@RequestMapping ("/settlement")
 public class SettlementController{
 	
-	//의존성 주입
-	/*
-	 * @Autowired public SettlementController(SettlementService settlementService) {
-	 * this.settlementService = settlementService;
-	 * 
-	 * }
-	 */
 	
+	/*
+	 * private SettlementService settlementService;
+	 * 
+	 * 
+	 * @Autowired public SettlementController(SettlementService settlementService) {
+	 * this.settlementService = settlementService; }
+	 */
 	
 	
 	/*
@@ -38,6 +35,13 @@ public class SettlementController{
 	 * 
 	 * return "/settlement/settlementResult/purchaseLookList"; }
 	 */
+	
+	
+	@GetMapping("/purchaseLookList")
+	public String purchaselLookList() {
+		return	"settlementResult/purchaseLookList";
+	}
+	
 	
 	
 	@GetMapping("/purchaseLookup")

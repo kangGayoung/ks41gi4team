@@ -6,7 +6,15 @@
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-
+<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
+ 	<script type="text/javascript">
+		/* $(function(){
+			$('#purchaseLookBtn').click(function(){
+				location.href= 'purchaseLookList';
+			});
+		});		 */
+			</script>
 	
 
 		<!-- Content Header (Page header) -->
@@ -97,7 +105,8 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
+                         
+                              <button class="btn btn-search btn-danger " id="purchaseLookBtn" onclick="purchaseLookList" style="width:100%;" >>>>검색</button>
                            </td>
                         </tr>
                         <tr>
@@ -144,7 +153,9 @@
 	<br />
 	<br />
 
-	<!-- 테이블  시작-->
+
+<!-- <!-- 
+테이블  시작
 <section class="content">
 	<div class="row">
 		<div class="col-12">
@@ -195,9 +206,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- /.card-header -->
+				/.card-header
 
-				<!-- card-hody Start -->
+				card-hody Start
 				<br /> <br />
 
 				<div class="card-body table-responsive p-0">
@@ -350,9 +361,9 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- /.card-body -->
+				/.card-body
 			</div>
-			<!-- /.card -->
+			/.card
 		</div>
 
 		<div class="dataTables_paginate paging_simple_numbers mx-auto"
@@ -375,16 +386,22 @@
 					class="page-link">Next</a>
 				</li>
 			</ul>
-		</div>
+		</div> 
+		
+	
 
 
 	</div>
 
 
 	</section>
-	<!-- /.content -->
 
+테이블  끝
+
+ -->
 	<!-- /.content-wrapper -->
+	
+	
 	<!-- ./wrapper -->
 
 </div>
