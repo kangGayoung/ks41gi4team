@@ -1,16 +1,16 @@
 package kr.or.test.spring_test.dto;
 
-public class PurchaseLookupList { 
+public class Settlement { 
 	//tb_order (발주요청후거래처승인 ; tb_transactionstatement(거래명세서(한줄)
-	private String businessName; //거래처명 
-	private int lastResidual; //이전금액(tb없음)
-	private int goodsSupplyPrice;// 매입공급가액
-	private int vat; //매입세액
-	private int purchasePrice; //매입단가(포함)
-	private int totalAmount; //지급금액
-	private int reversePayment;//수정금액(tb없음)
-	private int residualPayment; //잔여지급금액 (tb에 없음)
-	private String dealDate; //최종거래일
+	private String businessName; //1.거래처명 
+	private int lastResidual; //2이전금액(tb없음)
+	private int goodsSupplyPrice;//3 매입공급가액
+	private int vat; //4매입세액
+	private int purchasePrice; //5매입단가(포함)
+	private int totalAmount; //6지급금액
+	private int reversePayment;//7수정금액(tb없음)
+	private int residualPayment; //8잔여지급금액 (tb에 없음)
+	private String dealDate; //9최종거래일
 	
 	public String getBusinessName() {
 		return businessName;
@@ -34,7 +34,7 @@ public class PurchaseLookupList {
 		return vat;
 	}
 	public void setVAT(int vat) {
-		vat =vat;
+		this.vat =vat;
 	}
 	public int getPurchasePrice() {
 		return purchasePrice;
