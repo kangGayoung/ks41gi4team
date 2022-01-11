@@ -45,6 +45,34 @@
 	
 	</select>
 	
+	<select id="getStaffInfoSearchList" parameterType="String" resultMap="staffResultMap">
+		SELECT
+			 staffId
+			, mainBusinessCode
+			, staffState
+			, staffPw
+			, staffName
+			, staffBirth
+			, staffLevel
+			, systemLevel
+			, staffEmail
+			, staffRegDate
+			, staffPhone
+			, staffAddr
+			, staffEditDate
+			, authoriser
+		FROM 
+			k4_tb_staff
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="searchValue != null and searchValue != ''.toString()">
+				${searchKey LIKE CONCAT('%', #{searchValue},'%');
+			</if>
+		</trim>
+	
+	
+	</select>
+	
+	
 	<select id="getStaffCheck" parameterType="String" resultType="int">
 		SELECT
 			COUNT(1)

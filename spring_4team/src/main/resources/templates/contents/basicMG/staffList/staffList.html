@@ -8,79 +8,33 @@
 	<th:block layout:fragment="custmJs">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
 		<link rel="stylesheet" type="text/css" th:herf="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
-		<script type="text/javascript">
-
-				
-			$(function(){
-				
-				$('#staffListTable').DataTable(
-					
-						var request = $.ajax({
-							url: "/basic/staffList",
-							method: "POST",
-							dataType: "JSON",
-							data: [
-								{staffId:staffId},
-								{staffName:staffName},
-								{staffLevel:staffLevel},
-								{staffBirth:staffBirth},
-								{staffEmail:staffEmail},
-								{staffRegDate:taffRegDate},
-								{staffPhone:staffPhone},
-								{staffAddr:staffAddr}
-							]
-							  
-						});
-							
-						request.done(function( msg ) {
-							console.log(msg);
-						});
-							
-						request.fail(function( jqXHR, textStatus ) {
-							  alert( "Request failed: " + textStatus );
-						});
-						
-				);
-				
-	
-				
-				 
 		
-			
-				
-				
-				
-				
-
-				
-			});
-		
-		</script>
 	</th:block>
 	<th:block layout:fragment="customContents" >
 		<div class="wrapper">
 			<div class="container-fluid">
 				<div class="card">
 					<div class=" clearfix">
-						<table class="col-md-12">
-							<colgroup>
-			                   <col width="13%">
-			                   <col width="21%">
-			                   <col width="18%">
-			                   <col width="18%">
-			                   <col width="18%">
-			                   <col width="13%">
-			                </colgroup>
-							<tbody>
-			                
+		                <form th:action="@{/basic/staffList}" method="post">
+							<table class="col-md-12">
+								<colgroup>
+				                   <col width="13%">
+				                   <col width="21%">
+				                   <col width="18%">
+				                   <col width="18%">
+				                   <col width="18%">
+				                   <col width="13%">
+				                </colgroup>
+								<tbody>
+				                
 								<tr>
 									<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">사원 검색</th>
 										<td class="pr-2 pl-2 pt-2 pb-2">
 											<div class="search-types">
-												<select name="search_type" class="form-control">
-												   <option value="">사원이름</option>
-												   <option value="">사원직급</option>
-												   <option value="">아이디</option>
+												<select name="searchKey" class="form-control">
+												   <option value="staffName">사원이름</option>
+												   <option value="staffLevel">사원직급</option>
+												   <option value="staffId">아이디</option>
 												</select>
 											</div>
 										</td>
@@ -88,16 +42,17 @@
 											<input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
 										</td>
 										<td class="pr-2 pt-2 pb-2">
-			   								<a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
+			   								<button class="btn btn-search btn-info " role="button" style="width:100%;">검색</button>
 			                 			</td>
 			             			 </tr>
 				              
 	          					 </tbody>
 							</table>
-			     		</div>
-			  		</div>
-			  
-				</div>
+						</form>
+		     		</div>
+		  		</div>
+		  
+			</div>
 		
 		<!-- Main content -->
 			<section class="content">
@@ -134,6 +89,13 @@
 										<td th:text="${l.staffRegDate}"></td>
 										<td th:text="${l.staffPhone}"></td>
 										<td th:text="${l.staffAddr}"></td>
+										<td>
+											<a th:href="@{/basic/staffUpdate(staffId=${l.staffId})}">수정</a>
+										</td>
+										<td>
+											<a th:href="@{/#}">삭제</a>
+										</td>
+										
 									</tr>
 									<tr th:unless="not ${#lists.isEmpty(staffList)}">
 										<td>

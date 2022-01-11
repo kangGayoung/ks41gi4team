@@ -5,115 +5,112 @@
   <th:block layout:fragment="customContent" >
   	<title th:text="${title}"></title>
   </th:block>
+	
+  
 	<th:block layout:fragment="customContents" >
 		
 		
 	<div class="wrapper">
 
-      <section class="content">
-         <div class="container-fluid">
-            <div class="card">
-               <div class=" clearfix">
-                  <table class="col-md-12">
-                     <colgroup>
-                        <col width="13%">
-                        <col width="21%">
-                        <col width="18%">
-                        <col width="18%">
-                        <col width="18%">
-                        <col width="13%">
-                     </colgroup>
-					<tbody>
+		<section class="content">
+			<div class="container-fluid">
+				<div class="card">
+					<div class=" clearfix">
+						<table class="col-md-12">
+							<colgroup>
+							   <col width="13%">
+							   <col width="21%">
+							   <col width="18%">
+							   <col width="18%">
+							   <col width="18%">
+							   <col width="13%">
+							</colgroup>
+						<tbody>
                      
-						<tr>
-                           <th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">거래처 검색</th>
-                           <td class="pr-2 pl-2 pt-2 pb-2">
-                              <div class="search-types">
-                                 <select name="search_type" class="form-control">
-                                    <option value="">사업자명</option>
-                                    <option value="">업종</option>
-                                    <option value="">업태</option>
-                                 </select>
-                              </div>
-                           </td>
-                           <td colspan="2" class="pr-2 pt-2 pb-2">
-                              <input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
-                           </td>
-                           <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
-                           </td>
-                        </tr>
-                        
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-            
-      
-            
-         
-         
-            <button style="float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info mb-3 mr-2 col-sm-3">거래처 정보수정<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
-		
-      
-            
-          <!--   <div style="margin-top:20px;margin-left:3%; padding: 0 12px 0 1px;clear:both; float:left" >
-               <p style="display: inline-block; padding-right: 7px;">전체 10건</p>
-               <button type="button" class="btn btn-outline-secondary btn-sm"><strong>발주 완료</strong></button>
-               <button type="button" class="btn btn-outline-secondary btn-sm"><strong>입고 완료</strong></button>  
-            </div>
-           -->
-         
-            <div class="card col-md-12">
-               <table style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
-                  <thead>
-                     <tr>
-                        <th>No.</th>
-                        <th>사업자명</th>
-                        <th>업태</th>
-                        <th>업종</th>
-                        <th>사업자 대표명</th>
-                        <th>사업자 전화번호</th>
-                        <th>사업자 번호</th>
-                        <th>사업장 주소</th>
-                        <th>담당자 이름</th>
-                        <th>담당자 전화번호</th>
-                        <th>담당자 이메일</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                  
-                     </tr>
-                     <tr>
-                      
-                     </tr>
-                     <tr>
-                    
-                     </tr>
-                     <tr>
-                      
-                     </tr>
-                     <tr>
-                       
-                     </tr>
-                  </tbody>
-               </table>
-               <!-- <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                  <ul class="pagination">
-                     <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Prev</a></li>
-                     <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                     <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                     <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                     <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-                  </ul>
-               </div> -->
-            </div>  
-            
-          </div>
-      </section>    
-      </div>
-   
+							<tr>
+								<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">거래처 검색</th>
+								<td class="pr-2 pl-2 pt-2 pb-2">
+						   			<div class="search-types">
+									      <select name="search_type" class="form-control">
+									         <option value="">사업자명</option>
+									         <option value="">업종</option>
+									         <option value="">업태</option>
+									      </select>
+									</div>
+								</td>
+								<td colspan="2" class="pr-2 pt-2 pb-2">
+								   <input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+								</td>
+								<td class="pr-2 pt-2 pb-2">
+								   <a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<button style="float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info mb-3 mr-2 col-sm-3">거래처 정보수정<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+				<div class="card col-md-12" >
+					<table id="businessListTable" class="table text-center table-head-fixed text-nowrap " style="padding: 5px;"> 
+						<thead>
+							<tr>
+								<th>거래처 코드</th>
+								<th>사업자명</th>
+								<th>업태</th>
+								<th>업종</th>
+								<th>사업자 대표명</th>
+								<th>사업자 전화번호</th>
+								<th>사업자 번호</th>
+								<th>사업장 주소</th>
+								<th>담당자 이름</th>
+								<th>담당자 전화번호</th>
+								<th>담당자 이메일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:if="not ${#lists.isEmpty(businessList)}" th:each="l : ${businessList}">
+								<td th:text="${l.businessCode}"></td>
+								<td th:text="${l.businessName}"></td>
+								<td th:text="${l.businessPartnerName}"></td>
+								<td th:text="${l.businessPartnerNum}"></td>
+								<td th:text="${l.businessPhoneNum}"></td>
+								<td th:text="${l.businessAddress}"></td>
+								<td th:text="${l.businessStaff}"></td>
+								<td th:text="${l.businessStaffNum}"></td>
+								<td th:text="${l.businessStaffEmail}"></td>
+								<td th:text="${l.businessSectors}"></td>
+								<td th:text="${l.businessStatus}"></td>
+							</tr>
+				              
+						</tbody>
+						
+					</table>
+					<div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+						<ul class="pagination"  >
+							<li class="paginate_button page-item previous" id="moveFirstPage">
+								<a th:if="${currentPage > 1}" th:href="@{/basic/businessInfo(currentPage=${currentPage - 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">이전</a>
+							</li>
+							<th:block th:each="num: ${#numbers.sequence(startPageNum, endPageNum)}">
+								<li class="paginate_button page-item ">	
+									<a th:if="${currentPage != num}" th:href="@{/basic/businessInfo(currentPage=${num})}" th:text="${num}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link"></a>
+								</li>	
+								<li class="paginate_button page-item previous" id="example2_previous" >
+									<span th:unless="${num != currentPage}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link" th:text="${num}"></span>
+								</li>
+							</th:block>
+							<li class="paginate_button page-item previous" id="example2_previous">
+								<a th:if="${currentPage < lastPage}" th:href="@{/basic/businessInfo(currentPage=${currentPage + 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">다음</a>
+							</li>	
+								
+						</ul>
+						
+					</div>
+	        
+				</div>  
+			</div>
+		</section>    
+</div>
+		   
 
 
 
