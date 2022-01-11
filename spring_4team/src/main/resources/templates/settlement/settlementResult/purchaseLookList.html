@@ -13,7 +13,7 @@
 	<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		
-		<h2 class= "padding : 2 0 10 5px;"> 매입 원장 조회 버튼 결과 표시 페이지 v.0109 </h2>
+		<h2 class= "padding : 2 0 10 5px;"> 매입 원장 조회 버튼 결과 표시 페이지  </h2>
 		<!-- /.content-header -->
 
 		<!-- Main content -->
@@ -98,8 +98,7 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a th:href="@{/settlement/settlementResult/purchaseLookList}"  
-									class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
+                             <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='purchaseLookup' " style="width:100%;" >매입처 재검색</a>
                            </td>
                         </tr>
                         <tr>

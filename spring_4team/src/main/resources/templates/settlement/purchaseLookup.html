@@ -8,13 +8,13 @@
 <th:block layout:fragment="customContents">
 <link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
- 	<script type="text/javascript">
+ 	<!-- <script type="text/javascript">
 		/* $(function(){
 			$('#purchaseLookBtn').click(function(){
 				location.href= 'purchaseLookList';
 			});
 		});		 */
-			</script>
+			</script> -->
 	
 
 		<!-- Content Header (Page header) -->
@@ -106,7 +106,7 @@
                            </td>
                            <td class="pr-2 pt-2 pb-2">
                          
-                              <button class="btn btn-search btn-danger " id="purchaseLookBtn" onclick="purchaseLookList" style="width:100%;" >>>>검색</button>
+                              <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='purchaseLookList' " style="width:100%;" >검색</a>
                            </td>
                         </tr>
                         <tr>
