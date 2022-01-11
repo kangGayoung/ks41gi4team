@@ -31,6 +31,48 @@ public class MainService {
 		return result;
 	}
 	
+	//사원 수정
+	public int staffUpdate(StaffInfo staff) {
+		
+		//return staffUpdate 수정 쿼리문 mapper에 넣어서 받기
+		return 0;
+	}
+	
+	//사원검색
+	public List<StaffInfo> getStaffInfoSearchList(String searchKey,String searchValue){
+		
+		List<StaffInfo> staffSearchList = mainMapper.getStaffInfoSearchList(searchKey, searchValue);
+		
+		int currentPage=1;
+		
+		int rowPerPage = 5;
+		
+		double rowCount = mainMapper.getStaffInfoListCount();
+		
+		int lastPage = (int) Math.ceil((rowCount/rowPerPage));
+		
+		int startNum = (currentPage - 1) * rowPerPage;
+		
+		int startPageNum = 1;
+		
+		int endPageNum = 4;
+		
+		if(currentPage > 3) {
+			startPageNum = currentPage - 1;
+			endPageNum = currentPage + 2;
+			if(endPageNum >= lastPage) {
+				startPageNum = lastPage - 3;
+				endPageNum = lastPage;
+			}
+		}
+		
+		
+		
+				
+		return staffSearchList;
+	}
+	
+	
 	//사원조회
 	public Map<String, Object>staffInfoPrint(int currentPage) {
 		
