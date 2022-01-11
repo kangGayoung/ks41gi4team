@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+     xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="@{layout/default}">
+  <th:block layout:fragment="customContent" >
+     <title th:text="${title}"></title>
+  </th:block>
+	<th:block layout:fragment="customJs">
+		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
+		<script type="text/javascript">
+				$('#invoiceFormBtn').click(function(){
+					$('.content purchaseInvoiceTable').show;
+				});	
+		
+		
+		
+		
+/* 		  document.getElementById('#purchaseInvoiceTable').style.display = 'none'; */
+		
+		/* $(document).click(function(){
+			$('.content purchaseInvoiceTable').hide;
+		});
+		 */
+		
+		</script>
+	</th:block>
+	
+  			
+
+   <th:block layout:fragment="customContents" >
+	<div class="wrapper">
+   
+		<!-- Content Header (Page header) -->
+		<h2 class= "padding : 2 0 10 5px;"> 거래 명세서</h2>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+
+			<section class="content">
+		         <div class="container-fluid">
+		            <div class="card">
+		               <div class=" clearfix">
+		                  <table class="col-md-12">
+		                     <colgroup>
+		                        <col width="13%">
+		                        <col width="21%">
+		                        <col width="18%">
+		                        <col width="18%">
+		                        <col width="18%">
+		                        <col width="13%">
+		                     </colgroup>
+		                     <tbody>
+		                              <tr class="first">
+		                                  <th class="card-footer text-center">매출 구분</th>
+		                                  <td class="pr-2 pl-2 pt-3">
+		                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+		                                        <label for="period-type1">주문일시(매출등록일)</label>
+		                                   </td>
+		                                   <td class="pr-2 pl-2 pt-3">
+		                                        <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
+		                                        <label for="period-type2">배송요청일(입고완료일)</label>
+		                                   </td>
+		                                   <td class="pr-2 pl-2 pt-3">
+		                                       
+		                                  </td>
+		                                  <td colspan="4">
+		                                  </td>
+		                              </tr>
+		                        <tr>
+		                           <th class="card-footer text-center">기간</th>
+		                           <td>
+		                              <div class="search-buttons pl-2">
+		                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+		                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+		                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+		                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+		                              </div>
+		                           </td>
+		                           <td>
+		                              <div class="search-dates">
+		                                 <div class="input-group">
+		                                    <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
+		                                    <span class="input-group-addon" id="basic-addon2">
+		                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+		                                    </span>
+		                                    <span style="padding-top: 7px;"> ~ </span>
+		                                 </div>
+		                              </div>
+		                           </td>
+		                           
+		                           <td>
+		                              <div class="search-dates mr0">
+		                                 <div class="input-group mr0">
+		                                    <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
+		                                    <span class="input-group-addon" id="basic-addon2">
+		                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+		                                    </span>
+		                                 </div>
+		                              </div>
+		                           </td>
+		                        </tr>
+		                     
+		                        <tr>
+		                           <th class="card-footer text-center" style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
+		                           <td class="pr-2 pl-2 pt-2 pb-2">
+		                              <div class="search-types">
+		                                 <select name="search_type" class="form-control">
+		                                    <option value="">상품명</option>
+		                                    <option value="">거래처</option>
+		                                    <option value="">발주번호</option>
+		                                 </select>
+		                              </div>
+		                           </td>
+		                           <td colspan="2" class="pr-2 pt-2 pb-2">
+		                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
+		                           </td>
+		                           <td class="pr-2 pt-2 pb-2">
+		                              
+		                                     <a class="btn btn-search btn-danger "  id ="invoiceFormBtn" role="button" 
+		                                    style="width:100%;">검색</a>
+		                           		
+		                           		
+		                           </td>
+		                        </tr>
+		                        <tr>
+		                           <th class="card-footer text-center">즉시 검색</th>
+		                           <td class="pr-2 pl-2 pb-2">
+		                              <div class="">
+		                                 <select class="form-control">
+		                                    <option value="">발주 상태</option>
+		                                    <option value="">발주 요청</option>
+		                                    <option value="">발주 대기</option>
+		                                    <option value="">발주 완료</option>
+		                                    <option value="">발주 취소</option>
+		                                 </select>
+		                              </div>
+		                           </td>
+		                           <td class="pr-2 pb-2">
+		                              <select class="form-control">
+		                                 <option value="">매입처 출고 상태</option>
+		                                 <option value="">출고 대기</option>
+		                                 <option value="">출고 완료</option>
+		                              </select>                     
+		                           
+		                           </td>
+		                           <td class="pr-2 pb-2">
+		                              <select class="form-control">
+		                                 <option value="">입고 상태</option>
+		                                 <option value="">입고 대기</option>
+		                                 <option value="">입고 완료</option>
+		                                 <option value="">반품 완료</option>
+		                              </select>                              
+		                           </td>
+		                           <td class="pr-2 pb-2">
+		                              <select class="form-control">
+		                                 <option value="">등록 구분</option>
+		                                 <option value="">일반 등록</option>
+		                              </select>
+		                           </td>
+		                        </tr>
+		                     </tbody>
+		                  </table>
+		               </div>
+		            </div>
+		           </div>
+		       </section>
+         
+     
+	<section class = "numPages">     
+               <div class=" float mx-auto" id="example1_paginate">
+					<ul class="pagination">
+						<li class="paginate_button page-item previous disabled"
+							id="example1_previous"><a href="#" aria-controls="example1"
+							data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+						<li class="paginate_button page-item active"><a href="#"
+							aria-controls="example1" data-dt-idx="1" tabindex="0"
+							class="page-link">1</a></li>
+						<li class="paginate_button page-item "><a href="#"
+							aria-controls="example1" data-dt-idx="2" tabindex="0"
+							class="page-link">2</a></li>
+						<li class="paginate_button page-item "><a href="#"
+							aria-controls="example1" data-dt-idx="3" tabindex="0"
+							class="page-link">3</a></li>
+						<li class="paginate_button page-item next" id="example1_next">
+							<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+							class="page-link">Next</a>
+						</li>
+					</ul>
+				</div>
+      </section>
+<!--   /.content -->
+         
+		         
+			<!-- /.content-wrapper -->
+  			 </div>
+  </th:block>
+	
+	<!-- ./wrapper -->
+ </html> 

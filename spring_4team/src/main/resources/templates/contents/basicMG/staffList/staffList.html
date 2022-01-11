@@ -5,12 +5,56 @@
   <th:block layout:fragment="customContent" >
   	<title th:text="${title}"></title>
   </th:block>
+	<th:block layout:fragment="custmJs">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+		<link rel="stylesheet" type="text/css" th:herf="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+		
+	</th:block>
 	<th:block layout:fragment="customContents" >
-	
-	
 		<div class="wrapper">
-			
-			    <!-- Main content -->
+			<div class="container-fluid">
+				<div class="card">
+					<div class=" clearfix">
+		                <form th:action="@{/basic/staffList}" method="post">
+							<table class="col-md-12">
+								<colgroup>
+				                   <col width="13%">
+				                   <col width="21%">
+				                   <col width="18%">
+				                   <col width="18%">
+				                   <col width="18%">
+				                   <col width="13%">
+				                </colgroup>
+								<tbody>
+				                
+								<tr>
+									<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">사원 검색</th>
+										<td class="pr-2 pl-2 pt-2 pb-2">
+											<div class="search-types">
+												<select name="searchKey" class="form-control">
+												   <option value="staffName">사원이름</option>
+												   <option value="staffLevel">사원직급</option>
+												   <option value="staffId">아이디</option>
+												</select>
+											</div>
+										</td>
+										<td colspan="2" class="pr-2 pt-2 pb-2">
+											<input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+										</td>
+										<td class="pr-2 pt-2 pb-2">
+			   								<button class="btn btn-search btn-info " role="button" style="width:100%;">검색</button>
+			                 			</td>
+			             			 </tr>
+				              
+	          					 </tbody>
+							</table>
+						</form>
+		     		</div>
+		  		</div>
+		  
+			</div>
+		
+		<!-- Main content -->
 			<section class="content">
 				<div class="container-fluid">
 					<div class="card card-warning">
@@ -18,40 +62,75 @@
 							<h3 class="card-title">사원 목록 조회</h3>
 						</div>
 						<!-- /.card-header -->
-						            
-						<div class="card-body table-responsive p-0">
-							<table class="table text-center table-head-fixed text-nowrap">
+			            
+						<div class="card col-md-12">
+							<table id="staffListTable" class="table table-bordered table-hover dtr-inline">
 								<thead>
-									<th>사원 아이디</th>
-									<th>사원 이름</th>
-									<th>사원 등급</th>
-									<th>사원 생년월일</th>
-									<th>사원 입사일</th>
-									<th>사원 연락처</th>
-									<th>사원 주소</th>
+									<tr>
+										<th>사원 아이디</th>
+										<th>사원 이름</th>
+										<th>사원 등급</th>
+										<th>사원 생년월일</th>
+										<th>사원 이메일</th>
+										<th>사원 입사일</th>
+										<th>사원 연락처</th>
+										<th>사원 주소</th>
+										<th>수정하기</th>
+										<th>삭제하기</th>
+									</tr>
 								</thead>
 								<tbody>
-									<tr th:if="${not #lists.isEmpty(staffList)}" th:each="l: ${staffList}">
+									<tr th:if="not ${#lists.isEmpty(staffList)}" th:each="l : ${staffList}">
 										<td th:text="${l.staffId}"></td>
 										<td th:text="${l.staffName}"></td>
 										<td th:text="${l.staffLevel}"></td>
 										<td th:text="${l.staffBirth}"></td>
+										<td th:text="${l.staffEmail}"></td>
 										<td th:text="${l.staffRegDate}"></td>
 										<td th:text="${l.staffPhone}"></td>
 										<td th:text="${l.staffAddr}"></td>
+										<td>
+											<a th:href="@{/basic/staffUpdate(staffId=${l.staffId})}">수정</a>
+										</td>
+										<td>
+											<a th:href="@{/#}">삭제</a>
+										</td>
+										
 									</tr>
-									<tr th:unless="${not #lists.isEmpty(staffList)}"></tr>
-									
+									<tr th:unless="not ${#lists.isEmpty(staffList)}">
+										<td>
+											<h3>검색결과가 없습니다.</h3>
+										</td>
+									</tr>
 								</tbody>
 							</table>
-						           
+							<div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+								<ul class="pagination"  >
+									<li class="paginate_button page-item previous" id="moveFirstPage">
+										<a th:if="${currentPage > 1}" th:href="@{/basic/staffList(currentPage=${currentPage - 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">이전</a>
+									</li>
+									<th:block th:each="num: ${#numbers.sequence(startPageNum, endPageNum)}">
+										<li class="paginate_button page-item ">	
+											<a th:if="${currentPage != num}" th:href="@{/basic/staffList(currentPage=${num})}" th:text="${num}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link"></a>
+										</li>	
+										<li class="paginate_button page-item previous" id="example2_previous" >
+											<span th:unless="${num != currentPage}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link" th:text="${num}"></span>
+										</li>
+									</th:block>
+									<li class="paginate_button page-item previous" id="example2_previous">
+										<a th:if="${currentPage < lastPage}" th:href="@{/basic/staffList(currentPage=${currentPage + 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">다음</a>
+									</li>	
+										
+								</ul>
+						
+							</div>
 						           
 						</div>
-						<!-- /.card-body -->
+			<!-- /.card-body -->
 					</div>
 				</div>
 			</section>    
-		    <!-- /.content -->
+		   <!-- /.content -->
 		</div>
 			
 	</th:block>	
