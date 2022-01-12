@@ -27,12 +27,41 @@ public class BillController{
 	 * @RequestMapping("/billModal") public String billModalBtn() { billModalBtn bmb
 	 * = new billModalBtn() ; bmb.setViewName("billModal"); return bmb; }
 	 */
-	 
-	@GetMapping("/billReg")
-	public String billReg() {
-		return "bill/billResult/billReg";
+	
+	
+	@GetMapping("/billInsert2")
+	public String billInsert2() {
+		return	"bill/billResult/billInsert2";
+	}
+	@GetMapping("/billInsert")
+	public String billInsert() {
+		return	"bill/billResult/billInsert";
+	}
+	@GetMapping("/taxBillList")
+	public String taxBillList() {
+		return	"bill/billResult/taxBillList";
 	}
 	
+	
+	@GetMapping("/accountsList")
+	public String accountsList() {
+		return	"bill/billResult/accountsList";
+	}
+	
+	
+	@GetMapping("/purchaseInvoiceList")
+	public String purchaseInvoiceList() {
+		return	"bill/billResult/purchaseInvoiceList";
+	}
+	@GetMapping("/purchaseInvoicePrint")
+	public String purchaseInvoicePrint() {
+		return	"bill/billResult/purchaseInvoicePrint";
+	}
+	
+	
+	
+	
+
 	@GetMapping("/taxBill")
 	public String taxBill() {
 		

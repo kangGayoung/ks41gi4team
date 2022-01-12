@@ -35,6 +35,14 @@ public class SettlementController{
 	 */
 	
 	
+	@GetMapping("/salesLookupList")
+	public String salesLookupList() {
+		return	"settlement/settlementResult/salesLookupList";
+	}
+	@GetMapping("/orderInvoiceList")
+	public String orderInvoiceList() {
+		return	"settlement/settlementResult/orderInvoiceList";
+	}
 	@GetMapping("/purchaseLookList")
 	public String purchaselLookList() {
 		return	"settlement/settlementResult/purchaseLookList";
