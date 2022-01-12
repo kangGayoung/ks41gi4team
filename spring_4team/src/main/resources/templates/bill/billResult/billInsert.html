@@ -20,15 +20,12 @@
 						<div class="page-header">
 							<h2>(세금)계산서 건별 등록</h2>
 				        </div>
-				        <ul class="breadcrumb">
-				            <li><a href="/vendor/dashboard">홈</a></li>
-				            <li><a href="/vendor/tax_invoice_nts">회계 관리</a></li>
-				            <li class="active"><a href="/vendor/tax_invoice_nts/invoice_reg">(세금)계산서 건별 등록</a></li>
-						</ul>
 					</div>
 				
-				
-					<form id="InvoiceRegForm" method="POST" action="/vendor/tax_invoice_nts/invoice_reg" data-toggle="validator" role="form">
+		<section class = "content">	
+			<div class ="container-fluid">
+				<div class="card-body">
+				<form id="InvoiceRegForm" method="POST" action="/vendor/tax_invoice_nts/invoice_reg" data-toggle="validator" role="form">
 						<input type="hidden" name="issueType" value="정발행">
 						<input type="hidden" name="issueTiming" value="직접발행">
 				
@@ -128,7 +125,7 @@
 				        </div>
 				
 				        <div class="newinfo_change_btn_wrap" style="display:none;">
-				            <a class="btn btn-lightgray pull-left vendor_new_info_btn nts_new_info_change" role="button" onclick="getvendorInfonew()" "="">최신정보로 수정</a>
+				            <a class="btn btn-lightgray pull-left vendor_new_info_btn nts_new_info_change" role="button" onclick="getvendorInfonew()" >최신정보로 수정</a>
 				            <a class="btn btn-lightgray pull-right nts_new_info_change" role="button" onclick="getshopInfonew()">최신정보로 수정</a>
 				        </div>
 				
@@ -389,7 +386,9 @@
 						</div>
 				
 					</form>
-				
+				</div>
+			</div>	
+		</section>	
 				</div>
 				
 

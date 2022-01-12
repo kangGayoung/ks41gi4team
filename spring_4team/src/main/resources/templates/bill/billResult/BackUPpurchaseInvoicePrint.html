@@ -1,5 +1,4 @@
-<?//php if (!is_array($prtCompany)) die(); ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
 <title>거래명세서</title>
@@ -40,7 +39,7 @@ function printNow() {
 </head>
 
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-<div id="command_bar">
+<div  class =  "container-fluid" id="command_bar">
   A4용지를 준비하고 인쇄방향을 가로로 설정하세요. &nbsp; <input type="button" value="인쇄하기" onclick="printNow()" /> <input type="button" value="뒤로" onclick="window.history.go(-1)" />
 </div>
 <table width="460" border="0" cellspacing="0" cellpadding="0" align="<?=$prtAlign?>" style="table-layout:auto">
@@ -1118,37 +1117,10 @@ function printNow() {
 			  
 			    </table>
 			</div>
-			     
-			               <div class=" float mx-auto" id="example1_paginate">
-								<ul class="pagination">
-									<li class="paginate_button page-item previous disabled"
-										id="example1_previous"><a href="#" aria-controls="example1"
-										data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-									<li class="paginate_button page-item active"><a href="#"
-										aria-controls="example1" data-dt-idx="1" tabindex="0"
-										class="page-link">1</a></li>
-									<li class="paginate_button page-item "><a href="#"
-										aria-controls="example1" data-dt-idx="2" tabindex="0"
-										class="page-link">2</a></li>
-									<li class="paginate_button page-item "><a href="#"
-										aria-controls="example1" data-dt-idx="3" tabindex="0"
-										class="page-link">3</a></li>
-									<li class="paginate_button page-item next" id="example1_next">
-										<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-										class="page-link">Next</a>
-									</li>
-								</ul>
-							</div>
-			      
-			          </div>  
-			      </section>
-      
-	/.content
-
-	/.content-wrapper
-	./wrapper
-      
-          </div>
+			
+          </div>  
+      </section>
    
-      </th:block>
- </html>  -->
+
+
+ </html> 
