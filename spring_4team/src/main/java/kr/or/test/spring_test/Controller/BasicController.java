@@ -76,8 +76,8 @@ public class BasicController {
 	
 	
 	@GetMapping("/staffList")
-	public String staffList(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage
-			,Model model) {
+	public String staffList(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			Model model) {
 		
 		
 		Map<String, Object> resultMap = mainService.staffInfoPrint(currentPage);
@@ -90,32 +90,26 @@ public class BasicController {
 		model.addAttribute("startPageNum", resultMap.get("startPageNum"));
 		
 		
-		
+		model.addAttribute("title","사원목록");
 		
 		return "contents/basicMG/staffList/staffList";
 	}
 	
 	@PostMapping("/staffList")
-	public String getSearchStaffList(
-			@RequestParam(value="searchKey",required = false)String searchKey,
-			@RequestParam(value="searchValue",required = false)String searchValue,
-			Model model	) {
+	public String staffListSearch(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			String searchKey, String searchValue, Model model) {
 		
-		if(searchKey != null && "staffId".equals(searchKey)) {
-			searchKey = "staffId";
-		}else if(searchKey != null && "staffName".equals(searchKey)) {
-			searchKey = "staffName";
-		}else {
-			searchKey = "staffLevel";
-		}
-		List<StaffInfo> staffList = mainService.getStaffInfoSearchList(searchKey, searchValue);
+		Map<String, Object> resultMap = mainService.staffInfoPrint(searchKey,searchValue,currentPage);
+		model.addAttribute("title","사원 검색목록");
+		model.addAttribute("currentPage",currentPage);
 		
-		model.addAttribute("title", "사원검색결과");
-		model.addAttribute("staffList",staffList);
+		model.addAttribute("lastPage", resultMap.get("lastPage"));
+		model.addAttribute("staffList", resultMap.get("staffList"));
+		model.addAttribute("endPageNum", resultMap.get("endPageNum"));
+		model.addAttribute("startPageNum", resultMap.get("startPageNum"));
 		
-		
+	
 		return "contents/basicMG/staffList/staffList";
-		
 	}
 	
 	
