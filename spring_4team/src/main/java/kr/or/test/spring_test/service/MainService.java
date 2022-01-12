@@ -39,17 +39,15 @@ public class MainService {
 	}
 	
 	//사원검색
-	public List<StaffInfo> getStaffInfoSearchList(String searchKey,String searchValue){
+	public Map<String, Object> staffInfoPrint(String searchKey, String searchValue, int currentPage){
 		
-		List<StaffInfo> staffSearchList = mainMapper.getStaffInfoSearchList(searchKey, searchValue);
-		
-		int currentPage=1;
 		
 		int rowPerPage = 5;
 		
 		double rowCount = mainMapper.getStaffInfoListCount();
 		
 		int lastPage = (int) Math.ceil((rowCount/rowPerPage));
+		
 		
 		int startNum = (currentPage - 1) * rowPerPage;
 		
@@ -66,21 +64,36 @@ public class MainService {
 			}
 		}
 		
+		Map<String,Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("startNum", startNum);
+		paramMap.put("rowPerPage", rowPerPage);
+		
+		List<Map<String,Object>> staffList = mainMapper.getStaffInfoSearchList(paramMap,searchKey,searchValue);
 		
 		
-				
-		return staffSearchList;
+		
+		paramMap.clear();
+		
+		paramMap.put("lastPage", lastPage);
+		paramMap.put("staffList",staffList);
+		paramMap.put("startPageNum",startPageNum);
+		paramMap.put("endPageNum",endPageNum);
+		
+		return paramMap;
+		
 	}
 	
 	
 	//사원조회
-	public Map<String, Object>staffInfoPrint(int currentPage) {
+	public Map<String, Object> staffInfoPrint(int currentPage) {
 		
 		int rowPerPage = 5;
 		
 		double rowCount = mainMapper.getStaffInfoListCount();
 		
 		int lastPage = (int) Math.ceil((rowCount/rowPerPage));
+		
 		
 		int startNum = (currentPage - 1) * rowPerPage;
 		
@@ -98,16 +111,7 @@ public class MainService {
 		}
 		
 		
-		/* 예제로 작동하는거 확인 후 주석
-		if(currentPage > 6) {
-			startPageNum = currentPage - 5;
-			endPageNum = currentPage + 4;
-			if(endPageNum >= lastPage) {
-				startPageNum = lastPage - 9;
-				endPageNum = lastPage;
-			}
-		}
-		*/
+
 		Map<String,Object> paramMap = new HashMap<String, Object>();
 		
 		paramMap.put("startNum", startNum);
