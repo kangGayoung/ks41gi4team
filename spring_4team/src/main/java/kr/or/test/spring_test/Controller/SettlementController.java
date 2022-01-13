@@ -2,24 +2,42 @@ package kr.or.test.spring_test.Controller;
 
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.test.spring_test.dto.Settlement;
+import kr.or.test.spring_test.service.SettlementService;
 
 
 @Controller
 @RequestMapping ("/settlement")
 public class SettlementController{
 	
-	
-	/*
-	 * private SettlementService settlementService;
-	 * 
-	 * 
-	 * @Autowired public SettlementController(SettlementService settlementService) {
-	 * this.settlementService = settlementService; }
-	 */
+//생성자 주입 방식
+	  private final SettlementService settlementService;
+	 public SettlementController(SettlementService settlementService) {
+	  this.settlementService = settlementService; }
+	 
+	 
+	 
+	 @GetMapping("/settlementList")
+	 public String getSettlementList(Model model) {
+		 List<Settlement> settlementList = settlementService.getsettlementList();
+		 
+		 model.addAttribute("title", "매입처전체조회");
+		 model.addAttribute("settlementList", settlementList);
+		 
+		 return "settlement/settlementResult/settlementList";
+		 
+		 
+	 }
+	 				
 	
 	
 	/*
