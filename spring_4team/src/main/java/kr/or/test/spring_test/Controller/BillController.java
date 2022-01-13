@@ -15,12 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/bill")
 public class BillController{
+
 	
 	//팝업띄우기
-	@RequestMapping ("/billInsert")//(value="/billInsert", method = RequestMethod.GET)
-	public ModelAndView  popupGet(Model model) throws Exception{
+	@RequestMapping ("/billInsert2")//(value="/billInsert2", method = RequestMethod.GET)
+	public ModelAndView  popupGet() throws Exception{
 		ModelAndView  bip = new ModelAndView ();
-			bip.setViewName("billInsert");
+			bip.setViewName("billInsert2");
 			System.out.println("yyyyyyyyyyyyyyeannie_bill_popup1");
 			return bip;
 	}
