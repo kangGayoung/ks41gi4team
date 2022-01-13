@@ -3,8 +3,11 @@ package kr.or.test.spring_test.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 
 
@@ -12,6 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/bill")
 public class BillController{
+	
+	//팝업띄우기
+	@RequestMapping ("/billInsert")//(value="/billInsert", method = RequestMethod.GET)
+	public ModelAndView  popupGet(Model model) throws Exception{
+		ModelAndView  bip = new ModelAndView ();
+			bip.setViewName("billInsert");
+			System.out.println("yyyyyyyyyyyyyyeannie_bill_popup1");
+			return bip;
+	}
 	
 	/*
 	 * private BillService bilService;
