@@ -25,6 +25,14 @@
 		FROM
 			k4_tb_staff;
 	</select>
+	<select id="getStaffInfoSearchListCount" resultType="int" fetchSize="1000">
+		SELECT
+			COUNT(1)
+		FROM
+			k4_tb_staff
+		where
+			${searchKey} LIKE CONCAT('%', #{searchValue},'%')
+	</select>
 	
 	
 	<select id="getStaffInfo" parameterType="map" resultType="map">

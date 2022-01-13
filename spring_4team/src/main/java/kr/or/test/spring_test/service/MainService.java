@@ -44,7 +44,7 @@ public class MainService {
 		
 		int rowPerPage = 5;
 		
-		double rowCount = mainMapper.getStaffInfoListCount();
+		double rowCount = mainMapper.getStaffInfoSearchListCount(searchKey, searchValue);
 		
 		int lastPage = (int) Math.ceil((rowCount/rowPerPage));
 		

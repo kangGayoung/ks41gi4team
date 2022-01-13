@@ -2,7 +2,6 @@ package kr.or.test.spring_test.Controller;
 
 
 
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import kr.or.test.spring_test.dto.StaffInfo;
 import kr.or.test.spring_test.service.BusinessService;
 import kr.or.test.spring_test.service.MainService;
@@ -99,7 +96,10 @@ public class BasicController {
 	public String staffListSearch(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
 			String searchKey, String searchValue, Model model) {
 		
+		
 		Map<String, Object> resultMap = mainService.staffInfoPrint(searchKey,searchValue,currentPage);
+		
+		
 		model.addAttribute("title","사원 검색목록");
 		model.addAttribute("currentPage",currentPage);
 		
@@ -109,7 +109,7 @@ public class BasicController {
 		model.addAttribute("startPageNum", resultMap.get("startPageNum"));
 		
 	
-		return "contents/basicMG/staffList/staffList";
+		return "contents/basicMG/staffList/staffListSearch";
 	}
 	
 	
@@ -123,17 +123,15 @@ public class BasicController {
 	public String businessInfo(@RequestParam(value="currentPage",required = false, defaultValue="1")int currentPage
 			,Model model) {
 		
-		  Map<String, Object> resultMap =
-		  businessService.BusinessListPrint(currentPage);
+		  Map<String, Object> resultMap = businessService.BusinessListPrint(currentPage);
 		  
 		  model.addAttribute("title","거래처 조회");
-		  model.addAttribute("currentPage",currentPage); model.addAttribute("lastPage",
-		  resultMap.get("lastPage")); model.addAttribute("businessList",
-		  resultMap.get("businessList")); model.addAttribute("endPageNum",
-		  resultMap.get("endPageNum")); model.addAttribute("startPageNum",
-		  resultMap.get("startPageNum"));
+		  model.addAttribute("currentPage",currentPage); 
+		  model.addAttribute("lastPage", resultMap.get("lastPage")); 
+		  model.addAttribute("businessList",resultMap.get("businessList")); 
+		  model.addAttribute("endPageNum",resultMap.get("endPageNum")); 
+		  model.addAttribute("startPageNum", resultMap.get("startPageNum"));
 		 
-		log.info("get business List");
 		return "contents/basicMG/businessInfo/businessInfo";
 	}
 	
