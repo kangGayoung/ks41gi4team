@@ -11,10 +11,7 @@
 	
 	
 	
-<select id="getPurchaseList" resultMap="purchaseListResultMap">
-	
-			
-	</select>
+
 
 
 
