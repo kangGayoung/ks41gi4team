@@ -2,47 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="@{layout/default}">
-	<!-- jQuery -->
 <th:block layout:fragment="customContent">
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
-		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
- 	<script type="text/javascript">
-	//팝업뜨우기 시작	
- 	$(document).ready(function(){
-			var formObj = $("form[rile = 'form']");
-			
-			$('#popupBtn').on("click", function(){
-				var make_date = $("#make_date").val();
-				window.open("/bill/billResult/billInsert?make_date="+make_date,"_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
-			});
-		});
-		//팝업띄우기 끋 
-	//팝업뜨우기2 시작	
-			 function nwindow(){
-				window.open("/bill/billResult/billInsert","_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
-			};
-	
-		//팝업띄우기2 끋
-			</script>
- 	
-<!--  	$(document).ready(function() {
-					$('.billReg').click(function() {
-							$(location).attr('href','bill/billResult/billReg');
-					});
-				}); 
-			 -->
 
-		<!-- Content Header (Page header) -->
+		<!--content-wrapper start-->
+
 	<div class="wrapper">
-		
-		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  </h2>
-		<!-- /.content-header -->
+		<h2>거래 명세서 </h2>
+	<!-- Main content -->
 
-		<!-- Main content -->
-
+<!--  Search card  시작 -->
 <section class="content">
          <div class="container-fluid">
             <div class="card">
@@ -61,15 +32,14 @@
                                   <th class="card-footer text-center">매출 구분</th>
                                   <td class="pr-2 pl-2 pt-3">
                                         <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
-                                        <label for="period-type1">등록일</label>
+                                        <label for="period-type1">주문일시(매출등록일)</label>
                                    </td>
                                    <td class="pr-2 pl-2 pt-3">
                                         <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
-                                        <label for="period-type2">작성일</label>
+                                        <label for="period-type2">배송요청일(입고완료일)</label>
                                    </td>
                                    <td class="pr-2 pl-2 pt-3">
-                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
-                                        <label for="period-type3">수정작성일</label>
+                                       
                                   </td>
                                   <td colspan="4">
                                   </td>
@@ -113,9 +83,9 @@
                            <td class="pr-2 pl-2 pt-2 pb-2">
                               <div class="search-types">
                                  <select name="search_type" class="form-control">
-                                    <option value="">::구분::</option>
-                                    <option value="">거래처명</option>
-                                    <option value="">등록번호</option>
+                                    <option value="">상품명</option>
+                                    <option value="">거래처</option>
+                                    <option value="">발주번호</option>
                                  </select>
                               </div>
                            </td>
@@ -123,7 +93,7 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillList' "style="width:100%;">>>검색</a>
+                              <a class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
                            </td>
                         </tr>
                         <tr>
@@ -131,62 +101,85 @@
                            <td class="pr-2 pl-2 pb-2">
                               <div class="">
                                  <select class="form-control">
-                                    <option value="">::유형::</option>
-                                    <option value="">세금계산서</option>
-                                    <option value="">계산서</option>
+                                    <option value="">발주 상태</option>
+                                    <option value="">발주 요청</option>
+                                    <option value="">발주 대기</option>
+                                    <option value="">발주 완료</option>
+                                    <option value="">발주 취소</option>
                                  </select>
                               </div>
                            </td>
                            <td class="pr-2 pb-2">
-                          <!--     <select class="form-control">
+                              <select class="form-control">
+                                 <option value="">매입처 출고 상태</option>
+                                 <option value="">출고 대기</option>
+                                 <option value="">출고 완료</option>
+                              </select>                     
+                           
+                           </td>
+                           <td class="pr-2 pb-2">
+                              <select class="form-control">
+                                 <option value="">입고 상태</option>
+                                 <option value="">입고 대기</option>
+                                 <option value="">입고 완료</option>
+                                 <option value="">반품 완료</option>
+                              </select>                              
+                           </td>
+                           <td class="pr-2 pb-2">
+                              <select class="form-control">
+                                 <option value="">등록 구분</option>
+                                 <option value="">일반 등록</option>
                               </select>
-                           --> 
-                           </td>
-                           <td class="pr-2 pb-2">
-                           <!--    <select class="form-control">
-                              </select> -->                              
-                           </td>
-                           <td class="pr-2 pb-2">
-                          				<div class="filter-btns">
-								                <a class="btn btn-add btn-danger" role="button"  onclick="location.href='billInsert' "> >>등록</a>
-								                <a class="btn btn-add js-chk_new_vendor" role="button" href="">>>세금계산서 등록</a>
-												<button type="button" class="btn btn-danger btn-xl " id='popupBtn'  onclick="nwindow()">  popup(get)</button>									
-										</div>
-
                            </td>
                         </tr>
                      </tbody>
                   </table>
                </div>
             </div>
+         </section>
             
-            
-          </div>
+			<!--  Search card  끝 -->
+		
+		<!-- result table  시작 -->
+		
+		
+		
+		
+		
+		
+		<!-- result table  끝 -->
+		
+		  
+			     
+			           
+     
+     
+	<section class = "numPages">     
+               <div class=" float mx-auto" id="numPageController">
+					<ul class="pagination">
+						<li class="paginate_button page-item previous disabled"
+							id="example1_previous"><a href="#" aria-controls="example1"
+							data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+						<li class="paginate_button page-item active"><a href="#"
+							aria-controls="example1" data-dt-idx="1" tabindex="0"
+							class="page-link">1</a></li>
+						<li class="paginate_button page-item "><a href="#"
+							aria-controls="example1" data-dt-idx="2" tabindex="0"
+							class="page-link">2</a></li>
+						<li class="paginate_button page-item "><a href="#"
+							aria-controls="example1" data-dt-idx="3" tabindex="0"
+							class="page-link">3</a></li>
+						<li class="paginate_button page-item next" id="example1_next">
+							<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+							class="page-link">Next</a>
+						</li>
+					</ul>
+				</div>
       </section>
-	<br />
-	<br />
-	<!--balance_sum_table시작  -->
-
-
-	<!--balance_sum_table끝  -->
-	<br />
-	<br />
-	<br />
-
-
-	</div>
-
-
-	</section>
-	<!-- /.content -->
-
-	<!-- /.content-wrapper -->
-	<!-- ./wrapper -->
-
-</div>
-
-</th:block>
-
-
-</body>
-</html>
+			      
+		
+			<!-- /.content-wrapper -->		  
+      
+          </div>
+      </th:block>
+ </html> 

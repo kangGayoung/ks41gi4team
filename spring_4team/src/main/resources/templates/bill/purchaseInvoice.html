@@ -6,24 +6,25 @@
      <title th:text="${title}"></title>
   </th:block>
 	<th:block layout:fragment="customJs">
+	</th:block>
 		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
-		
-				<!-- jQuery -->
-				<script type="text/javascript" src="/js/jquery-3.6.0.min.js" th:src="@{/js/jquery-3.6.0.min.js}"></script>
-					<script type="text/javascript">
-					<script>
-		
+		<!-- jQuery -->
+			
+				<script type="text/javascript">
+				$(document).ready(function(){
+					$(document).on('click', '#invoiceFormBtn', function(e){
+						e.preventDefault();
+						location.href = "${pageContext.request.contextPath}/bill/billResult/purchaseInvoicePrint";
+					});
+					
+				});
+/*
 					$(document).on('click', '#invoiceFormBtn', function(e){
 						e.preventDefault();
 						location.href = "${pageContext.request.contextPath}/billResult/purchaseInvoiceResult";
 					});
 
-
-
-
-
-		
-		
+ */
 		/* 		$('#invoiceFormBtn').click(function(){
 					$('.content purchaseInvoiceTable').show;
 				});	
@@ -36,9 +37,9 @@
 		 */
 		
 			</script>
-	</th:block>
 	
   			
+		<!--content-wrapper start-->
 
    <th:block layout:fragment="customContents" >
 	<div class="wrapper">
@@ -129,11 +130,21 @@
 		                           </td>
 		                           <td class="pr-2 pt-2 pb-2">
 		                              
-		                                     <button class="btn-search btn-danger" id="invoiceFormBtn"    style="width:100%; padding=5 5 5 5px;" >검색
-		                                    </button>
-		                           		
+		                                   <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='purchaseInvoiceList' " style="width:100%;" >>>검색</a>
+		                   
 		                           		
 		                           </td>
+		                           <td>
+		                           <div class="filter-btns">
+								                <a class="btn btn-print  btn-danger" role="button" onclick="location.href='purchaseInvoicePrint' "data-name="billPrint"> >> 출력</a>
+								                <a class="btn btn-print  btn-danger"  id="invoiceFormBtn" role="button"      onclick="location.href='purchaseInvoicePrint' "> >> 출력2</a>
+								     
+
+										</div>
+		                           </td>
+		                           <td>
+		                           </td>
+		                           
 		                        </tr>
 		                        <tr>
 		                           <th class="card-footer text-center">즉시 검색</th>
@@ -178,34 +189,11 @@
 		           </div>
 		       </section>
          
-     
-	<section class = "numPages">     
-               <div class=" float mx-auto" id="example1_paginate">
-					<ul class="pagination">
-						<li class="paginate_button page-item previous disabled"
-							id="example1_previous"><a href="#" aria-controls="example1"
-							data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-						<li class="paginate_button page-item active"><a href="#"
-							aria-controls="example1" data-dt-idx="1" tabindex="0"
-							class="page-link">1</a></li>
-						<li class="paginate_button page-item "><a href="#"
-							aria-controls="example1" data-dt-idx="2" tabindex="0"
-							class="page-link">2</a></li>
-						<li class="paginate_button page-item "><a href="#"
-							aria-controls="example1" data-dt-idx="3" tabindex="0"
-							class="page-link">3</a></li>
-						<li class="paginate_button page-item next" id="example1_next">
-							<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-							class="page-link">Next</a>
-						</li>
-					</ul>
-				</div>
-      </section>
 <!--   /.content -->
          
 		         
-			<!-- /.content-wrapper -->
   			 </div>
+			<!-- /.content-wrapper -->
   </th:block>
 	
 	<!-- ./wrapper -->

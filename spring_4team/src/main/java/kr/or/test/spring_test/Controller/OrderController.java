@@ -21,26 +21,24 @@ public class OrderController {
 	private OrderService orderService;
 	
 	//의존성 주입
-public OrderController(OrderService orderService) {
-		this.orderService= orderService;
+	public OrderController(OrderService orderService) {
+			this.orderService= orderService;
 	}
 
 	@PostMapping("/orderMG")
 	public String orderMG (
-			@RequestParam(value="orderSearch01", required = false) String orderSearch01
+			@RequestParam(value="currentPage", required = false, defaultValue = "1") int currentPage
+			,@RequestParam(value="orderSearch01", required = false) String orderSearch01
 		   ,@RequestParam(value="orderSearchVal", required = false) String orderSearchVal
 		   ,Model model) {
-				
-		if(orderSearch01 != null && "goodsName".equals(orderSearch01)) {
-			orderSearch01 = "goodsName";
-		}else if(orderSearch01 != null && "orderNum".equals(orderSearch01)) {
-			orderSearch01 = "orderNum";
-		}
-		// 검색키 검색어를 통해서 주문목록 조회		
-		List<OrderList> orderList = orderService.getOrderListBySearch01(orderSearch01, orderSearchVal);
 		
-		// 조회된 주문목록 model에 값을 저장
-		model.addAttribute("orderList", orderList);
+		Map<String, Object> resultMap = orderService.getOrderListBySearch01(currentPage, orderSearch01, orderSearchVal );
+		
+		model.addAttribute("currentPage",		currentPage);
+		model.addAttribute("lastPage",			resultMap.get("lastPage"));
+		model.addAttribute("orderList",			resultMap.get("orderList"));
+		model.addAttribute("startPageNum",		resultMap.get("startPageNum"));
+		model.addAttribute("endPageNum",		resultMap.get("endPageNum"));		
 		
 		return "goods/order/orderMG/orderMG";
 	}
@@ -52,9 +50,9 @@ public OrderController(OrderService orderService) {
 		
 		Map<String, Object> resultMap = orderService.getOrderList(currentPage);
 		
-		model.addAttribute("currentPage",			currentPage);
-		model.addAttribute("lastPage",				resultMap.get("lastPage"));
-		model.addAttribute("orderList",		resultMap.get("orderList"));
+		model.addAttribute("currentPage",		currentPage);
+		model.addAttribute("lastPage",			resultMap.get("lastPage"));
+		model.addAttribute("orderList",			resultMap.get("orderList"));
 		model.addAttribute("startPageNum",		resultMap.get("startPageNum"));
 		model.addAttribute("endPageNum",		resultMap.get("endPageNum"));
 		

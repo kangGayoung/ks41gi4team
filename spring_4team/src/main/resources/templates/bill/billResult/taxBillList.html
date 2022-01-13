@@ -2,21 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="@{layout/default}">
+	<!-- jQuery -->
 <th:block layout:fragment="customContent">
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
+<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
+ 	<script type="text/javascript">
+		$(function(){
+			$('.billReg').click(function(){
+				location.href= 'billReg';
+			});
+		});		
+			</script>
+ 	
+<!--  	$(document).ready(function() {
+					$('.billReg').click(function() {
+							$(location).attr('href','bill/billResult/billReg');
+					});
+				}); 
+			 -->
 
-	
 		<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		
-	<h2 class= "padding : 2 0 10 5px;"> 거래집계(거래현황) </h2>
+		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  </h2>
 		<!-- /.content-header -->
 
 		<!-- Main content -->
 
-	<section class="content">
+<section class="content">
          <div class="container-fluid">
             <div class="card">
                <div class=" clearfix">
@@ -34,15 +50,15 @@
                                   <th class="card-footer text-center">매출 구분</th>
                                   <td class="pr-2 pl-2 pt-3">
                                         <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
-                                        <label for="period-type1">주문 일시(발주등록일)</label>
+                                        <label for="period-type1">등록일</label>
                                    </td>
                                    <td class="pr-2 pl-2 pt-3">
                                         <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
-                                        <label for="period-type2">배송 요청일(입고완료일)</label>
+                                        <label for="period-type2">작성일</label>
                                    </td>
                                    <td class="pr-2 pl-2 pt-3">
-                                       <!--  <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
-                                        <label for="period-type3"></label> -->
+                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
+                                        <label for="period-type3">수정작성일</label>
                                   </td>
                                   <td colspan="4">
                                   </td>
@@ -86,9 +102,9 @@
                            <td class="pr-2 pl-2 pt-2 pb-2">
                               <div class="search-types">
                                  <select name="search_type" class="form-control">
-                                    <option value="">::거래구분::</option>
+                                    <option value="">::구분::</option>
                                     <option value="">거래처명</option>
-                                    <option value="">상품명</option>
+                                    <option value="">등록번호</option>
                                  </select>
                               </div>
                            </td>
@@ -96,7 +112,7 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                               <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='orderInvoiceList' " style="width:100%;" >검색</a>
+                              <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillList' "style="width:100%;">>>검색</a>
                            </td>
                         </tr>
                         <tr>
@@ -104,38 +120,27 @@
                            <td class="pr-2 pl-2 pb-2">
                               <div class="">
                                  <select class="form-control">
-                                    <option value="">::거래구분::</option>
-                                    <option value="">매출</option>
-                                    <option value="">매출반품</option>
-                                    <option value="">매입</option>
-                                    <option value="">매입반품</option>
+                                    <option value="">::유형::</option>
+                                    <option value="">세금계산서</option>
+                                    <option value="">계산서</option>
                                  </select>
                               </div>
                            </td>
-                          
                            <td class="pr-2 pb-2">
-	                           <select class="form-control">
-                                    <option value="">::결제구분::</option>
-                                    <option value="">외상거래</option>
-									<option value="">예치금</option>
-                                    <option value="">신용카드</option>
+                          <!--     <select class="form-control">
                               </select>                     
+                           --> 
                            </td>
+                           <td class="pr-2 pb-2">
+                           <!--    <select class="form-control">
+                              </select> -->                              
+                           </td>
+                           <td class="pr-2 pb-2">
+                          				<div class="filter-btns">
+								                <a class="btn btn-add btn-danger" role="button"  onclick="location.href='billInsert' " data-name="billInsert"> >>등록</a>
+								                <a class="btn btn-add js-chk_new_vendor" role="button" href="javascript:goBatchInvoiceReg(&quot;Y&quot;)">일괄 등록</a>
+										</div>
 
-                           <td class="pr-2 pb-2">
-                             <select class="form-control">
-                                    <option value="">::업체구분::</option>
-                                    <option value="">::매출처::</option>
-                                    <option value="">::매입처::</option>
-                           
-                              </select>                           
-                           </td>
-                           <td class="pr-2 pb-2">
-                           		<select class="form-control">
-	                                    <option value="">::과세구분::</option>
-	                                    <option value="">과세</option>
-										<option value="">면세</option>
-                              </select> 
                            </td>
                         </tr>
                      </tbody>
@@ -149,83 +154,22 @@
 	<br />
 	<br />
 	<!--balance_sum_table시작  -->
-<section class="content">
-   	 <div class="container-fluid">
-            <div class="card">
-	             <div class="balance_sum_table">
-			        <table class="table text-center">
-			            <colgroup>
-			                <col width="10%">
-			                <col width="15%">
-			                <col width="15%">
-			                <col width="15%">
-			                <col width="15%">
-			                <col width="15%">
-			                <col width="15%">
-			            </colgroup>
-			            <thead>
-				            <tr>
-				                <th>거래현황</th>
-				                <th>매출금액</th>
-				                <th>매출반품금액</th>
-				                <th>총 매출금액</th>
-				                <th>매입금액</th>
-				                <th>매입반품금액</th>
-				                <th>총 매입금액</th>
-				            </tr>
-			            </thead>
-			            <tbody>
-			                  <tr>
-			                    <td class="">공급가액</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                </tr>
-			                   <tr>
-			                    <td class="">세액</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                </tr>
-			                   <tr class="total">
-			                    <td class="">총 합계</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                    <td>0</td>
-			                </tr>
-			             </tbody>
-			        </table>
-	    </div>
-             
-             
-	 	</div>    
-	</div>
-</section>
-	
+
+
 	<!--balance_sum_table끝  -->
 	<br />
 	<br />
 	<br />
 
-<!-- 테이블  시작-->
-<!-- 	
-	<section class="content">
+	<!-- 테이블  시작-->
+<section class="content">	
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-header">
 					<h6 class="card-title mt-2">
-						매출확정일은
-						<code>결제 확정일을</code>
+						결제 확정 날짜는
+						<code>계산서 발행일을</code>
 						기준으로 합니다.
 					</h6>
 
@@ -234,7 +178,8 @@
 							<div class="input-group-append "></div>
 						</div>
 					</div>
-					<div class="col-sm-push-12 col-md-push-6" style="text-align: right;">
+					<div class="col-sm-push-12 col-md-push-6"
+						style="text-align: right;">
 						<div class="dt-buttons btn-group flex-wrap">
 							<button class="btn btn-danger buttons-copy buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
@@ -267,55 +212,45 @@
 						</div>
 					</div>
 				</div>
-				/.card-header
+				<!-- /.card-header -->
 
-				card-body Start
+				<!-- card-hody Start -->
 				<br /> <br />
 
 				<div class="card-body table-responsive p-0">
 					<table class="table p-0 table-hover">
 						<thead style="font-size: 1.0em; text-align:center;">
 							<tr>
-							<th>선택</th> 1 선택 
-							<th>No.</th> 2 No. 
-							<th>주문일시</th> 3 주문일시 
-							<th>거래구분</th> 4 거래구분 
-							<th>거래처</th> 5 거래처 
-							<th>결제구분</th> 6 결제구분 : 신용카드 / 계좌이체 
-							<th>과세구분</th> 7 과세구분
-							<th>상품명</th> 8상품명
-							<th>규격(단위)</th> 9 규격(단위) 
-							<th>수량</th> 10 수량
-							<th>단가</th> 11 단가
-							<th>공급가액</th> 12 공급가액
-							<th>세액</th> 13 세액
-							<th>합계</th> 14 합계
-							<th>비고</th> 15 세액 
+								<th>선 택</th>
+								<th>No.</th>
+								<th>작 성 일</th>
+								<th>등 록 일</th>
+								<th>유 형</th>
+								<th>거 래 처<small>거래인성명</small></th>
+								<th>등록번호</th>
+								<th>합 계</th>
+								<th>다운로드횟수</th>
+								<th>수정/삭제</th>
 							</tr>
 						</thead>
-						<tbody style="font-size: 1.0em; font-variant: normal; text-align: center;">
+						<tbody
+							style="font-size: 1.0em; font-variant: normal; text-align: center;">
 							<tr>
 								<td>
 									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check1"> 
-										<label for="check1"></label>
+										<input type="checkbox" value="" id="check1"> <label
+											for="check1"></label>
 									</div>
-								</td>1 선택 
+								</td>
 								<td>1</td>
-						        <td>0원</td>
-						        <td>0</td>
-						        <td>300원(건)</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td> </td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
 							</tr>
 							<tr>
 								<td>
@@ -325,21 +260,14 @@
 									</div>
 								</td>
 								<td>1</td>
-						        <td>0원</td>
-						        <td>0</td>
-						        <td>300원(건)</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td> </td>
-							</tr>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
 							</tr>
 							<tr>
 								<td>
@@ -349,20 +277,14 @@
 									</div>
 								</td>
 								<td>1</td>
-						        <td>0원</td>
-						        <td>0</td>
-						        <td>300원(건)</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td> </td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
 							</tr>
 							<tr>
 								<td>
@@ -372,20 +294,14 @@
 									</div>
 								</td>
 								<td>1</td>
-						        <td>0원</td>
-						        <td>0</td>
-						        <td>300원(건)</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td> </td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
 							</tr>
 							<tr>
 								<td>
@@ -395,20 +311,14 @@
 									</div>
 								</td>
 								<td>1</td>
-						        <td>0원</td>
-						        <td>0</td>
-						        <td>300원(건)</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td> </td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
 							</tr>
 							<tr>
 								<td>
@@ -418,20 +328,14 @@
 									</div>
 								</td>
 								<td>1</td>
-						        <td>0원</td>
-						        <td>0</td>
-						        <td>300원(건)</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td> </td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
 							</tr>
 							<tr>
 								<td>
@@ -441,28 +345,23 @@
 									</div>
 								</td>
 								<td>1</td>
-						        <td>0원</td>
-						        <td>0</td>
-						        <td>300원(건)</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td>0원</td>
-						        <td> </td>
+								<td>2021</td>
+								<td>2021</td>
+								<td>계산서(면세)</td>
+								<td>싱싱상가</td>
+								<td>127-334</td>
+								<td>400,000</td>
+								<td>0</td>
+								<td>수정/삭제</td>
 							</tr>
+
+
 						</tbody>
 					</table>
 				</div>
-				/.card-body
+				<!-- /.card-body -->
 			</div>
-			/.card
-
+			<!-- /.card -->
 		</div>
 
 		<div class="dataTables_paginate paging_simple_numbers mx-auto"
@@ -490,15 +389,17 @@
 
 	</div>
 
-	</section>
-	-->
 
+	</section>
 	<!-- /.content -->
 
 	<!-- /.content-wrapper -->
 	<!-- ./wrapper -->
 
-	</div>
+</div>
+
 </th:block>
+
+
 </body>
 </html>
