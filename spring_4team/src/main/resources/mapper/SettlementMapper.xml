@@ -36,7 +36,11 @@
 								join
 			k4_tb_business AS b ;
 	
+<<<<<<< HEAD
 	</select>
+=======
+
+>>>>>>> refs/remotes/origin/develop
 
 
 

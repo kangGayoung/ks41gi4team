@@ -23,7 +23,7 @@ public interface OrderMapper {
 	public List<Map<String, Object>> getorderList(Object object);
 
 	// 주문 검색
-	public List<OrderList> getOrderListBySearch01(String orderSearch01, String orderSearchVal);
+	public List<Map<String, Object>> getOrderListBySearch01(Map<String, Object> paramMap, String orderSearch01, String orderSearchVal);
 	
 	
 	
