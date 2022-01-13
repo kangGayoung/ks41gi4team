@@ -10,11 +10,22 @@
 <link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
  	<script type="text/javascript">
-		$(function(){
-			$('.billReg').click(function(){
-				location.href= 'billReg';
+	//팝업뜨우기 시작	
+ 	$(document).ready(function(){
+			var formObj = $("form[rile = 'form']");
+			
+			$('#popupBtn').on("click", function(){
+				var make_date = $("#make_date").val();
+				window.open("/bill/billResult/billInsert?make_date="+make_date,"_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
 			});
-		});		
+		});
+		//팝업띄우기 끋 
+	//팝업뜨우기2 시작	
+			 function nwindow(){
+				window.open("/bill/billResult/billInsert","_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
+			};
+	
+		//팝업띄우기2 끋
 			</script>
  	
 <!--  	$(document).ready(function() {
@@ -139,6 +150,7 @@
                           				<div class="filter-btns">
 								                <a class="btn btn-add btn-danger" role="button"  onclick="location.href='billInsert' "> >>등록</a>
 								                <a class="btn btn-add js-chk_new_vendor" role="button" href="">>>세금계산서 등록</a>
+												<button type="button" class="btn btn-danger btn-xl " id='popupBtn'  onclick="nwindow()">  popup(get)</button>									
 										</div>
 
                            </td>

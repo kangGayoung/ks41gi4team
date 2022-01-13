@@ -14,6 +14,9 @@
 
 						<!-- Main content -->
 				
+		<section class = "content">	
+			<div class ="container-fluid">
+				<div class="card col-md-12" style="magin : 10 10 10 10px;"> 
 				
 				<div id="wrap" class="order-list clearfix">
 					<div class="title-row clearfix">
@@ -22,9 +25,6 @@
 				        </div>
 					</div>
 				
-		<section class = "content">	
-			<div class ="container-fluid">
-				<div class="card-body">
 				<form id="InvoiceRegForm" method="POST" action="/vendor/tax_invoice_nts/invoice_reg" data-toggle="validator" role="form">
 						<input type="hidden" name="issueType" value="정발행">
 						<input type="hidden" name="issueTiming" value="직접발행">
@@ -41,7 +41,7 @@
 				
 					<div class="search-box clearfix">
 						<div class="search-wrap clearfix">
-							<table class="search_table">
+							<table class="search_table col-md-12">
 								<colgroup>
 									<col width="15%">
 									<col width="35%">
@@ -145,7 +145,7 @@
 						  <tbody><tr>
 						    <th rowspan="5" class="invoicer th_row_header border_right">공<br>급<br>자</th>
 						    <th class="invoicer border_right">등록번호</th>
-						    <td><input type="text" name="invoicerCorpNum" value="2223311133" readonly="" class="form-control"></td>
+						    <td><input type="text" name="invoicerCorpNum" value="8282-45-4444" readonly="" class="form-control"></td>
 						    <th class="invoicer border_right border_left">종사업장</th>
 						    <td><input type="text" name="invoicerTaxRegID" value="" class="form-control" readonly=""></td>
 				
@@ -157,9 +157,9 @@
 						  </tr>
 						  <tr>
 						    <th class="invoicer border_right">상호<br>(법인명)</th>
-						    <td><input type="text" name="invoicerCorpName" value="ㅇㅇ" readonly="" class="form-control" required="" data-msg="상호를 입력해주세요."></td>
+						    <td><input type="text" name="invoicerCorpName" value="사딸라마트" readonly="" class="form-control" required="" data-msg="상호를 입력해주세요."></td>
 						    <th class="invoicer border_right border_left">성명</th>
-						    <td><input type="text" name="invoicerCEOName" value="22" readonly="" class="form-control" required="" data-msg="대표자 이름을 입력해주세요."> </td>
+						    <td><input type="text" name="invoicerCEOName" value="마사장" readonly="" class="form-control" required="" data-msg="대표자 이름을 입력해주세요."> </td>
 						    <th class="invoicee border_right border_left">상호 <span class="essential_star">*</span><br>(법인명)</th>
 						    <td><input type="text" name="invoiceeCorpName" value="" class="form-control" maxlength="70" readonly=""></td>
 						    <th class="invoicee border_right border_left">성명 <span class="essential_star">*</span></th>
@@ -167,15 +167,15 @@
 						  </tr>
 						  <tr>
 						    <th class="invoicer border_right">사업장<br>주소</th>
-						    <td colspan="3"><input type="text" name="invoicerAddr" value="전북 전주시 완산구 강당5길 38 (중화산동1가, 예수병원귀빈숙소)1층" readonly="" class="form-control"></td>
+						    <td colspan="3"><input type="text" name="invoicerAddr" value="전북 전주시 덕진구 금암1동 기린대로 446 " readonly="" class="form-control"></td>
 						    <th class="invoicee border_right border_left">사업장<br>주소</th>
 						    <td colspan="3"><input type="text" name="invoiceeAddr" value="" class="form-control" maxlength="150" readonly=""></td>
 						  </tr>
 						  <tr>
 						    <th class="invoicer border_right">업태</th>
-						    <td><input type="text" name="invoicerBizType" value="" readonly="" class="form-control"></td>
+						    <td><input type="text" name="invoicerBizType" value="도매및소매업" readonly="" class="form-control"></td>
 						    <th class="invoicer border_right border_left">종목</th>
-						    <td><input type="text" name="invoicerBizClass" value="" readonly="" class="form-control"></td>
+						    <td><input type="text" name="invoicerBizClass" value="대형할인점" readonly="" class="form-control"></td>
 						    <th class="invoicee border_right border_left">업태</th>
 						    <td><input type="text" name="invoiceeBizType" value="" class="form-control" maxlength="40" readonly=""></td>
 						    <th class="invoicee border_right border_left">종목</th>
@@ -189,7 +189,7 @@
 						  </tr> -->
 						  <tr>
 						    <th class="invoicer border_right">이메일</th>
-						    <td colspan="3"><input type="text" name="invoicerEmail" value="abcd@av.com" readonly="" class="form-control"></td>
+						    <td colspan="3"><input type="text" name="invoicerEmail" value="4dallar@mart.com" readonly="" class="form-control"></td>
 						    <th class="invoicee border_right border_left">이메일1</th>
 						    <td colspan="3"><input type="text" name="invoiceeEmail1" value="" maxlength="40" class="form-control" readonly="">
 						    </td>
