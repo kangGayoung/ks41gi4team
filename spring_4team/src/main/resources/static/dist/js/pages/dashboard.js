@@ -7,13 +7,7 @@
 
 /* global moment:false, Chart:false, Sparkline:false */
 
-/**
- * 
- 
- * 
- * 
- * 
- * $(function () {
+$(function () {
   'use strict'
 
   // Make the dashboard widgets sortable Using jquery UI
@@ -52,9 +46,9 @@
     // eslint-disable-next-line no-alert
     alert('You chose: ' + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
   })
-*/
+
   /* jQueryKnob */
-  /*$('.knob').knob()
+  $('.knob').knob()
 
   // jvectormap data
   var visitorsData = {
@@ -116,13 +110,13 @@
   $('#chat-box').overlayScrollbars({
     height: '250px'
   })
-*/
+
   /* Chart.js Charts */
   // Sales chart
-  //var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d')
+  var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d')
   // $('#revenue-chart').get(0).getContext('2d');
 
- /* var salesChartData = {
+  var salesChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [
       {
@@ -261,19 +255,13 @@
         }
       }]
     }
-  }*
+  }
 
- * // This will get the first returned node in the jQuery collection.
- * // eslint-disable-next-line no-unused-vars
- * var salesGraphChart = new Chart(salesGraphChartCanvas, { // lgtm[js/unused-local-variable]
-  *  type: 'line',
- *   *data: salesGraphChartData,
- *    options: salesGraphChartOptions
- *  })
- *})
- *
- * 
- * 
- * 
- * @returns
- */
+  // This will get the first returned node in the jQuery collection.
+  // eslint-disable-next-line no-unused-vars
+  var salesGraphChart = new Chart(salesGraphChartCanvas, { // lgtm[js/unused-local-variable]
+    type: 'line',
+    data: salesGraphChartData,
+    options: salesGraphChartOptions
+  })
+})

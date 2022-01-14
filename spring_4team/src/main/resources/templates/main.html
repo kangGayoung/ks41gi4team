@@ -5,6 +5,14 @@
   <th:block layout:fragment="customContent" >
   	<title th:text="${title}"></title>
   </th:block>
+	<th:block layout:fragment="customJs">
+		<script type="text/javascript">
+			$(function(){
+				console.log('test1');
+			});
+			console.log('test');
+		</script>
+	</th:block>
 	<th:block layout:fragment="customContents" >
 	<h1>22-01-13 09:30 수정</h1>
 			

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="@{layout/default}">
+	<!-- jQuery -->
+<th:block layout:fragment="customContent">
+	<title th:text="${title}"></title>
+</th:block>
+<th:block layout:fragment="customContents">
+<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
+ 	<script type="text/javascript">
+/* 	//팝업뜨우기 시작	
+ 	$(document).ready(function(){
+			var formObj = $("form[rile = 'form']");
+			
+			$('#popupBtn').on("click", function(){
+				var make_date = $("#make_date").val();
+				window.open("/bill/billResult/billInsert?make_date="+make_date,"_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
+			});
+		});
+		//팝업띄우기 끋   = 실패 */
+	//팝업뜨우기2 시작	
+			 function nwindow(){
+				window.open("@{/billInsert2}","_blank", "toolbar=yes, menubar=yes, width=700, hight=500").focus();
+			};
+	
+		//팝업띄우기2 끋
+ 	
+/*   	$(document).ready(function() {
+					$('.billReg').click(function() {
+							$(location).attr('href','bill/billResult/billReg');
+					});
+				}); 
+			  */
+			</script>
+
+		<!-- Content Header (Page header) -->
+	<div class="wrapper">
+		
+		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  </h2>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+
+<section class="content">
+         <div class="container-fluid">
+            <div class="card">
+               <div class=" clearfix">
+                  <table class="col-md-12">
+                     <colgroup>
+                        <col width="13%">
+                        <col width="21%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="13%">
+                     </colgroup>
+                     <tbody>
+                              <tr class="first">
+                                  <th class="card-footer text-center">매출 구분</th>
+                                  <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+                                        <label for="period-type1">등록일</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
+                                        <label for="period-type2">작성일</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
+                                        <label for="period-type3">수정작성일</label>
+                                  </td>
+                                  <td colspan="4">
+                                  </td>
+                              </tr>
+                        <tr>
+                           <th class="card-footer text-center">기간</th>
+                           <td>
+                              <div class="search-buttons pl-2">
+                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="search-dates">
+                                 <div class="input-group">
+                                    <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                    <span style="padding-top: 7px;"> ~ </span>
+                                 </div>
+                              </div>
+                           </td>
+                           
+                           <td>
+                              <div class="search-dates mr0">
+                                 <div class="input-group mr0">
+                                    <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                     
+                        <tr>
+                           <th class="card-footer text-center" style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
+                           <td class="pr-2 pl-2 pt-2 pb-2">
+                              <div class="search-types">
+                                 <select name="search_type" class="form-control">
+                                    <option value="">::구분::</option>
+                                    <option value="">거래처명</option>
+                                    <option value="">등록번호</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td colspan="2" class="pr-2 pt-2 pb-2">
+                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
+                           </td>
+                           <td class="pr-2 pt-2 pb-2">
+                              <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillList' "style="width:100%;">>>검색</a>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th class="card-footer text-center">즉시 검색</th>
+                           <td class="pr-2 pl-2 pb-2">
+                              <div class="">
+                                 <select class="form-control">
+                                    <option value="">::유형::</option>
+                                    <option value="">세금계산서</option>
+                                    <option value="">계산서</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td class="pr-2 pb-2">
+                          <!--     <select class="form-control">
+                              </select>
+                           --> 
+                           </td>
+                           <td class="pr-2 pb-2">
+                           <!--    <select class="form-control">
+                              </select> -->                              
+                           </td>
+                           <td class="pr-2 pb-2">
+                          				<div class="filter-btns">
+								                <a class="btn btn-add btn-danger" role="button"  onclick="location.href='billInsert' "> >>등록</a>
+								                <a class="btn btn-add js-chk_new_vendor" role="button" href="">>>세금계산서 등록</a>
+												<button type="button" class="btn btn-danger btn-xl " id='popupBtn'  onclick="nwindow()">  popup(get)</button>									
+										</div>
+
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            
+            
+          </div>
+      </section>
+	<br />
+	<br />
+	<!--balance_sum_table시작  -->
+
+
+	<!--balance_sum_table끝  -->
+	<br />
+	<br />
+	<br />
+
+
+	</div>
+
+
+	</section>
+	<!-- /.content -->
+
+	<!-- /.content-wrapper -->
+	<!-- ./wrapper -->
+
+</div>
+
+</th:block>
+
+
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="@{layout/default}">
+<th:block layout:fragment="customContent">
+	<title th:text="${title}"></title>
+</th:block>
+<th:block layout:fragment="customContents">
+
+	
+
+		<!-- Content Header (Page header) -->
+		<div class="wrapper">
+		<h2 class= "padding : 2 0 10 5px;"> 매출 원장 조회 </h2>
+		<!-- /.content-header -->
+
+		<!-- Main content -->
+
+<section class="content">
+         <div class="container-fluid">
+            <div class="card">
+               <div class=" clearfix">
+                  <table class="col-md-12">
+                     <colgroup>
+                        <col width="13%">
+                        <col width="21%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="18%">
+                        <col width="13%">
+                     </colgroup>
+                     <tbody>
+                              <tr class="first">
+                                  <th class="card-footer text-center">매출 구분</th>
+                                  <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+                                        <label for="period-type1">주문 일시</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type2" value="delivery_req_dt">
+                                        <label for="period-type2">배송 요청일</label>
+                                   </td>
+                                   <td class="pr-2 pl-2 pt-3">
+                                        <input type="radio" name="period_type" id="period-type3" value="instock_complete_dt">
+                                        <label for="period-type3">결제 확정일(선결제)</label>
+                                  </td>
+                                  <td colspan="4">
+                                  </td>
+                              </tr>
+                        <tr>
+                           <th class="card-footer text-center">기간</th>
+                           <td>
+                              <div class="search-buttons pl-2">
+                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                              </div>
+                           </td>
+                           <td>
+                              <div class="search-dates">
+                                 <div class="input-group">
+                                    <input id="sdate" name="sdate" type="text" value="2021-12-28" title="날짜 입력" onclick="calendarAdmin('sdate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('sdate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                    <span style="padding-top: 7px;"> ~ </span>
+                                 </div>
+                              </div>
+                           </td>
+                           
+                           <td>
+                              <div class="search-dates mr0">
+                                 <div class="input-group mr0">
+                                    <input id="edate" name="edate" type="text" value="2021-12-29" title="날짜 입력" onclick="calendarAdmin('edate')" class="form-control" style="width:104px;">
+                                    <span class="input-group-addon" id="basic-addon2">
+                                       <a onclick="calendarAdmin('edate');" role="button"><i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; background-color: #f1f1f1;"></i></a>
+                                    </span>
+                                 </div>
+                              </div>
+                           </td>
+                        </tr>
+                     
+                        <tr>
+                           <th class="card-footer text-center" style="border-bottom:1px dotted #f1f1f1;">키워드 검색</th>
+                           <td class="pr-2 pl-2 pt-2 pb-2">
+                              <div class="search-types">
+                                 <select name="search_type" class="form-control">
+                                    <option value="">::구분::</option>
+                                    <option value="">거래처명</option>
+                                    <option value="">등록번호</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td colspan="2" class="pr-2 pt-2 pb-2">
+                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
+                           </td>
+                           <td class="pr-2 pt-2 pb-2">
+                              <a class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
+                           </td>
+                        </tr>
+                        <tr>
+                           <th class="card-footer text-center">즉시 검색</th>
+                           <td class="pr-2 pl-2 pb-2">
+                              <div class="">
+                                 <select class="form-control">
+                                    <option value="">::유형::</option>
+                                    <option value="">배송담당자</option>
+					<option value="">영업담당자</option>
+                                    <option value="">출고 상태</option>
+                                 </select>
+                              </div>
+                           </td>
+                           <td class="pr-2 pb-2">
+                          <!--     <select class="form-control">
+                              </select>                     
+                           --> 
+                           </td>
+                           <td class="pr-2 pb-2">
+                           <!--    <select class="form-control">
+                              </select> -->                              
+                           </td>
+                           <td class="pr-2 pb-2">
+                              <!-- <select class="form-control">
+                              </select> -->
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            
+            
+          </div>
+      </section>
+	<br />
+	<br />
+	<!--balance_sum_table시작  -->
+
+
+	<!--balance_sum_table끝  -->
+	<br />
+	<br />
+	<br />
+
+	<!-- 테이블  시작-->
+	<section class="content">
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+						<h6 class="card-title mt-2">
+							매출 거래 날짜는
+							<code>매출 확정일을</code>
+							기준으로 합니다.
+						</h6>
+
+					<div class="card-tools">
+						<div class="input-group input-group-sm">
+							<div class="input-group-append "></div>
+						</div>
+					</div>
+					<div class="col-sm-push-12 col-md-push-6"
+						style="text-align: right;">
+						<div class="dt-buttons btn-group flex-wrap">
+							<button class="btn btn-danger buttons-copy buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>Copy</span>
+							</button>
+							<button class="btn btn-danger buttons-csv buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>CSV</span>
+							</button>
+							<button class="btn btn-danger buttons-excel buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>Excel</span>
+							</button>
+							<button class="btn btn-danger buttons-pdf buttons-html5"
+								tabindex="0" aria-controls="example1" type="button">
+								<span>PDF</span>
+							</button>
+							<button class="btn btn-danger buttons-print" tabindex="0"
+								aria-controls="example1" type="button">
+								<span>Print</span>
+							</button>
+							<div class="btn-group">
+								<button
+									class="btn btn-danger buttons-collection dropdown-toggle buttons-colvis"
+									tabindex="0" aria-controls="example1" type="button"
+									aria-haspopup="true" aria-expanded="false">
+									<span>Column visibility</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.card-header -->
+
+				<!-- card-hody Start -->
+				<br /> <br />
+
+				<div class="card-body table-responsive p-0">
+					<table class="table p-0 table-hover">
+						<thead style="font-size: 1.0em; text-align:center;">
+							<tr>
+							<th>선택</th>
+							<th>No.</th>
+							<th>상호<small>(공급받는 자)</small></th>
+							<th>이전잔액</th>
+							<th>매출금액</th>
+							<th>반품금액</th>
+							<th>입금금액</th>
+							<th>수정금액</th>
+							<th>잔여금액</th>
+							<th>담당자</th>
+							<th>최종거래일</th>
+							</tr>
+						</thead>
+						<tbody
+							style="font-size: 1.0em; font-variant: normal; text-align: center;">
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check1"> <label
+											for="check1"></label>
+									</div>
+								</td>
+									<td>1</td>
+									<td>가나산업</td>
+									<td>1,000,000</td>
+									<td>3,000,000</td>
+									<td>300,000</td>
+									<td>3,300,000</td>
+									<td>3,300,000</td>
+									<td>0</td>
+									<td>오가나</td>
+									<td>2021-11-01</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check2"> <label
+											for="check2"></label>
+									</div>
+								</td>
+									<td>2</td>
+									<td>약성기계</td>
+									<td>0</td>
+									<td>1,000,000</td>
+									<td>100,000</td>
+									<td>1,100,000</td>
+									<td>0</td>
+									<td>0</td>
+									<td>갱스터</td>
+									<td>2021-11-05</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="icheck-danger">
+										<input type="checkbox" value="" id="check3"> <label
+											for="check3"></label>
+									</div>
+								</td>
+									<td>3</td>
+									<td>약성기계</td>
+									<td>0</td>
+									<td>1,000,000</td>
+									<td>100,000</td>
+									<td>1,100,000</td>
+									<td>0</td>
+									<td>0</td>
+									<td>갱스터</td>
+									<td>2021-11-05</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+				<!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		</div>
+
+		<div class="dataTables_paginate paging_simple_numbers mx-auto"
+			id="example1_paginate">
+			<ul class="pagination">
+				<li class="paginate_button page-item previous disabled"
+					id="example1_previous"><a href="#" aria-controls="example1"
+					data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+				<li class="paginate_button page-item active"><a href="#"
+					aria-controls="example1" data-dt-idx="1" tabindex="0"
+					class="page-link">1</a></li>
+				<li class="paginate_button page-item "><a href="#"
+					aria-controls="example1" data-dt-idx="2" tabindex="0"
+					class="page-link">2</a></li>
+				<li class="paginate_button page-item "><a href="#"
+					aria-controls="example1" data-dt-idx="3" tabindex="0"
+					class="page-link">3</a></li>
+				<li class="paginate_button page-item next" id="example1_next">
+					<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+					class="page-link">Next</a>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+	</section>
+	<!-- /.content -->
+
+	<!-- /.content-wrapper -->
+	<!-- ./wrapper -->
+
+</div>
+</th:block>
+
+
+</body>
+</html>
