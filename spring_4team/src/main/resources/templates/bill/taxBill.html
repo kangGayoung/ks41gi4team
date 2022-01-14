@@ -7,33 +7,32 @@
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
-		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
+	
  	<script type="text/javascript">
-	//팝업뜨우기 시작	
+/* 	//팝업뜨우기 시작	
  	$(document).ready(function(){
 			var formObj = $("form[rile = 'form']");
-			
+		
 			$('#popupBtn').on("click", function(){
 				var make_date = $("#make_date").val();
 				window.open("/bill/billResult/billInsert?make_date="+make_date,"_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
 			});
 		});
-		//팝업띄우기 끋 
+		//팝업띄우기 끋   = 실패 */
 	//팝업뜨우기2 시작	
 			 function nwindow(){
-				window.open("/bill/billResult/billInsert","_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
+				window.open("@{/billInsert2}","_blank", "toolbar=yes, menubar=yes, width=700, hight=500").focus();
 			};
 	
 		//팝업띄우기2 끋
-			</script>
  	
-<!--  	$(document).ready(function() {
+/*   	$(document).ready(function() {
 					$('.billReg').click(function() {
 							$(location).attr('href','bill/billResult/billReg');
 					});
 				}); 
-			 -->
+			  */
+			</script>
 
 		<!-- Content Header (Page header) -->
 	<div class="wrapper">

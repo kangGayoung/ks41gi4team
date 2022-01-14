@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="@{layout/default}">
-<th:block layout:fragment="customContent">
-	<title th:text="${title}"></title>
-</th:block>
-<th:block layout:fragment="customContents">
-<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
-		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>	
- 	<!-- <script type="text/javascript">
-		/* $(function(){
-			$('#purchaseLookBtn').click(function(){
-				location.href= 'purchaseLookList';
-			});
-		});		 */
-			</script> -->
-	
+	<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="@{layout/default}">
+		<th:block layout:fragment="customContent">
+			<title th:text="${title}">
+				
+			</title>
+		</th:block>
+		<th:block layout:fragment="customContents">
 
-		<!-- Content Header (Page header) -->
+	<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		
-		<h2 class= "padding : 2 0 10 5px;"> 매입 원장 조회  </h2>
+		<h2 class= "padding : 2 0 10 5px;"> 매입 원장 조회 버튼 결과 표시 페이지  </h2>
 		<!-- /.content-header -->
 
 		<!-- Main content -->
@@ -105,8 +97,7 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                         
-                              <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='settlementList' " style="width:100%;" >>>검색</a>
+                             <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='purchaseLookup' " style="width:100%;" >매입처 재검색</a>
                            </td>
                         </tr>
                         <tr>
@@ -131,7 +122,7 @@
                            </td>
                            <td class="pr-2 pb-2">
                          		<h7 class=" mt-2">
-									검색 기본설정은<code>해당월<code>입니다.
+									검색 기본설정은<code>해당월</code>입니다.
 								</h7>
                            </td>
                         </tr>
@@ -153,9 +144,7 @@
 	<br />
 	<br />
 
-
-<!-- <!-- 
-테이블  시작
+	<!-- 테이블  시작-->
 <section class="content">
 	<div class="row">
 		<div class="col-12">
@@ -206,9 +195,9 @@
 						</div>
 					</div>
 				</div>
-				/.card-header
+				<!-- /.card-header -->
 
-				card-hody Start
+				<!-- card-hody Start -->
 				<br /> <br />
 
 				<div class="card-body table-responsive p-0">
@@ -230,140 +219,32 @@
 						</thead>
 						<tbody
 							style="font-size: 1.0em; font-variant: normal; text-align: center;">
-							<tr>
+							<tr th:if="${not #list.isEmpty(settlementList)}"th:each="l:${settlementList}">
 								<td>
 									<div class="icheck-danger">
 										<input type="checkbox" value="" id="check1"> <label
 											for="check1"></label>
-									</div>
+									</div><!--1. 체크박스  -->
 								</td>
-								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>300,000</td>
-								<td>2021-10-04</td>
+								<td>넘버링</td><!--2. 넘버링  -->
+								<td th:text = "${l.businessName}"></td><!--3. 거래처명 -->
+								<td th:text = "#"></td><!--4. *이전금액 -->
+								<td th:text = "${l.goodsSupplyPrice}"></td><!--5 매입공급가액 -->
+								<td th:text = "${l.vat}"></td><!--6 매입세액 -->
+								<td th:text = "${l.purchasePrice}"></td><!--7 매입단가(세금포)  -->
+								<td th:text = "${l.totalAmount}"></td><!--8 지급금액 -->
+								<td th:text = "#"></td><!--9 * 수정금액  -->
+								<td th:text = "#"></td><!--10 *잔여지급액  -->
+								<td th:text = "${l.dealDate}"></td><!--11 최종거래일   -->
 							</tr>
-							<tr>
-								<td>
-									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check2"> <label
-											for="check2"></label>
-									</div>
-								</td>
-								<td>2</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>300,000</td>
-								<td>2021-10-04</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check3"> <label
-											for="check3"></label>
-									</div>
-								</td>
-								<td>3</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>300,000</td>
-								<td>2021-10-04</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check4"> <label
-											for="check4"></label>
-									</div>
-								</td>
-								<td>1</td>
-							<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>300,000</td>
-								<td>2021-10-04</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check5"> <label
-											for="check5"></label>
-									</div>
-								</td>
-								<td>1</td>
-							<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>300,000</td>
-								<td>2021-10-04</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check6"> <label
-											for="check6"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>300,000</td>
-								<td>2021-10-04</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="icheck-danger">
-										<input type="checkbox" value="" id="check7"> <label
-											for="check7"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<td>2021</td>
-								<td>2021</td>
-								<td>계산서(면세)</td>
-								<td>싱싱상가</td>
-								<td>127-334</td>
-								<td>400,000</td>
-								<td>0</td>
-								<td>300,000</td>
-								<td>2021-10-04</td>
-							</tr>
-
+							
 
 						</tbody>
 					</table>
 				</div>
-				/.card-body
+				<!-- /.card-body -->
 			</div>
-			/.card
+			<!-- /.card -->
 		</div>
 
 		<div class="dataTables_paginate paging_simple_numbers mx-auto"
@@ -386,22 +267,28 @@
 					class="page-link">Next</a>
 				</li>
 			</ul>
-		</div> 
-		
-	
+		</div>
 
 
 	</div>
 
 
 	</section>
+	<!-- /.content -->
 
-테이블  끝
-
- -->
 	<!-- /.content-wrapper -->
-	
-	
+	<!-- ./wrapper -->
+
+</div>
+
+</th:block>
+
+
+</body>
+</html>
+	<!-- /.content -->
+
+	<!-- /.content-wrapper -->
 	<!-- ./wrapper -->
 
 </div>

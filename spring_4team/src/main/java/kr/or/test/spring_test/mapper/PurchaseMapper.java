@@ -9,13 +9,13 @@ import kr.or.test.spring_test.dto.Settlement;
 
 
 @Mapper
-public interface SettlementMapper {
+public interface PurchaseMapper {
 	
 
-	//매입리스트 조회 : /purchaseLookup
-//	public List<Settlement> getpurchaseList();
+	//매입리스트 조회 : /Settlement
 	
-	
+	public List<Settlement> getsettlementList();
+
 	//매출리스트 조회 : /salesLookup
 	
 	
