@@ -17,6 +17,8 @@ public interface MainMapper {
 	
 	public int getStaffInfoListCount();
 	
+	public int getStaffInfoSearchListCount(String searchKey, String searchValue);
+	
 	//사원검색
 	public List<Map<String, Object>> getStaffInfoSearchList(Map<String,Object> paramMap,String searchKey, String searchValue);
 	
