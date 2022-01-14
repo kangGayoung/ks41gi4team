@@ -14,13 +14,7 @@
 		<result column="tr.dealDate" 							property="dealDate"/>
 	</resultMap>
 		
-	
-	
-<<<<<<< HEAD
-=======
-	
-	
-	
+
 	<!-- 매입 조회 -->
 <select id="SettlementList" resultType="Settlement">
 	SELECT
@@ -40,12 +34,6 @@
 	
 
 	</select>
-
-
-
-
-
->>>>>>> refs/heads/develop
 
 
 
