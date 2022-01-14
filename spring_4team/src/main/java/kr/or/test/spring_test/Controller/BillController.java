@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.or.test.spring_test.service.BillService;
+
 
 
 
@@ -16,14 +18,16 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/bill")
 public class BillController{
 
+	@Autowired
+	private BillService billService;
 	
 	//팝업띄우기
-	@RequestMapping ("/billInsert2")//(value="/billInsert2", method = RequestMethod.GET)
+	@RequestMapping ("bill/billResult/billInsert2")//(value="/billInsert2", method = RequestMethod.GET)
 	public ModelAndView  popupGet() throws Exception{
-		ModelAndView  bip = new ModelAndView ();
-			bip.setViewName("billInsert2");
+		ModelAndView  bi = new ModelAndView("/bill/billResult/taxBill");
+			bi.setViewName("billInsert2");
 			System.out.println("yyyyyyyyyyyyyyeannie_bill_popup1");
-			return bip;
+			return bi;
 	}
 	
 	/*
