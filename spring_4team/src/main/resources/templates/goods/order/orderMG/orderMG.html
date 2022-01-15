@@ -254,8 +254,7 @@
                   <thead>
                      <tr>
                         <!-- <th>No.</th> -->
-                        <th>발주요청코드</th>
-                        <th>발주요청시각</th>
+                        <th>발주요청코드</th>                        
                         <th>품목명</th>
                         <th>품목규격</th>
                         <th>품목단위</th>
@@ -263,13 +262,13 @@
                         <th>매입단가(VAT포함)</th>
                         <th>수량</th>
                         <th>상태</th>
+                        <th>발주요청시각</th>
                         <th>거래처 등록자</th>
                      </tr>
                   </thead>
                   <tbody>
 					<tr th:if="${not #lists.isEmpty(orderList)}" th:each="l : ${orderList}">
-						<td th:text="${l.orderCode}"></td>
-						<td th:text="${l.orderRegTime}"></td>
+						<td th:text="${l.orderCode}"></td>						
 						<td th:text="${l.goodsName}"></td>
 						<td th:text="${l.goodsWeight}"></td>
 						<td th:text="${l.goodsUnit}"></td>
@@ -277,6 +276,7 @@
 						<td th:text="${l.purchasePrice}"></td>
 						<td th:text="${l.goodsQuantity}"></td>
 						<td th:text="${l.situation}"></td>
+						<td th:text="${l.orderRegTime}"></td>
 						<td th:text="${l.staffId2}"></td>
 					</tr>
 					<tr th:unless="${not #lists.isEmpty(orderList)}">
