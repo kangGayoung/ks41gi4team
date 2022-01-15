@@ -25,6 +25,11 @@ public interface OrderMapper {
 	// 주문 검색
 	public List<Map<String, Object>> getOrderListBySearch01(Map<String, Object> paramMap, String orderSearch01, String orderSearchVal);
 	
+	// 납품 예정리스트 조회 및 검색
+	public List<Map<String, Object>> getPreOrderList(Map<String, Object> paramMap, String preOrderSearch, String preOrderSearchVal);
+
+	public List<Map<String, Object>> getPreOrderListAll(Map<String, Object> paramMap);
+	
 	
 	
 }

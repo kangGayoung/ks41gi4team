@@ -6,6 +6,7 @@
 	<resultMap type="OrderList" id="OrderResultMap">
 		<result column="orderCode" property="orderCode"/>
 		<result column="orderRegTime" property="orderRegTime"/>
+		<result column="orderCompleteTime" property="orderCompleteTime"/>
 		<result column="goodsName" property="goodsName"/>
 		<result column="goodsWeight" property="goodsWeight"/>
 		<result column="goodsUnit" property="goodsUnit"/>
@@ -15,6 +16,56 @@
 		<result column="situation" property="situation"/>
 		<result column="staffId2" property="staffId2"/>
 	</resultMap>
+	
+	<!--납품예정 검색 -->
+	<select id="getPreOrderList" parameterType="String" resultType="map">
+		SELECT 
+			orderCode 
+			,orderRegTime
+			,orderCompleteTime
+			,goodsName
+			,goodsWeight
+			,goodsUnit
+			,salesperson
+			,purchasePrice 
+			,goodsQuantity 
+			,situation
+			,staffId2
+		FROM 
+			k4_tb_order
+		<!-- 	
+		WHERE
+			orderCompleteTime IS null
+		 -->		
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="orderCompleteTime == null and preOrderSearch != null and preOrderSearchVal != ''.toString()">
+				${preOrderSearch} LIKE CONCAT('%', #{preOrderSearchVal}, '%');
+			</if>
+			
+		</trim>	
+	</select>
+	
+	<select id="getPreOrderListAll" parameterType="map" resultType="map">
+		SELECT 
+			orderCode 
+			,orderRegTime
+			,orderCompleteTime
+			,goodsName 
+			,goodsWeight
+			,goodsUnit 
+			,salesperson 
+			,purchasePrice 
+			,goodsQuantity
+			,situation
+			,staffId2
+		FROM 
+			k4_tb_order
+		WHERE
+			orderCompleteTime IS null
+		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};		
+		</if>
+	</select>
 	
 	<!-- 주문검색 맵 -->
 	<select id="getOrderListBySearch01" parameterType="String" resultType="map">
@@ -34,8 +85,8 @@
 			k4_tb_order AS o
 			
 		<trim prefix="WHERE" prefixOverrides="AND |OR ">
-			<if test="orderSearchVal != null and orderSearchVal != ''.toString()">
-				${orderSearch01} LIKE CONCAT('%', #{orderSearchVal}, '%')
+			<if test="orderSearch01 != null and orderSearchVal != ''.toString()">
+				${orderSearch01} LIKE CONCAT('%', #{orderSearchVal}, '%');
 			</if>
 		</trim>	
 	</select>

@@ -3,6 +3,7 @@ package kr.or.test.spring_test.dto;
 public class OrderList {
 	private String orderCode;
 	private String orderRegTime;
+	private String orderCompleteTime;
 	private String goodsName;
 	private String goodsWeight;
 	private String goodsUnit;
@@ -22,6 +23,12 @@ public class OrderList {
 	}
 	public void setOrderRegTime(String orderRegTime) {
 		this.orderRegTime = orderRegTime;
+	}
+	public String getOrderCompleteTime() {
+		return orderCompleteTime;
+	}
+	public void setOrderCompleteTime(String orderCompleteTime) {
+		this.orderCompleteTime = orderCompleteTime;
 	}
 	public String getGoodsName() {
 		return goodsName;
@@ -78,6 +85,8 @@ public class OrderList {
 		builder.append(orderCode);
 		builder.append(", orderRegTime=");
 		builder.append(orderRegTime);
+		builder.append(", orderCompleteTime=");
+		builder.append(orderCompleteTime);
 		builder.append(", goodsName=");
 		builder.append(goodsName);
 		builder.append(", goodsWeight=");
@@ -97,6 +106,7 @@ public class OrderList {
 		builder.append("]");
 		return builder.toString();
 	}
+	
 	
 	
 }
