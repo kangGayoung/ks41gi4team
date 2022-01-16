@@ -9,22 +9,23 @@
 <th:block layout:fragment="customContents">
 	
  	<script type="text/javascript">
-/* 	//팝업뜨우기 시작	
- 	$(document).ready(function(){
-			var formObj = $("form[rile = 'form']");
-		
+	//팝업뜨우기 시작	
+/*  	$(document).ready(function(){
+		//	var formObj = $("form[rile = 'form']");
 			$('#popupBtn').on("click", function(){
-				var make_date = $("#make_date").val();
-				window.open("/bill/billResult/billInsert?make_date="+make_date,"_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
+				// var m ake_date = $("#make_date").val();
+//				window.open("/bill/billResult/billInsert2?make_date="+make_date,"_blank", "toolbar=yes,menubar=yes,width=700,hight=500").focus();
+				window.open("/bill/billResult/billInsert2"+"_blank", "toolbar=yes,menubar=yes,width=400,hight=300").focus();
 			});
-		});
-		//팝업띄우기 끋   = 실패 */
-	//팝업뜨우기2 시작	
+		}); */
+		//팝업띄우기 끋   = 실패
+ 	//팝업뜨우기2 시작	
 			 function nwindow(){
-				window.open("@{/billInsert2}","_blank", "toolbar=yes, menubar=yes, width=700, hight=500").focus();
+				window.open("/bill/billResult/taxBillInsert2", " width=500, hight=300").focus();
+				console.log("팝업띄우기 <<<<< ---------------- taxvBill");
 			};
 	
-		//팝업띄우기2 끋
+		//팝업띄우기2 끋 
  	
 /*   	$(document).ready(function() {
 					$('.billReg').click(function() {
@@ -122,7 +123,9 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillList' "style="width:100%;">>>검색</a>
+                        <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillList' "style="width:100%;">>>검색</a> 
+  <!--  taxBillInsert2 확인용
+                             <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillInsert2' "style="width:100%;">>>검색</a> -->
                            </td>
                         </tr>
                         <tr>
@@ -146,9 +149,10 @@
                               </select> -->                              
                            </td>
                            <td class="pr-2 pb-2">
-                          				<div class="filter-btns">
+                          				<div class="link-btns">
 								                <a class="btn btn-add btn-danger" role="button"  onclick="location.href='billInsert' "> >>등록</a>
-								                <a class="btn btn-add js-chk_new_vendor" role="button" href="">>>세금계산서 등록</a>
+								                <a class="btn btn-add  btn-danger" role="button" onclick="location.href='taxBillInsert2' " >>>세금계산서 등록</a>
+								                <a class="btn btn-add  btn-danger" role="button" onclick="location.href='testModal' " >>>testModal</a>
 												<button type="button" class="btn btn-danger btn-xl " id='popupBtn'  onclick="nwindow()">  popup(get)</button>									
 										</div>
 
