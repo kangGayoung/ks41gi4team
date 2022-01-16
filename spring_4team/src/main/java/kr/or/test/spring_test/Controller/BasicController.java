@@ -49,11 +49,38 @@ public class BasicController {
 	}
 	
 	
-	
+	//사원가입처리화면
 	@GetMapping("/staffInsert")
 	public String staffInsert() {
+		
+		
 		return "contents/basicMG/staffInsert/staffInsert";
 	}
+	
+	@PostMapping("/staffInsert")
+	public String staffInsertSubmit(StaffInfo staffInfo) {
+		
+		System.out.println("사원가입 입력받은 값:" + staffInfo);
+		
+		String staffId = staffInfo.getStaffId();
+		
+		if(staffId != null && !"".equals(staffId) ) {
+
+			staffInfo.setMainBusinessCode("mart001");
+			staffInfo.setStaffState(null);
+			staffInfo.setStaffLevel("사원");
+			staffInfo.setSystemLevel("3");
+			staffInfo.setAuthoriser("m_admin001");
+			System.out.println("세팅후 입력값 "+ staffInfo);
+			
+			mainService.staffInsert(staffInfo);
+		}
+		
+		return "redirect:/basic/staffList";
+	}
+	
+	
+	
 	
 	//사원 수정
 	@GetMapping("/staffUpdate")

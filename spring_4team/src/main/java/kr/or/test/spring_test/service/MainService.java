@@ -38,6 +38,14 @@ public class MainService {
 		return 0;
 	}
 	
+	//사원 가입처리
+	public int staffInsert(StaffInfo staffInfo) {
+		
+		int result = mainMapper.staffInsertAct(staffInfo);
+		return result;
+	}
+	
+	
 	//사원검색
 	public Map<String, Object> staffInfoPrint(String searchKey, String searchValue, int currentPage){
 		
