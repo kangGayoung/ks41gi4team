@@ -65,6 +65,7 @@ public class BasicController {
 		String staffId = staffInfo.getStaffId();
 		
 		if(staffId != null && !"".equals(staffId) ) {
+			
 
 			staffInfo.setMainBusinessCode("mart001");
 			staffInfo.setStaffState(null);
