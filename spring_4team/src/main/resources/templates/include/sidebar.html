@@ -204,12 +204,22 @@
             </a>
                         <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a th:href="@{/settlement}" class="nav-link"> 
+                 <a th:href="@{/settlement/purchaseLookup}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>매입/매출</p>
+                  <p>매입원장(거래내역)</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
-                <ul class="nav nav-treeview">
+                <a th:href="@{/settlement/salesLookup}" class="nav-link"> 
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>매출원장(거래내역)</p>
+                  <i class="right fas fa-angle-left"></i>
+                </a>
+                <a th:href="@{/settlement/orderInvoice}" class="nav-link"> 
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>거래집계</p>
+                  <i class="right fas fa-angle-left"></i>
+                </a>
+                <!-- <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a th:href="@{/settlement/purchaseLookup}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
@@ -219,7 +229,7 @@
                   <li class="nav-item">
                     <a th:href="@{/settlement/salesLookup}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>매출원장(거래내역)</p>
+                      <p></p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -228,7 +238,7 @@
                       <p>거래 집계</p>
                     </a>
                   </li>
-                </ul>
+                </ul> -->
               </li>
             </ul>
           </li>
@@ -242,12 +252,22 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a th:href="@{/bill}" class="nav-link">
+                <a th:href="@{/bill/purchaseInvoice}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>계산서</p>
+                  <p>거래명세서</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
-                <ul class="nav nav-treeview">
+                <a th:href="@{/bill/accounts}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>정산서</p>
+                  <i class="right fas fa-angle-left"></i>
+                </a>
+                <a th:href="@{/bill/taxBill}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>(세금)계산서 관리</p>
+                  <i class="right fas fa-angle-left"></i>
+                </a>
+                <!-- <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a th:href="@{/bill/purchaseInvoice}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
@@ -266,7 +286,7 @@
                       <p>(세금)계산서 관리</p>  
                     </a>
                   </li>
-                </ul>
+                </ul> -->
                 </ul>
               </li>
               

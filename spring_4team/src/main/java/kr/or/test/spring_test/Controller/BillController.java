@@ -3,12 +3,9 @@ package kr.or.test.spring_test.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import kr.or.test.spring_test.service.BillService;
 
 
@@ -21,11 +18,19 @@ public class BillController{
 	@Autowired
 	private BillService billService;
 	
+	
+	//testModal
+	@GetMapping("/testModal")
+	public String testModal() {
+		return "bill/billResult/testModal";
+	}
+	
+	
 	//팝업띄우기
-	@RequestMapping ("bill/billResult/billInsert2")//(value="/billInsert2", method = RequestMethod.GET)
+	@RequestMapping ("/taxBillInsert2")//(value="/taxBillInsert2", method = RequestMethod.GET)
 	public ModelAndView  popupGet() throws Exception{
-		ModelAndView  bi = new ModelAndView("/bill/billResult/taxBill");
-			bi.setViewName("billInsert2");
+		ModelAndView  bi = new ModelAndView();
+			bi.setViewName("taxBillInsert2");
 			System.out.println("yyyyyyyyyyyyyyeannie_bill_popup1");
 			return bi;
 	}
@@ -46,9 +51,9 @@ public class BillController{
 	 */
 	
 	
-	@GetMapping("/billInsert2")
+	@GetMapping("/taxBillInsert2")
 	public String billInsert2() {
-		return	"bill/billResult/billInsert2";
+		return	"bill/billResult/taxBillInsert2";
 	}
 	@GetMapping("/billInsert")
 	public String billInsert() {
