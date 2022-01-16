@@ -53,6 +53,42 @@
 	
 	</select>
 	
+	<insert id="staffInsertAct" parameterType="StaffInfo">
+		INSERT INTO k4_tb_staff
+		(	staffId
+			,mainBusinessCode
+			,staffState
+			,staffPw
+			,staffName
+			,staffBirth
+			,staffLevel
+			,systemLevel
+			,staffEmail
+			,staffRegDate
+			,staffPhone
+			,staffAddr
+			,staffEditDate
+			,authoriser
+		)VALUES (
+			#{staffId}
+			,#{mainBusinessCode}
+			,NOW()
+			,#{staffPw}
+			,#{staffName}
+			,#{staffBirth}
+			,#{staffLevel}
+			,#{systemLevel}
+			,#{staffEmail}
+			,#{staffRegDate}
+			,#{staffPhone}
+			,#{staffAddr}
+			,NOW()
+			,#{authoriser}
+		);
+		
+	</insert>
+	
+	
 	<select id="getStaffInfoSearchList" parameterType="String" resultMap="staffResultMap">
 		select
 			staffId 			

@@ -14,10 +14,13 @@ public interface MainMapper {
 
 	//직원 조회
 	public List<Map<String, Object>> getStaffInfo(Map<String,Object> paramMap);
-	
+	// 전체 리스트 수
 	public int getStaffInfoListCount();
-	
+	//검색 수  (사용안함)
 	public int getStaffInfoSearchListCount(String searchKey, String searchValue);
+	
+	//사원가입처리 
+	public int staffInsertAct(StaffInfo staffInfo);
 	
 	//사원검색
 	public List<Map<String, Object>> getStaffInfoSearchList(Map<String,Object> paramMap,String searchKey, String searchValue);
