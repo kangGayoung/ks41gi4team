@@ -17,8 +17,10 @@
 				var submitCheck = true;
 				var inputObj = $('#staffInsertForm').find('input');
 				
+				var pwval = $('#staffPw').val();
+				var pwval2 = $('#staffPw2').val();
 				
-				//pw중복 체크 추가할것!
+				
 				$.each(inputObj, function(){
 					var inputData = $(this).val();
 					var inputId = $(this).attr('id');
@@ -26,10 +28,19 @@
 					if(typeof inputData == 'undefined' || inputData == null ||inputData == '' ){
 						alert(labelText+'를 입력해주세요.');
 						$(this).focus();
+					
 						submitCheck = false;
+						
 						return false;
 					}
+					
 				});
+				
+				if(pwval != pwval2){
+					alert('비밀번호가 일치하지 않습니다.');
+					return false;
+				}
+				
 				
 				if(submitCheck) $('#staffInsertForm').submit();
 				
@@ -39,13 +50,13 @@
 			//달력 input-group-text 생일
 			$('.input-group-text').click(function(){
 				$('#reservationdate').datetimepicker({
-					format: "YY-MM-DD"
+					format: "YYYY-MM-DD"
 			    });
 			});
 			//입사일
 			$('.input-group-text').click(function(){
 				$('#reservationdate2').datetimepicker({
-					format: "YY-MM-DD"	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+					format: "YYYY-MM-DD"	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
 			    });
 			});
 			
