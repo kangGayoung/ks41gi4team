@@ -23,7 +23,13 @@ public class MainService {
 	}
 	
 	
+	//사원 1명 조회
+	public StaffInfo getStaffIdCheck(String staffId) {
+		return mainMapper.getStaffIdCheckLogin(staffId);
+		
+	} 
 	
+
 	//중복체크
 	public int getStaffCheck(String staffId) {
 		int result= 0;

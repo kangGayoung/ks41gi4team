@@ -4,6 +4,8 @@ package kr.or.test.spring_test.Controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -122,11 +124,13 @@ public class BasicController {
 	
 	@PostMapping("/staffList")
 	public String staffListSearch(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
-			String searchKey, String searchValue, Model model) {
+			String searchKey, String searchValue, Model model, HttpSession session) {
 		
 		
 		Map<String, Object> resultMap = mainService.staffInfoPrint(searchKey,searchValue,currentPage);
 		
+		session.setAttribute("SKEY", searchKey);
+		session.setAttribute("SVAL", searchValue);
 		
 		model.addAttribute("title","사원 검색목록");
 		model.addAttribute("currentPage",currentPage);
@@ -137,7 +141,7 @@ public class BasicController {
 		model.addAttribute("startPageNum", resultMap.get("startPageNum"));
 		
 	
-		return "contents/basicMG/staffList/staffListSearch";
+		return "contents/basicMG/staffList/staffList";
 	}
 	
 	

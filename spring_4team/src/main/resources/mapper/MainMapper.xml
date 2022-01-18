@@ -19,6 +19,29 @@
 		<result column="staffEditDate" property="staffEditDate"/>
 		<result column="authoriser" property="authoriser"/>
 	</resultMap> 
+	<select id="getStaffIdCheckLogin" parameterType="String" resultMap="staffResultMap">
+		SELECT 
+			staffId
+			, mainBusinessCode
+			, staffState
+			, staffPw
+			, staffName
+			, staffBirth
+			, staffLevel
+			, systemLevel
+			, staffEmail
+			, staffRegDate
+			, staffPhone
+			, staffAddr
+			, staffEditDate
+			, authoriser
+		FROM 
+			k4_tb_staff
+		WHERE
+			staffId = #{staffId};
+	</select>
+	
+	
 	<select id="getStaffInfoListCount" resultType="int" fetchSize="1000">
 		SELECT
 			COUNT(1)
