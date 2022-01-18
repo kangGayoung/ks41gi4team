@@ -5,6 +5,16 @@
 	<th:block layout:fragment="customContent" >
 		<title th:text="${title}"></title>
 	</th:block>
+	<th:block layout:fragment="customJs">
+		<script type="text/javascript">
+			$(function(){
+				$(document).on('click','#loginSubmitBtn',function(){
+					$('#loginForm').submit();
+				});
+			});
+		</script>
+	</th:block>
+
 	<th:block layout:fragment="customContents" >
 
 		<div class="col-md-12">
@@ -15,17 +25,19 @@
 			
 						
 				<div class="card-body">
+					<form id="loginForm" th:action="@{/login}" method="post">
 						<div class="form-group">
 							<label for="staffId">STAFF ID</label>
-							<input type="text" class="form-control" id="staffId" placeholder="Staff ID">
+							<input type="text" class="form-control" id="staffId" name="staffId" placeholder="Staff ID">
 						</div>
 						<div class="form-group">
 							<label for="inputPassword1">Password</label>
-							<input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+							<input type="password" class="form-control" id="staffPw" name="staffPw" placeholder="Password">
 						</div>
+					</form>
 				</div>
 				<div class="card-body  ml-auto">
-                  <button type="submit" class="btn btn-primary">Login</button>
+                  <button id="loginSubmitBtn" type="button" class="btn btn-primary">Login</button>
                 </div>		
 			</div>
 			

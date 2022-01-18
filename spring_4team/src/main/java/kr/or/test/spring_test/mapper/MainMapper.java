@@ -12,6 +12,9 @@ import kr.or.test.spring_test.dto.StaffInfo;
 @Mapper
 public interface MainMapper {
 
+	//사원 1명 조회
+	public StaffInfo getStaffIdCheckLogin(String staffId);
+	
 	//직원 조회
 	public List<Map<String, Object>> getStaffInfo(Map<String,Object> paramMap);
 	// 전체 리스트 수
