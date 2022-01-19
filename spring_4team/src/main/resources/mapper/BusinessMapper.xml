@@ -4,31 +4,72 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.or.test.spring_test.mapper.BusinessMapper">
 
-<select id="getBusinessListCount" resultType="int" fetchSize="1000">
-	SELECT
-		COUNT(1)
-	FROM
-		k4_tb_business;
-</select>
-<select id="BusinessInfoList" parameterType="map" resultType="map">
-	select
-		businessCode AS businessCode
-		, businessName AS businessName
-		, businessPartnerName AS businessPartnerName
-		, businessPartnerNum AS businessPartnerNum
-		, businessPhoneNum AS businessPhoneNum
-		, businessAddress AS businessAddress
-		, businessStaff AS businessStaff
-		, businessStaffNum AS businessStaffNum
-		, businessStaffEmail AS businessStaffEmail
-		, businessSectors AS businessSectors
-		, businessStatus AS businessStatus
-	FROM 
-		k4_tb_business
-	<if test="startNum != null">
-		LIMIT #{startNum}, #{rowPerPage};
-	</if>
-</select>
+	<select id="getBusinessListCount" resultType="int" fetchSize="1000">
+		SELECT
+			COUNT(1)
+		FROM
+			k4_tb_business;
+	</select>
+	<select id="BusinessInfoList" parameterType="map" resultType="map">
+		select
+			businessCode AS businessCode
+			, businessName AS businessName
+			, businessPartnerName AS businessPartnerName
+			, businessPartnerNum AS businessPartnerNum
+			, businessPhoneNum AS businessPhoneNum
+			, businessAddress AS businessAddress
+			, businessStaff AS businessStaff
+			, businessStaffNum AS businessStaffNum
+			, businessStaffEmail AS businessStaffEmail
+			, businessSectors AS businessSectors
+			, businessStatus AS businessStatus
+		FROM 
+			k4_tb_business
+		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};
+		</if>
+	</select>
+	<insert id="BusinessInsert" parameterType="BusinessInfo">
+		INSERT INTO k4_tb_business
+					(businessCode
+					, mainBusinessCode
+					, businessName
+					, businessPartnerName
+					, businessPartnerNum
+					, businessPhoneNum
+					, businessAddress
+					, businessEmail
+					, businessStaff
+					, businessStaffNum
+					, businessStaffEmail
+					, businessSectors
+					, businessStatus
+					, businessMainAccount
+					, businessAccountNumber
+					, businessAccountHolder
+					, staffId
+					, regDate)
+		VALUES (
+				  #{businessCode}
+				, #{mainBusinessCode}
+				, #{businessName}
+				, #{businessPartnerName}
+				, #{businessPartnerNum}
+				, #{businessPhoneNum}
+				, #{businessAddress}
+				, #{businessEmail}
+				, #{businessStaff}
+				, #{businessStaffNum}
+				, #{businessStaffEmail}
+				, #{businessSectors}
+				, #{businessStatus}
+				, #{businessMainAccount}
+				, #{businessAccountNumber}
+				, #{businessAccountHolder}
+				, #{staffId}
+				, NOW())
+	</insert>
+	
 
 
 

@@ -4,9 +4,6 @@
  	 layout:decorate="@{layout/default}">
   <th:block layout:fragment="customContent" >
   	<title th:text="${title}"></title>
-  	<style type="text/css">
-  		
-  	</style>
   </th:block>
   <th:block layout:fragment="customJs">
 	<script type="text/javascript">
@@ -101,11 +98,6 @@
 					alert('아이디를 입력해주세요');
 					return false;
 				}
-			});
-			
-			//비정상 가입시도 차단
-			$(document).on('focusout','[input]',function(){
-				
 			});
 			
 		});

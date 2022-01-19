@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.test.spring_test.dto.BusinessInfo;
 import kr.or.test.spring_test.mapper.BusinessMapper;
 
 @Service
@@ -20,8 +21,28 @@ public class BusinessService {
 		this.businessMapper = businessMapper;
 	}
 
-
+	//거래처 등록 쿼리 실행
+	public int BusinessInsert(BusinessInfo businessInfo) {
+		
+		//거래처 코드 생성
+		String Bcode = "mb_";
+		int cnum = businessMapper.getBusinessListCount();
+		 
+		Bcode += cnum;
+		
+		businessInfo.setBusinessCode(Bcode);
+		
+		int result = businessMapper.BusinessInsert(businessInfo);
+		return result;
+	}
 	
+	//dataTable조회
+	public List<Map<String,Object>> BusinessList(){
+		
+		return businessMapper.BusinessInfoList(null);
+	}
+	
+	//기본형 조회
 	public Map<String, Object> BusinessListPrint(int currentPage) {
 		
 		int rowPerPage = 5;
