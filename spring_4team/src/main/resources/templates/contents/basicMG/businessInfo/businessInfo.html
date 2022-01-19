@@ -2,14 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
  	 layout:decorate="@{layout/default}">
-  <th:block layout:fragment="customContent" >
-  	<title th:text="${title}"></title>
-  </th:block>
+	<th:block layout:fragment="customContent" >
+		<title th:text="${title}"></title>
+	</th:block>
+	<th:block layout:fragment="customJs">
+		<link rel="stylesheet" type="text/css" th:herf="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				var aLengthMenuArray = [];
+				aLengthMenuArray.push([5,10,15]);
+				aLengthMenuArray.push([5,10,15]);
+				
+				$('#businessListTable').DataTable({
+					destroy: true,
+					pageLength: 5,
+					aLengthMenu: aLengthMenuArray,
+					ajax:{
+						url:'/basic/businessInfo',
+						type:'post',
+						dataSrc: function(data){
+							console.log(JSON.stringify(data));
+							return data;
+						}
+					},
+					columns:[
+						{"data":"businessCode"},
+						{"data":"businessName"},
+						{"data":"businessPartnerName"},
+						{"data":"businessPartnerNum"},
+						{"data":"businessPhoneNum"},
+						{"data":"businessAddress"},
+						{"data":"businessStaff"},
+						{"data":"businessStaffNum"},
+						{"data":"businessStaffEmail"},
+						{"data":"businessSectors"},
+						{"data":"businessStatus"}
+						
+					]
+				});
+			});
+		</script>
 	
+	</th:block>
   
 	<th:block layout:fragment="customContents" >
-		
-		
 	<div class="wrapper">
 
 		<section class="content">
@@ -67,44 +105,10 @@
 								<th>담당자 이메일</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr th:if="not ${#lists.isEmpty(businessList)}" th:each="l : ${businessList}">
-								<td th:text="${l.businessCode}"></td>
-								<td th:text="${l.businessName}"></td>
-								<td th:text="${l.businessPartnerName}"></td>
-								<td th:text="${l.businessPartnerNum}"></td>
-								<td th:text="${l.businessPhoneNum}"></td>
-								<td th:text="${l.businessAddress}"></td>
-								<td th:text="${l.businessStaff}"></td>
-								<td th:text="${l.businessStaffNum}"></td>
-								<td th:text="${l.businessStaffEmail}"></td>
-								<td th:text="${l.businessSectors}"></td>
-								<td th:text="${l.businessStatus}"></td>
-							</tr>
-				              
-						</tbody>
+						
 						
 					</table>
-					<div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-						<ul class="pagination"  >
-							<li class="paginate_button page-item previous" id="moveFirstPage">
-								<a th:if="${currentPage > 1}" th:href="@{/basic/businessInfo(currentPage=${currentPage - 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">이전</a>
-							</li>
-							<th:block th:each="num: ${#numbers.sequence(startPageNum, endPageNum)}">
-								<li class="paginate_button page-item ">	
-									<a th:if="${currentPage != num}" th:href="@{/basic/businessInfo(currentPage=${num})}" th:text="${num}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link"></a>
-								</li>	
-								<li class="paginate_button page-item previous" id="example2_previous" >
-									<span th:unless="${num != currentPage}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link" th:text="${num}"></span>
-								</li>
-							</th:block>
-							<li class="paginate_button page-item previous" id="example2_previous">
-								<a th:if="${currentPage < lastPage}" th:href="@{/basic/businessInfo(currentPage=${currentPage + 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">다음</a>
-							</li>	
-								
-						</ul>
-						
-					</div>
+					
 	        
 				</div>  
 			</div>

@@ -2,6 +2,7 @@ package kr.or.test.spring_test.Controller;
 
 
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.or.test.spring_test.dto.BusinessInfo;
 import kr.or.test.spring_test.dto.StaffInfo;
 import kr.or.test.spring_test.service.BusinessService;
 import kr.or.test.spring_test.service.MainService;
@@ -144,27 +147,54 @@ public class BasicController {
 		return "contents/basicMG/staffList/staffList";
 	}
 	
-	
-	//post로
+	//거래처 등록화면	
 	@GetMapping("/businessInsert")
 	public String businessInsert() {
 		return "contents/basicMG/businessInsert/businessInsert";
 	}
 	
-	@GetMapping("/businessInfo")
-	public String businessInfo(@RequestParam(value="currentPage",required = false, defaultValue="1")int currentPage
-			,Model model) {
+	//거래처 등록
+	@PostMapping("/businessInsert")
+	public String businessInsertSubmit(BusinessInfo businessInfo, HttpSession session) {
 		
-		  Map<String, Object> resultMap = businessService.BusinessListPrint(currentPage);
-		  
-		  model.addAttribute("title","거래처 조회");
-		  model.addAttribute("currentPage",currentPage); 
-		  model.addAttribute("lastPage", resultMap.get("lastPage")); 
-		  model.addAttribute("businessList",resultMap.get("businessList")); 
-		  model.addAttribute("endPageNum",resultMap.get("endPageNum")); 
-		  model.addAttribute("startPageNum", resultMap.get("startPageNum"));
-		 
+		
+		System.out.println("거래처등록 입력받은 값:" + businessInfo);
+		
+		String Bname = businessInfo.getBusinessName();
+		
+		if(Bname != null && !"".equals(Bname) ) {
+			
+			//거래처 코드 생성은 서비스에서 나머지 기타정보 입력
+			businessInfo.setMainBusinessCode("mart001");
+			businessInfo.setBusinessEmail(null);
+			businessInfo.setBusinessMainAccount("농협");
+			businessInfo.setBusinessAccountNumber("123-456-789");
+			businessInfo.setBusinessAccountHolder(businessInfo.getBusinessPartnerName());
+			businessInfo.setStaffId((String) session.getAttribute("SID"));
+			
+			businessService.BusinessInsert(businessInfo);
+			
+		}
+		
+		return "redirect:/basic/businessInfo";
+	}
+	
+	
+	
+	@GetMapping("/businessInfo")
+	public String businessInfo(Model model) {
+		
+		model.addAttribute("title", "거래처 목록조회");
 		return "contents/basicMG/businessInfo/businessInfo";
+	}
+	
+	@PostMapping("/businessInfo")
+	@ResponseBody
+	public List<Map<String,Object>> businessInfo(){
+		
+		List<Map<String,Object>> businessList = businessService.BusinessList();
+		
+		return businessList;
 	}
 	
 	

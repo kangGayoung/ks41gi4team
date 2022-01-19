@@ -2,101 +2,124 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
  	 layout:decorate="@{layout/default}">
-  <th:block layout:fragment="customContent" >
-  	<title th:text="${title}"></title>
-  </th:block>
+	<th:block layout:fragment="customContent" >
+		<title th:text="${title}"></title>
+	</th:block>
+	<th:block layout:fragment="customJs">
+		<script type="text/javascript">
+			$(function(){
+				
+				$(document).on('click','#businessInsertBtn',function(){
+					
+					//가입처리
+					var submitCheck = true;
+					var inputObj = $('#businessInsertForm').find('input');
+					
+					$.each(inputObj, function(){
+						var inputData = $(this).val();
+						var inputTitle = $(this).attr('title');
+						
+						if(typeof inputData == 'undefined' || inputData == null ||inputData == '' ){
+							
+							alert(inputTitle +'를 입력해주세요.');
+							$(this).focus();
+						
+							submitCheck = false;
+							
+							return false;
+						}
+						
+					});
+					
+					
+					if(submitCheck) $('#businessInsertForm').submit();
+				});
+				
+				
+			});		
+		</script>
+	</th:block>
 	<th:block layout:fragment="customContents" >
 		<div class="wrapper">
 
 			
 			<section class="content">
-				<div class="container-fluid">
-					<div class="card">
+				<div class="container-fluid col-md-8">
+					<div class="card" >
 						<div class=" clearfix">
-							<form action="">
+							<form id="businessInsertForm" th:action="@{/basic/businessInsert}" method="post">
 	
-								<table class="col-md-12">
+								<table>
 									<colgroup>
-				                        <col width="10%">
-				                        <col width="30%">
-				                        <col width="14%">
+				                        <col width="15%">
+				                        <col width="80%">
 				                     </colgroup>
-									<tbody>
+									<tbody style="padding:2px;">
 										<tr>
 											<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">거래처 등록</th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="사업자명" placeholder="사업자명" >	
+												<input type="text"  class="form-control" id="businessName" name="businessName" title="사업자명" placeholder="사업자명" >	
 											</td>
-											<th class="card-footer text-center"></th>
+											<td style="padding: 30px;"></td>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="업태" placeholder="업태" >										
+												<input type="text"  class="form-control" id="businessStatus" name="businessStatus" title="업태" placeholder="업태" >										
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="업종" placeholder="업종" >													
+												<input type="text"  class="form-control" id="businessSectors" name="businessSectors" title="업종" placeholder="업종" >													
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="사업자 대표명" placeholder="사업자 대표명" >										
+												<input type="text"  class="form-control" id="businessPartnerName" name="businessPartnerName" title="사업자 대표명" placeholder="사업자 대표명" >										
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="사업장 전화번호" placeholder="사업장 전화번호" >									
+												<input type="text"  class="form-control"  id="businessPhoneNum" name="businessPhoneNum" title="사업장 전화번호" placeholder="사업장 전화번호" >									
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="사업자번호" placeholder="사업자번호" >										
+												<input type="text"  class="form-control" id="businessPartnerNum" name="businessPartnerNum" title="사업자번호" placeholder="사업자번호" >										
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="사업장 주소" placeholder="사업장 주소" >										
+												<input type="text"  class="form-control" id="businessAddress" name="businessAddress" title="사업장 주소" placeholder="사업장 주소" >										
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="사업장 담당자 이름" placeholder="사업장 담당자 이름" >								
+												<input type="text"  class="form-control"  id="businessStaff" name="businessStaff" title="사업장 담당자 이름" placeholder="사업장 담당자 이름" >								
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="사업장 담당자 전화번호" placeholder="사업장 담당자 전화번호" >									
+												<input type="text"  class="form-control" id="businessStaffNum" name="businessStaffNum" title="사업장 담당자 전화번호" placeholder="사업장 담당자 전화번호" >									
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pl-2 pr-2 pt-2 pb-2">
-												<input type="text"  class="form-control" title="담당자 이메일" placeholder="담당자 이메일" >										
+												<input type="text"  class="form-control" id="businessStaffEmail" name="businessStaffEmail" title="담당자 이메일" placeholder="담당자 이메일" >										
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										<tr>
 											<th class="card-footer text-center"></th>
 											<td class="pr-2 pt-2 pb-2 text-center">
-												<a class="btn btn-search btn-info " onclick="" style="width:50%;">등록</a>
+												<a class="btn btn-search btn-info " id="businessInsertBtn" style="width:40%;">등록</a>
 											</td>
-											<th class="card-footer text-center"></th>
 										</tr>
 										
 										
