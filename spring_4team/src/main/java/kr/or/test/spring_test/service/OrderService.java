@@ -33,6 +33,11 @@ public class OrderService {
 	 * }
 	 */
 	
+	// 납품 예정리스트 조회 및 검색 ajax
+	public List<Map<String, Object>> getPreOrderList(){
+		return orderMapper.getPreOrderListAll(null);
+	}
+	
 	public Map<String, Object> getOrderList(int currentPage){
 		
 		// 보여줄 행의 갯수
