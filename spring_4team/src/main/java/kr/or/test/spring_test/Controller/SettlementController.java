@@ -24,22 +24,23 @@ public class SettlementController{
 		  this.settlementService = settlementService; 
 	   }
 	 
-	 //조회페이지 연결
-	  @GetMapping("/purchaseList") // 호출할 주소 purchaseList / 매서드명 selectPurchaseList()  
-	  public String getselectPurchaseList(Model model) {
-			List<SettlementDto> selectPurchaseList = SettlementService.getselectPurchaseList();
-			
-			model.addAttribute("title", "매입거래내역조회");
-			model.addAttribute("selectPurchaseList", selectPurchaseList);
-		
-			
-			return "settlement/settlementResult/purchaseList";
-		}
-	  //settlement/settlementResult/purchaseList.html
+	/*
+	 * //조회페이지 연결
+	 * 
+	 * @GetMapping("/purchaseList") // 호출할 주소 purchaseList / 매서드명
+	 * selectPurchaseList() public String getselectPurchaseList(Model model) {
+	 * List<SettlementDto> selectPurchaseList = SettlementService.
+	 * 
+	 * model.addAttribute("title", "매입거래내역조회");
+	 * model.addAttribute("selectPurchaseList", selectPurchaseList);
+	 * 
+	 * 
+	 * return "settlement/settlementResult/purchaseList"; }
+	 * //settlement/settlementResult/purchaseList.html
+	 */
 	  
 	  
-	  
-	  //결과 페이지 연결
+	  //버튼 페이지 연결
 	@GetMapping("/salesLookupList")
 	public String salesLookupList() {
 		return	"settlement/settlementResult/salesLookupList";

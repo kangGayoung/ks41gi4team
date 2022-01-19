@@ -14,9 +14,9 @@
 	  //거래명세서결과페이지 
 	 $(function(){
 		$('#invoiceListBtn').click(function(){
-			location.href= 'purchaseInvoiceList';
+			location.href= 'purchaseInvoiceList' ;
 		});
-	});		 
+	});		  
 		</script>
 
 	
@@ -50,7 +50,7 @@
 		                              <tr class="first">
 		                                  <th class="card-footer text-center">매출 구분</th>
 		                                  <td class="pr-2 pl-2 pt-3">
-		                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+		                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" >
 		                                        <label for="period-type1">주문일시(매출등록일)</label>
 		                                   </td>
 		                                   <td class="pr-2 pl-2 pt-3">
@@ -113,8 +113,10 @@
 		                           </td>
 		                           <td class="pr-2 pt-2 pb-2">
 		                              
-		                                   <a class="btn2" id="invoiceListBtn" onclick=""  style="width:100%;" >>>검색</a>
-		                   
+		                                   <!-- <a class="btn2" id="invoiceListBtn" onclick="purchaseInvoiceList" style="width:100%;" >>>검색</a> -->
+		                     <button class="btn2"  id="invoiceListBtn" >
+		                      <a   style="width:100%;">>>검색</a> 
+		                      </button>
 		                           		
 		                           </td>
 		                           <td>
