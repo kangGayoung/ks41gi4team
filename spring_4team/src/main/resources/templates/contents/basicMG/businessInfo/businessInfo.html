@@ -6,10 +6,10 @@
 		<title th:text="${title}"></title>
 	</th:block>
 	<th:block layout:fragment="customJs">
-		<link rel="stylesheet" type="text/css" th:herf="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
 		<script type="text/javascript">
-			$(function(){
+			$(document).ready( function () {
 				
 				var aLengthMenuArray = [];
 				aLengthMenuArray.push([5,10,15]);

@@ -6,7 +6,7 @@
   	<title th:text="${title}"></title>
   </th:block>
 	<th:block layout:fragment="custmJs">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-		<link rel="stylesheet" type="text/css" th:herf="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
 		
 	</th:block>
@@ -29,24 +29,22 @@
 				                
 								<tr>
 									<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">사원 검색</th>
-										<form th:action="@{/basic/staffList}" method="post">
-											<td class="pr-2 pl-2 pt-2 pb-2">
-												<div class="search-types">
-													<select name="searchKey" class="form-control">
-													   <option value="staffName">사원이름</option>
-													   <option value="staffLevel">사원직급</option>
-													   <option value="staffId">아이디</option>
-													</select>
-												</div>
-											</td>
-											<td colspan="2" class="pr-2 pt-2 pb-2">
-												<input type="text" name="searchValue" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
-											</td>
-											<td class="pr-2 pt-2 pb-2">
-				   								<button class="btn btn-search btn-info " role="button" th:type="submit" style="width:100%;">검색</button>
-				                 			
-				                 			</td>
-										</form>
+										<td class="pr-2 pl-2 pt-2 pb-2">
+											<div class="search-types">
+												<select name="searchKey" class="form-control">
+												   <option value="staffName">사원이름</option>
+												   <option value="staffLevel">사원직급</option>
+												   <option value="staffId">아이디</option>
+												</select>
+											</div>
+										</td>
+										<td colspan="2" class="pr-2 pt-2 pb-2">
+											<input type="text" name="searchValue" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+										</td>
+										<td class="pr-2 pt-2 pb-2">
+			   								<button class="btn btn-search btn-info " role="button" th:type="submit" style="width:100%;">검색</button>
+			                 			
+			                 			</td>
 			             			 </tr>
 				              
 	          					 </tbody>
