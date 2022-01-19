@@ -9,6 +9,39 @@
 <th:block layout:fragment="customContents">
 	
  	<script type="text/javascript">
+ 	
+ 	//결과페이지이동
+		 	 $(function(){
+					$('#taxBillBtn').click(function(){
+						location.href= 'taxBillList';
+					});
+				});		 
+ 	
+ 	
+ 	//팝업띄우기 
+			$(function() {
+		    //----- OPEN
+		    $('[data-popup-open]').on('click', function(e)  {
+		        var targeted_popup_class = jQuery(this).attr('data-popup-open');
+		        $('[data-popup="' + targeted_popup_class + '"]').fadeIn(350);
+		
+		        e.preventDefault();
+		    });
+		
+		    //----- CLOSE
+		    $('[data-popup-close]').on('click', function(e)  {
+		        var targeted_popup_class = jQuery(this).attr('data-popup-close');
+		        $('[data-popup="' + targeted_popup_class + '"]').fadeOut(350);
+		
+		        e.preventDefault();
+		    });
+		});
+			
+ 	</script>
+ 	
+ 	
+<!-- 
+ 	
 	//팝업뜨우기 시작	
 /*  	$(document).ready(function(){
 		//	var formObj = $("form[rile = 'form']");
@@ -20,10 +53,7 @@
 		}); */
 		//팝업띄우기 끋   = 실패
  	//팝업뜨우기2 시작	
-			 function nwindow(){
-				window.open("/bill/billResult/taxBillInsert2", " width=500, hight=300").focus();
-				console.log("팝업띄우기 <<<<< ---------------- taxvBill");
-			};
+		
 	
 		//팝업띄우기2 끋 
  	
@@ -33,7 +63,9 @@
 					});
 				}); 
 			  */
-			</script>
+	 -->
+			  
+
 
 		<!-- Content Header (Page header) -->
 	<div class="wrapper">
@@ -78,10 +110,10 @@
                            <th class="card-footer text-center">기간</th>
                            <td>
                               <div class="search-buttons pl-2">
-                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                                          <a class="btn btn2" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn btn2" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn btn2" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn btn2" role="button" chk_type="n" onclick="setDate('n')">당일</a>
                               </div>
                            </td>
                            <td>
@@ -123,9 +155,9 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                        <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillList' "style="width:100%;">>>검색</a> 
+                        <a class="btn2"  id="taxBillBtn"  role="button btn-serch"  onclick=" "style="width:100%;">>>검색</a> 
   <!--  taxBillInsert2 확인용
-                             <a class="btn btn-search btn-danger " role="button"  onclick="location.href='taxBillInsert2' "style="width:100%;">>>검색</a> -->
+                             <a class="btn btn-search btn2 " role="button"  onclick="location.href='taxBillInsert2' "style="width:100%;">>>검색</a> -->
                            </td>
                         </tr>
                         <tr>
@@ -150,10 +182,13 @@
                            </td>
                            <td class="pr-2 pb-2">
                           				<div class="link-btns">
-								                <a class="btn btn-add btn-danger" role="button"  onclick="location.href='billInsert' "> >>등록</a>
-								                <a class="btn btn-add  btn-danger" role="button" onclick="location.href='taxBillInsert2' " >>>세금계산서 등록</a>
-								                <a class="btn btn-add  btn-danger" role="button" onclick="location.href='testModal' " >>>testModal</a>
-												<button type="button" class="btn btn-danger btn-xl " id='popupBtn'  onclick="nwindow()">  popup(get)</button>									
+                          					<!--세금계산서 Insert  -->
+								                <a class="btn btn-add btn2" role="button"  onclick="location.href='billInsert' "> 세금계산서등록</a>
+								            <!-- 모달 - 세금계산서 -->
+								                <a class="btn btn-add  btn2" role="button" onclick="location.href='testModal' " >>>testModal</a>
+								             <!-- 팝업 -->
+												<button type="button" class="btn2 btn-xl " id='popupBtn'  onclick="nwindow">  poptest(get)</button>									
+												<button type="button" class="btn2 btn-xl " id='popupOpenBtn'  target="_blank" onclick="openPop()">  popuptest2</button>									
 										</div>
 
                            </td>
@@ -177,10 +212,10 @@
 	<br />
 
 
-	</div>
 
 
-	</section>
+
+
 	<!-- /.content -->
 
 	<!-- /.content-wrapper -->

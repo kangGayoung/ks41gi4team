@@ -4,7 +4,7 @@
 		layout:decorate="@{layout/default}">
 		<th:block layout:fragment="customContent">
 			<title th:text="${title}">
-				
+				매입 원장 조회 버튼 결과 표시 페이지
 			</title>
 		</th:block>
 		<th:block layout:fragment="customContents">
@@ -227,17 +227,21 @@
 									</div><!--1. 체크박스  -->
 								</td>
 								<td>넘버링</td><!--2. 넘버링  -->
-								<td th:text = "${l.businessName}"></td><!--3. 거래처명 -->
+								<td th:text = "${list.businessName}"></td><!--3. 거래처명 -->
 								<td th:text = "#"></td><!--4. *이전금액 -->
-								<td th:text = "${l.goodsSupplyPrice}"></td><!--5 매입공급가액 -->
-								<td th:text = "${l.vat}"></td><!--6 매입세액 -->
-								<td th:text = "${l.purchasePrice}"></td><!--7 매입단가(세금포)  -->
-								<td th:text = "${l.totalAmount}"></td><!--8 지급금액 -->
+								<td th:text = "${list.goodsSupplyPrice}"></td><!--5 매입공급가액 -->
+								<td th:text = "${llist.vat}"></td><!--6 매입세액 -->
+								<td th:text = "${llist.purchasePrice}"></td><!--7 매입단가(세금포)  -->
+								<td th:text = "${llist.totalAmount}"></td><!--8 지급금액 -->
 								<td th:text = "#"></td><!--9 * 수정금액  -->
 								<td th:text = "#"></td><!--10 *잔여지급액  -->
-								<td th:text = "${l.dealDate}"></td><!--11 최종거래일   -->
-							</tr>
-							
+								<td th:text = "${list.dealDate}"></td><!--11 최종거래일   -->
+						    	</tr> 
+						        	<!-- 조회된 목록이 없을 경우 나오는 결과 -->
+						        	<tr th:unless="${#lists.size(list)} > 0">
+						        		<td colspan="4">조회된 결과가 없습니다.</td>
+						        	</tr>
+												
 
 						</tbody>
 					</table>

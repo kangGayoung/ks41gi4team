@@ -1,6 +1,6 @@
 package kr.or.test.spring_test.dto;
 
-public class Settlement { 
+public class SettlementDto { 
 	//tb_order (발주요청후거래처승인 ; tb_transactionstatement(거래명세서(한줄)
 	private String businessName; //1.거래처명 
 	private int lastResidual; //2이전금액(tb없음)

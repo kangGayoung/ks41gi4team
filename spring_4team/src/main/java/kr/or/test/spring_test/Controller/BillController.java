@@ -19,6 +19,10 @@ public class BillController{
 	private BillService billService;
 	
 	
+	
+	
+	
+	
 	//testModal
 	@GetMapping("/testModal")
 	public String testModal() {
@@ -26,82 +30,79 @@ public class BillController{
 	}
 	
 	
+	
+	
+	
 	//팝업띄우기
-	@RequestMapping ("/taxBillInsert2")//(value="/taxBillInsert2", method = RequestMethod.GET)
+	@RequestMapping ("/taxBillInsert")//(value="/taxBillInsert2", method = RequestMethod.GET)
 	public ModelAndView  popupGet() throws Exception{
 		ModelAndView  bi = new ModelAndView();
-			bi.setViewName("taxBillInsert2");
-			System.out.println("yyyyyyyyyyyyyyeannie_bill_popup1");
+			bi.setViewName("taxBillInsert");
+			//System.out.println("yyyyyyyyyyyyyyeannie_bill_popup1");
 			return bi;
 	}
 	
+//결과 페이지 화면 연결 /bill/billResult
 	/*
-	 * private BillService bilService;
-	 * 
-	 * @Autowired public BillController(BillService billService) {
-	 * this.bilService=billService; }
-	 */
-
-
-
-	
-	/*
-	 * @RequestMapping("/billModal") public String billModalBtn() { billModalBtn bmb
-	 * = new billModalBtn() ; bmb.setViewName("billModal"); return bmb; }
+	 * @GetMapping("/taxBillInsert2")
+	 *  public String billInsert2() { 
+	 *  return "bill/billResult/taxBillInsert2";
+	 *   }
 	 */
 	
-	
-	@GetMapping("/taxBillInsert2")
-	public String billInsert2() {
-		return	"bill/billResult/taxBillInsert2";
-	}
-	@GetMapping("/billInsert")
-	public String billInsert() {
-		return	"bill/billResult/billInsert";
-	}
-	@GetMapping("/taxBillList")
-	public String taxBillList() {
-		return	"bill/billResult/taxBillList";
-	}
-	
-	
-	@GetMapping("/accountsList")
-	public String accountsList() {
-		return	"bill/billResult/accountsList";
-	}
-	
-	
-	@GetMapping("/purchaseInvoiceList")
-	public String purchaseInvoiceList() {
-		return	"bill/billResult/purchaseInvoiceList";
-	}
+//거래명세서 출력버튼 - 화면
 	@GetMapping("/purchaseInvoicePrint")
 	public String purchaseInvoicePrint() {
 		return	"bill/billResult/purchaseInvoicePrint";
 	}
 	
-	
-	
-	
-
-	@GetMapping("/taxBill")
-	public String taxBill() {
-		
-		return "bill/taxBill";
+	//거래명세서 결과 페이지 
+	@GetMapping("/purchaseInvoiceList")
+	public String purchaseInvoiceList() {
+		return	"bill/billResult/purchaseInvoiceList";
 	}
 	
-	@GetMapping("/accounts")
-	public String accounts() {
-		
-		return "bill/accounts";
-	}
+//정산서 결과 페이지	
+	@GetMapping("/accountsList")
+		public String accountsList() {
+			return	"bill/billResult/accountsList";
+		}
 	
+//세금계산서 결과페이지 
+	@GetMapping("/taxBillList")
+	public String taxBillList() {
+		return	"bill/billResult/taxBillList";
+	}
+	//세금계산서 입력 버튼 - 화면 
+	@GetMapping("/billInsert")
+	public String billInsert() {
+		return	"bill/billResult/billInsert";
+	}
+	//세금계산서 입력 팝업 버튼 - 화면
+	@GetMapping("/taxBillInsert")
+		public String taxBillInsert() {
+			return	"bill/billResult/taxBillInsert";
+		}
+	
+	
+	
+	//1차 화면 연결
+	//거래명세서 화면 
 	@GetMapping("/purchaseInvoice")
-	public String purchaseInvoice() {
-		
-		return "bill/purchaseInvoice";
-		
-	}
+		public String purchaseInvoice() {
+			return "bill/purchaseInvoice";
+		}
+
+	//정산서 화면
+	@GetMapping("/accounts")
+		public String accounts() {
+			return "bill/accounts";
+		}
 	
+//세금계산서화면
+	@GetMapping("/taxBill")
+		public String taxBill() {
+			return "bill/taxBill";
+		}
 
 }
