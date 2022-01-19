@@ -58,24 +58,29 @@ public class OrderController {
 		
 		return "goods/order/orderMG/orderMG";
 	}
-	
-	@PostMapping("/preOrder")
-	public String preOrder(
-							@RequestParam(value="currentPage", required = false, defaultValue = "1") int currentPage,
-							@RequestParam(value="preOrderSearch", required = false) String preOrderSearch,
-							@RequestParam(value="preOrderSearchVal", required = false) String preOrderSearchVal,
-							Model model) {
-		
-		Map<String, Object> resultMap = orderService.getPreOrderSearch(currentPage, preOrderSearch, preOrderSearchVal );
-		
-		model.addAttribute("currentPage",		currentPage);
-		model.addAttribute("lastPage",			resultMap.get("lastPage"));
-		model.addAttribute("orderList",			resultMap.get("orderList"));
-		model.addAttribute("startPageNum",		resultMap.get("startPageNum"));
-		model.addAttribute("endPageNum",		resultMap.get("endPageNum"));	
-			
-		return "goods/order/preOrder/preOrder";
-	}
+	/*
+	 * @PostMapping("/preOrder") public String preOrder(
+	 * 
+	 * @RequestParam(value="currentPage", required = false, defaultValue = "1") int
+	 * currentPage,
+	 * 
+	 * @RequestParam(value="preOrderSearch", required = false) String
+	 * preOrderSearch,
+	 * 
+	 * @RequestParam(value="preOrderSearchVal", required = false) String
+	 * preOrderSearchVal, Model model) {
+	 * 
+	 * Map<String, Object> resultMap = orderService.getPreOrderSearch(currentPage,
+	 * preOrderSearch, preOrderSearchVal );
+	 * 
+	 * model.addAttribute("currentPage", currentPage);
+	 * model.addAttribute("lastPage", resultMap.get("lastPage"));
+	 * model.addAttribute("orderList", resultMap.get("orderList"));
+	 * model.addAttribute("startPageNum", resultMap.get("startPageNum"));
+	 * model.addAttribute("endPageNum", resultMap.get("endPageNum"));
+	 * 
+	 * return "goods/order/preOrder/preOrder"; }
+	 */
 	
 	//납품예정전체 조회
 	@GetMapping("/preOrder")
@@ -92,6 +97,14 @@ public class OrderController {
 		model.addAttribute("endPageNum",		resultMap.get("endPageNum"));	
 		
 		return "goods/order/preOrder/preOrder";
+	}
+	
+	// 납품 예정리스트 조회 및 검색 ajax
+	@PostMapping("/preOrder")
+	@ResponseBody
+	public List<Map<String, Object>> preOrderList(){
+		List<Map<String, Object>> preOrderList = orderService.getPreOrderList();
+		return preOrderList;
 	}
 	
 	@GetMapping("/returnList")

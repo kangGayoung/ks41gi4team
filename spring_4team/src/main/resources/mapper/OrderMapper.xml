@@ -49,7 +49,7 @@
 		SELECT 
 			orderCode 
 			,orderRegTime
-			,orderCompleteTime
+			
 			,goodsName 
 			,goodsWeight
 			,goodsUnit 

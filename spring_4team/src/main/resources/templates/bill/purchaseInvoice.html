@@ -9,34 +9,17 @@
 	</th:block>
 		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 		<!-- jQuery -->
-			
-				<script type="text/javascript">
-				$(document).ready(function(){
-					$(document).on('click', '#invoiceFormBtn', function(e){
-						e.preventDefault();
-						location.href = "${pageContext.request.contextPath}/bill/billResult/purchaseInvoicePrint";
-					});
-					
-				});
-/*
-					$(document).on('click', '#invoiceFormBtn', function(e){
-						e.preventDefault();
-						location.href = "${pageContext.request.contextPath}/billResult/purchaseInvoiceResult";
-					});
 
- */
-		/* 		$('#invoiceFormBtn').click(function(){
-					$('.content purchaseInvoiceTable').show;
-				});	
-		 */
-/* 		  document.getElementById('#purchaseInvoiceTable').style.display = 'none'; */
-		
-		/* $(document).click(function(){
-			$('.content purchaseInvoiceTable').hide;
+	<script type="text/javascript">
+	  //거래명세서결과페이지 
+	 $(function(){
+		$('#invoiceListBtn').click(function(){
+			location.href= 'purchaseInvoiceList' ;
 		});
-		 */
-		
-			</script>
+	});		  
+		</script>
+
+	
 	
   			
 		<!--content-wrapper start-->
@@ -67,7 +50,7 @@
 		                              <tr class="first">
 		                                  <th class="card-footer text-center">매출 구분</th>
 		                                  <td class="pr-2 pl-2 pt-3">
-		                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" checked="">
+		                                        <input type="radio" name="period_type" id="period-type1" value="regist_dt" >
 		                                        <label for="period-type1">주문일시(매출등록일)</label>
 		                                   </td>
 		                                   <td class="pr-2 pl-2 pt-3">
@@ -130,14 +113,16 @@
 		                           </td>
 		                           <td class="pr-2 pt-2 pb-2">
 		                              
-		                                   <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='purchaseInvoiceList' " style="width:100%;" >>>검색</a>
-		                   
+		                                   <!-- <a class="btn2" id="invoiceListBtn" onclick="purchaseInvoiceList" style="width:100%;" >>>검색</a> -->
+		                     <button class="btn2"  id="invoiceListBtn" >
+		                      <a   style="width:100%;">>>검색</a> 
+		                      </button>
 		                           		
 		                           </td>
 		                           <td>
 		                           <div class="filter-btns">
-								                <a class="btn btn-print  btn-danger" role="button" onclick="location.href='purchaseInvoicePrint' "data-name="billPrint"> >> 출력</a>
-								                <a class="btn btn-print  btn-danger"  id="invoiceFormBtn" role="button"      onclick="location.href='purchaseInvoicePrint' "> >> 출력2</a>
+								      			<a class="btn2" role="button" onclick="location.href='purchaseInvoicePrint' "data-name="billPrint">명세서 출력</a>
+								               
 								     
 
 										</div>
