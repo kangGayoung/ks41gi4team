@@ -2,19 +2,22 @@ package kr.or.test.spring_test.mapper;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import kr.or.test.spring_test.dto.Settlement;
+import kr.or.test.spring_test.dto.SettlementDto;
 
 
 @Mapper
-public interface PurchaseMapper {
+public interface SettlementMapper {
 	
 
-	//매입리스트 조회 : /Settlement
-	
-	public List<Settlement> getsettlementList();
+	//매입리스트 조회 : /purchaseList
+ List<SettlementDto> selectPurchaseList() throws Exception;
+
+}
+
 
 	//매출리스트 조회 : /salesLookup
 	
@@ -25,5 +28,5 @@ public interface PurchaseMapper {
 	
 	//상품 출고 상태 조회
 	
-}
+
 

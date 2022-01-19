@@ -6,7 +6,16 @@
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-
+<script type="text/javascript">
+  
+		 $(function(){
+			$('#accountsListBtn').click(function(){
+				location.href= 'accountsList';
+			});
+		});		 
+			</script> 
+	
+	
 	
 
 		<!-- Content Header (Page header) -->
@@ -64,7 +73,7 @@
                               </div>
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='accountsList' " style="width:100%;" > >>검색</a>
+                              <a class="btn btn-search btn-danger " id="accountsListBtn"  href="#" onclick="" style="width:100%;" > >>검색</a>
                            </td>
                         </tr>
                      </tbody>
