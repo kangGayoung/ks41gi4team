@@ -1,5 +1,6 @@
 package kr.or.test.spring_test.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,31 @@ public class OrderController {
 	public OrderController(OrderService orderService) {
 			this.orderService= orderService;
 	}
+	
+
+	@GetMapping("/modal")
+	public String modal (Model model) {		
+		model.addAttribute("title", "modal");
+		List<String> userList = new ArrayList<String>();
+		model.addAttribute("userList", userList);
+		return "goods/order/orderMG/modal";
+	}
+	
+	@GetMapping(value="/json", produces ="application/json")
+	@ResponseBody
+	public List<String> json (Model model) {
+		List<String> userList = new ArrayList<String>();
+		userList.add("홍길동");
+		userList.add("이순신");
+		return userList;
+	}
+	
+	@GetMapping("/getModal")
+	public String getModal (Model model) {		
+		model.addAttribute("title", "getModal");
+		return "goods/order/orderMG/getModal";
+	}
+	
 
 	@PostMapping("/orderMG")
 	public String orderMG (
