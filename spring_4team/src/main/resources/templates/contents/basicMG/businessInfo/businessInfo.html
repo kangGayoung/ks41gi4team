@@ -47,14 +47,33 @@
 				});
 				
 				//모달
+				
 				$('#businessModal').on('hidden.bs.modal', function (e) {
-					$('#businessModal').val();
-				})
+					
+					var request = $.ajax({
+						url: '/basic/modalBusinessForm',
+						method: 'get',
+						
+						dataType: 'html'
+						
+					});
+					request.done(function(data){
+						data.val();
+						console.log(data);
+					});
+					
+					request.fail(function( jqXHR, textStatus){
+						alert("Request failed: " + textStatus);
+					});
+					
+					
+				});
+				
 				$('#businessModal').on('shown.bs.modal', function (e) {
 					$('#businessModal').val();
-				})	
+				});	
 				
-
+			//검색창 	
 			    $('#searchBar').on( 'keyup click', function () {
 			    	searchfilter();
 			    } );
@@ -137,36 +156,7 @@
 		        
 				</div>  
 			</div>
-	
-	<!-- 모달 창 -->
-				<div class="modal fade" id="businessModal" data-backdrop="static">
-				       <div class="modal-dialog modal-lg">
-				         <div class="modal-content">
-				           <div class="modal-header bg-info">
-				             <h4 class="modal-title">거래처 정보 수정</h4>
-				             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				               <span aria-hidden="true">×</span>
-				             </button>
-				           </div>
-				           <div class="modal-body">
-							<div>
-								<input type="text">
-								
-							</div>
-				
-				
-				           </div>
-				           <div class="modal-footer justify-content-between">
-				             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				             <button type="button" class="btn btn-primary">Save changes</button>
-				           </div>
-				         </div>
-				         <!-- /.modal-content -->
-					</div>
-				<!-- /.modal-dialog -->
-				</div>	   
-			
-<!-- 모달 끝 -->
+
 			</section>    
 		</div>
 
