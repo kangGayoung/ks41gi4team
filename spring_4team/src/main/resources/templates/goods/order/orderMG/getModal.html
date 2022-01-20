@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
+ 	 layout:decorate="@{layout/default}">
+	<th:block layout:fragment="customTitle" >
+		<title th:text="${title}"></title>
+	</th:block>		
+	
+	<th:block layout:fragment="customContents" >
+		<h1>모달~~</h1>
+		<button type="button" id="modalCall">모달</button>
+		<button type="button" id="ajaxCall">호출</button>
+		<div id="getHtml">클릭하시면 html이 삽입됩니다</div>
+		<script>
+		
+			$('#modalCall').click(function(){
+				var request =$.ajax({
+					url : "/order/modal",
+					method: "GET",
+					dataType: "html"
+				});
+				
+				request.done(function(data){
+					$('#getHtml').html(data);
+				});
+				
+				request.fail(function(jqXHR, textStatus){
+					alert("Request failed: " + textStatus);
+				});
+			});
+			
+			$('#ajaxCall').click(function(){
+				var request =$.ajax({
+					url : "order/json",
+					method: "GET",
+					dataType: "json"
+				});
+				
+				request.done(function(data){					
+					console.log(data);
+					var html = '';
+					for(var i=0; i<data.length; i++){
+						html += '<div>' + data[i] + '</div>'
+					}
+					$('#getHtml').html(html);
+				});
+				
+				request.fail(function(jqXHR, textStatus){
+					alert("Request failed: " + textStatus);
+				});
+			});
+		</script>
+	</th:block>
+</html>
