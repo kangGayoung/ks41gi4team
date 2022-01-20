@@ -2,14 +2,10 @@ package kr.or.test.spring_test.Controller;
 
 
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.or.test.spring_test.dto.SettlementDto;
 import kr.or.test.spring_test.service.SettlementService;
 
 
@@ -40,34 +36,38 @@ public class SettlementController{
 	 */
 	  
 	  
-	  //버튼 페이지 연결
+	  // 조회 버튼 페이지 연결
+	  //매입원장 조회 결과 페이지 
+	  @GetMapping("/purchaseList")
+	  public String purchaseList() {
+		  return	"settlement/settlementResult/purchaseList";
+	  }
+	  //매입원장 조회 결과 페이지 
 	@GetMapping("/salesLookupList")
 	public String salesLookupList() {
 		return	"settlement/settlementResult/salesLookupList";
 	}
+	//거래집계 조회 결과 페이지 
 	@GetMapping("/orderInvoiceList")
 	public String orderInvoiceList() {
 		return	"settlement/settlementResult/orderInvoiceList";
 	}
-	@GetMapping("/purchaseLookList")
-	public String purchaselLookList() {
-		return	"settlement/settlementResult/purchaseLookList";
-	}
 	
 	
 	//1차 메뉴 페이지 연결
-	
+	//매입원장 1차 페이지 
 	@GetMapping("/purchaseLookup")
 	public String purchaseLookup() {
 
 		return "settlement/purchaseLookup";
 	}
-	
+	//매출원장 1차 페이지
 	@GetMapping("/salesLookup")
 	public String salesLookup(){
 		
 		return "settlement/salesLookup";
 	}
+	//거래집계 1차 페이지 
 	@GetMapping("/orderInvoice")
 	public String orderInvoice(){
 		

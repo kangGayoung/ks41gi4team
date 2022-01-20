@@ -13,6 +13,7 @@
 				location.href= 'accountsList';
 			});
 		});		 
+ 
 			</script> 
 	
 	
@@ -44,10 +45,10 @@
                            <th class="card-footer text-center">기간</th>
                            <td>
                               <div class="search-buttons pl-2">
-                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                                          <a class="btn2" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn2" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn2" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn2" role="button" chk_type="n" onclick="setDate('n')">당일</a>
                               </div>
                            </td>
                            <td>
@@ -93,7 +94,11 @@
 	<br />
 	<br />
 	<br />
-
+				<div class="filter-types" id="cacul_btn" style="padding: 0 0 10px 10px;">
+					<button class="btn2" onclick="location.href= 'accountsPrint'">
+						정산서 출력
+						</button>
+					</div>
 	<!-- 테이블  시작-->
 <section class="content">	
 	<div class="row">
@@ -114,29 +119,29 @@
 					<div class="col-sm-push-12 col-md-push-6"
 						style="text-align: right;">
 						<div class="dt-buttons btn-group flex-wrap">
-							<button class="btn btn-danger buttons-copy buttons-html5"
+							<button class="btn2 buttons-copy buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>Copy</span>
 							</button>
-							<button class="btn btn-danger buttons-csv buttons-html5"
+							<button class="btn2 buttons-csv buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>CSV</span>
 							</button>
-							<button class="btn btn-danger buttons-excel buttons-html5"
+							<button class="btn2 buttons-excel buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>Excel</span>
 							</button>
-							<button class="btn btn-danger buttons-pdf buttons-html5"
+							<button class="btn2 buttons-pdf buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>PDF</span>
 							</button>
-							<button class="btn btn-danger buttons-print" tabindex="0"
+							<button class="btn2 buttons-print" tabindex="0"
 								aria-controls="example1" type="button">
 								<span>Print</span>
 							</button>
 							<div class="btn-group">
 								<button
-									class="btn btn-danger buttons-collection dropdown-toggle buttons-colvis"
+									class="btn2 buttons-collection dropdown-toggle buttons-colvis"
 									tabindex="0" aria-controls="example1" type="button"
 									aria-haspopup="true" aria-expanded="false">
 									<span>Column visibility</span>

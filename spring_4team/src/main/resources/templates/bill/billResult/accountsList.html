@@ -6,13 +6,27 @@
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-
+<script type="text/javascript">
+  
+		 $(function(){
+			$('#accountsListBtn').click(function(){
+				location.href= 'accountsList';
+			});
+		});		 
+		 $(function(){
+			$('#goCaculFormPop').click(function(){
+				location.href= 'accountsPrint';
+			});
+		});		 
+			</script> 
+	
+	
 	
 
 		<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		
-		<h2 class= "padding : 2 0 10 5px;"> 정산서</h2>
+		<h2 class= "padding : 2 0 10 5px;"> 정산서 조회 결과 </h2>
 		<!-- /.content-header -->
 
 		<!-- Main content -->
@@ -64,7 +78,7 @@
                               </div>
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='' " style="width:100%;" >검색</a>
+                              <a class="btn btn-search btn-danger " id="accountsListBtn"  href="#" onclick="" style="width:100%;" > >>검색</a>
                            </td>
                         </tr>
                      </tbody>
@@ -84,7 +98,9 @@
 	<br />
 	<br />
 	<br />
-
+				<div class="filter-types" id="cacul_btn" style="">
+						<a class="btn btn-print" role="button" onclick="goCaculFormPop();">정산서 출력</a>
+					</div>
 	<!-- 테이블  시작-->
 <section class="content">	
 	<div class="row">

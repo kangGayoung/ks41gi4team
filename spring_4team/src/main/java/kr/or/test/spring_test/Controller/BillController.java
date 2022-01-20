@@ -14,9 +14,9 @@ import kr.or.test.spring_test.service.BillService;
 @Controller
 @RequestMapping("/bill")
 public class BillController{
+		@Autowired
+		private BillService billService;
 
-	@Autowired
-	private BillService billService;
 	
 	
 	
@@ -51,17 +51,22 @@ public class BillController{
 	 */
 	
 //거래명세서 출력버튼 - 화면
-	@GetMapping("/purchaseInvoicePrint")
-	public String purchaseInvoicePrint() {
-		return	"bill/billResult/purchaseInvoicePrint";
+	@GetMapping("/invoicePrints")
+	public String invoicePrints() {
+		return	"bill/billResult/invoicePrints";
 	}
 	
 	//거래명세서 결과 페이지 
-	@GetMapping("/purchaseInvoiceList")
-	public String purchaseInvoiceList() {
-		return	"bill/billResult/purchaseInvoiceList";
+	@GetMapping("/invoicesList")
+	public String invoicesList() {
+		return	"bill/billResult/invoicesList";
 	}
 	
+//정산서 출력 페이지	
+	@GetMapping("/accountsPrint")
+	public String accountsPrint() {
+		return	"bill/billResult/accountsPrint";
+	}
 //정산서 결과 페이지	
 	@GetMapping("/accountsList")
 		public String accountsList() {
@@ -88,9 +93,9 @@ public class BillController{
 	
 	//1차 화면 연결
 	//거래명세서 화면 
-	@GetMapping("/purchaseInvoice")
-		public String purchaseInvoice() {
-			return "bill/purchaseInvoice";
+	@GetMapping("/invoice")
+		public String invoice() {
+			return "bill/invoice";
 		}
 
 	//정산서 화면

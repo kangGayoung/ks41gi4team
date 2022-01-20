@@ -14,7 +14,7 @@
 	  //거래명세서결과페이지 
 	 $(function(){
 		$('#invoiceListBtn').click(function(){
-			location.href= 'purchaseInvoiceList' ;
+			location.href="location.href='invoiceList'" ;
 		});
 	});		  
 		</script>
@@ -67,10 +67,10 @@
 		                           <th class="card-footer text-center">기간</th>
 		                           <td>
 		                              <div class="search-buttons pl-2">
-		                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-		                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-		                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-		                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+		                                          <a class="btn2" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+		                                          <a class="btn2" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+		                                          <a class="btn2" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+		                                          <a class="btn2" role="button" chk_type="n" onclick="setDate('n')">당일</a>
 		                              </div>
 		                           </td>
 		                           <td>
@@ -112,19 +112,14 @@
 		                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
 		                           </td>
 		                           <td class="pr-2 pt-2 pb-2">
-		                              
-		                                   <!-- <a class="btn2" id="invoiceListBtn" onclick="purchaseInvoiceList" style="width:100%;" >>>검색</a> -->
-		                     <button class="btn2"  id="invoiceListBtn" >
-		                      <a   style="width:100%;">>>검색</a> 
-		                      </button>
+		                               <button class="btn2"  id="invoiceListBtn"  style="width:100%;">
+											검색 
+		                     			 </button>
 		                           		
 		                           </td>
 		                           <td>
-		                           <div class="filter-btns">
-								      			<a class="btn2" role="button" onclick="location.href='purchaseInvoicePrint' "data-name="billPrint">명세서 출력</a>
-								               
-								     
-
+		                           		<div class="filter-btns">
+								      			<a class="btn2" role="button" onclick="location.href='invoicePrints' "data-name="billPrint">명세서 출력</a>
 										</div>
 		                           </td>
 		                           <td>
