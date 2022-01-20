@@ -31,25 +31,8 @@ public class BillController{
 	
 	
 	
-	
-	
-	//팝업띄우기
-	@RequestMapping ("/taxBillInsert")//(value="/taxBillInsert2", method = RequestMethod.GET)
-	public ModelAndView  popupGet() throws Exception{
-		ModelAndView  bi = new ModelAndView();
-			bi.setViewName("taxBillInsert");
-			//System.out.println("yyyyyyyyyyyyyyeannie_bill_popup1");
-			return bi;
-	}
-	
-//결과 페이지 화면 연결 /bill/billResult
-	/*
-	 * @GetMapping("/taxBillInsert2")
-	 *  public String billInsert2() { 
-	 *  return "bill/billResult/taxBillInsert2";
-	 *   }
-	 */
-	
+
+
 //거래명세서 출력버튼 - 화면
 	@GetMapping("/invoicePrints")
 	public String invoicePrints() {
