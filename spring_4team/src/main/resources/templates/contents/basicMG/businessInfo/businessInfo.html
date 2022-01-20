@@ -16,9 +16,12 @@
 				aLengthMenuArray.push([5,10,15]);
 				
 				$('#businessListTable').DataTable({
+					sDom: 'lrtip',
+					info: false,
 					destroy: true,
 					pageLength: 5,
 					aLengthMenu: aLengthMenuArray,
+					scrollX: true,
 					ajax:{
 						url:'/basic/businessInfo',
 						type:'post',
@@ -50,11 +53,22 @@
 				$('#businessModal').on('shown.bs.modal', function (e) {
 					$('#businessModal').val();
 				})	
+				
 
-			
+			    $('#searchBar').on( 'keyup click', function () {
+			    	searchfilter();
+			    } );
 				
 				
 			});
+			
+			//검색
+			function searchfilter () {
+			    $('#businessListTable').DataTable().search(
+			        $('#searchBar').val()
+			    ).draw();
+			}
+			
 		</script>
 	
 	</th:block>
@@ -64,6 +78,41 @@
 
 		<section class="content">
 			<div class="container-fluid">
+				<div class="card">
+					<div class=" clearfix">
+						<table class="col-md-12">
+							<colgroup>
+							   <col width="13%">
+							   <col width="21%">
+							   <col width="18%">
+							   <col width="18%">
+							   <col width="18%">
+							   <col width="13%">
+							</colgroup>
+						<tbody>
+                     
+							<tr>
+								<th class="card-footer text-center"style="border-bottom:1px dotted #f1f1f1;">거래처 검색</th>
+								<td class="pr-2 pl-2 pt-2 pb-2">
+						   			<div class="search-types">
+									      <select name="search_type" class="form-control">
+									         <option value="">사업자명</option>
+									         <option value="">업종</option>
+									         <option value="">업태</option>
+									      </select>
+									</div>
+								</td>
+								<td colspan="2" class="pr-2 pt-2 pb-2">
+								   <input id="searchBar" type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+								</td>
+								<td class="pr-2 pt-2 pb-2">
+								   <a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 				
 				<button id="modalBtn" data-target="#businessModal" style="float: right; font-weight: 600;height: 50px; letter-spacing: -0.5px;" data-toggle="modal" class="btn btn-outline-info mb-3 mr-2 col-sm-3">거래처 정보수정<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
 				<div class="card col-md-12" style="padding:5px; width">
@@ -116,7 +165,7 @@
 					</div>
 				<!-- /.modal-dialog -->
 				</div>	   
-
+			
 <!-- 모달 끝 -->
 			</section>    
 		</div>

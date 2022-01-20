@@ -25,6 +25,9 @@ public interface MainMapper {
 	//사원가입처리 
 	public int staffInsertAct(StaffInfo staffInfo);
 	
+	//사원정보 수정처리
+	public int staffInfoUpdate(StaffInfo staffInfo);
+	
 	//사원검색
 	public List<Map<String, Object>> getStaffInfoSearchList(Map<String,Object> paramMap,String searchKey, String searchValue);
 	
