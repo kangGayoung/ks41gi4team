@@ -11,10 +11,10 @@
 		
 			$(function(){
 			
-				$('#myModal').on('hidden.bs.modal', function (e) {
+				$('#orderModal').on('hidden.bs.modal', function (e) {
 					console.log('모달 닫기');
 				})
-				$('#myModal').on('shown.bs.modal', function (e) {
+				$('#orderModal').on('shown.bs.modal', function (e) {
 					console.log('모달 열기');
 				})	
 								
@@ -197,9 +197,9 @@
          
          
             <button style="margin-left: 10px; float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">매입 반품 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
-            <button id="modalBtn" style="float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3" data-toggle="modal" data-target="#myModal">신규 발주 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+            <button id="modalBtn" style="float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3" data-toggle="modal" data-target="#orderModal">신규 발주 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
 				<!-- Modal -->
-				<div class="modal fade" id="myModal" data-backdrop="static"><!-- 모달 배경을 포함합니다. 그렇지 않으면, 클릭 시 모달을 닫지 않는 배경을 위해 static 를 명시하세요. -->
+				<div class="modal fade" id="orderModal" data-backdrop="static"><!-- 모달 배경을 포함합니다. 그렇지 않으면, 클릭 시 모달을 닫지 않는 배경을 위해 static 를 명시하세요. -->
 				  <div class="modal-dialog modal-lg">
 				    <div class="modal-content">
 				      <div class="modal-header bg-info">
