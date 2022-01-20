@@ -110,6 +110,32 @@
 		);
 		
 	</insert>
+	<update id="staffInfoUpdate" parameterType="StaffInfo">
+		UPDATE k4_tb_staff
+		<trim prefix="SET" prefixOverrides=",">
+			<if test="staffPw != null and staffPw != ''.toString()">
+				staffPw = #{staffPw}
+			</if>
+			<if test="staffName != null and staffName != ''.toString()">
+				,staffName = #{staffName}
+			</if>
+			<if test="staffBirth != null and staffBirth != ''.toString()">
+				,staffBirth = #{staffBirth}
+			</if>
+			<if test="staffRegDate != null and staffRegDate != ''.toString()">
+				,staffRegDate = #{staffRegDate}
+			</if>
+			<if test="staffPhone != null and staffPhone != ''.toString()">
+				,staffPhone = #{staffPhone}
+			</if>
+			<if test="staffAddr != null and staffAddr != ''.toString()">
+				,staffAddr = #{staffAddr}
+			</if>
+				,staffEditDate = now()
+		</trim>
+		WHERE
+			staffId = #{staffId};
+	</update>
 	
 	
 	<select id="getStaffInfoSearchList" parameterType="String" resultMap="staffResultMap">

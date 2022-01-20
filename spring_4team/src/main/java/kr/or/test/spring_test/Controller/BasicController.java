@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,7 +59,6 @@ public class BasicController {
 	@GetMapping("/staffInsert")
 	public String staffInsert() {
 		
-		
 		return "contents/basicMG/staffInsert/staffInsert";
 	}
 	
@@ -90,13 +90,34 @@ public class BasicController {
 	
 	//사원 수정
 	@GetMapping("/staffUpdate")
-	public String staffUpdate(StaffInfo staff) {
+	public String staffUpdate(@RequestParam(value = "staffId",required = false)String staffId
+			,Model model) {
 		
-		log.info("수정요청 입력받은 회원아이디 {}",staff);
+		log.info("수정요청 입력받은 회원아이디 {}",staffId);
+		
+		if(staffId !=null && !"".equals(staffId)) {
+			StaffInfo staffInfo = mainService.getStaffIdCheck(staffId);
+			model.addAttribute("staffInfo",staffInfo);
+		}else {
+			
+			return "redirect:/contents/basicMG/staffList/staffList";
+		}
+		
+		return "/contents/basicMG/staffInsert/staffUpdate";
+	}
+	
+	@PostMapping("/staffUpdate")
+	public String staffUpdate(StaffInfo staff) {
+		log.info("사원 수정화면 입력값 {}",staff);
+		
+		
+		
 		mainService.staffUpdate(staff);
 		
-		return "redirect://contents/basicMG/staffInsert/staffUpdate";
+		return "redirect:/basic/staffList";
 	}
+	
+	
 	@GetMapping("/staffDelete")
 	public String staffDelete() {
 		return "contents/basicMG/staffInsert/staffDelete";
@@ -107,8 +128,12 @@ public class BasicController {
 	
 	@GetMapping("/staffList")
 	public String staffList(@RequestParam(value="currentPage",required=false,defaultValue="1") int currentPage,
+			HttpSession session,
 			Model model) {
+	
 		
+		session.setAttribute("SKEY", null);
+		session.setAttribute("SVAL", null);
 		
 		Map<String, Object> resultMap = mainService.staffInfoPrint(currentPage);
 		
@@ -131,10 +156,10 @@ public class BasicController {
 		
 		
 		Map<String, Object> resultMap = mainService.staffInfoPrint(searchKey,searchValue,currentPage);
-		
-		session.setAttribute("SKEY", searchKey);
+	
+			
 		session.setAttribute("SVAL", searchValue);
-		
+	
 		model.addAttribute("title","사원 검색목록");
 		model.addAttribute("currentPage",currentPage);
 		
@@ -196,6 +221,9 @@ public class BasicController {
 		
 		return businessList;
 	}
+	
+	
+	
 	
 	
 	

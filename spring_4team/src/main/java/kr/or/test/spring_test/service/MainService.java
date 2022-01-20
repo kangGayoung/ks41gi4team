@@ -41,7 +41,7 @@ public class MainService {
 	public int staffUpdate(StaffInfo staff) {
 		
 		//return staffUpdate 수정 쿼리문 mapper에 넣어서 받기
-		return 0;
+		return mainMapper.staffInfoUpdate(staff);
 	}
 	
 	//사원 가입처리
