@@ -102,7 +102,7 @@ public class OrderController {
 	// 납품 예정리스트 조회 및 검색 ajax
 	@PostMapping("/preOrder")
 	@ResponseBody
-	public List<Map<String, Object>> preOrderList(){
+	public List<Map<String, Object>> preOrder(){
 		List<Map<String, Object>> preOrderList = orderService.getPreOrderList();
 		return preOrderList;
 	}
