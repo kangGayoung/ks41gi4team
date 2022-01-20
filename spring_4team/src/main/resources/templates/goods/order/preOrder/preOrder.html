@@ -7,7 +7,7 @@
      <title th:text="${title}"></title>
   </th:block>
 
-   <th:block layout:fragment="customContents" >
+   <th:block layout:fragment="customJs" >
 	<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 	<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
 	<script type="text/javascript">
@@ -18,6 +18,16 @@
 			aLengthMenuArray.push([5, 10, 15]);
 			
 			$('#preOrderTable').DataTable({
+				// 표시 건수기능 숨기기
+				lengthChange: false,
+				// 검색 기능 숨기기
+				searching: false,
+				// 정렬 기능 숨기기
+				ordering: false,
+				// 정보 표시 숨기기
+				info: false,
+				/* 페이징 기능 숨기기
+				paging: false,*/
 				destroy : true,
 				pageLength : 5,
 				aLengthMenu : aLengthMenuArray,
@@ -29,22 +39,26 @@
 						return data;
 					}
 				},
-				colums: [
-					{data : "orderCode"},
-					{data : "goodsName"},
-					{data : "goodsWeight"},
-					{data : "goodsUnit"},
-					{data : "salesperson"},
-					{data : "purchasePrice"},
-					{data : "goodsQuantity"},
-					{data : "situation"},
-					{data : "orderRegTime"},
-					{data : "staffId2"}
+				columns: [
+					{data : 'orderCode'},
+					{data : 'goodsName'},
+					{data : 'goodsWeight'},
+					{data : 'goodsUnit'},
+					{data : 'salesperson'},
+					{data : 'purchasePrice'},
+					{data : 'goodsQuantity'},
+					{data : 'situation'},
+					{data : 'orderRegTime'},
+					{data : 'staffId2'}
 				]
 			});
 		});
-	</script>
 		
+		
+	</script>
+   </th:block>	
+	
+   <th:block layout:fragment="customContents" >		
       <div class="wrapper">
       
       <section class="content">
@@ -121,7 +135,7 @@
 	                              </div>
 	                           </td>
 	                           <td colspan="2" class="pr-2 pt-2 pb-2">
-	                              <input type="text" name="preOrderSearchVal" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+	                              <input aria-controls="preOrderTable" type="text" name="preOrderSearchVal" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
 	                           </td>
 	                           <td class="pr-2 pt-2 pb-2">
 	                              <button class="btn btn-search btn-info " type="submit" style="width:100%;">검색</button>
