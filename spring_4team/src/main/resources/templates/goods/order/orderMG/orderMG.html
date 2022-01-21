@@ -16,7 +16,22 @@
 				})
 				$('#orderModal').on('shown.bs.modal', function (e) {
 					console.log('모달 열기');
+					//ajax 호출
+					var request =$.ajax({
+						url : "/order/modal",
+						method: "GET",
+						dataType: "html"
+					});
+					
+					request.done(function(data){
+						$('#getHtml').html(data);
+					});
+					
+					request.fail(function(jqXHR, textStatus){
+						alert("Request failed: " + textStatus);
+					});
 				})	
+				
 								
 				//등록하기 버튼 클릭시 전달
 				$('#orderInsertBtn').click(function(){
@@ -198,117 +213,14 @@
          
             <button style="margin-left: 10px; float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3">매입 반품 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
             <button id="modalBtn" style="float: right; font-weight: 600;height: 50px;  letter-spacing: -0.5px;" class="btn btn-outline-info col-sm-3" data-toggle="modal" data-target="#orderModal">신규 발주 등록<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+				
+				
 				<!-- Modal -->
 				<div class="modal fade" id="orderModal" data-backdrop="static"><!-- 모달 배경을 포함합니다. 그렇지 않으면, 클릭 시 모달을 닫지 않는 배경을 위해 static 를 명시하세요. -->
 				  <div class="modal-dialog modal-lg">
-				    <div class="modal-content">
-				      <div class="modal-header bg-info">
-				        <h4 class="modal-title">신규 발주 등록 화면</h4>
-				        <button type="button" class="close" data-dismiss="modal" >
-				        	<span>&times;</span>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				      	<form id="orderInsertForm" th:action="@{/order/orderMG}" method="post">
-					    	  <div class="form-group">
-							    <div class="">
-					                <table class="">
-					                    <colgroup>
-					                        <col width="18%">
-					                        <col width="">
-					                    </colgroup>
-					                    <tbody>
-					                    <tr>
-					                        <th style="vertical-align: top;"><label>매입처 *</label></th>
-					                        <td>
-					                            <div class="input_width4 mb-2">
-					                                <input type="text" value="" placeholder="매입처명을 입력해주세요." class="form-control " autocomplete="off" style="width: 75%; float: left;">
-					                                <button type="button" class="btn btn-default" style="margin-left: 10px; padding: 0% 3%;"><a class="btn btn-lightgray" style="font-size: 14.7px; color: #444;">매입처 찾기</a></button>
-					                            </div>
-					                            <div class="pl10 mb-2">
-					                                <p class="" style=" color: #555; margin-bottom: 15px;"> * 매입처명이 기억나지 않으시면 <strong style="color: #057d90; padding: 2px; font-size: 15px;">매입처찾기</strong>버튼을 눌러 원하시는 매입처를 선택하세요.</p>
-					                            </div>
-					                        </td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>품목명 *</label></th>
-					                        <td>
-					                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
-					                        </td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>품목규격</label></th>
-					                        <td>
-					                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
-					                        </td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>품목단위</label></th>
-					                        <td>
-					                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
-					                        </td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>판매원</label></th>
-					                        <td>
-					                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
-					                        </td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>매입단가</label><span style="font-size:13px;">(VAT포함)</span></th>
-					                        <td>
-					                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
-					                        </td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>수량</label></th>
-					                        <td>
-					                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
-					                        </td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>담당자 *</label></th>
-					                        <td>
-					                            <select class="form-control" name="" id="" data-id="" >
-					                            	<option value="">::: 선택 :::</option>
-													<option value="" selected="" person_hp="">김연희</option>
-												</select>                        
-											</td>
-					                    </tr>
-					                    <tr>
-					                        <th><label>요청일자 *</label></th>
-					                        <td class="calendar_td">
-					                            <div class="pull-left inputs-areas">
-					                                <div class="input-group input-group-sm mt-3"  data-target="#reservationdate2" data-toggle="datetimepicker">
-					                                    <input type="datetime" class="form-control datetimepicker-input" id="staffRegDate" name="staffRegDate" data-inputmask-inputformat="yyyy/mm/dd" data-target="#reservationdate2" style="font-size:15px; width:130px; height: auto;">
-					                                    <div class="input-group-prepend" data-target="#reservationdate2" data-toggle="datetimepicker">
-						                                    <span class="input-group-btn">
-						                                        <i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; "></i>
-						                                    </span>
-						                                </div>
-					                                </div>
-					                            </div>
-					                         </td>
-					                    </tr>
-					                    <!-- 
-					                    <tr>
-					                        <th>비고</th>
-					                        <td colspan="3">
-					                            <textarea id="memo" name="memo" class="form-control  mt-3" style="height:100px;"></textarea>
-					                        </td>
-					                    </tr>
-										 -->
-					                    </tbody>
-					                </table>
-					            </div>
-							  </div>
-						</form>
-				      </div>
-				      <div class="modal-footer">
-				        <button id="orderInsertBtn" type="button" class="btn btn-info">등록완료</button>
-				        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-				      </div>
-				    </div>
+				  	<div id="getHtml" class="modal-content">
+				  	</div>
+				    
 				  </div>
 				</div>
       
