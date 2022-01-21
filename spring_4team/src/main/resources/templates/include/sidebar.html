@@ -3,6 +3,13 @@
 
 
 <div th:fragment="sidebar">
+<style>
+
+	.fa-circle {
+				font-size:12px !important;	
+				opacity: 90%;
+	}
+</style>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a th:href="@{/}" class="brand-link">
@@ -38,7 +45,7 @@
           
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
+              <i class="nav-icon"></i>
               <p>
             사원관리!최정기
                 <i class="right fas fa-angle-left"></i>
@@ -47,7 +54,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a th:href="@{/basic/staffInsert}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                사원기본등록
                   </p>
@@ -56,7 +63,7 @@
               </li>
               <li class="nav-item">
                 <a th:href="@{/basic/staffList}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                사원 목록
                   </p>
@@ -68,7 +75,7 @@
           </li>
           <li class="nav-item">
             <a  class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
+              <i class="nav-icon "></i>
               <p>
             거래처 관리# 최정기
                 <i class="right fas fa-angle-left"></i>
@@ -77,7 +84,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a th:href="@{/basic/businessInsert}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                거래처 등록
                   </p>
@@ -86,7 +93,7 @@
               </li>
               <li class="nav-item">
                 <a th:href="@{/basic/businessInfo}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                거래처 정보
                   </p>
@@ -97,7 +104,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
+              <i class="nav-icon "></i>
               <p>
             시설물 관리# 최정기
                 <i class="right fas fa-angle-left"></i>
@@ -106,7 +113,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a th:href="@{/basic/storageInfo}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                창고/진열대 관리
                   </p>
@@ -117,7 +124,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
+              <i class="nav-icon "></i>
               <p>
             주문 관리!강가영
                 <i class="right fas fa-angle-left"></i>
@@ -126,19 +133,19 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a th:href="@{/order/orderMG}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                    주문 관리
                   </p>
                 </a>
                 <a th:href="@{/order/preOrder}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                    납품 예정 내역
                   </p>
                 </a>
                 <a th:href="@{/order/returnList}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                    검수/반품 관리
                   </p>
@@ -149,7 +156,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
+              <i class="nav-icon "></i>
               <p>
                                 재고 관리#강가영
                 <i class="right fas fa-angle-left"></i>
@@ -158,31 +165,31 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a th:href="@{/stock/inoutport}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                   입/출고 관리
                   </p>
                 </a>
                 <a th:href="@{/stock/inoutportList}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                    입/출고 내역
                   </p>
                 </a>
                 <a th:href=@{/stock/stCurrent} class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                    재고 현황
                   </p>
                 </a>
                 <a th:href="@{/stock/errorStock}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                    불량 관리
                   </p>
                 </a>
                 <a th:href="@{/stock/realStock}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>
                                    실사 관리
                   </p>
@@ -195,7 +202,7 @@
           
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
+              <i class="nav-icon "></i>
               <p>
                                원장 관리!김연희
                 <i class="right fas fa-angle-left"></i>
@@ -204,36 +211,36 @@
                         <ul class="nav nav-treeview">
               <li class="nav-item">
                  <a th:href="@{/settlement/purchaseLookup}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>매입원장(거래내역)</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <a th:href="@{/settlement/salesLookup}" class="nav-link"> 
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>매출원장(거래내역)</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <a th:href="@{/settlement/orderInvoice}" class="nav-link"> 
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>거래집계</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <!-- <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a th:href="@{/settlement/purchaseLookup}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
+                      <i class="fas fa-dot-circle nav-icon"></i>
                       <p>매입원장(거래내역)</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a th:href="@{/settlement/salesLookup}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
+                      <i class="fas fa-dot-circle nav-icon"></i>
                       <p></p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a th:href="@{/settlement/orderInvoice}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
+                      <i class="fas fa-dot-circle nav-icon"></i>
                       <p>거래 집계</p>
                     </a>
                   </li>
@@ -243,7 +250,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-circle"></i>
+              <i class="nav-icon "></i>
               <p>
                                 계산서 관리 #김연희
                 <i class="right fas fa-angle-left"></i>
@@ -252,36 +259,36 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a th:href="@{/bill/invoice}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>거래명세서</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <a th:href="@{/bill/accounts}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>정산서</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <a th:href="@{/bill/taxBill}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-circle nav-icon"></i>
                   <p>(세금)계산서 관리</p>
                   <i class="right fas fa-angle-left"></i>
                 </a>
                 <!-- <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a th:href="@{/bill/purchaseInvoice}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
+                      <i class="fas fa-dot-circle nav-icon"></i>
                       <p>거래명세서 </p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a th:href="@{/bill/accounts}"class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
+                      <i class="fas fa-dot-circle nav-icon"></i>
                       <p>정산서</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a th:href="@{/bill/taxBill}" class="nav-link">
-                      <i class="far fa-dot-circle nav-icon"></i>
+                      <i class="fas fa-dot-circle nav-icon"></i>
                       <p>(세금)계산서 관리</p>  
                     </a>
                   </li>
