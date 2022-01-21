@@ -47,14 +47,31 @@
 				});
 				
 				//모달
-				$('#businessModal').on('hidden.bs.modal', function (e) {
-					$('#businessModal').val();
-				})
-				$('#businessModal').on('shown.bs.modal', function (e) {
-					$('#businessModal').val();
-				})	
+				//모달 클릭
+				$('#modalBtn').click(function(){
+					
+					$('#businessModal').modal();
+					
+				});
 				
-
+				//모달 ajax
+				$('#businessModal').on('show.bs.modal',function(){
+					var request = $.ajax({
+						url:"/basic/modalBusiness",
+						method:"get",
+						dataType:"html"
+					});
+					request.done(function(msg){
+						$('#modalAjax').html(msg);
+					});
+					request.fail(function(jqXHR, textStatus){
+						alert("Request failed "+textStatus);
+					});
+				
+				});
+				
+				
+				//검색창
 			    $('#searchBar').on( 'keyup click', function () {
 			    	searchfilter();
 			    } );
@@ -114,7 +131,7 @@
 				</div>
 			</div>
 				
-				<button id="modalBtn" data-target="#businessModal" style="float: right; font-weight: 600;height: 50px; letter-spacing: -0.5px;" data-toggle="modal" class="btn btn-outline-info mb-3 mr-2 col-sm-3">거래처 정보수정<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
+				<button id="modalBtn" style="float: right; font-weight: 600;height: 50px; letter-spacing: -0.5px;"  class="btn btn-outline-info mb-3 mr-2 col-sm-3">거래처 정보수정<i style="padding-left: 7px;" class="fas fa-archive"></i></button>
 				<div class="card col-md-12" style="padding:5px; width">
 					<table id="businessListTable" class="table text-center table-head-fixed text-nowrap " style="padding: 5px;"> 
 						<thead>
@@ -139,34 +156,17 @@
 			</div>
 	
 	<!-- 모달 창 -->
-				<div class="modal fade" id="businessModal" data-backdrop="static">
-				       <div class="modal-dialog modal-lg">
-				         <div class="modal-content">
-				           <div class="modal-header bg-info">
-				             <h4 class="modal-title">거래처 정보 수정</h4>
-				             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				               <span aria-hidden="true">×</span>
-				             </button>
-				           </div>
-				           <div class="modal-body">
-							<div>
-								<input type="text">
-								
-							</div>
-				
-				
-				           </div>
-				           <div class="modal-footer justify-content-between">
-				             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				             <button type="button" class="btn btn-primary">Save changes</button>
-				           </div>
+				<div class="modal fade" id="businessModal" style="" data-backdrop="static">
+					<div class="modal-dialog modal-lg">
+				         <div class="modal-content" id="modalAjax">
+						
 				         </div>
 				         <!-- /.modal-content -->
 					</div>
 				<!-- /.modal-dialog -->
 				</div>	   
 			
-<!-- 모달 끝 -->
+	<!-- 모달 끝 -->
 			</section>    
 		</div>
 

@@ -178,6 +178,12 @@ public class BasicController {
 		return "contents/basicMG/businessInsert/businessInsert";
 	}
 	
+	@GetMapping("/modalBusinessForm")
+	public String modalBusinessForm() {
+		
+		return "contents/basicMG/businessInfo/modalBusinessForm";
+	}
+	
 	//거래처 등록
 	@PostMapping("/businessInsert")
 	public String businessInsertSubmit(BusinessInfo businessInfo, HttpSession session) {
@@ -221,8 +227,12 @@ public class BasicController {
 		
 		return businessList;
 	}
-	
-	
+	//거래처 모달
+	@GetMapping("/modalBusiness")
+	public String modalBusiness(Model model) {
+		
+		return "contents/basicMG/businessInfo/modalBusinessUpdatForm";
+	}
 	
 	
 	
