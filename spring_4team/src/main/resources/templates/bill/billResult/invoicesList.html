@@ -6,11 +6,24 @@
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-
+	<!-- jQuery -->
+ 	<script type="text/javascript">
+		$(function(){
+			//조회 페이지 
+			$('#invoiceBackBtn').click(function(){
+				location.href='invoice';
+			});
+		
+		
+		
+		});
+ 	
+ 	</script>
+	
 		<!--content-wrapper start-->
 
 	<div class="wrapper">
-		<h2>거래 명세서 </h2>
+		<h2>거래 명세서 조회 결과 페이지  </h2>
 	<!-- Main content -->
 
 <!--  Search card  시작 -->
@@ -93,7 +106,7 @@
                               <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " role="button" onclick="" style="width:100%;">검색</a>
+                              <a class="btn btn-search btn-danger "  id="invoiceBackBtn" role="button" onclick="" style="width:100%;">검색</a>
                            </td>
                         </tr>
                         <tr>
