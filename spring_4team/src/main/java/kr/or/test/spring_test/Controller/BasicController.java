@@ -227,8 +227,12 @@ public class BasicController {
 		
 		return businessList;
 	}
-	
-	
+	//거래처 모달
+	@GetMapping("/modalBusiness")
+	public String modalBusiness(Model model) {
+		
+		return "contents/basicMG/businessInfo/modalBusinessUpdatForm";
+	}
 	
 	
 	
