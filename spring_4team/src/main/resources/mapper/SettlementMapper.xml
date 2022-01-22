@@ -16,21 +16,34 @@
 		 -->
 
 	<!-- 매입 조회 -->
-<select id="selectPurchaseList"  resultType = "kr.or.test.spring_test.dto.SettlementDto">
-	select
-			SELECT
-		b.businessName 			AS businessName , <!-- /*1.거래처명 */ -->
-		o.goodsSupplyPrice		 AS goodsSupplyPrice ,<!-- /*3 매입공급가액*/ -->
-		o.VAT 								AS vat , <!-- /*4매입세액*/ -->
-		o.purchasePrice			 AS purchasePrice  ,<!-- /*5매입단가(포함)*/ -->
-		tr.totalAmount 			AS totalAmount , <!-- /*6지급금액*/ -->
-		tr.dealDate 					AS dealDate<!--  /*9최종거래일*/ -->
+<!-- <select id="SelectPurchaseList"  resultType = "kr.or.test.spring_test.dto.SettlementDto"> -->
+	<select id="getPurchaseListCount" resultType="int" fetchSize="1000">
+		SELECT
+			COUNT(1)
+		FROM
+			k4_tb_order AS o
+						inner JOIN
+			k4_tb_transactionstatement AS tr )
+							join
+			k4_tb_business AS b ;
+	</select>
 
+
+
+<select id="SelectPurchaseList"  parameterType = "map" resultType="map">
+
+				SELECT
+		b.businessName 			AS businessName , 
+		o.goodsSupplyPrice		 AS goodsSupplyPrice ,
+		o.VAT 								AS vat ,
+		o.purchasePrice			 AS purchasePrice  ,
+		tr.totalAmount 			AS totalAmount , 
+		tr.dealDate 					AS dealDate
 		FROM
 			(k4_tb_order AS o
 						inner JOIN
 			k4_tb_transactionstatement AS tr )
-								join
+							join
 			k4_tb_business AS b ;
 
 </select>
