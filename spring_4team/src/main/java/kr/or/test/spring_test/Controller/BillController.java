@@ -14,10 +14,13 @@ import kr.or.test.spring_test.service.BillService;
 @Controller
 @RequestMapping("/bill")
 public class BillController{
-		@Autowired
+		
+	@Autowired
 		private BillService billService;
 
-	
+	public BillController(BillService billService) {
+		this.billService = billService;
+	}
 	
 	
 	

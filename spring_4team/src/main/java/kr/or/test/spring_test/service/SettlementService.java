@@ -17,6 +17,7 @@ import kr.or.test.spring_test.mapper.SettlementMapper;
 
 
 @Service
+@Transactional
 public class SettlementService {
 
 @Autowired
@@ -31,13 +32,11 @@ public class SettlementService {
 	
 	//매입리스트 조회 : \settlement\settlementResult\purchaseList.html
 
-public  List<SettlementDto> getselectPurchaseList() throws Exception {
-	List<SettlementDto> selectPurchaseList =settlementMapper.selectPurchaseList();
-		return selectPurchaseList;
-	
-	
+	public List<Map<String,Object>>SelectPurchaseList(){
+		
+		return settlementMapper.SelectPurchaseList(null);
 }
-
+	
 	
 	
 	

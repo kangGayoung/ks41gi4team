@@ -6,15 +6,15 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import kr.or.test.spring_test.dto.SettlementDto;
-
 
 @Mapper
 public interface SettlementMapper {
 	
 
-	//매입리스트 조회 : /purchaseList
- List<SettlementDto> selectPurchaseList() throws Exception;
+	//매입리스트 조회 : /selectPurchaseList
+ public List<Map<String,Object>> SelectPurchaseList(Map<String,Object> paramMap);
+ 
+ public int getPurchaseListCount();
 
 }
 

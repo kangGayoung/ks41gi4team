@@ -7,7 +7,62 @@
 				매입 원장 조회 버튼 결과 표시 페이지
 			</title>
 		</th:block>
-		<th:block layout:fragment="customContents">
+			<th:block layout:fragment="customJs">
+		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+		<script type="text/javascript">
+		
+		$('#businessListTable').DataTable({
+			sDom: 'lrtip',
+			info: false,
+			destroy: true,
+			pageLength: 5,
+			aLengthMenu: aLengthMenuArray,
+			scrollX: true,
+			ajax:{
+				url:'/basic/businessInfo',
+				type:'post',
+				dataSrc: function(data){
+					console.log(JSON.stringify(data));
+					return data;
+				}
+			},
+			columns:[
+				{"data":"businessCode"},
+				{"data":"businessName"},
+				{"data":"businessSectors"},
+				{"data":"businessStatus"},
+				{"data":"businessPartnerName"},
+				{"data":"businessPartnerNum"},
+				{"data":"businessPhoneNum"},
+				{"data":"businessAddress"},
+				{"data":"businessStaff"},
+				{"data":"businessStaffNum"},
+				{"data":"businessStaffEmail"}
+				
+			]
+		});
+		//검색창
+	    $('#searchBar').on( 'keyup click', function () {
+	    	searchfilter();
+	    } );
+	});
+		
+		//검색
+		function searchfilter () {
+		    $('#businessListTable').DataTable().search(
+		        $('#searchBar').val()
+		    ).draw();
+		}
+		
+		
+		
+		
+		
+	</script>
+	
+	
+	<th:block layout:fragment="customContents">
 
 	<!-- Content Header (Page header) -->
 	<div class="wrapper">
@@ -94,7 +149,7 @@
                               </div>
                            </td>
                            <td colspan="2" class="pr-2 pt-2 pb-2">
-                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
+                              <input type="text" class="form-control"  id="searchBar" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
                              <a class="btn btn-search btn-danger " id="purchaseLookBtn"  href="#" onclick="location.href='purchaseLookup' " style="width:100%;" >매입처 재검색</a>
