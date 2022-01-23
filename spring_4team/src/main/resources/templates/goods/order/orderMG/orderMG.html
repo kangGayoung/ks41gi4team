@@ -31,39 +31,6 @@
 						alert("Request failed: " + textStatus);
 					});
 				})	
-				
-								
-				//등록하기 버튼 클릭시 전달
-				$('#orderInsertBtn').click(function(){
-					var submitCheck = true;
-					var inputObj = $('#orderInsertForm').find('input');
-					
-					
-					$.each(inputObj, function(){
-						var inputData = $(this).val();
-						var inputId = $(this).attr('id');
-						var labelText = $('label[for='+inputId+']').text();
-						if(typeof inputData == 'undefined' || inputData == null ||inputData == '' ){
-							alert(labelText+'를 입력해주세요.');
-							$(this).focus();
-						
-							submitCheck = false;
-							
-							return false;
-						}
-						
-					});				
-					
-					if(submitCheck) $('#orderInsertForm').submit();
-					
-				});
-				
-				//발주요청일
-				$('.input-group-text').click(function(){
-					$('#reservationdate2').datetimepicker({
-						format: "YYYY-MM-DD"	//데이터 포맷 형식(yyyy : 년   mm : 월   dd : 일 )
-				    });
-				});
 			});	
 		</script>
 	</th:block>
@@ -234,7 +201,7 @@
       
             
             <div style="margin-top:20px;margin-left:3%; padding: 0 12px 0 1px;clear:both; float:left" >
-               <p style="display: inline-block; padding-right: 7px;">전체 10건</p>
+               <p style="display: inline-block; padding-right: 7px;">전체 30건</p>
                <button type="button" class="btn btn-outline-secondary btn-sm"><strong>발주 완료</strong></button>
                <button type="button" class="btn btn-outline-secondary btn-sm"><strong>입고 완료</strong></button>  
             </div>

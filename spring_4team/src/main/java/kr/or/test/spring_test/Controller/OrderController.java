@@ -1,6 +1,5 @@
 package kr.or.test.spring_test.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,70 +17,48 @@ import kr.or.test.spring_test.service.OrderService;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-	
+
 	private OrderService orderService;
-	
-	//의존성 주입
+
+	// 의존성 주입
 	public OrderController(OrderService orderService) {
-			this.orderService= orderService;
+		this.orderService = orderService;
 	}
-	
 
 	@GetMapping("/modal")
-	public String modal (Model model) {		
+	public String modal(Model model) {
 		model.addAttribute("title", "modal");
-		List<String> userList = new ArrayList<String>();
-		model.addAttribute("userList", userList);
 		return "goods/order/orderMG/modal";
 	}
-	
-	@GetMapping(value="/json", produces ="application/json")
-	@ResponseBody
-	public List<String> json (Model model) {
-		List<String> userList = new ArrayList<String>();
-		userList.add("홍길동");
-		userList.add("이순신");
-		return userList;
-	}
-	
-	@GetMapping("/getModal")
-	public String getModal (Model model) {		
-		model.addAttribute("title", "getModal");
-		return "goods/order/orderMG/getModal";
-	}
-	
 
 	@PostMapping("/orderMG")
-	public String orderMG (
-							@RequestParam(value="currentPage", required = false, defaultValue = "1") int currentPage,
-							@RequestParam(value="orderSearch01", required = false) String orderSearch01,
-							@RequestParam(value="orderSearchVal", required = false) String orderSearchVal,
-							Model model) {
-		
-		Map<String, Object> resultMap = orderService.getOrderListBySearch01(currentPage, orderSearch01, orderSearchVal );
-		
-		model.addAttribute("currentPage",		currentPage);
-		model.addAttribute("lastPage",			resultMap.get("lastPage"));
-		model.addAttribute("orderList",			resultMap.get("orderList"));
-		model.addAttribute("startPageNum",		resultMap.get("startPageNum"));
-		model.addAttribute("endPageNum",		resultMap.get("endPageNum"));		
-		
+	public String orderMG(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			@RequestParam(value = "orderSearch01", required = false) String orderSearch01,
+			@RequestParam(value = "orderSearchVal", required = false) String orderSearchVal, Model model) {
+
+		Map<String, Object> resultMap = orderService.getOrderListBySearch01(currentPage, orderSearch01, orderSearchVal);
+
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", resultMap.get("lastPage"));
+		model.addAttribute("orderList", resultMap.get("orderList"));
+		model.addAttribute("startPageNum", resultMap.get("startPageNum"));
+		model.addAttribute("endPageNum", resultMap.get("endPageNum"));
+
 		return "goods/order/orderMG/orderMG";
 	}
-			
-			
+
 	@GetMapping("/orderMG")
-	public String orderMG (@RequestParam(value="currentPage", required = false, defaultValue = "1") int currentPage,
-							Model model) {
-		
+	public String orderMG(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+			Model model) {
+
 		Map<String, Object> resultMap = orderService.getOrderList(currentPage);
-		
-		model.addAttribute("currentPage",		currentPage);
-		model.addAttribute("lastPage",			resultMap.get("lastPage"));
-		model.addAttribute("orderList",			resultMap.get("orderList"));
-		model.addAttribute("startPageNum",		resultMap.get("startPageNum"));
-		model.addAttribute("endPageNum",		resultMap.get("endPageNum"));
-		
+
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", resultMap.get("lastPage"));
+		model.addAttribute("orderList", resultMap.get("orderList"));
+		model.addAttribute("startPageNum", resultMap.get("startPageNum"));
+		model.addAttribute("endPageNum", resultMap.get("endPageNum"));
+
 		return "goods/order/orderMG/orderMG";
 	}
 	/*
@@ -107,36 +84,34 @@ public class OrderController {
 	 * 
 	 * return "goods/order/preOrder/preOrder"; }
 	 */
-	
-	//납품예정전체 조회
+
+	// 납품예정전체 조회
 	@GetMapping("/preOrder")
-	public String preOrder(
-			@RequestParam(value="currentPage", required = false, defaultValue = "1") int currentPage,
+	public String preOrder(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
 			Model model) {
-		
+
 		Map<String, Object> resultMap = orderService.getPreOrderList(currentPage);
-		
-		model.addAttribute("currentPage",		currentPage);
-		model.addAttribute("lastPage",			resultMap.get("lastPage"));
-		model.addAttribute("orderList",			resultMap.get("orderList"));
-		model.addAttribute("startPageNum",		resultMap.get("startPageNum"));
-		model.addAttribute("endPageNum",		resultMap.get("endPageNum"));	
-		
+
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", resultMap.get("lastPage"));
+		model.addAttribute("orderList", resultMap.get("orderList"));
+		model.addAttribute("startPageNum", resultMap.get("startPageNum"));
+		model.addAttribute("endPageNum", resultMap.get("endPageNum"));
+
 		return "goods/order/preOrder/preOrder";
 	}
-	
+
 	// 납품 예정리스트 조회 및 검색 ajax
 	@PostMapping("/preOrder")
 	@ResponseBody
-	public List<Map<String, Object>> preOrder(){
+	public List<Map<String, Object>> preOrder() {
 		List<Map<String, Object>> preOrderList = orderService.getPreOrderList();
 		return preOrderList;
 	}
-	
+
 	@GetMapping("/returnList")
 	public String returnList() {
 		return "goods/order/returnList/returnList";
 	}
-	
-	
+
 }

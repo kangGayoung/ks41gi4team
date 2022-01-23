@@ -1,11 +1,46 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout">
- 	 
+ 	
+ 	<th:block layout:fragment="customJs">	
+		<script type="text/javascript"> 
+		
+			//등록완료 버튼 클릭 이벤트
+			$('#orderInsertBtn').click(function(){
+				var submitCheck = true;
+				var inputObj = $('#orderInsertForm').find('input');
+				
+				
+				$.each(inputObj, function(){
+					var inputData = $(this).val();
+					var inputId = $(this).attr('id');
+					var labelText = $('label[for='+inputId+']').text();
+					if(typeof inputData == 'undefined' || inputData == null ||inputData == '' ){
+						alert(labelText+'를 입력해주세요.');
+						$(this).focus();
+					
+						submitCheck = false;
+						
+						return false;
+					}
+					
+				});				
+				
+				if(submitCheck) $('#orderInsertForm').submit();
+				
+			});
+			
+			//발주요청일
+			$('.input-group-text').click(function(){
+				$('#reservationdate2').datetimepicker({
+					format: "YYYY-MM-DD"	//데이터 포맷 형식(yyyy : 년   mm : 월   dd : 일 )
+			    });
+			});	
+		</script>
+	</th:block>
   		
 	<th:block layout:fragment="customContents" >
   		
-	
     
       <div class="modal-header bg-info">
         <h4 class="modal-title">신규 발주 등록 화면</h4>
@@ -24,10 +59,10 @@
 	                    </colgroup>
 	                    <tbody>
 	                    <tr>
-	                        <th style="vertical-align: top;"><label>매입처 *</label></th>
+	                        <th style="vertical-align: top;"><label for="incomeDeal">매입처 *</label></th>
 	                        <td>
 	                            <div class="input_width4 mb-2">
-	                                <input type="text" value="" placeholder="매입처명을 입력해주세요." class="form-control " autocomplete="off" style="width: 75%; float: left;">
+	                                <input id="incomeDeal" name="incomeDeal" type="text" placeholder="매입처명을 입력해주세요." class="form-control " autocomplete="off" style="width: 75%; float: left;">
 	                                <button type="button" class="btn btn-default" style="margin-left: 10px; padding: 0% 3%;"><a class="btn btn-lightgray" style="font-size: 14.7px; color: #444;">매입처 찾기</a></button>
 	                            </div>
 	                            <div class="pl10 mb-2">
@@ -36,56 +71,68 @@
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>품목명 *</label></th>
+	                        <th><label for="productsName">품목명 *</label></th>
 	                        <td>
-	                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
+	                        	<div class="pl10 mb-2">
+	                        		<input id="productsName" name="productsName" type="text" class="form-control " autocomplete="off" />
+	                        	</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>품목규격</label></th>
+	                        <th><label for="productsWeight">품목규격</label></th>
 	                        <td>
-	                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
+	                        	<div class="pl10 mb-2">
+	                        		<input id="productsWeight" name="productsWeight" type="text" class="form-control " autocomplete="off" />
+	                        	</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>품목단위</label></th>
+	                        <th><label for="productsUnit">품목단위</label></th>
 	                        <td>
-	                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
+	                        	<div class="pl10 mb-2">
+	                        		<input id="productsUnit" name="productsUnit" type="text" class="form-control " autocomplete="off" />
+	                        	</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>판매원</label></th>
+	                        <th><label for="seller">판매원</label></th>
 	                        <td>
-	                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
+	                        	<div class="pl10 mb-2">
+	                        		<input  id="seller" name="seller" type="text" class="form-control" autocomplete="off" />
+	                        	</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>매입단가</label><span style="font-size:13px;">(VAT포함)</span></th>
+	                        <th><label for="incomePrice">매입단가</label><span style="font-size:13px;">(VAT포함)</span></th>
 	                        <td>
-	                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
+	                        	<div class="pl10 mb-2">
+	                        		<input id="incomePrice" name="incomePrice" type="text" class="form-control " autocomplete="off" />
+	                        	</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>수량</label></th>
+	                        <th><label for="Amount">수량</label></th>
 	                        <td>
-	                        	<div class="pl10 mb-2"><input type="text" value="" class="form-control " autocomplete="off" /></div>
+	                        	<div class="pl10 mb-2">
+	                        		<input id="incomePrice" name="incomePrice" type="text" class="form-control " autocomplete="off" />
+	                        	</div>
 	                        </td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>담당자 *</label></th>
+	                        <th><label for="manager">담당자 *</label></th>
 	                        <td>
-	                            <select class="form-control" name="" id="" data-id="" >
+	                            <select class="form-control" name="manager" id="manager" data-id="" >
 	                            	<option value="">::: 선택 :::</option>
 									<option value="" selected="" person_hp="">김연희</option>
 								</select>                        
 							</td>
 	                    </tr>
 	                    <tr>
-	                        <th><label>요청일자 *</label></th>
+	                        <th><label for="orderRegDate">요청일자 *</label></th>
 	                        <td class="calendar_td">
 	                            <div class="pull-left inputs-areas">
 	                                <div class="input-group input-group-sm mt-3"  data-target="#reservationdate2" data-toggle="datetimepicker">
-	                                    <input type="datetime" class="form-control datetimepicker-input" id="staffRegDate" name="staffRegDate" data-inputmask-inputformat="yyyy/mm/dd" data-target="#reservationdate2" style="font-size:15px; width:130px; height: auto;">
+	                                    <input type="datetime" class="form-control datetimepicker-input" id="orderRegDate" name="orderRegDate" data-inputmask-inputformat="yyyy/mm/dd" data-target="#reservationdate2" style="font-size:15px; width:130px; height: auto;">
 	                                    <div class="input-group-prepend" data-target="#reservationdate2" data-toggle="datetimepicker">
 		                                    <span class="input-group-btn">
 		                                        <i class="far fa-calendar-alt" style="padding: 10px; border: 1px solid #eee; "></i>
