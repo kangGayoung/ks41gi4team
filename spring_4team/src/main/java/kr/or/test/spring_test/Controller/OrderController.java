@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.test.spring_test.dto.OrderList;
+import kr.or.test.spring_test.dto.StaffInfo;
 import kr.or.test.spring_test.service.OrderService;
 
 @Controller
@@ -24,13 +25,15 @@ public class OrderController {
 	public OrderController(OrderService orderService) {
 		this.orderService = orderService;
 	}
-
+	
+	// 신규발주등록 버튼 모달
 	@GetMapping("/modal")
 	public String modal(Model model) {
 		model.addAttribute("title", "modal");
 		return "goods/order/orderMG/modal";
 	}
 
+	// 발주관리 데이터 테이블 검색화면
 	@PostMapping("/orderMG")
 	public String orderMG(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
 			@RequestParam(value = "orderSearch01", required = false) String orderSearch01,
@@ -46,7 +49,8 @@ public class OrderController {
 
 		return "goods/order/orderMG/orderMG";
 	}
-
+	
+	// 발주관리 페이징
 	@GetMapping("/orderMG")
 	public String orderMG(@RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
 			Model model) {
@@ -61,6 +65,25 @@ public class OrderController {
 
 		return "goods/order/orderMG/orderMG";
 	}
+	/*
+	// 신규발주 등록
+	@PostMapping("/orderMG")
+	public String orderMG(OrderList orderReg) {
+		
+		System.out.println("OrderController 발주등록 화면에서 입력받은 값: " + orderReg);
+		//insert 처리
+		//null 체크 
+		
+		
+		return "redirect:/order/orderMG";
+	}
+	
+	 * @GetMapping("/orderMG") public String addMember(Model model) {
+	 * System.out.println("/orderMG GET방식 요청"); model.addAttribute("title",
+	 * "신규발주등록"); //DB 레벨 등급 LIST List<MemberLevel> memberLevelList =
+	 * OrderService.orderReg(null); model.addAttribute("memberLevelList",
+	 * memberLevelList); return "member/addMember"; }
+	 
 	/*
 	 * @PostMapping("/preOrder") public String preOrder(
 	 * 

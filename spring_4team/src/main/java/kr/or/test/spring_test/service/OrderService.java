@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.test.spring_test.dto.OrderList;
+import kr.or.test.spring_test.dto.StaffInfo;
 import kr.or.test.spring_test.mapper.OrderMapper;
 
 @Service
@@ -226,6 +227,11 @@ public class OrderService {
 		return paramMap;
 	}
 
+	/*
+	 * // 신규 발주 등록 public Map<String, Object> orderReg(OrderList orderReg) {
+	 * List<Map<String, Object>> result = orderMapper.orderRegInsert(orderReg);
+	 * return result; }
+	 */
 	
 
 
