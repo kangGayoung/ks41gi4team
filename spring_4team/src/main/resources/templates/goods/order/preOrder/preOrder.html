@@ -10,6 +10,17 @@
    <th:block layout:fragment="customJs" >
 	<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
 	<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+	
+	<style>
+	.dataTables_scroll {
+							margin : 2% 0;
+	}
+	
+	.dataTables_scrollHeadInner table {
+							margin-left:2% !important;
+	}
+	</style>
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			
@@ -20,14 +31,18 @@
 			$('#preOrderTable').DataTable({
 				// 표시 건수기능 숨기기
 				lengthChange: false,
-				// 검색 기능 숨기기
-				searching: false,
+				/* // 검색 기능 숨기기
+				searching: false, */
 				// 정렬 기능 숨기기
 				ordering: false,
 				// 정보 표시 숨기기
 				info: false,
 				/* 페이징 기능 숨기기
 				paging: false,*/
+				sDom: 'lrtip',
+				info: false,
+				pageLength: 5,
+				scrollX: true,
 				destroy : true,
 				pageLength : 5,
 				aLengthMenu : aLengthMenuArray,
@@ -52,6 +67,18 @@
 					{data : 'staffId2'}
 				]
 			});
+			
+			//검색창
+		    $('#searchBar').on( 'keyup click', function () {
+		    	searchfilter();
+		    } );
+			
+			//검색
+			function searchfilter () {
+			    $('#preOrderTable').DataTable().search(
+			        $('#searchBar').val()
+			    ).draw();
+			}
 		});
 		
 		
@@ -152,7 +179,7 @@
 	                              </div>
 	                           </td>
 	                           <td colspan="2" class="pr-2 pt-2 pb-2">
-	                              <input aria-controls="preOrderTable" type="text" name="preOrderSearchVal" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+	                              <input id="searchBar" type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
 	                           </td>
 	                           <td class="pr-2 pt-2 pb-2">
 	                              <button class="btn btn-search btn-info " type="submit" style="width:100%;">검색</button>
@@ -216,7 +243,7 @@
             </div>
          
             <div class="card col-md-12">
-               <table id="preOrderTable" style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
+               <table id="preOrderTable" style="margin:0 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
                   <thead>
                      <tr>
                         <th>발주요청코드</th>                       
