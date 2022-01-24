@@ -12,7 +12,7 @@ public interface SettlementMapper {
 	
 
 	//매입리스트 조회 : /selectPurchaseList
- public List<Map<String,Object>> SelectPurchaseList(Map<String,Object> paramMap);
+ public List<Map<String,Object>> selectPurchaseList(Map<String,Object> paramMap);
  
  public int getPurchaseListCount();
 
