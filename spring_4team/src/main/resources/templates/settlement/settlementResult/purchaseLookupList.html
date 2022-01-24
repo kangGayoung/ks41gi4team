@@ -11,38 +11,7 @@
 		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
 		<script type="text/javascript">
 	
-			$(document).ready(function () {
-				
-				var aLengthMenuArray = [];
-				aLengthMenuArray.push([5,10,15]);
-				aLengthMenuArray.push([5,10,15]);
-				
-				$('#purchaseListTable').DataTable({
-				
-					info: false,
-					destroy: true,
-					pageLength: 5,
-					aLengthMenu: aLengthMenuArray,
-					scrollX: true,
-					ajax:{
-						"url":"/settlement/purchase",
-						"type":"post",
-						"data": function(data){
-						
-							return data;
-						}
-					},
-					columns:[
-						{"data":"businessName"},
-						{"data":"goodsSupplyPrice"},
-						{"data":"vat"},
-						{"data":"purchasePrice"},
-						{"data":"totalAmount"},
-						{"data":"dealDate"}
-						
-					]
-				});
-		});
+			
 		</script>
 	</th:block>
 	
@@ -238,20 +207,20 @@
 							<table class="table p-0 table-hover" id="purchaseListTable">
 								<thead style="font-size: 1.0em; text-align: center;">
 									<tr>
-									<!-- 	<th><div class="icheck-danger">
+										<th><div class="icheck-danger">
 												<input type="checkbox" value="" id="check1"> <label for="check1"></label>
 											</div>
-										</th> -->
-										<th>상호명</th>
+										</th>
+										<th>No.</th>
+										<th>상호<small>(공급하는 자)</small></th>
+										<th>이전금액</th>
 										<th>공급가액</th>
 										<th>부가세</th>
-										<th>합계금액(공급+부가)</th>
+										<th>합계액</th>
 										<th>지급금액</th>
-										<th>최종거래일</th>
-									<!-- 	<th>지급금액</th>
 										<th>수정금액</th>
 										<th>잔여지급금액</th>
-										<th>최종거래일</th> -->
+										<th>최종거래일</th>
 									</tr>
 								</thead>
 								

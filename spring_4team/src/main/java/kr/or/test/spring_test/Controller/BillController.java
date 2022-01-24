@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+
 import kr.or.test.spring_test.service.BillService;
 
 
@@ -24,13 +24,6 @@ public class BillController{
 	
 	
 	
-	
-	
-	//testModal
-	@GetMapping("/testModal")
-	public String testModal() {
-		return "bill/billResult/testModal";
-	}
 	
 	
 	
@@ -81,19 +74,19 @@ public class BillController{
 	//거래명세서 화면 
 	@GetMapping("/invoice")
 		public String invoice() {
-			return "bill/invoice";
+			return "bill/invoiceLookup";
 		}
 
 	//정산서 화면
 	@GetMapping("/accounts")
 		public String accounts() {
-			return "bill/accounts";
+			return "bill/accountsLookup";
 		}
 	
 //세금계산서화면
 	@GetMapping("/taxBill")
 		public String taxBill() {
-			return "bill/taxBill";
+			return "bill/taxBillLookup";
 		}
 
 }
