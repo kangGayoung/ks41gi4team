@@ -6,9 +6,6 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.or.test.spring_test.dto.OrderList;
-import kr.or.test.spring_test.dto.StaffInfo;
-
-
 
 @Mapper
 public interface OrderMapper {
