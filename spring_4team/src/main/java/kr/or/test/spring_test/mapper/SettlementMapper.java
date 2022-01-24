@@ -24,9 +24,3 @@ public interface SettlementMapper {
 	
 	//거래 전체 조회 :  /orderInvoice
 	
-	//상품입고 상태조회
-	
-	//상품 출고 상태 조회
-	
-
-

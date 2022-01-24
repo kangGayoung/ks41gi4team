@@ -4,31 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace=" kr.or.test.spring_test.mapper.SettlementMapper">
 		
-<!-- 		
-	<resultMap type="Settlement" 		 id="settlementResultMap">
-		<result column="b.businessName" 					property="businessName"/>
-		<result column="o.goodsSupplyPrice" 			property="memberPw"/>
-		<result column="o.VAT" 										property="vat"/>
-		<result column="o.purchasePrice" 					property="purchasePrice"/>
-		<result column="tr.totalAmount" 					property="totalAmount"/>
-		<result column="tr.dealDate" 							property="dealDate"/>
-	</resultMap>
-		 -->
 
-	<!-- 매입 조회 -->
-<!-- <select id="SelectPurchaseList"  resultType = "kr.or.test.spring_test.dto.SettlementDto"> -->
+<!--ListCount  -->
 	<select id="getPurchaseListCount" resultType="int" fetchSize="1000">
 		SELECT
 			COUNT(1)
 		FROM
-			k4_tb_order AS o
+		(	k4_tb_order 
 						inner JOIN
-			k4_tb_transactionstatement AS tr )
+			k4_tb_transactionstatement  )
 							join
-			k4_tb_business AS b ;
+			k4_tb_business  ;
 	</select>
 
 
+	<!-- 매입 조회 -->
 
 <select id="SelectPurchaseList"  parameterType = "map" resultType="map">
 
@@ -44,8 +34,10 @@
 						inner JOIN
 			k4_tb_transactionstatement AS tr )
 							join
-			k4_tb_business AS b ;
-
+			k4_tb_business AS b 
+		<!-- 		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};
+		</if> -->
 </select>
 
 

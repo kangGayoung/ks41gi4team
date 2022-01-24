@@ -27,27 +27,12 @@ public class SettlementController{
 			}
 		
 	 
-	/*
-	 * //조회페이지 연결
-	 * 
-	 * @GetMapping("/purchaseList") // 호출할 주소 purchaseList / 매서드명
-	 * selectPurchaseList() public String getselectPurchaseList(Model model) {
-	 * List<SettlementDto> selectPurchaseList = SettlementService.
-	 * 
-	 * model.addAttribute("title", "매입거래내역조회");
-	 * model.addAttribute("selectPurchaseList", selectPurchaseList);
-	 * 
-	 * 
-	 * return "settlement/settlementResult/purchaseList"; }
-	 * //settlement/settlementResult/purchaseList.html
-	 */
-	  
-	  
+	
 	  // 조회 버튼 - 결과 페이지 연결
 	  //매입원장 조회 결과 페이지 
 	  @GetMapping("/purchaseList")
 	  public String purchaseList() {
-		  return	"settlement/settlementResult/purchaseList";
+		  return	"settlement/settlementResult/purchaseLookupList";
 	  }
 	  //매출원장 조회 결과 페이지 
 	@GetMapping("/salesLookupList")
@@ -63,15 +48,15 @@ public class SettlementController{
 	
 	//1차 메뉴 페이지 연결
 	//매입원장 1차 페이지  -  조회 버튼 내역 조회 
-	@GetMapping("/purchaseLook")
-	public String purchaseLookup(Model model) {
+	@GetMapping("/purchase")
+	public String purchase(Model model) {
 		model.addAttribute("title", "매입원장내역조회");
 		return "settlement/purchaseLookup";
 	
 	}
-	@PostMapping("/purchaseLook")
+	@PostMapping("/purchase")
 	@ResponseBody
-	public List<Map<String,Object>> purchaseLookup(){
+	public List<Map<String,Object>> purchase(){
 		
 		List<Map<String,Object>> SelectPurchaseList= settlementService.SelectPurchaseList();
 		return SelectPurchaseList;
@@ -80,14 +65,14 @@ public class SettlementController{
 	
 	
 	//매출원장 1차 페이지
-	@GetMapping("/salesLook")
-	public String salesLookup(){
+	@GetMapping("/sales")
+	public String sales(){
 		
 		return "settlement/salesLookup";
 	}
 	//거래집계 1차 페이지 
-	@GetMapping("/orderInvoice")
-	public String orderInvoice(){
+	@GetMapping("/order")
+	public String order(){
 		
 		return "settlement/orderInvoice";
 	}
