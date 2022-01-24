@@ -205,6 +205,11 @@
                <button type="button" class="btn btn-outline-secondary btn-sm"><strong>발주 완료</strong></button>
                <button type="button" class="btn btn-outline-secondary btn-sm"><strong>입고 완료</strong></button>  
             </div>
+            
+            <div style="margin-top:20px; margin-right:3%; float:right" >
+				<button type="button" class="btn btn-info btn-sm">발주 수정</button>
+				<button type="button" class="btn btn-info btn-sm">발주 삭제</button>
+			</div>
           
          
             <div class="card col-md-12">
@@ -212,6 +217,7 @@
                   <thead>
                      <tr>
                         <!-- <th>No.</th> -->
+                        <th></th>
                         <th>발주요청코드</th>                        
                         <th>품목명</th>
                         <th>품목규격</th>
@@ -226,6 +232,7 @@
                   </thead>
                   <tbody>
 					<tr th:if="${not #lists.isEmpty(orderList)}" th:each="l : ${orderList}">
+						<td><input type="checkbox" name="orderCheck" value='orderCheck'/></td>
 						<td th:text="${l.orderCode}"></td>						
 						<td th:text="${l.goodsName}"></td>
 						<td th:text="${l.goodsWeight}"></td>
