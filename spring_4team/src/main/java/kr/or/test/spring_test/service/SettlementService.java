@@ -18,11 +18,11 @@ import kr.or.test.spring_test.mapper.SettlementMapper;
 @Transactional
 public class SettlementService {
 
-@Autowired
+
 	private final SettlementMapper settlementMapper;
 	
 	public SettlementService(SettlementMapper settlementMapper) {
-		this.settlementMapper = settlementMapper; 
+		this.settlementMapper = settlementMapper;
 	}
 	
 
@@ -30,9 +30,9 @@ public class SettlementService {
 	
 	//매입리스트 조회 
 
-	public List<Map<String,Object>>SelectPurchaseList(){
+	public List<Map<String,Object>>selectPurchaseList(){
 		
-		return settlementMapper.SelectPurchaseList(null);
+		return settlementMapper.selectPurchaseList(null);
 }
 	
 	

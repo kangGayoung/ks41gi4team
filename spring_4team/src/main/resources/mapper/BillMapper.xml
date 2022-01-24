@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.test.spring_test.mapper.BillMapper">
+		
+
+<!--ListCount  -->
+	<select id="gettaxBillListCount" resultType="int" fetchSize="1000">
+		SELECT
+			COUNT(1)
+		FROM
+		k0_invoice  AS ki
+			JOIN
+		k4_tb_business AS kb  ;
+	</select>
+
+
+	<!-- 매입 조회 -->
+
+<select id="taxBillList"  parameterType = "map" resultType="map">
+SELECT
+ ki.invoiceRegDate AS 'invoiceRegDate',
+ ki.invoiceType AS 'invoiceType',
+ kb.businessCode AS'businessCode',
+ kb.businessName AS 'businessName',
+ kb.businessPartnerNum AS 'businessPartnerNum',
+ ki.invoicePrice AS 'invoicePrice',
+ ki.invoiceTax AS 'invoiceTax',
+ (ki.invoicePrice + ki.invoiceTax) AS 'TotalPrice',
+ ki.invoiceState AS 'invoiceState'
+FROM
+k0_invoice  AS ki
+JOIN
+k4_tb_business AS kb
+ON
+ki.BusinessCode2 = kb.businessCode ;
+</select>
+
+
+
+
+</mapper>

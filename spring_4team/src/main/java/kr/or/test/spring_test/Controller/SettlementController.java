@@ -20,8 +20,8 @@ import kr.or.test.spring_test.service.SettlementService;
 public class SettlementController{
 
 	//의존성 주입
-	private SettlementService settlementService;
-	 public SettlementController(SettlementService settlementService){
+	private final SettlementService settlementService;
+	public SettlementController(SettlementService settlementService){
 			this.settlementService = settlementService;
 				
 			}
@@ -29,11 +29,10 @@ public class SettlementController{
 	 
 	
 	  // 조회 버튼 - 결과 페이지 연결
-	  //매입원장 조회 결과 페이지 
-	  @GetMapping("/purchaseList")
-	  public String purchaseList() {
-		  return	"settlement/settlementResult/purchaseLookupList";
-	  }
+	
+	
+	
+	
 	  //매출원장 조회 결과 페이지 
 	@GetMapping("/salesLookupList")
 	public String salesLookupList() {
@@ -58,8 +57,8 @@ public class SettlementController{
 	@ResponseBody
 	public List<Map<String,Object>> purchase(){
 		
-		List<Map<String,Object>> SelectPurchaseList= settlementService.SelectPurchaseList();
-		return SelectPurchaseList;
+		List<Map<String,Object>> selectPurchaseList= settlementService.selectPurchaseList();
+		return selectPurchaseList;
 	}
 	
 	

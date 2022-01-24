@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace=" kr.or.test.spring_test.mapper.SettlementMapper">
+<mapper namespace="kr.or.test.spring_test.mapper.SettlementMapper">
 		
 
 <!--ListCount  -->
@@ -10,9 +10,9 @@
 		SELECT
 			COUNT(1)
 		FROM
-		(	k4_tb_order 
+			k4_tb_order 
 						inner JOIN
-			k4_tb_transactionstatement  )
+			k4_tb_transactionstatement  
 							join
 			k4_tb_business  ;
 	</select>
@@ -20,7 +20,7 @@
 
 	<!-- 매입 조회 -->
 
-<select id="SelectPurchaseList"  parameterType = "map" resultType="map">
+<select id="selectPurchaseList"  parameterType = "map" resultType="map">
 
 				SELECT
 		b.businessName 			AS businessName , 
@@ -30,9 +30,9 @@
 		tr.totalAmount 			AS totalAmount , 
 		tr.dealDate 					AS dealDate
 		FROM
-			(k4_tb_order AS o
+			k4_tb_order AS o
 						inner JOIN
-			k4_tb_transactionstatement AS tr )
+			k4_tb_transactionstatement AS tr 
 							join
 			k4_tb_business AS b 
 		<!-- 		<if test="startNum != null">
