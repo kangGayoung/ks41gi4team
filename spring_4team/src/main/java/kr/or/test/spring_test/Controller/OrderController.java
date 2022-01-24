@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.or.test.spring_test.dto.OrderList;
-import kr.or.test.spring_test.dto.StaffInfo;
 import kr.or.test.spring_test.service.OrderService;
 
 @Controller

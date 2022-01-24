@@ -137,10 +137,10 @@
 	                           <th class="card-footer text-center">기간</th>
 	                           <td>
 	                              <div class="search-buttons pl-2">
-	                                          <a class="btn btn-info" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-	                                          <a class="btn btn-info" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-	                                          <a class="btn btn-info" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-	                                          <a class="btn btn-info" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                                     <a class="btn btn-info" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                     <a class="btn btn-info" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                     <a class="btn btn-info" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                     <a class="btn btn-info" role="button" chk_type="n" onclick="setDate('n')">당일</a>
 	                              </div>
 	                           </td>
 	                           <td>
@@ -258,25 +258,7 @@
                         <th>거래처 등록자</th>
                      </tr>
                   </thead>
-                <!--   <tbody>
-                     <tr th:if="${not #lists.isEmpty(orderList)}" th:each="l : ${orderList}">
-						<td th:text="${l.orderCode}"></td>						
-						<td th:text="${l.goodsName}"></td>
-						<td th:text="${l.goodsWeight}"></td>
-						<td th:text="${l.goodsUnit}"></td>
-						<td th:text="${l.salesperson}"></td>
-						<td th:text="${l.purchasePrice}"></td>
-						<td th:text="${l.goodsQuantity}"></td>
-						<td th:text="${l.situation}"></td>
-						<td th:text="${l.orderRegTime}"></td>
-						<td th:text="${l.staffId2}"></td>
-					</tr>
-					<tr th:unless="${not #lists.isEmpty(orderList)}">
-						<td colspan="4">
-							내용이 없습니다.
-						</td>
-					</tr>
-                  </tbody> -->
+                
                </table>
                <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                   <ul class="pagination">
@@ -292,13 +274,8 @@
                      <li class="paginate_button page-item next" id="example2_next"><a th:if="${currentPage < lastPage}" th:href="@{/order/preOrder(currentPage=${currentPage + 1})}" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
                   </ul>
                </div>
-            </div>  
-            
+            </div>             
           </div>
       </section>    
       </div>
-   
-
-
-
 </th:block>
