@@ -23,15 +23,8 @@ public class SettlementController{
 	private final SettlementService settlementService;
 	public SettlementController(SettlementService settlementService){
 			this.settlementService = settlementService;
-				
 			}
-		
-	 
-	
 	  // 조회 버튼 - 결과 페이지 연결
-	
-	
-	
 	
 	  //매출원장 조회 결과 페이지 
 	@GetMapping("/salesLookupList")
@@ -62,7 +55,6 @@ public class SettlementController{
 	}
 	
 	
-	
 	//매출원장 1차 페이지
 	@GetMapping("/sales")
 	public String sales(){
@@ -75,9 +67,6 @@ public class SettlementController{
 		
 		return "settlement/orderInvoice";
 	}
-	
-	
-	
 
 	
 }

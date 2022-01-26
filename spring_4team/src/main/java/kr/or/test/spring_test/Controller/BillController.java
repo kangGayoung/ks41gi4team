@@ -16,7 +16,6 @@ import kr.or.test.spring_test.service.BillService;
 
 
 
-
 @Controller
 @RequestMapping("/bill")
 public class BillController{
@@ -27,10 +26,6 @@ public class BillController{
 	public BillController(BillService billService) {
 		this.billService = billService;
 	}
-	
-	
-	
-	
 	
 	
 
@@ -61,8 +56,6 @@ public class BillController{
 	
 	
 	
-	
-	
 //세금계산서 결과페이지  - 데이터 테이블
 	@GetMapping("/billList")
 	public String billList(Model model) {
@@ -79,9 +72,6 @@ public class BillController{
 	}
 	
 	
-	
-	
-	
 	//세금계산서 입력 버튼 - 화면 
 	@GetMapping("/billInsert")
 	public String billInsert() {
@@ -92,10 +82,6 @@ public class BillController{
 		public String taxBillInsert() {
 			return	"bill/billResult/taxBillInsert";
 		}
-	
-	
-	
-	
 	
 	
 	
