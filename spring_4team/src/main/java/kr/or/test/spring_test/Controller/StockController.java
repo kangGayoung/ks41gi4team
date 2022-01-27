@@ -16,11 +16,13 @@ public class StockController {
 		return "goods/stock/errorStock/errorStock";
 	}
 	
+	//입출고 관리
 	@GetMapping("/inoutport")
 	public String inoutport() {
 		return "goods/stock/inoutport/inoutport";
 	}
 	
+	//입출고 내역
 	@GetMapping("/inoutportList")
 	public String inoutportList() {
 		return "goods/stock/inoutportList/inoutportList";
@@ -31,8 +33,9 @@ public class StockController {
 		return "goods/stock/realStock/realStock";
 	}
 	
+	//재고 현황
 	@GetMapping("/stCurrent")
-	public String returnList() {
+	public String stCurrent() {
 		return "goods/stock/stCurrent/stCurrent";
 	}
 	
