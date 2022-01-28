@@ -3,7 +3,7 @@
 	<header th:fragment="headerFragment">
 		<script type="text/javascript">
 			$(function(){
-				$(document).click('#logInBtn',function(){
+				$('#headLogInBtn').click(function(){
 					$('#loginModal').modal();
 				});
 				
@@ -51,7 +51,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a th:if="${session.SID == null}" class="nav-link" id="logInBtn">Login</a>
+					<a th:if="${session.SID == null}" class="nav-link" id="headLogInBtn">Login</a>
 					<a th:if="${session.SID != null}" th:href="@{/logout}" class="nav-link">Logout</a>
 				</li>
 			</ul>
