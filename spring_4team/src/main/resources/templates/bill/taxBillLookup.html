@@ -6,6 +6,17 @@
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
+<style>
+	
+	.dataTable 	{
+								width: 100% !important;
+								}
+	.dataTables_wrapper .dataTables_paginate {
+								    float: none;
+								    text-align: center;
+									}
+	</style>
+	
 	<!-- jQuery -->
  	<script type="text/javascript">
  		$(function(){
@@ -15,7 +26,7 @@
 		});
  	
  	</script>
- 	
+ 	<div>
 		<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		<h3 style="padding : 5 0 10 6;">(세금)계산서 관리  </h3>
@@ -604,14 +615,6 @@
 								aria-controls="example1" type="button">
 								<span>Print</span>
 							</button>
-							<!-- <div class="btn2-group">
-								<button
-									class="btn2 btn2-danger buttons-collection dropdown-toggle buttons-colvis"
-									tabindex="0" aria-controls="example1" type="button"
-									aria-haspopup="true" aria-expanded="false">
-									<span>Column visibility</span>
-								</button>
-							</div> -->
 						</div>
 					</div>
 				</div>
@@ -651,28 +654,6 @@
 				<!-- /.card-body -->
 			</div>
 			<!-- /.card -->
-		</div>
-
-		<div class="dataTables_paginate paging_simple_numbers mx-auto"
-			id="example1_paginate">
-			<ul class="pagination">
-				<li class="paginate_button page-item previous disabled"
-					id="example1_previous"><a href="#" aria-controls="example1"
-					data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-				<li class="paginate_button page-item active"><a href="#"
-					aria-controls="example1" data-dt-idx="1" tabindex="0"
-					class="page-link">1</a></li>
-				<li class="paginate_button page-item "><a href="#"
-					aria-controls="example1" data-dt-idx="2" tabindex="0"
-					class="page-link">2</a></li>
-				<li class="paginate_button page-item "><a href="#"
-					aria-controls="example1" data-dt-idx="3" tabindex="0"
-					class="page-link">3</a></li>
-				<li class="paginate_button page-item next" id="example1_next">
-					<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-					class="page-link">Next</a>
-				</li>
-			</ul>
 		</div>
 </div>
 
