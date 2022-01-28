@@ -5,6 +5,67 @@
 <th:block layout:fragment="customContent">
 	<title th:text="${title}"></title>
 </th:block>
+
+<th:block layout:fragment="customJs">
+		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+	<style>
+	
+	.dataTable 	{
+								width: 100% !important;
+								}
+	.dataTables_wrapper .dataTables_paginate {
+								    float: none;
+								    text-align: center;
+	}
+	</style>
+		<script type="text/javascript">
+	
+			$(document).ready(function () {
+				
+				var aLengthMenuArray = [];
+				aLengthMenuArray.push([5,10,15]);
+				aLengthMenuArray.push([5,10,15]);
+				
+		/* 		$('#purchaseListTable').DataTable({
+					// 표시 건수기능 숨기기
+					lengthChange: false,
+					 // 검색 기능 숨기기
+					searching: false, 
+					// 정렬 기능 숨기기
+					ordering: false,
+					// 정보 표시 숨기기
+					info: false,
+					/* 페이징 기능 숨기기
+					paging: false,*/
+					sDom: 'lrtip',
+					bDestroy: true,
+					pageLength: 5,
+					aLengthMenu: aLengthMenuArray,
+					scrollX: true,
+					ajax:{
+						url:"/settlement/purchase",
+						type:"post",
+						dataSrc: function(data){
+						
+							return data;
+						}
+					},
+					columns:[
+						{"data":"businessName"},
+						{"data":"goodsSupplyPrice"},
+						{"data":"vat"},
+						{"data":"purchasePrice"},
+						{"data":"totalAmount"},
+						{"data":"dealDate"}
+						
+					]
+				}); */
+		});
+		</script>
+	</th:block>
+	
+
 <th:block layout:fragment="customContents">
  <!-- jQuery -->
  	<script type="text/javascript">

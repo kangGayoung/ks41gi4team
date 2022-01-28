@@ -11,12 +11,12 @@
 		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
 	<style>
 	
-	.dataTables_scroll {
-							margin : 2% 0;
-	}
-	
-	.dataTables_scrollHeadInner table {
-							margin-left:2% !important;
+	.dataTable 	{
+								width: 100% !important;
+								}
+	.dataTables_wrapper .dataTables_paginate {
+								    float: none;
+								    text-align: center;
 	}
 	</style>
 		<script type="text/javascript">
@@ -232,14 +232,6 @@
 										aria-controls="example1" type="button">
 										<span>Print</span>
 									</button>
-									<div class="btn2-group">
-										<button
-											class="btn2 buttons-collection dropdown-toggle buttons-colvis"
-											tabindex="0" aria-controls="example1" type="button"
-											aria-haspopup="true" aria-expanded="false">
-											<span>Column visibility</span>
-										</button>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -277,7 +269,7 @@
 					<!-- /.card -->
 				</div>
 
-				<div class="dataTables_paginate paging_simple_numbers mx-auto"
+		<!-- 		<div class="dataTables_paginate paging_simple_numbers mx-auto"
 					id="example1_paginate">
 					<ul class="pagination">
 						<li class="paginate_button page-item previous disabled"
@@ -297,7 +289,7 @@
 							class="page-link">Next</a>
 						</li>
 					</ul>
-				</div>
+				</div> -->
 
 
 			</div>

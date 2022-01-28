@@ -46,14 +46,13 @@
 				columns:[
 					{"data":"invoiceRegDate"},
 					{"data":"invoiceType"},
-					{"data":"businessCode"},
 					{"data":"businessName"},
 					{"data":"businessPartnerNum"},
 					{"data":"invoicePrice"},
 					{"data":"invoiceTax"},
 					{"data":"TotalPrice"},
 					{"data":"invoiceState"}
-					
+	
 				]
 		
 			});
@@ -64,8 +63,20 @@
  
  
 <th:block layout:fragment="customContents">
- 	
-		<!-- Content Header (Page header) -->
+
+<style>
+	
+	.dataTable 	{
+								width: 100% !important;
+								}
+	.dataTables_wrapper .dataTables_paginate {
+								    float: none;
+								    text-align: center;
+									}
+	</style>
+	
+ 	<div>
+								<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  </h2>
 		<!-- /.content-header -->
@@ -473,7 +484,7 @@
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-<!--/ .  Modal -->
+								<!--/ .  Modal -->
 
 		<!-- Main content -->
 <section class="content">
@@ -556,7 +567,7 @@
 	                              <input type="text" class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요.">                              
 	                           </td>
 	                           <td class="pr-2 pt-2 pb-2">
-                        		     <button class="btn22" id="taxBillbtn2" type="submit" style="width:100%;">검색</button>
+                        		     <button class="btn2" id="taxBillbtn2" type="submit" style="width:100%;">검색</button>
                    				
  						</td>
                         </tr>
@@ -583,14 +594,12 @@
                            <td class="pr-2 pb-2">
                           				<div class="link-btn2s">
                           					<!--세금계산서 Insert  -->
-								                <a class="btn2 btn2-add btn22" role="button"  onclick="location.href='billInsert' "> 세금계산서등록</a>
-									<!-- Button trigger modal -->
-											<button type="button" class="btn22" data-toggle="modal" data-target=".bs-example-modal-lg">
+								         <!--        <a class="btn2 btn2-add btn22" role="button"  onclick="location.href='billInsert' "> 세금계산서등록</a> -->
+											<!-- Button trigger modal -->
+											<button type="button" class="btn2" data-toggle="modal" data-target=".bs-example-modal-lg">
 													 세금계산서 모달
-												</button>
-										
-								                <a class="btn2 btn2-add btn22" role="button"  onclick="location.href='taxBillInsert' "> 세금계산서2등록</a>
-                           			</div>
+											</button>
+									</div>
                            </td>
                         </tr>
                      </tbody>
@@ -654,14 +663,6 @@
 								aria-controls="example1" type="button">
 								<span>Print</span>
 							</button>
-							<div class="btn2-group">
-								<button
-									class="btn2 btn2-danger buttons-collection dropdown-toggle buttons-colvis"
-									tabindex="0" aria-controls="example1" type="button"
-									aria-haspopup="true" aria-expanded="false">
-									<span>Column visibility</span>
-								</button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -676,7 +677,6 @@
 							<tr>
 								<th>등록일자</th>
 								<th>유형</th>
-								<th>코드</th>
 								<th>거래처명</th>
 								<th>거래처등록번호</th>
 								<th>공급가액</th>
@@ -689,42 +689,14 @@
 
 					</table>
 				</div>
-				<!-- /.card-body -->
+						<!-- /.card-body -->
 			</div>
-			<!-- /.card -->
+						<!-- /.card -->
 		</div>
-
-		<div class="dataTables_paginate paging_simple_numbers mx-auto"
-			id="example1_paginate">
-			<ul class="pagination">
-				<li class="paginate_button page-item previous disabled"
-					id="example1_previous"><a href="#" aria-controls="example1"
-					data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-				<li class="paginate_button page-item active"><a href="#"
-					aria-controls="example1" data-dt-idx="1" tabindex="0"
-					class="page-link">1</a></li>
-				<li class="paginate_button page-item "><a href="#"
-					aria-controls="example1" data-dt-idx="2" tabindex="0"
-					class="page-link">2</a></li>
-				<li class="paginate_button page-item "><a href="#"
-					aria-controls="example1" data-dt-idx="3" tabindex="0"
-					class="page-link">3</a></li>
-				<li class="paginate_button page-item next" id="example1_next">
-					<a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-					class="page-link">Next</a>
-				</li>
-			</ul>
-		</div>
-
-
 	</div>
 
 
 	</section>
-	<!-- /.content -->
-
-	<!-- /.content-wrapper -->
-	<!-- ./wrapper -->
 
 </div>
 
