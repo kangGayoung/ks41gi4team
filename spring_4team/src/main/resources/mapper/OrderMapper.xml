@@ -29,7 +29,7 @@
 			, o.goodsQuantity			AS 'goodsQuantity'
 			, o.mSum					AS 'mSum'
 			, b.businessName			AS 'businessName'	
-			, o.orderCompleteTime		AS 'orderCompleteTime'
+			, IFNULL(o.orderCompleteTime,'')		AS 'orderCompleteTime'
 			, i.testSituation			AS 'testSituation'
 			, c.returnDivision			AS 'returnDivision'
 		FROM 
