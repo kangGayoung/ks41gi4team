@@ -3,8 +3,24 @@
 	<header th:fragment="headerFragment">
 		<script type="text/javascript">
 			$(function(){
-				$(document).click('#loginBtn',function(){
-					//var request = $.ajax
+				$('#headLogInBtn').click(function(){
+					$('#loginModal').modal();
+				});
+				
+				
+				$('#loginModal').on('show.bs.modal',function(){
+					var request = $.ajax({
+						url:"/login",
+						method:"get",
+						dataType:"html"
+					});
+					request.done(function(msg){
+						$('#loginAjax').html(msg);
+					});
+					request.fail(function(jqXHR, textStatus){
+						alert("Request failed "+textStatus);
+					});
+				
 				});
 			});
 		
@@ -35,7 +51,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a th:if="${session.SID == null}" th:href="@{/login}" class="nav-link" id="loginBtn">Login</a>
+					<a th:if="${session.SID == null}" class="nav-link" id="headLogInBtn">Login</a>
 					<a th:if="${session.SID != null}" th:href="@{/logout}" class="nav-link">Logout</a>
 				</li>
 			</ul>
@@ -43,7 +59,17 @@
 		
 		<!--  Preloader -->
       <!-- <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> -->
+      <img class="animation__shake" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
       </div>
+       -->
+		<div class="modal fade" id="loginModal" style="" data-backdrop="static">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content" id="loginAjax">
+					
+				</div>
+				<!-- /.modal-content -->
+			</div>
+		<!-- /.modal-dialog -->
+		</div>	   
 	</header>
 </html>

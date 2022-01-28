@@ -2,8 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
  	>
- 	<head th:replace="include/head :: headFragment"></head>
- 	<div th:replace="include/javascript :: javascript"></div>
 	<th:block layout:fragment="customContent" >
 		<title th:text="${title}"></title>
 	</th:block>
@@ -17,30 +15,31 @@
 		</script>
 	</th:block>
 
-	<th:block layout:fragment="customContents" >
-		<body style="background-color:#f8f8f8;">
-			<div class="col-md-12" style="margin-top: 10%; ">
-				<div class="card card-default  col-lg-6" style="margin:0 auto;">
-					<div class="card-body">
-					  <h3 class="card-title">마트 로그인</h3>
-						<form id="loginForm" th:action="@{/login}" method="post">
-							<div class="form-group">
-								<label for="staffId">STAFF ID</label>
-								<input type="text" class="form-control" id="staffId" style="border-radius: 24px;" name="staffId" placeholder="Staff ID" value="m_admin001">
-							</div>
-							<div class="form-group">
-								<label for="inputPassword1">Password</label>
-								<input type="password" class="form-control" id="staffPw" style="border-radius: 24px;" name="staffPw" placeholder="Password" value="pw001">
-							</div>
-						</form>
-					</div>
-					<div class="card-body  ml-auto">
-	                  <button id="loginSubmitBtn" type="button" class="btn btn-primary">Login</button>
-	                </div>		
+	<div class="modal-header" style="position: relative; height: 56px;">
+		<p class="card-title" style="position: absolute;text-align: center;left: 50%;transform: translate(-50%);">마트 로그인</p>
+	</div>
+	<div class="modal-body">
+		<div class="col-md-10" style=" margin:10px auto 0; padding: 10px 0px 25px;">
+			<form id="loginForm" th:action="@{/login}" method="post">
+				<div class="form-group">
+					<label for="staffId">STAFF ID</label>
+						<input type="text" class="form-control" id="staffId" style="border-radius: 24px;" name="staffId" placeholder="Staff ID" value="m_admin001">
 				</div>
-				
-			</div>
-		</body>
-	</th:block>	
+				<div class="form-group">
+					<label for="inputPassword1">Password</label>
+					<input type="password" class="form-control" id="staffPw" style="border-radius: 24px;" name="staffPw" placeholder="Password" value="pw001">
+				</div>
+			</form>
+		</div>
+	<!-- 	<div class="modal-footer">
+        <button id="orderInsertBtn" type="button" class="btn btn-info">등록완료</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+     	 </div> -->
+		<div class="modal-footer" style="padding-bottom: 0;">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button id="loginSubmitBtn" type="button" class="btn btn-primary">Login</button>
+		</div>		
+	</div>
+		
 </html>
 
