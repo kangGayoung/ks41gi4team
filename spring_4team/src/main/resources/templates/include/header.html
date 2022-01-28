@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<header th:fragment="headerFragment">
-	
+		<script type="text/javascript">
+			$(function(){
+				$(document).click('#loginBtn',function(){
+					//var request = $.ajax
+				});
+			});
+		
+		
+		</script>
 		<!-- Navbar -->
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			  <!-- Left navbar links -->
@@ -27,7 +35,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a th:if="${session.SID == null}" th:href="@{/login}" class="nav-link">Login</a>
+					<a th:if="${session.SID == null}" th:href="@{/login}" class="nav-link" id="loginBtn">Login</a>
 					<a th:if="${session.SID != null}" th:href="@{/logout}" class="nav-link">Logout</a>
 				</li>
 			</ul>
