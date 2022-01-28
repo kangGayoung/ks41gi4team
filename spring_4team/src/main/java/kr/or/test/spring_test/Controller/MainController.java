@@ -23,14 +23,6 @@ public class MainController {
 	@GetMapping("/")
 	public String main(HttpSession session) {
 		
-		
-		if(session.getAttribute("SID")==null) {
-			StaffInfo staff = mainService.getStaffIdCheck("m_admin001");
-			session.setAttribute("SID", "m_admin001");
-			session.setAttribute("SNAME", staff.getStaffName());
-			
-		}
-					
 		return "main";
 	}
 	
