@@ -1,73 +1,81 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout" >
-	  <div class="modal-header ">
-			<h4 class="modal-title">거래처 정보 수정</h4>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">×</span>
-			</button>
-		</div>
-		<div class="modal-body">
-			<form id="businessInsertForm" th:action="@{/basic/businessUpdate}" method="post">
-				<table style="margin: 0 auto; width:85%;">
-					<tbody style="padding:2px; weidth:85%">
-						<tr> 
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessName" name="businessName" title="사업자명" placeholder="사업자명" >	
-							</td>
-						<tr> 
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessStatus" name="businessStatus" title="업태" placeholder="업태" >										
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessSectors" name="businessSectors" title="업종" placeholder="업종" >													
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessPartnerName" name="businessPartnerName" title="사업자 대표명" placeholder="사업자 대표명" >										
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control"  id="businessPhoneNum" name="businessPhoneNum" title="사업장 전화번호" placeholder="사업장 전화번호" >									
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessPartnerNum" name="businessPartnerNum" title="사업자번호" placeholder="사업자번호" >										
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessAddress" name="businessAddress" title="사업장 주소" placeholder="사업장 주소" >										
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control"  id="businessStaff" name="businessStaff" title="사업장 담당자 이름" placeholder="사업장 담당자 이름" >								
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessStaffNum" name="businessStaffNum" title="사업장 담당자 전화번호" placeholder="사업장 담당자 전화번호" >									
-							</td>
-						</tr>
-						<tr>
-							<td class="pl-2 pr-2 pt-2 pb-2">
-								<input type="text"  class="form-control" id="businessStaffEmail" name="businessStaffEmail" title="담당자 이메일" placeholder="담당자 이메일" >										
-							</td>
-						</tr>
-							
-					</tbody>
-				</table>
-			</form>			
-		</div>
-		<a>체크</a>
-		<div class="modal-footer justify-content-between">
-		  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary">Save</button>
-		</div>
+		
+	<script type="text/javascript">
+		$(function(){
+			$(document).on('click','#businessMiniModal',function(){
+				
+			});
+		});
+	</script>
+	<div class="modal-header">
+		<h4 class="modal-title">거래처 정보 수정</h4>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  <span aria-hidden="true">×</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<input type="text" placeholder="거래처 검색란">
+		<form id="businessUpdateForm" th:action="@{/basic/businessUpdate}" method="post">
+			<table style="margin: 0 auto; width:85%;">
+				<tbody style="padding:2px; weidth:85%">
+					<tr> 
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessName" name="businessName" title="사업자명" placeholder="사업자명" >	
+						</td>
+					<tr> 
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessStatus" name="businessStatus" title="업태" placeholder="업태" >										
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessSectors" name="businessSectors" title="업종" placeholder="업종" >													
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessPartnerName" name="businessPartnerName" title="사업자 대표명" placeholder="사업자 대표명" >										
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control"  id="businessPhoneNum" name="businessPhoneNum" title="사업장 전화번호" placeholder="사업장 전화번호" >									
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessPartnerNum" name="businessPartnerNum" title="사업자번호" placeholder="사업자번호" >										
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessAddress" name="businessAddress" title="사업장 주소" placeholder="사업장 주소" >										
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control"  id="businessStaff" name="businessStaff" title="사업장 담당자 이름" placeholder="사업장 담당자 이름" >								
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessStaffNum" name="businessStaffNum" title="사업장 담당자 전화번호" placeholder="사업장 담당자 전화번호" >									
+						</td>
+					</tr>
+					<tr>
+						<td class="pl-2 pr-2 pt-2 pb-2">
+							<input type="text"  class="form-control" id="businessStaffEmail" name="businessStaffEmail" title="담당자 이메일" placeholder="담당자 이메일" >										
+						</td>
+					</tr>
+						
+				</tbody>
+			</table>
+		</form>			
+	</div>
+	<div class="modal-footer justify-content-between">
+	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	  <button type="button" class="btn btn-primary">Save</button>
+	</div>
 </html>
