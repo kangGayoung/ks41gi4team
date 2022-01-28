@@ -6,63 +6,84 @@
   <th:block layout:fragment="customContent" >
      <title th:text="${title}"></title>
   </th:block>
-  
-	<th:block layout:fragment="customJs">
-		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
-		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
-		<script type="text/javascript">
+
+   <th:block layout:fragment="customJs" >
+	<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+	<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+	
+	<style>
+	.dataTables_scroll {
+							margin : 2% 0;
+	}
+	
+	.dataTables_scrollHeadInner table {
+							margin-left:2% !important;
+	}
+	</style>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
 			
-				
-				$(function(){
-					var aLengthMenuArray = [];
-					aLengthMenuArray.push([5,10,15,20,25,-1]);
-					aLengthMenuArray.push([5,10,15,20,'이십오','ALL']);
-				
-					$('#dataTableAjax').DataTable( {
-						destroy: true,
-						pageLength: 5,
-						aLengthMenu: aLengthMenuArray,
-				        ajax: {
-				        		url: '/loginHistory3',
-				        		type: 'POST',
-				        		dataSrc: function(data){
-				        					console.table(data);
-				        					return data;
-				        				 }
-				        },
-				        columns: [
-				            { "data": "loginNum" },
-				            { "data": "loginId" },
-				            { "data": "loginDate" },
-				            { "data": "logoutDate" },
-				            { "data": '수정' },
-				            { "data": '삭제' }
-				        ],
-				        columnDefs: [
-				        	{
-				        		'targets' : [4],
-				        		'orderable' : false,
-				        		'searchable' : false,
-				        		'render' : function( data, type, row){	//ajax data 3번째 매개변수 row
-				        					var htmlbtn1 = '<button class="modifyBtn" data-memberId="'+ row.loginNum +'">수정</button>';
-				        					return htmlbtn1;
-				        				 }
-				        	},
-				        	{
-				        		'targets' : [5],
-				        		'orderable' : false,
-				        		'searchable' : false,
-				        		'render' : function( data, type, row){	//ajax data 3번째 매개변수 row
-				        					var htmlbtn1 = '<button class="removeBtn" data-memberId="'+ row.loginId +'">삭제</button>';
-				        					return htmlbtn1;
-				        				 }
-				        	}
-				        ]
-				    } );
-				});
+			var aLengthMenuArray = [];
+			aLengthMenuArray.push([5, 10, 15]);
+			aLengthMenuArray.push([5, 10, 15]);
+			
+			$('#returnListTable').DataTable({
+				// 표시 건수기능 숨기기
+				lengthChange: false,
+				/* // 검색 기능 숨기기
+				searching: false, */
+				// 정렬 기능 숨기기
+				ordering: false,
+				// 정보 표시 숨기기
+				info: false,
+				/* 페이징 기능 숨기기
+				paging: false,*/
+				sDom: 'lrtip',
+				info: false,
+				pageLength: 5,
+				scrollX: true,
+				destroy : true,
+				pageLength : 5,
+				aLengthMenu : aLengthMenuArray,
+				ajax : {
+					url: '/order/returnList',
+					type: 'post',
+					dataSrc: function(data){
+						console.log(JSON.stringify(data));
+						return data;
+					}
+				},
+				columns: [
+					{data : 'orderCode'},
+					{data : 'goodsName'},
+					{data : 'goodsUnit'},
+					{data : 'purchasePrice'},
+					{data : 'goodsQuantity'},
+					{data : 'mSum'},
+					{data : 'businessName'},
+					{data : 'orderCompleteTime'},
+					{data : 'testSituation'},
+					{data : 'returnDivision'}
+				]
 			});
-		</script>
-	</th:block>
+			
+			//검색창
+		    $('#searchBar').on( 'keyup click', function () {
+		    	searchfilter();
+		    } );
+			
+			//검색
+			function searchfilter () {
+			    $('#returnListTable').DataTable().search(
+			        $('#searchBar').val()
+			    ).draw();
+			}
+		});
+		
+		
+	</script>
+   </th:block>	
    <th:block layout:fragment="customContents" >
    
       <div class="wrapper">
@@ -145,7 +166,7 @@
                               </div>
                            </td>
                            <td colspan="2" class="pr-2 pt-2 pb-2">
-                              <input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
+                              <input id="searchBar" type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >                              
                            </td>
                            <td class="pr-2 pt-2 pb-2">
                               <a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
@@ -188,7 +209,7 @@
             </div>
          
             <div class="card col-md-12">
-               <table id="dataTableAjax"  style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
+               <table id="returnListTable"  style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
                   <thead>
                      <tr>
                         <th>발주요청코드</th>
