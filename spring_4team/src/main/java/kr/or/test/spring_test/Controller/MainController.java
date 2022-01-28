@@ -11,7 +11,7 @@ public class MainController {
 	
 
 	@GetMapping("/")
-	public String main(HttpSession session) {
+	public String main() {
 		
 		return "main";
 	}
