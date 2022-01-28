@@ -15,7 +15,47 @@
 		<result column="goodsQuantity" property="goodsQuantity"/>
 		<result column="situation" property="situation"/>
 		<result column="staffId2" property="staffId2"/>
+		<result column="businessName" property="businessName"/>
+		<result column="testSituation" property="testSituation"/>
+		<result column="returnDivision" property="returnDivision"/>
 	</resultMap>
+	
+	<select id="getReturnListAll" parameterType="map" resultType="map">
+		SELECT 
+			o.orderCode					AS 'orderCode'
+			, o.goodsName				AS 'goodsName'					
+			, o.goodsUnit				AS 'goodsUnit'				
+			, o.purchasePrice			AS 'purchasePrice'
+			, o.goodsQuantity			AS 'goodsQuantity'
+			, o.mSum					AS 'mSum'
+			, b.businessName			AS 'businessName'	
+			, o.orderCompleteTime		AS 'orderCompleteTime'
+			, i.testSituation			AS 'testSituation'
+			, c.returnDivision			AS 'returnDivision'
+		FROM 
+			k4_tb_order AS o
+			
+			INNER JOIN
+			k4_tb_orderinspection AS i
+			
+			ON
+			o.orderCode = i.orderCode
+			
+			INNER JOIN
+			k4_tb_incominginspection AS c
+			
+			ON
+			c.orderRequest = o.orderCode
+			
+			INNER JOIN
+			k4_tb_business AS b
+			
+			ON
+			b.businessCode = o.businessCode
+		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};		
+		</if>
+	</select>
 	
 	<!--납품예정 검색 -->
 	<select id="getPreOrderList" parameterType="String" resultType="map">

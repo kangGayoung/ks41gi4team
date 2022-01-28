@@ -129,9 +129,20 @@ public class OrderController {
 		List<Map<String, Object>> preOrderList = orderService.getPreOrderList();
 		return preOrderList;
 	}
+	
+	// 검수/반품 조회 및 검색 ajax
+	@PostMapping("/returnList")
+	@ResponseBody
+	public List<Map<String, Object>> returnInspectList() {
+		List<Map<String, Object>> returnList = orderService.getReturnList();		
 
+		return returnList;
+	}
+	
+	
 	@GetMapping("/returnList")
-	public String returnList() {
+	public String returnList(Model model) {
+		
 		return "goods/order/returnList/returnList";
 	}
 

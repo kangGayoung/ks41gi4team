@@ -30,6 +30,9 @@ public interface OrderMapper {
 	public List<Map<String, Object>> getPreOrderList(Map<String, Object> paramMap, String preOrderSearch, String preOrderSearchVal);
 
 	public List<Map<String, Object>> getPreOrderListAll(Map<String, Object> paramMap);
+	
+	// 검수/반품 리스트
+	public List<Map<String, Object>> getReturnListAll(Map<String, Object> paramMap);
 
 
 	
