@@ -3,6 +3,82 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:layout="http:www.ultraq.net.nz/thymeleaf/layout"
  	 layout:decorate="@{layout/default}">
+	<th:block layout:fragment="customJs" >
+		<link rel="stylesheet" type="text/css" th:href="@{//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css}">
+		<script type="text/javascript" th:src="@{//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js}"></script>
+		
+		<style>
+		.dataTables_scroll {
+								margin : 2% 0;
+		}
+		
+		.dataTables_scrollHeadInner table {
+								margin-left:2% !important;
+		}
+		</style>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				var aLengthMenuArray = [];
+				aLengthMenuArray.push([5, 10, 15]);
+				aLengthMenuArray.push([5, 10, 15]);
+				
+				$('#inoutPortTable').DataTable({
+					// 표시 건수기능 숨기기
+					lengthChange: false,
+					/* // 검색 기능 숨기기
+					searching: false, */
+					// 정렬 기능 숨기기
+					ordering: false,
+					// 정보 표시 숨기기
+					info: false,
+					/* 페이징 기능 숨기기
+					paging: false,*/
+					sDom: 'lrtip',
+					info: false,
+					pageLength: 5,
+					scrollX: true,
+					destroy : true,
+					pageLength : 5,
+					aLengthMenu : aLengthMenuArray,
+					ajax : {
+						url: '/stock/inoutport',
+						type: 'post',
+						dataSrc: function(data){
+							console.log(JSON.stringify(data));
+							return data;
+						}
+					},
+					columns: [
+						{data : 'goodsName'},
+						{data : 'goodsUnit'},
+						{data : 'purchasePrice'},
+						{data : 'sellingPrice'},
+						{data : 'goodsQuantity'},
+						{data : 'storageName'},
+						{data : 'storageClass'},
+						{data : 'storageArea'},
+						{data : 'businessRegDate'}
+					]
+				});
+				
+				//검색창
+			    $('#searchBar').on( 'keyup click', function () {
+			    	searchfilter();
+			    } );
+				
+				//검색
+				function searchfilter () {
+				    $('#inoutPortTable').DataTable().search(
+				        $('#searchBar').val()
+				    ).draw();
+				}
+			});
+			
+			
+		</script>
+	</th:block>		 
   <th:block layout:fragment="customContent" >
   	<title th:text="${title}"></title>
   </th:block>
@@ -55,7 +131,7 @@
 										</div>
 									</td>
 									<td colspan="2" class="pr-2 pt-2 pb-2">
-										<input type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >										
+										<input id="searchBar" type="text"  class="form-control" title="검색어 입력" placeholder="검색어를 입력해주세요." >										
 									</td>
 									<td class="pr-2 pt-2 pb-2">
 										<a class="btn btn-search btn-info " role="button" onclick="" style="width:100%;">검색</a>
@@ -118,59 +194,21 @@
 				</div>
 			
 				<div class="card col-md-12">
-					<table style="margin: 2%;width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
+					<table id="inoutPortTable" style="width: 96%;" class="table text-center table-head-fixed text-nowrap"> 
 						<thead>
 							<tr>
-								<th>No.</th>
-								<th>상품코드</th>
-								<th>상품명</th>
-								<th>매입단가</th>
-								<th>수량</th>
-								<th>카테고리</th>
+		                        <th>품목명</th>
+		                        <th>품목단위</th>
+		                        <th>매입단가(VAT포함)</th>
+		                        <th>판매단가</th>
+		                        <th>수량</th>
+		                        <th>창고이름</th>
+		                        <th>창고분류</th>
+		                        <th>구역분류</th>
+		                        <th>등록일시</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>1</td>
-								<td>P000001</td>
-								<td>탄산수</td>
-								<td>1000</td>
-								<td>30</td>
-								<td>음료</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>P000002</td>
-								<td>마우스</td>
-								<td>10000</td>
-								<td>10</td>
-								<td>컴퓨터 기타</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>P000003</td>
-								<td>탄산수</td>
-								<td>1000</td>
-								<td>30</td>
-								<td>음료</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>P000004</td>
-								<td>커피</td>
-								<td>1500</td>
-								<td>30</td>
-								<td>음료</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>P000005</td>
-								<td>펜</td>
-								<td>1000</td>
-								<td>60</td>
-								<td>필기구</td>
-							</tr>
-						</tbody>
+						
 					</table>
 					<div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
 						<ul class="pagination">
