@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.test.spring_test.mapper.StockMapper">
+	<resultMap type="OrderList" id="OrderResultMap">
+		<result column="orderCode" property="orderCode"/>
+		<result column="orderRegTime" property="orderRegTime"/>
+		<result column="orderCompleteTime" property="orderCompleteTime"/>
+		<result column="goodsName" property="goodsName"/>
+		<result column="goodsWeight" property="goodsWeight"/>
+		<result column="goodsUnit" property="goodsUnit"/>
+		<result column="salesperson" property="salesperson"/>
+		<result column="purchasePrice" property="purchasePrice"/>
+		<result column="goodsQuantity" property="goodsQuantity"/>
+		<result column="situation" property="situation"/>
+		<result column="staffId2" property="staffId2"/>
+		<result column="businessName" property="businessName"/>
+		<result column="testSituation" property="testSituation"/>
+		<result column="returnDivision" property="returnDivision"/>
+	</resultMap>
+	
+	<!-- 입/출고 관리 -->
+	<select id="getInoutPortAll" parameterType="map" resultType="map">
+		SELECT 
+			o.goodsName					AS 'goodsName'	
+			, o.goodsUnit				AS 'goodsUnit'			
+			, o.purchasePrice			AS 'purchasePrice'
+			, o.sellingPrice			AS 'sellingPrice'
+			, w.goodsQuantity			AS 'goodsQuantity'
+			, s.storageName				AS 'storageName'
+			, s.storageClass			AS 'storageClass'
+			, s.storageArea				AS 'storageArea'
+			, s.businessRegDate			AS 'businessRegDate'
+		FROM
+			k4_tb_order AS o
+			JOIN
+			k4_tb_warehousing AS w
+			ON 
+			o.orderCode = w.orderCode
+			JOIN
+			k4_tb_storage AS s
+			ON
+			w.stNum = s.stNum
+		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};		
+		</if>
+	</select>
+	
+	<!-- 재고현황 -->
+	<select id="getStCurrentAll" parameterType="map" resultType="map">
+		SELECT 
+			o.goodsName					AS 'goodsName'	
+			, o.goodsUnit				AS 'goodsUnit'	
+			, o.sellingPrice			AS 'sellingPrice'	
+			, s.storageName				AS 'storageName'	
+			, s.storageClass			AS 'storageClass'	
+			, s.storageArea				AS 'storageArea'	
+			, w.goodsQuantity			AS 'goodsQuantity'	
+			, IFNULL(d.displaystandName,'')	AS 'displaystandName'	
+			, d.goodsQuantity			AS 'goodsQuantity'	
+		FROM
+			k4_tb_order AS o
+			JOIN
+			k4_tb_warehousing AS w
+			ON 
+			o.orderCode = w.orderCode
+			JOIN
+			k4_tb_storage AS s
+			ON
+			w.stNum = s.stNum
+			INNER JOIN
+			k4_tb_storagedisplay AS d
+			ON
+			w.bringInCode = d.bringInCode
+				
+		<if test="startNum != null">
+			LIMIT #{startNum}, #{rowPerPage};		
+		</if>
+	</select>
+</mapper>
