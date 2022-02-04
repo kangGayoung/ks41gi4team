@@ -50,29 +50,25 @@
 	<!-- 재고현황 -->
 	<select id="getStCurrentAll" parameterType="map" resultType="map">
 		SELECT 
-			o.goodsName					AS 'goodsName'	
+			 o.goodsName				AS 'goodsName'	
 			, o.goodsUnit				AS 'goodsUnit'	
 			, o.sellingPrice			AS 'sellingPrice'	
 			, s.storageName				AS 'storageName'	
 			, s.storageClass			AS 'storageClass'	
 			, s.storageArea				AS 'storageArea'	
-			, w.goodsQuantity			AS 'goodsQuantity'	
-			, IFNULL(d.displaystandName,'')	AS 'displaystandName'	
-			, d.goodsQuantity			AS 'goodsQuantity'	
+			, s.businessRegDate			AS 'businessRegDate'
+			, w.goodsQuantity			AS 'goodsQuantity'
 		FROM
 			k4_tb_order AS o
-			JOIN
+			INNER JOIN
 			k4_tb_warehousing AS w
 			ON 
 			o.orderCode = w.orderCode
-			JOIN
+			INNER JOIN
 			k4_tb_storage AS s
 			ON
 			w.stNum = s.stNum
-			INNER JOIN
-			k4_tb_storagedisplay AS d
-			ON
-			w.bringInCode = d.bringInCode
+			
 				
 		<if test="startNum != null">
 			LIMIT #{startNum}, #{rowPerPage};		
