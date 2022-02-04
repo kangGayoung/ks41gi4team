@@ -19,6 +19,9 @@
 	.dataTables_scrollHeadInner table {
 							margin-left:2% !important;
 	}
+	#preOrderTable_wrapper	{
+							margin-bottom : 30px;
+	}
 	</style>
 	
 	<script type="text/javascript">
@@ -260,7 +263,7 @@
                   </thead>
                 
                </table>
-               <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+               <!-- <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                   <ul class="pagination">
                      <li class="paginate_button page-item previous " id="example2_previous"><a  th:if="${currentPage > 1}" th:href="@{/order/preOrder(currentPage=${currentPage - 1})}" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Prev</a></li>
                      <th:block th:each="num : ${#numbers.sequence(startPageNum, endPageNum)}">
@@ -273,7 +276,7 @@
                      </th:block>
                      <li class="paginate_button page-item next" id="example2_next"><a th:if="${currentPage < lastPage}" th:href="@{/order/preOrder(currentPage=${currentPage + 1})}" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
                   </ul>
-               </div>
+               </div> -->
             </div>             
           </div>
       </section>    

@@ -14,7 +14,11 @@
 		}
 		
 		.dataTables_scrollHeadInner table {
-								margin-left:2% !important;
+								margin-left : 2% !important;
+		}
+		
+		#stCurrentTable_wrapper	{
+								margin-bottom : 30px;
 		}
 		</style>
 		
@@ -58,9 +62,9 @@
 						{data : 'storageName'},
 						{data : 'storageClass'},
 						{data : 'storageArea'},
-						{data : 'goodsQuantity'},
-						{data : 'displaystandName'},
+						{data : 'businessRegDate'},
 						{data : 'goodsQuantity'}
+						
 					]
 				});
 				
@@ -204,7 +208,7 @@
             
             
             <div class="mb-2"style="display: inline-flex; margin-top:20px; margin-left:3%; padding: 0 12px 0 1px;clear:both; float:left" >
-               <p style="width:135px; padding-right: 7px;">전체 10건</p>               
+               <p style="width:135px; padding-right: 7px;">전체 30건</p>               
                <select style="margin-top: -6px;" name="search_type" class="form-control">
                   <option value="">50개씩 보기</option>
                   <option value="">100개씩 보기</option>
@@ -227,14 +231,13 @@
                         <th>창고이름</th>
                         <th>창고분류</th>
                         <th>구역분류</th>
-                        <th>수량</th>
-                        <th>진열대이름</th>
+                        <th>등록일자</th>
                         <th>수량</th>
 					</tr>
 				</thead>
 				
                </table>
-               <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+               <!-- <div style="margin: 5px auto 0;" class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
                   <ul class="pagination">
                      <li class="paginate_button page-item previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Prev</a></li>
                      <li class="paginate_button page-item active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
@@ -242,7 +245,7 @@
                      <li class="paginate_button page-item "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
                      <li class="paginate_button page-item next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
                   </ul>
-               </div>
+               </div> -->
             </div>  
             
           </div>
