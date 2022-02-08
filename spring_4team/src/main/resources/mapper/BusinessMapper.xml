@@ -10,6 +10,29 @@
 		FROM
 			k4_tb_business;
 	</select>
+	<select id="businessSearchCode" parameterType="String" resultType="map">
+		select
+			businessCode AS businessCode
+			, businessName AS businessName
+			, businessPartnerName AS businessPartnerName
+			, businessPartnerNum AS businessPartnerNum
+			, businessPhoneNum AS businessPhoneNum
+			, businessAddress AS businessAddress
+			, businessStaff AS businessStaff
+			, businessStaffNum AS businessStaffNum
+			, businessStaffEmail AS businessStaffEmail
+			, businessSectors AS businessSectors
+			, businessStatus AS businessStatus
+		FROM 
+			k4_tb_business
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="businessCode != null and businessCode != ''.toString()">
+				businessCode LIKE CONCAT('%', #{searchValue},'%')
+			</if>
+		</trim>
+	</select>
+	
+	
 	<select id="BusinessInfoList" parameterType="map" resultType="map">
 		select
 			businessCode AS businessCode

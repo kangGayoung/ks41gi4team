@@ -43,32 +43,47 @@
 						{"data":"businessStaffNum"},
 						{"data":"businessStaffEmail"}
 						
-					]
+					],
+					//테이블 클릭 수정 이벤트
+						fnDrawCallback: function () { 
+						    $('#businessListTable tbody tr').click(function () {  
+						        // get position of the selected row  
+						        var position = $('#businessListTable').dataTable().fnGetPosition(this)  
+						        // value of the first column (can be hidden)  
+						        var id = $('#businessListTable').dataTable().fnGetData(position).businessCode
+						        // redirect
+						       // document.location.href = 'abcd.html?id=' + id
+						     //   $('#businessModal').modal();
+						        
+						        console.log(id);
+						        $('#businessModal').modal();
+						    	$('#businessModal').on('show.bs.modal',function(){
+									var request = $.ajax({
+										url:"/basic/modalBusiness",
+										method:"get",
+										data:{ id : id},
+										dataType:"html"
+									});
+									request.done(function(msg){
+										$('#modalAjax').html(msg);
+									});
+									request.fail(function(jqXHR, textStatus){
+										alert("Request failed "+textStatus);
+									});
+								
+								});
+						        
+						   })
+						}	
+					
+					
 				});
 				
 				//모달
-				//모달 클릭
-				$('#modalBtn').click(function(){
-					
-					$('#businessModal').modal();
-					
-				});
+				
 				
 				//모달 ajax
-				$('#businessModal').on('show.bs.modal',function(){
-					var request = $.ajax({
-						url:"/basic/modalBusiness",
-						method:"get",
-						dataType:"html"
-					});
-					request.done(function(msg){
-						$('#modalAjax').html(msg);
-					});
-					request.fail(function(jqXHR, textStatus){
-						alert("Request failed "+textStatus);
-					});
-				
-				});
+			
 				
 				
 				//검색창
