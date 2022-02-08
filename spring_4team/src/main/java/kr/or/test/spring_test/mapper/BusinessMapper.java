@@ -15,6 +15,8 @@ public interface BusinessMapper {
 	
 	//거래처 리스트
 	public List<Map<String, Object>> BusinessInfoList(Map<String,Object> paramMap);
+	
+	public Map<String, Object> businessSearchCode(String businessCode);
 
 	public int getBusinessListCount();
 }

@@ -4,9 +4,7 @@ package kr.or.test.spring_test.Controller;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import kr.or.test.spring_test.dto.BusinessInfo;
 import kr.or.test.spring_test.dto.StaffInfo;
 import kr.or.test.spring_test.service.BusinessService;
@@ -178,11 +175,6 @@ public class BasicController {
 		return "contents/basicMG/businessInsert/businessInsert";
 	}
 	
-	@GetMapping("/modalBusinessForm")
-	public String modalBusinessForm() {
-		
-		return "contents/basicMG/businessInfo/modalBusinessForm";
-	}
 	
 	//거래처 등록
 	@PostMapping("/businessInsert")
@@ -228,8 +220,12 @@ public class BasicController {
 		return businessList;
 	}
 	//거래처 모달
-	@GetMapping("/modalBusiness")
-	public String modalBusiness(Model model) {
+	@GetMapping("/modalBusiness/{id}")
+	public String modalBusiness(@PathVariable(value = "id",required=false)String Bid
+								,Model model) {
+		model.addAttribute("Bid", Bid);
+		//id <= code
+		businessService.BusinessSearchCode(Bid);
 		
 		return "contents/basicMG/businessInfo/modalBusinessUpdatForm";
 	}
