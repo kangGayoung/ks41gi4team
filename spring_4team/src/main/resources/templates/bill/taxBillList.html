@@ -17,6 +17,18 @@
 			aLengthMenuArray.push([5,10,15]);
 			aLengthMenuArray.push([5,10,15]);
 			
+			var request =$.ajax({
+				url:"/bill/billList",
+				method: "GET",
+				dataType:"html"
+			});
+	 	request.done(functoin(data){
+				$('#getHtml').html(data);
+			});
+			request.fail(function(jqXHR,textStatus){
+				alert("Request failed: " + textStatus);
+			});
+			<!-- 
 			$('#taxBillListTable').DataTable({
 				// 표시 건수기능 숨기기
 				lengthChange: false,
@@ -55,8 +67,8 @@
 	
 				]
 		
-			});
-		});
+			});   -->	
+	 });
  	
  	</script>
  </th:block>
@@ -64,7 +76,7 @@
  
 <th:block layout:fragment="customContents">
 
-<style>
+<!-- <style>
 	
 	.dataTable 	{
 								width: 100% !important;
@@ -73,16 +85,16 @@
 								    float: none;
 								    text-align: center;
 									}
-	</style>
+	</style> -->
 	
  	<div>
 								<!-- Content Header (Page header) -->
 	<div class="wrapper">
-		<h2 style="padding : 5 0 10 6;">(세금)계산서 관리  </h2>
+			<h1 class="m-0" style="letter-spacing: -2.5px; font-size: 25px; padding: 5px 10px 10px 0;">(세금)계산서 관리  </h1>
 		<!-- /.content-header -->
 		
 	<!-- 메뉴앞 알림 모달창-->
-			<div class="modal" id="testModal" tabindex="-1" role="dialog">
+			<div class="modal" id=" AlertModal" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
 		<!-- 		block modal-header -->
@@ -99,8 +111,6 @@
 				</div>
 			</div>
 	<!-- 	메뉴앞 알림모달창	-->
-
-
 
 <!-- Modal . / -->
 		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -159,12 +169,12 @@
 												<input id="shop_name" name="shop_name" type="text" value="" placeholder="거래처를 선택해주세요." class="form-control ui-autocomplete-input placeholder" autocomplete="off" readonly="">
 												</div>
 						                                                    <div class="pull-left pl10">
-						                                <a class="btn2 btn2-lightgray" href="javascript:goShopSearch();" role="button">거래처 선택</a>
+						                                <a class="btn btn-lightgray" href="javascript:goShopSearch();" role="button">거래처 선택</a>
 						                            </div>
 						                        					</td>
 						                                        <th>주문선택</th>
 						                    <td class="nts_reg_search_td">
-						                        <a class="btn2 btn2-search nts_reg_list_btn2" role="button" onclick="goOrderSearch()">목록보기</a>
+						                        <a class="btn btn-search nts_reg_list_btn" role="button" onclick="goOrderSearch()">목록보기</a>
 						                    </td>
 						
 										</tr>
@@ -209,12 +219,12 @@
 								</tr>
 								</tbody></table>
 						        <div style="display:block;">
-						            <a class="btn2 btn2-lightgray pull-right" role="button" id="tax_cacul" onclick="shopInfoeditPop()">거래처 사업자 정보 수정</a>
+						            <a class="btn btn-lightgray pull-right" role="button" id="tax_cacul" onclick="shopInfoeditPop()">거래처 사업자 정보 수정</a>
 						        </div>
 						
-						        <div class="newinfo_change_btn2_wrap" style="display:none;">
-						            <a class="btn2 btn2-lightgray pull-left vendor_new_info_btn2 nts_new_info_change" role="button" onclick="getvendorInfonew()" >최신정보로 수정</a>
-						            <a class="btn2 btn2-lightgray pull-right nts_new_info_change" role="button" onclick="getshopInfonew()">최신정보로 수정</a>
+						        <div class="newinfo_change_btn_wrap" style="display:none;">
+						            <a class="btn btn-lightgray pull-left vendor_new_info_btn nts_new_info_change" role="button" onclick="getvendorInfonew()" >최신정보로 수정</a>
+						            <a class="btn btn-lightgray pull-right nts_new_info_change" role="button" onclick="getshopInfonew()">최신정보로 수정</a>
 						        </div>
 						
 								<table class="table_invoice_info">
@@ -324,8 +334,8 @@
 											<div class="input-group input-group-sm nts_reg_calendar">
 												<input type="text" id="writeDate" name="writeDate" value="2021-12-31" readonly="readonly" onclick="calendarTaxInvoice('writeDate')" class="form-control nts_reg_writedate">
 						
-												<span class="input-group-btn2">
-													<a onclick="calendarTaxInvoice('writeDate');" class="btn2 calendar">
+												<span class="input-group-btn">
+													<a onclick="calendarTaxInvoice('writeDate');" class="btn calendar">
 														<img src="https://content.marketbom.com/vendor-assets/vendor_pc/img/ico-calendar.png">
 													</a>
 												</span>
@@ -382,7 +392,7 @@
 										    <td><input type="text" id="item_supply_cost0" name="item_supply_cost[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    	<td><input type="text" id="item_tax0" name="item_tax[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    <td><input type="text" id="item_remark0" name="item_remark[]" maxlength="100" class="form-control"> </td>
-										    <td><a class="btn2 btn2-search" role="button" onclick="delRow('0')">삭제</a></td>
+										    <td><a class="btn btn-search" role="button" onclick="delRow('0')">삭제</a></td>
 										  </tr>
 						
 									  				  <tr id="tr_1" class="text-center">
@@ -396,7 +406,7 @@
 										    <td><input type="text" id="item_supply_cost1" name="item_supply_cost[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    	<td><input type="text" id="item_tax1" name="item_tax[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    <td><input type="text" id="item_remark1" name="item_remark[]" maxlength="100" class="form-control"> </td>
-										    <td><a class="btn2 btn2-search" role="button" onclick="delRow('1')">삭제</a></td>
+										    <td><a class="btn btn-search" role="button" onclick="delRow('1')">삭제</a></td>
 										  </tr>
 						
 									  				  <tr id="tr_2" class="text-center">
@@ -410,7 +420,7 @@
 										    <td><input type="text" id="item_supply_cost2" name="item_supply_cost[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    	<td><input type="text" id="item_tax2" name="item_tax[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    <td><input type="text" id="item_remark2" name="item_remark[]" maxlength="100" class="form-control"> </td>
-										    <td><a class="btn2 btn2-search" role="button" onclick="delRow('2')">삭제</a></td>
+										    <td><a class="btn btn-search" role="button" onclick="delRow('2')">삭제</a></td>
 										  </tr>
 						
 									  				  <tr id="tr_3" class="text-center">
@@ -424,7 +434,7 @@
 										    <td><input type="text" id="item_supply_cost3" name="item_supply_cost[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    	<td><input type="text" id="item_tax3" name="item_tax[]" maxlength="15" class="form-control text-right direct_price_input"> </td>
 										    				    <td><input type="text" id="item_remark3" name="item_remark[]" maxlength="100" class="form-control"> </td>
-										    <td><a class="btn2 btn2-search" role="button" onclick="delRow('3')">삭제</a></td>
+										    <td><a class="btn btn-search" role="button" onclick="delRow('3')">삭제</a></td>
 										  </tr>
 						
 									  		</tbody>
@@ -466,10 +476,10 @@
 						            * 세금계산서가 실제로 발급되는 것이 아니며, 등록 후 홈택스에서 직접 세금계산서를 발급해 주셔야 합니다.
 						        </div>
 						
-								<div class="regist-btn2">
-									<a class="btn2" role="button" id="btn_cancel">목록으로</a>
-									<a class="btn2" role="button" id="btn_preview">미리보기</a>
-													<a class="btn2 btn2-success" role="button" id="btn_save">등록하기</a>
+								<div class="regist-btn">
+									<a class="btn2 " role="button" id="btn_cancel">목록으로</a>
+									<a class="btn2 " role="button" id="btn_preview">미리보기</a>
+													<a class="btn2 " role="button" id="btn_save">등록하기</a>
 									
 								</div>
 						
@@ -479,12 +489,14 @@
 		      </div>
 		     <div class="modal-footer">
 		        <button type="button" class="btn2" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn2">Save changes</button>
+		      <!--   <button type="button" class="btn btn-primary">Save changes</button> -->
 		      </div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-								<!--/ .  Modal -->
+<!--/ .  Modal -->
+
+
 
 		<!-- Main content -->
 <section class="content">
@@ -522,10 +534,10 @@
                            <th class="card-footer text-center">기간</th>
                            <td>
                               <div class="search-buttons pl-2">
-                                          <a class="btn2 btn22" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-                                          <a class="btn2 btn22" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-                                          <a class="btn2 btn22" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-                                          <a class="btn2 btn22" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                                          <a class="btn2" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn2" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn2" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn2" role="button" chk_type="n" onclick="setDate('n')">당일</a>
                               </div>
                            </td>
                            <td>
@@ -597,7 +609,7 @@
 								         <!--        <a class="btn2 btn2-add btn22" role="button"  onclick="location.href='billInsert' "> 세금계산서등록</a> -->
 											<!-- Button trigger modal -->
 											<button type="button" class="btn2" data-toggle="modal" data-target=".bs-example-modal-lg">
-													 세금계산서 모달
+													 세금계산서 등록
 											</button>
 									</div>
                            </td>
@@ -675,6 +687,7 @@
 					<table class="table p-0 table-hover col-md-12" id="taxBillListTable" style="font-size: 1.0em; text-align:center;">
 						<thead>
 							<tr>
+								<th>선택</th>
 								<th>등록일자</th>
 								<th>유형</th>
 								<th>거래처명</th>
@@ -683,8 +696,29 @@
 								<th>세 액</th>
 								<th>합계금액</th>
 								<th>발행상태</th>
+								<th>수정</th>
 							</tr>
 						</thead>
+						 <tbody>
+						<tr th:if="${not #lists.isEmpty(taxBillList)}" th:each="l : ${taxBillList}">
+						<td><input type="checkbox" name="billCheck" value='billCheck'/></td>
+						<td th:text="${invoiceRegDate}"></td>						
+						<td th:text="${invoiceType}"></td>
+						<td th:text="${businessName}"></td>
+						<td th:text="${businessPartnerNum}"></td><!-- 거래처등록번호 -->
+						<td th:text="${invoicePrice}"></td>
+						<td th:text="${invoiceTax}"></td>
+						<td th:text="${TotalPrice}"></td>
+						<td th:text="${invoiceState}"></td>
+						<td><button class="btn2" onclick="">수정</button></td>
+						
+					</tr>
+					 <tr th:unless="${not #lists.isEmpty(taxBillList)}">
+						<td colspan="10">
+							자료를 찾을 수 없습니다.
+						</td>
+					</tr> 
+				</tbody>
 			
 
 					</table>

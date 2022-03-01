@@ -6,19 +6,19 @@
 	<title th:text="${title}"></title>
 </th:block>
 <th:block layout:fragment="customContents">
-<script type="text/javascript">
-  
-		 $(function(){
+	<!-- jQuery -->
+ 	<script type="text/javascript">
+		$(function(){
+			//조회 페이지 
 			$('#accountsListBtn').click(function(){
-				location.href= 'accountsList';
+				location.href='accountsList';
 			});
-		});		 
-		 $(function(){
-			$('#goCaculFormPop').click(function(){
-				location.href= 'accountsPrint';
-			});
-		});		 
-			</script> 
+		
+		
+		
+		});
+ 	
+ 	</script>
 	
 	
 	
@@ -26,8 +26,308 @@
 		<!-- Content Header (Page header) -->
 	<div class="wrapper">
 		
-		<h2 class= "padding : 2 0 10 5px;"> 정산서 조회 결과 </h2>
-		<!-- /.content-header -->
+		<h1 class="m-0" style="letter-spacing: -2.5px; font-size: 25px; padding: 5px 10px 10px 0;"> 정산서 조회 결과 </h1>
+	
+			<!-- /.content-header -->
+
+<!-- Modal . / -->
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="myModalAccounts" aria-labelledby="myLargeModalLabel">
+		  <div class="modal-dialog modal-xl" role="document">
+		    <div class="modal-content">
+			      <div class="modal-header">
+				       <h4 class="modal-title" id="myModalLabel">정산서 출력</h4>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			      </div>
+		      <div class="modal-body">
+		      	
+		      	<script type="text/javascript">
+					
+					window.resizeTo(500,690);
+					window.focus();
+					
+					function printNow() {
+					  document.getElementById('command_bar').style.display = 'none';
+					  window.print();
+					}
+					</script>
+		      	<div  class =  "container-fluid" id="command_bar">
+				<div id="contents-wrap" class="statement-wrap clearfix" >
+					<div id="print-area" class="print-area clearfix">
+						<div class="page-divide" style="">
+							<div class="in-wrap clearfix" style="margin-top:10px;">
+								<div class="statement-row first clearfix" style="border-bottom:1px solid #111;">
+									<table class="statement">
+									<colgroup>
+										<col width="50px">
+										<col width="165px">
+										<col width="185px">
+										<col width="50px">
+										<col width="165px">
+										<col width="185px">
+									</colgroup>
+									<tbody><tr>
+										<th colspan="3" rowspan="2" class="targets datetitle" style="font-size:18px; font-weight:700;">12월 정산서</th>
+										<th colspan="2" class="targets2">관리번호</th>
+										<td>20220119-01-3861</td>
+									</tr>
+									<tr>
+										<th colspan="2" class="targets2">발행일자</th>
+										<td>2022-01-19</td>
+									</tr>
+									<tr>
+										<th rowspan="3" class="targets">유<br>통<br>사</th>
+										<th class="targets2">사업자 번호</th>
+										<td>8282-45-4444</td>
+										<th rowspan="3" class="targets"><br><br><br></th>
+										<th class="targets2">사업자 번호</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th class="targets2">업체명</th>
+										<td>사딸라마트</td>
+										<th class="targets2">업체명</th>
+										<td></td>
+									</tr>
+									<tr>
+										<th class="targets2">주소</th>
+										<td>전북 전주시 덕진구 금암1동 기린대로 446 </td>
+										<th class="targets2">주소</th>
+										<td></td>
+									</tr>
+								</tbody></table>
+								</div>
+				
+								<div class="statement-row full lists clearfix" style="margin-top:20px;">
+									<table class="goods-list">
+									<thead>
+										<tr>
+											<th>일자</th>
+											<th>결제금액</th>
+											<th>수수료</th>
+											<th>부가세</th>
+											<th>정산금액</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr>
+												<td>01</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>02</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>03</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>04</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>05</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>06</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>07</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>08</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>09</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>10</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>11</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>12</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>13</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>14</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>15</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>16</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>17</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>18</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>19</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>20</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>21</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>22</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>23</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>24</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>25</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>26</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>27</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>28</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>29</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>30</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr><tr>
+												<td>31</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+												<td class="text-price">0원</td>
+											</tr>					</tbody>
+														<tfoot>
+										<tr>
+											<td>합계</td>
+											<td class="text-price">0원</td>
+											<td class="text-price">0원</td>
+											<td class="text-price">0원</td>
+											<td class="text-price">0원</td>
+										</tr>
+									</tfoot>
+								</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!-- 	<div style="height: 130px;"></div>
+					<div class="clearfix text-center btn-row" style="position: fixed;
+				    bottom: 0;    width: 100%;  background: #ffffff;    margin-bottom: 0;    padding-bottom: 30px;">
+						<div style="position: absolute;left: 50%;margin-left: -300px;top: 50%;margin-top: -15px;"></div> -->
+							 <input type="button"  class="Btn2" value="인쇄하기" onclick="printNow()" />
+						</div>
+						</div>
+					</div>
+		      	 </div>
+		     <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn2">Print</button>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+<!--/ .  Modal -->
+
 
 		<!-- Main content -->
 
@@ -49,10 +349,10 @@
                            <th class="card-footer text-center">기간</th>
                            <td>
                               <div class="search-buttons pl-2">
-                                          <a class="btn btn-danger" role="button" chk_type="all" onclick="setDate('all')">전체</a>
-                                          <a class="btn btn-danger" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
-                                          <a class="btn btn-danger" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
-                                          <a class="btn btn-danger" role="button" chk_type="n" onclick="setDate('n')">당일</a>
+                                          <a class="btn2" role="button" chk_type="all" onclick="setDate('all')">전체</a>
+                                          <a class="btn2" role="button" chk_type="ym" onclick="setDate('ym')">전월</a>
+                                          <a class="btn2" role="button" chk_type="nm" onclick="setDate('nm')">금월</a>
+                                          <a class="btn2" role="button" chk_type="n" onclick="setDate('n')">당일</a>
                               </div>
                            </td>
                            <td>
@@ -78,7 +378,7 @@
                               </div>
                            </td>
                            <td class="pr-2 pt-2 pb-2">
-                              <a class="btn btn-search btn-danger " id="accountsListBtn"  href="#" onclick="" style="width:100%;" > >>검색</a>
+                         	  <button class="btn2" id="accountsListBtn" type="submit" style="width:100%;">검색</button>
                            </td>
                         </tr>
                      </tbody>
@@ -98,8 +398,11 @@
 	<br />
 	<br />
 	<br />
-				<div class="filter-types" id="cacul_btn" style="">
-						<a class="btn btn-print" role="button" onclick="goCaculFormPop();">정산서 출력</a>
+				<div class="filter-types" id="cacul_btn" style="padding: 0 0 10px 10px;">
+					<button type="button" class="btn2" data-toggle="modal" data-target="#myModalAccounts" data-name="accountsPrint">
+					<!-- <button class="btn2"  role="button"    "location.href= 'accountsPrint'"data-name="accountsPrint"> -->
+						정산서 출력
+						</button>
 					</div>
 	<!-- 테이블  시작-->
 <section class="content">	
@@ -120,35 +423,27 @@
 					</div>
 					<div class="col-sm-push-12 col-md-push-6"
 						style="text-align: right;">
-						<div class="dt-buttons btn-group flex-wrap">
-							<button class="btn btn-danger buttons-copy buttons-html5"
+						<div class="dt-buttons btn2-group flex-wrap">
+							<button class="btn2 buttons-copy buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>Copy</span>
 							</button>
-							<button class="btn btn-danger buttons-csv buttons-html5"
+							<button class="btn2 buttons-csv buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>CSV</span>
 							</button>
-							<button class="btn btn-danger buttons-excel buttons-html5"
+							<button class="btn2 buttons-excel buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>Excel</span>
 							</button>
-							<button class="btn btn-danger buttons-pdf buttons-html5"
+							<button class="btn2 buttons-pdf buttons-html5"
 								tabindex="0" aria-controls="example1" type="button">
 								<span>PDF</span>
 							</button>
-							<button class="btn btn-danger buttons-print" tabindex="0"
+							<button class="btn2  buttons-print" tabindex="0"
 								aria-controls="example1" type="button">
 								<span>Print</span>
 							</button>
-							<div class="btn-group">
-								<button
-									class="btn btn-danger buttons-collection dropdown-toggle buttons-colvis"
-									tabindex="0" aria-controls="example1" type="button"
-									aria-haspopup="true" aria-expanded="false">
-									<span>Column visibility</span>
-								</button>
-							</div>
 						</div>
 					</div>
 				</div>
