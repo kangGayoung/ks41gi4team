@@ -231,7 +231,7 @@
                   </thead>
                   <tbody>
 					<tr th:if="${not #lists.isEmpty(orderList)}" th:each="l : ${orderList}">
-						<td><input type="checkbox" name="orderCheck" value='orderCheck'/></td>
+						<td><i nput type="checkbox" name="orderCheck" value='orderCheck'/></td>
 						<td th:text="${l.orderCode}"></td>						
 						<td th:text="${l.goodsName}"></td>
 						<td th:text="${l.goodsWeight}"></td>
